@@ -92,31 +92,25 @@ class Course extends Model
 			
 			if ($order == 'precio' && $how == 'asc' ) {
 				
-				$list = Course::where('price','<',$valor)->orderBy('price');
-			}
-			else if ($order == 'precio' && $how == 'desc' )  {
-				$list = Course::where('price','<',$valor)->orderBy('price', "desc");
-			}
-			else if ($order == 'nombre' && $how == 'desc' )  {
-				$list = Course::where('price','<',$valor)->orderBy('name');
-			}
-			else {
-				$list = Course::where('price','<',$valor)->orderBy('name', 'desc');
+				$list = Course::where('price','<',$valor)->orderBy('price')->paginate(6);
+			} else if ($order == 'precio' && $how == 'desc' )  {
+				$list = Course::where('price','<',$valor)->orderBy('price', "desc")->paginate(6);
+			} else if ($order == 'nombre' && $how == 'desc' )  {
+				$list = Course::where('price','<',$valor)->orderBy('name')->paginate(6);
+			} else {
+				$list = Course::where('price','<',$valor)->orderBy('name', 'desc')->paginate(6);
 			}
 			
 		}
 		elseif ($filter == 'nombre') {
 			if ($order == 'precio' && $how == 'asc' ) {
-				$list = Course::where('name','like','%'.$valor.'%')->orderBy('price');
-			}
-			else if ($order == 'precio' && $how == 'desc' )  {
-				$list = Course::where('name','like','%'.$valor.'%')->orderBy('price', 'desc');
-			}
-			else if ($order == 'nombre' && $how == 'desc' )  {
-				$list = Course::where('name','like','%'.$valor.'%')->orderBy('name');
-			}
-			else {
-				$list = Course::where('name','like','%'.$valor.'%')->orderBy('name', 'desc');
+				$list = Course::where('name','like','%'.$valor.'%')->orderBy('price')->paginate(6);
+			} else if ($order == 'precio' && $how == 'desc' )  {
+				$list = Course::where('name','like','%'.$valor.'%')->orderBy('price', 'desc')->paginate(6);
+			} else if ($order == 'nombre' && $how == 'desc' )  {
+				$list = Course::where('name','like','%'.$valor.'%')->orderBy('name')->paginate(6);
+			} else {
+				$list = Course::where('name','like','%'.$valor.'%')->orderBy('name', 'desc')->paginate(6);
 			}
 		}
 		return $list;
