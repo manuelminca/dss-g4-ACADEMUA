@@ -6,9 +6,9 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use App\Sponsor;
-use App\Team;
-use App\Player;
+use App\User;
+use App\Course;
+use App\Category;
 
 class DataTest extends TestCase
 {
@@ -17,127 +17,79 @@ class DataTest extends TestCase
      *
      * @return void
      */
-    public function testSponsorsData()
-    {
-        $count = Sponsor::all()->count();
-        $this->assertEquals($count, 5);
 
-        $this->assertDatabaseHas('sponsors', ['name' => 'Samsung']);
-        $this->assertDatabaseHas('sponsors', ['name' => 'Toshiba']);
-        $this->assertDatabaseHas('sponsors', ['name' => 'Asus']);
-        $this->assertDatabaseHas('sponsors', ['name' => 'Intel']);
-        $this->assertDatabaseHas('sponsors', ['name' => 'AMD']);
+     public function testUsersData()
+    {
+        $count = User::all()->count();
+        $this->assertEquals($count, 4);
+
+        $this->assertDatabaseHas('users', ['email' => 'manuelminca@gmail.com']);
+        $this->assertDatabaseHas('users', ['email' => 'profesor1@gmail.com']);
+        $this->assertDatabaseHas('users', ['email' => 'asehhu@gmail.com']);
+        $this->assertDatabaseHas('users', ['email' => 'quico14@gmail.com']);
+
+        $this->assertDatabaseHas('users', ['username' => 'manuelminca']);
+        $this->assertDatabaseHas('users', ['username' => 'profesor1']);
+        $this->assertDatabaseHas('users', ['username' => 'asehhu']);
+        $this->assertDatabaseHas('users', ['username' => 'quico14']);
+
+        $this->assertDatabaseHas('users', ['password' => 'dasdas']);
+
     }
 
-    /**
-     * Checks the number and names of the teams
-     *
-     * @return void
-     */
-    public function testTeamsData()
+    public function testCoursesData()
     {
-        $count = Team::all()->count();
-        $this->assertEquals($count, 7);
+        $count = Course::all()->count();
+        $this->assertEquals($count, 3);
 
-        $this->assertDatabaseHas('teams', ['name' => 'Screaming Nachos']);
-        $this->assertDatabaseHas('teams', ['name' => 'Elemonators']);
-        $this->assertDatabaseHas('teams', ['name' => 'E = MC Hammer']);
-        $this->assertDatabaseHas('teams', ['name' => 'Chili Peppers']);
-        $this->assertDatabaseHas('teams', ['name' => 'Low Expectations']);
-        $this->assertDatabaseHas('teams', ['name' => 'Rescheduled']);
-        $this->assertDatabaseHas('teams', ['name' => 'Get Your Kicks']);
+        $this->assertDatabaseHas('courses', ['name' => 'cursoPrueba']);
+        $this->assertDatabaseHas('courses', ['name' => 'Java']);
+        $this->assertDatabaseHas('courses', ['name' => 'php']);
+
+        $this->assertDatabaseHas('courses', ['id' => 1]);
+        $this->assertDatabaseHas('courses', ['id' => 2]);
+        $this->assertDatabaseHas('courses', ['id' => 3]);
     }
 
-    /**
-     * Checks the number and data of the players
-     *
-     * @return void
-     */
-    public function testPlayersData()
+    public function testCategoriesData()
     {
-        $count = Player::all()->count();
-        $this->assertEquals($count, 9);
+        $count = Category::all()->count();
+        $this->assertEquals($count, 2);
 
-        $this->assertDatabaseHas('players', ['name' => 'John Doe', 'age' => 17]);
-        $this->assertDatabaseHas('players', ['name' => 'Jim Baker', 'age' => 16]);
-        $this->assertDatabaseHas('players', ['name' => 'Nick Alias', 'age' => 21]);
-        $this->assertDatabaseHas('players', ['name' => 'Steve Bacon', 'age' => 17]);
-        $this->assertDatabaseHas('players', ['name' => 'Mike Connor', 'age' => 18]);
-        $this->assertDatabaseHas('players', ['name' => 'Tim Eater', 'age' => 17]);
-        $this->assertDatabaseHas('players', ['name' => 'Billy Sheen', 'age' => 17]);
-        $this->assertDatabaseHas('players', ['name' => 'Sam Uncle', 'age' => 17]);
-        $this->assertDatabaseHas('players', ['name' => 'Rick Allister', 'age' => 19]);
+        $this->assertDatabaseHas('categories', ['name' => 'programacion']);
+        $this->assertDatabaseHas('categories', ['name' => 'MultOS']);
     }
 
-    /**
-     * Checks the teams associated to the sponsors
-     *
-     * @return void
-     */
-    public function testTeamsBySponsor()
+
+    public function testCoursesByCategory()
     {
-        $sponsor = Sponsor::where('name', 'Samsung')->first();
-        $this->assertEquals($sponsor->teams->count(), 2);
-        $this->assertTrue($sponsor->teams->contains('name', 'Screaming Nachos'));
-        $this->assertTrue($sponsor->teams->contains('name', 'Elemonators'));
-
-        $sponsor = Sponsor::where('name', 'Toshiba')->first();
-        $this->assertEquals($sponsor->teams->count(), 2);
-        $this->assertTrue($sponsor->teams->contains('name', 'E = MC Hammer'));
-        $this->assertTrue($sponsor->teams->contains('name', 'Chili Peppers'));
-
-        $sponsor = Sponsor::where('name', 'Asus')->first();
-        $this->assertEquals($sponsor->teams->count(), 1);
-        $this->assertTrue($sponsor->teams->contains('name', 'Low Expectations'));
-
-        $sponsor = Sponsor::where('name', 'Intel')->first();
-        $this->assertEquals($sponsor->teams->count(), 1);
-        $this->assertTrue($sponsor->teams->contains('name', 'Rescheduled'));
-
-        $sponsor = Sponsor::where('name', 'AMD')->first();
-        $this->assertEquals($sponsor->teams->count(), 1);
-        $this->assertTrue($sponsor->teams->contains('name', 'Get Your Kicks'));
+        $course = Course::where('name', 'Java')->first();
+        $this->assertEquals($course->categoriescourses->count(), 1);
+        $this->assertTrue($course->category->contains('name', 'MultOS'));
     }
 
-    /**
-     * Checks the players assigned to each team
-     *
-     * @return void
-     */
-    public function testPlayersByTeam()
+/*
+
+    public function testUserstoCourses()
     {
-        $team = Team::where('name', 'Screaming Nachos')->first();
-        $this->assertEquals($team->players->count(), 2);
-        $this->assertTrue($team->players->contains('name', 'John Doe'));
-        $this->assertTrue($team->players->contains('name', 'Jim Baker'));
+        $users = User::where('email', 'quico14@gmail.com')->first();
+        $this->assertEquals($users->userscourses->count(), 2);
+        $this->assertTrue($users->course->contains('id', '3'));
+        $this->assertTrue($sponsor->teams->contains('id', '2'));
 
-        $team = Team::where('name', 'Elemonators')->first();
-        $this->assertEquals($team->players->count(), 2);
-        $this->assertTrue($team->players->contains('name', 'Jim Baker'));
-        $this->assertTrue($team->players->contains('name', 'Sam Uncle'));
+        $users = User::where('email', 'manuelminca@gmail.com')->first();
+        $this->assertEquals($users->course->count(), 1);
+        $this->assertTrue($users->course->contains('id', '1'));
+        
+        $users = User::where('email', 'profesor1@gmail.com')->first();
+        $this->assertEquals($users->course->count(), 1);
+        $this->assertTrue($users->course->contains('id', '1'));
+        
+        $users = User::where('email', 'asehhu@gmail.com')->first();
+        $this->assertEquals($users->course->count(), 1);
+        $this->assertTrue($users->course->contains('id', '3'));
 
-        $team = Team::where('name', 'E = MC Hammer')->first();
-        $this->assertEquals($team->players->count(), 1);
-        $this->assertTrue($team->players->contains('name', 'John Doe'));
-
-        $team = Team::where('name', 'Chili Peppers')->first();
-        $this->assertEquals($team->players->count(), 2);
-        $this->assertTrue($team->players->contains('name', 'Nick Alias'));
-        $this->assertTrue($team->players->contains('name', 'Sam Uncle'));
-
-        $team = Team::where('name', 'Low Expectations')->first();
-        $this->assertEquals($team->players->count(), 2);
-        $this->assertTrue($team->players->contains('name', 'Steve Bacon'));
-        $this->assertTrue($team->players->contains('name', 'Billy Sheen'));
-
-        $team = Team::where('name', 'Rescheduled')->first();
-        $this->assertEquals($team->players->count(), 2);
-        $this->assertTrue($team->players->contains('name', 'Mike Connor'));
-        $this->assertTrue($team->players->contains('name', 'Tim Eater'));
-
-        $team = Team::where('name', 'Get Your Kicks')->first();
-        $this->assertEquals($team->players->count(), 2);
-        $this->assertTrue($team->players->contains('name', 'Tim Eater'));
-        $this->assertTrue($team->players->contains('name', 'Rick Allister'));
     }
+
+*/
 }
