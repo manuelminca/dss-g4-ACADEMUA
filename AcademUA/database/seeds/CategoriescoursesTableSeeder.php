@@ -18,5 +18,12 @@ class CategoriescoursesTableSeeder extends Seeder
             'category_name' => $pk1->name,
             'course_id' => $pk2->id
         ]);
+
+        $pk1 = DB::table('categories')->where('name','MultOS')->first();
+        $pk2 = DB::table('courses')->where('name', 'Java')->first();
+        DB::table('categoriescourses')->insert([
+            'category_name' => $pk1->name,
+            'course_id' => $pk2->id
+        ]);
     }
 }

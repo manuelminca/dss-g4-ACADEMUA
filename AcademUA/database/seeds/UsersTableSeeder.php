@@ -19,6 +19,27 @@ class UsersTableSeeder extends Seeder
             'email' => 'profesor1@gmail.com',
             'password' => 'dasdas'
         ]);
+
+         DB::table('users')->insert([
+            'name' => 'manuel',
+            'username' => 'manuelminca',
+            'email' => 'manuelminca@gmail.com',
+            'password' => 'dasdas'
+        ]);
+
+         DB::table('users')->insert([
+            'name' => 'yerai',
+            'username' => 'asehhu',
+            'email' => 'asehhu@gmail.com',
+            'password' => 'dasdas'
+        ]);
+
+         DB::table('users')->insert([
+            'name' => 'quico',
+            'username' => 'quico14',
+            'email' => 'quico14@gmail.com',
+            'password' => 'dasdas'
+        ]);
         
     }
 }

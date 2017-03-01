@@ -18,5 +18,19 @@ class CoursesTableSeeder extends Seeder
             'price' => 50
         ]);
         
+
+        DB::table('courses')->insert([
+            'name' => 'Java',
+            'description' => 'A simple java course',
+            'price' => 100
+        ]);
+
+         DB::table('courses')->insert([
+            'name' => 'php',
+            'description' => 'A simple php course',
+            'price' => 10000
+        ]);
+        
+
     }
 }
