@@ -14,7 +14,11 @@ class CreateCategoriescoursesTable extends Migration
     public function up()
     {
         Schema::create('categoriescourses', function (Blueprint $table) {
-            $table->increments('id');
+            $table->text('course_id');
+            $table->text('category_name');
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('category_name')->references('name')->on('categories');
+            $table->primary(['course_id', 'category_name']);
             $table->timestamps();
         });
     }

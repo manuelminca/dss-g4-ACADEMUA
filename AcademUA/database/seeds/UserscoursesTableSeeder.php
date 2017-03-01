@@ -11,6 +11,12 @@ class UserscoursesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
+        $pk1 = DB::table('users')->where('email','profesor1@gmail.com')->first();
+        $pk2 = DB::table('courses')->where('name', 'cursoPrueba')->first();
+        DB::table('userscourses')->insert([
+            'user_email' => $pk1->email,
+            'course_id' => $pk2->id
+        ]);
     }
 }

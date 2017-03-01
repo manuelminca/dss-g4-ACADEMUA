@@ -19,8 +19,7 @@ class AppServiceProvider extends ServiceProvider
 			$db->connection ()->getPdo()->exec("PRAGMA foreign_keys = ON" );
 		}
 	}
-	
-	
+
 	/**
 	* Register any application services.
 	     *
