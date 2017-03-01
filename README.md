@@ -3,7 +3,12 @@
 
 
 Commands to input before running the code . 
-composer install
-touch database/database.sqlite
-php artisan migrate 
-php artisan db:seed
+<p> composer install</p>
+<p>touch database/database.sqlite </p>
+<p>php artisan migrate  </p>
+<p>php artisan db:seed </p>
+
+
+
+
+
