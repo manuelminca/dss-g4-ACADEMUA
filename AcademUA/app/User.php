@@ -13,7 +13,7 @@ class User extends Authenticatable
 	private $birthdate = "";
 	
 	public function courses() {
-		return $this->belongsToMany('App\Course')->withPivot('course_id');
+		return $this->belongsToMany('App\Course', 'course_user', 'user_id', 'course_id');
 	}
 	
 

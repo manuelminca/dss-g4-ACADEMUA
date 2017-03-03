@@ -15,9 +15,9 @@ class CreateUserscoursesTable extends Migration
     {
         Schema::create('course_user', function (Blueprint $table) {
             $table->integer('course_id');
-            $table->text('user_id');
+            $table->integer('user_id');
             $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('user_id')->references('email')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->primary(['course_id', 'user_id']);
             $table->timestamps();
         });

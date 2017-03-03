@@ -14,6 +14,44 @@ class UserscoursesTableSeeder extends Seeder
         {
 
 /*
+<<<<<<< HEAD
+		
+		$pk1 = DB::table('users')->where('email','profesor1@gmail.com')->first();
+		$pk2 = DB::table('courses')->where('name', 'cursoPrueba')->first();
+		DB::table('course_user')->insert([
+		            'user_id' => $pk1->id,
+		            'course_id' => $pk2->id
+		        ]);
+		
+		$pk1 = DB::table('users')->where('email','manuelminca@gmail.com')->first();
+		$pk2 = DB::table('courses')->where('name', 'cursoPrueba')->first();
+		DB::table('course_user')->insert([
+		            'user_id' => $pk1->id,
+		            'course_id' => $pk2->id
+		        ]);
+		
+		$pk1 = DB::table('users')->where('email','asehhu@gmail.com')->first();
+		$pk2 = DB::table('courses')->where('name', 'php')->first();
+		DB::table('course_user')->insert([
+		            'user_id' => $pk1->id,
+		            'course_id' => $pk2->id
+		        ]);
+		
+		$pk1 = DB::table('users')->where('email','quico14@gmail.com')->first();
+		$pk2 = DB::table('courses')->where('name', 'php')->first();
+		DB::table('course_user')->insert([
+		            'user_id' => $pk1->id,
+		            'course_id' => $pk2->id
+		        ]);
+		
+		$pk1 = DB::table('users')->where('email','quico14@gmail.com')->first();
+		$pk2 = DB::table('courses')->where('name', 'Java')->first();
+		DB::table('course_user')->insert([
+		            'user_id' => $pk1->id,
+		            'course_id' => $pk2->id
+		        ]);*/
+	}
+=======
         
         $pk1 = DB::table('users')->where('email','profesor1@gmail.com')->first();
         $pk2 = DB::table('courses')->where('name', 'cursoPrueba')->first();
@@ -50,5 +88,6 @@ class UserscoursesTableSeeder extends Seeder
                     'course_id' => $pk2->id
                 ]);*/
     }
+>>>>>>> 789939d190eb84538f6c7a543e5290609d1bf0e0
 }
 

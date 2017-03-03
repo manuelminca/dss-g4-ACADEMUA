@@ -11,7 +11,7 @@ class CoursesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+           
         DB::table('courses')->insert([
             'name' => 'cursoPrueba',
             'description' => 'Este es el curso',
