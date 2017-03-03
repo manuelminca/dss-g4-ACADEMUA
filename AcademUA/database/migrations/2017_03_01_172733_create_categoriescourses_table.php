@@ -13,12 +13,12 @@ class CreateCategoriescoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoriescourses', function (Blueprint $table) {
+        Schema::create('category_course', function (Blueprint $table) {
             $table->text('course_id');
-            $table->text('category_name');
+            $table->text('category_id');
             $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('category_name')->references('name')->on('categories');
-            $table->primary(['course_id', 'category_name']);
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->primary(['course_id', 'category_id']);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateCategoriescoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoriescourses');
+        Schema::dropIfExists('category_course');
     }
 }

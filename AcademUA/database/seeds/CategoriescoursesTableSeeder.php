@@ -15,15 +15,15 @@ class CategoriescoursesTableSeeder extends Seeder
         
         $pk1 = DB::table('categories')->where('name','programacion')->first();
         $pk2 = DB::table('courses')->where('name', 'cursoPrueba')->first();
-        DB::table('categoriescourses')->insert([
-            'category_name' => $pk1->name,
+        DB::table('category_course')->insert([
+            'category_id' => $pk1->id,
             'course_id' => $pk2->id
         ]);
 
         $pk1 = DB::table('categories')->where('name','MultOS')->first();
         $pk2 = DB::table('courses')->where('name', 'Java')->first();
-        DB::table('categoriescourses')->insert([
-            'category_name' => $pk1->name,
+        DB::table('category_course')->insert([
+            'category_id' => $pk1->id,
             'course_id' => $pk2->id
         ]);
     }

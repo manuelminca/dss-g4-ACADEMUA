@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserscoursesTableSeeder::class);
         $this->call(CategoriescoursesTableSeeder::class);
         
-      //  $this->call(delete::class);
+        
+       // $this->call(delete::class);
     }
 }

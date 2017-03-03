@@ -12,11 +12,11 @@ class Course extends Model
     private $price = 0.0;
 
 
-    public function Categories() {
+    public function categories() {
         return $this->belongsToMany('App\Category');
     }
 
-    public function User(){
+    public function user(){
         return $this->belongsToMany('App\User', 'course_user', 'course_id', 'user_id');
     }
 

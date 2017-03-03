@@ -11,7 +11,7 @@ class delete extends Seeder
      */
     public function run()
     {
-        DB::table('categoriescourses')->delete();
+        DB::table('category_course')->delete();
         DB::table('course_user')->delete();
         DB::table('categories')->delete();
 		DB::table('courses')->delete();
