@@ -11,6 +11,7 @@ class CategoriescoursesTableSeeder extends Seeder
      */
     public function run()
     {
+
         
         $pk1 = DB::table('categories')->where('name','programacion')->first();
         $pk2 = DB::table('courses')->where('name', 'cursoPrueba')->first();

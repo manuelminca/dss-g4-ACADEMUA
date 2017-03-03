@@ -12,8 +12,8 @@ class User extends Authenticatable
 	//T	his variable will store the birthdate of the user.
 	private $birthdate = "";
 	
-	public function Courses() {
-		return $this->belongsToMany('App\Courses');
+	public function courses() {
+		return $this->belongsToMany('App\Course')->withPivot('course_id');
 	}
 	
 

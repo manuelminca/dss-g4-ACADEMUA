@@ -13,12 +13,12 @@ class CreateUserscoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('userscourses', function (Blueprint $table) {
-            $table->text('course_id');
-            $table->text('user_email');
+        Schema::create('course_user', function (Blueprint $table) {
+            $table->integer('course_id');
+            $table->text('user_id');
             $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('user_email')->references('email')->on('users');
-            $table->primary(['course_id', 'user_email']);
+            $table->foreign('user_id')->references('email')->on('users');
+            $table->primary(['course_id', 'user_id']);
             $table->timestamps();
         });
 
@@ -31,6 +31,6 @@ class CreateUserscoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userscourses');
+        Schema::dropIfExists('course_user');
     }
 }

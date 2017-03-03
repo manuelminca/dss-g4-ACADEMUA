@@ -21,7 +21,7 @@ class DataTest extends TestCase
      public function testUsersData()
     {
         $count = User::all()->count();
-        $this->assertEquals($count, 4);
+        $this->assertEquals($count, 5);
 
         $this->assertDatabaseHas('users', ['email' => 'manuelminca@gmail.com']);
         $this->assertDatabaseHas('users', ['email' => 'profesor1@gmail.com']);
@@ -40,7 +40,7 @@ class DataTest extends TestCase
     public function testCoursesData()
     {
         $count = Course::all()->count();
-        $this->assertEquals($count, 3);
+        $this->assertEquals($count, 4);
 
         $this->assertDatabaseHas('courses', ['name' => 'cursoPrueba']);
         $this->assertDatabaseHas('courses', ['name' => 'Java']);
@@ -61,35 +61,56 @@ class DataTest extends TestCase
     }
 
 
-    public function testCoursesByCategory()
+    /*public function testCoursesByCategory()
     {
         $course = Course::where('name', 'Java')->first();
         $this->assertEquals($course->categoriescourses->count(), 1);
         $this->assertTrue($course->category->contains('name', 'MultOS'));
-    }
+    }*/
 
-/*
-
-    public function testUserstoCourses()
+public function testUserstoCourses()
     {
-        $users = User::where('email', 'quico14@gmail.com')->first();
-        $this->assertEquals($users->userscourses->count(), 2);
-        $this->assertTrue($users->course->contains('id', '3'));
-        $this->assertTrue($sponsor->teams->contains('id', '2'));
 
-        $users = User::where('email', 'manuelminca@gmail.com')->first();
-        $this->assertEquals($users->course->count(), 1);
-        $this->assertTrue($users->course->contains('id', '1'));
+        $user = new User();
+        $user->name = 'hola';
+        $user->email = 'hola';
+        $user->username = 'hola';
+        $user->password = 'hola';
+        //$user->delete();
+        //$user->save();
+
+        $course = new Course();
+        $course->id = 4;
+        $course->name = 'adios';
+        $course->description = 'adios';
+        $course->price = 2;
+        //$course->delete();
+        //$course->save();
+        $course->User()->attach($user->email);
+
+        $this->assertEquals($user->courses[0]->name, 'adios');
+        $this->assertEquals($user->courses[0]->name, 'hola');
+
+        $course->User()->detach($user->email);
+        $course->delete();
+        $user->delete();
+        /*$users = User::where('email', 'quico14@gmail.com')->first();
+        echo $users->courses;
+        $this->assertEquals($users->courses->count(), 2);
+        /*$this->assertTrue($users->courses->contains('id', '3'));
+        $this->assertTrue($users->courses->contains('id', '2'));*/
+
+        /*$users = User::where('email', 'manuelminca@gmail.com')->first();
+        $this->assertEquals($users->courses->count(), 1);
+        $this->assertTrue($users->courses->contains('id', '1'));
         
         $users = User::where('email', 'profesor1@gmail.com')->first();
-        $this->assertEquals($users->course->count(), 1);
-        $this->assertTrue($users->course->contains('id', '1'));
+        $this->assertEquals($users->courses->count(), 1);
+        $this->assertTrue($users->courses->contains('id', '1'));
         
         $users = User::where('email', 'asehhu@gmail.com')->first();
-        $this->assertEquals($users->course->count(), 1);
-        $this->assertTrue($users->course->contains('id', '3'));
-
+        $this->assertEquals($users->courses->count(), 1);
+        $this->assertTrue($users->courses->contains('id', '3'));*/
+        
     }
-
-*/
 }
