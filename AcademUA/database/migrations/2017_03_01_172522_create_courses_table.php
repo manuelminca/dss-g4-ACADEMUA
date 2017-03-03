@@ -18,6 +18,8 @@ class CreateCoursesTable extends Migration
             $table->text('name');
             $table->text('description');
             $table->integer('price');
+            $table->integer('teacher_id');
+            $table->foreign('teacher_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

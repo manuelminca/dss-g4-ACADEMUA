@@ -15,9 +15,10 @@ class DatabaseSeeder extends Seeder
         if($deleteAll){
             $this->call(delete::class);
         } else {
+            $this->call(UsersTableSeeder::class);
             $this->call(CoursesTableSeeder::class);
             $this->call(CategoriesTableSeeder::class);
-            $this->call(UsersTableSeeder::class);
+
             $this->call(UserscoursesTableSeeder::class);
             $this->call(CategoriescoursesTableSeeder::class);
         }
