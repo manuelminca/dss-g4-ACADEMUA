@@ -5,7 +5,6 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Database\Seeder;
 
 use App\User;
 use App\Course;
@@ -61,13 +60,15 @@ class DataTest extends TestCase
         $this->assertDatabaseHas('categories', ['name' => 'MultOS']);
     }
 
-
+/*
     public function testCoursesByCategory()
     {
-        $course = DB::table('courses')->where('name','php')->first();
+        
+        $course = Course::where('name', 'php')->first();
         $this->assertEquals($course->categoriescourses->count(), 1);
         $this->assertTrue($course->category->contains('name', 'MultOS'));
     }
+    */
 
 public function testUserstoCourses()
     {
@@ -96,10 +97,10 @@ public function testUserstoCourses()
         $course->delete();
         $user->delete();
 
-        */
+        
         $users = User::where('email', 'quico14@gmail.com')->first();
         echo $users->courses;
-        $this->assertEquals($users->username, "quico14");
+        $this->assertEquals($users->courses->count(), 0);
         /*$this->assertTrue($users->courses->contains('id', '3'));
         $this->assertTrue($users->courses->contains('id', '2'));*/
 
