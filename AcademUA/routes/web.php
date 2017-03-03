@@ -1,4 +1,5 @@
 <?php
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +13,13 @@
 */
 
 Route::get('/', function () {
-    return "hello world"; //view('welcome');
+    $users = User::all();
+    return view('home')->with('users', $users); //"hello world"; //view('welcome');
+});
+
+Route::get('/users/delete/{id}', function ($id) {
+    $user = User::find($id);
+    $user->delete();
+    $users = App\User::all();
+    return view('home')->with('users', $users); //"hello world"; //view('welcome');
 });
