@@ -16,8 +16,6 @@ class User extends Authenticatable
 		return $this->belongsToMany('App\Course', 'course_user', 'user_id', 'course_id');
 	}
 	
-
-	
 	/**
 	* The attributes that are mass assignable.
 	     *
