@@ -11,13 +11,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      
-        $this->call(CoursesTableSeeder::class);
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(UserscoursesTableSeeder::class);
-        $this->call(CategoriescoursesTableSeeder::class);
-        
+        $deleteAll = false;
+        if($deleteAll){
+            $this->call(delete::class);
+        } else {
+            $this->call(CoursesTableSeeder::class);
+            $this->call(CategoriesTableSeeder::class);
+            $this->call(UsersTableSeeder::class);
+            $this->call(UserscoursesTableSeeder::class);
+            $this->call(CategoriescoursesTableSeeder::class);
+        }
         
        // $this->call(delete::class);
     }
