@@ -1,5 +1,6 @@
 <?php
 use App\User;
+use App\Course;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,14 @@ Route::get('/users/delete/{id}', function ($id) {
     $user->delete();
     $users = App\User::all();
     return view('home')->with('users', $users); //"hello world"; //view('welcome');
+});
+
+Route::get('/courses', function () {
+    $courses = Course::all();
+    return view('/courses/courses')->with('courses', $courses); //"hello world"; //view('welcome');
+});
+
+Route::get('/manageCourses', function () {
+    $courses = Course::where('teacher_id', '2')->get();
+    return view('/courses/manageCourses')->with('courses', $courses); //"hello world"; //view('welcome');
 });
