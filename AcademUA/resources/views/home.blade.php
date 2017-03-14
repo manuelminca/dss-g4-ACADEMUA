@@ -1,6 +1,6 @@
 @extends('master')
 <body>
-
+@section('title','Home')
 
 <ul>
 <?php

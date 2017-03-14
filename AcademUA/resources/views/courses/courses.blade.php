@@ -1,5 +1,6 @@
 @extends('master')
 <body>
+@section('title','Courses')
 
 <ul>
 <?php
