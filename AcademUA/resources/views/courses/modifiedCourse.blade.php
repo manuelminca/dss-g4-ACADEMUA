@@ -3,14 +3,16 @@
 
 
 
-Hola <?php echo htmlspecialchars($_POST['nombre']); ?>.
-Usted tiene <?php echo (int)$_POST['edad']; ?> años.
+
 
 <ul>
 <?php
 
+$name = isset($_POST['name'])? $_POST['name']: '';
 
+echo $name;
 
+echo "hola";
 
 ?>
 </ul>

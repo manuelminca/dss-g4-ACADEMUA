@@ -2,17 +2,19 @@
 <body>
 <ul>
 
-<form action="/modifiedCourse.php" method="post">
- <p>Su nombre: <input type="text" name="nombre" /></p>
- <p>Su edad: <input type="text" name="edad" /></p>
- <p><input type="submit" /></p>
+
+
+<form action="/courses/modified/2/">
+  Name of the course:<br>
+  <input type="text" name="name"><br>
+    Description:<br>
+  <input type="text" name="description" <br><br>
+  <input type="submit" value="Submit">
 </form>
-
-
 
 <?php
 
-//$name = $_POST['name'];
+//$name = isset($_POST['name'])? $_POST['name']: '';
 
 //echo $name;
 
