@@ -47,3 +47,8 @@ Route::get('/courses/modify/{id}', function ($id) { //modify the data of a cours
     $course = Course::find($id);
     return view('/courses/modifyCourse')->with('courses', $course); 
 });
+
+
+
+
+
