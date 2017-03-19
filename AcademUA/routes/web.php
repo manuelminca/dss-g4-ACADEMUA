@@ -70,21 +70,21 @@ Route::get('/courses/modified/{id}', function ($id) {
 	//m	odify the data of a course
 	$course = Course::find($id);
 	$courseAux = new Course();
-    $name = (String) $_POST['name'];
-    $description = (String) $_POST['description'];
+    $name = (String) $_REQUEST['name'];
+    $description = (String) $_REQUEST['description'];
     
-	if( $name != ""){
-		$courseAux->name = $name;
+	if( $name == ""){
+		$courseAux->name = "VACIO";
 	}
 	else{
 		$courseAux->name = $name;
 	}
 	
-	if( $description != ""){
-		$courseAux->name = $description;
+	if( $description == ""){
+		$courseAux->description = "VACIO";
 	}
 	else{
-		$courseAux->name = $description;
+		$courseAux->description = $description;
 	}
 
 	$courseAux->price = 22;
