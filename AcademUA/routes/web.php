@@ -73,6 +73,8 @@ Route::get('/courses/modified/{id}', function ($id) {
     $name = (String) $_REQUEST['name'];
     $description = (String) $_REQUEST['description'];
     
+    $courseAux->id = $id;
+
 	if( $name == ""){
 		$courseAux->name = "VACIO";
 	}
@@ -86,9 +88,9 @@ Route::get('/courses/modified/{id}', function ($id) {
 	else{
 		$courseAux->description = $description;
 	}
-
-	$courseAux->price = 22;
-	$courseAux->teacher_id = 1;
+    
+	$courseAux->price = $course->price;
+	$courseAux->teacher_id = $course->teacher_id;
 	
 	
 	$course->updateCourse($courseAux);

@@ -23,15 +23,17 @@ class Course extends Model
 
 
     public function updateCourse($course){
-
-        $id = $course->id;
-        $name = $course->name;
-        $description = $course->description;
-        $price = $course->price;
-        $teacher_id = $course->teacher_id;
+        /*
+        $courseAUX = Course::find($course->id);
 
 
-        $this->update();
+        $courseAUX->name = $course->name;
+        $courseAUX->description = $course->description;
+        $courseAUX->price = $course->price;
+        $courseAUX->teacher_id = $course->teacher_id;
+
+*/
+        $course->update();
     }
 }
 
