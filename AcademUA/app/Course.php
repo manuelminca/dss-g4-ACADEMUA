@@ -10,6 +10,7 @@ class Course extends Model
     private $name = "";
     private $description = "";
     private $price = 0.0;
+    private $teacher_id = 0;
 
 
     public function categories() {
@@ -20,4 +21,21 @@ class Course extends Model
         return $this->belongsToMany('App\User', 'course_user', 'course_id', 'user_id');
     }
 
+
+    public function updateCourse($course){
+        /*
+        $courseAUX = Course::find($course->id);
+
+
+        $courseAUX->name = $course->name;
+        $courseAUX->description = $course->description;
+        $courseAUX->price = $course->price;
+        $courseAUX->teacher_id = $course->teacher_id;
+
+*/
+        $course->update();
+    }
 }
+
+
+
