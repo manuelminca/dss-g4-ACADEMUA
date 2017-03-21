@@ -1,6 +1,7 @@
 <?php
 use App\User;
 use App\Course;
+use App\Category;
 
 
 
@@ -34,6 +35,7 @@ Route::get('/courses', function () {
 	return view('/courses/courses')->with('courses', $courses);
 }
 );
+
 
 Route::get('/manageCourses', function () {
 	//l	ist of all the courses 
@@ -81,4 +83,9 @@ Route::get('/modifiedCourse', function () {
 //Category
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
-
+Route::get('/categories', function () {
+	// 	show all the courses
+				    $categories = Category::all();
+	return view('/categories/categories')->with('categories', $categories);
+}
+);
