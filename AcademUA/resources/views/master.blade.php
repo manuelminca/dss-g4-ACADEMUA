@@ -27,7 +27,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/Courses/allCourses">Courses</a></li>
+                        <li><a runat="server" href="./courses">Courses</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
