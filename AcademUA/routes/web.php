@@ -25,13 +25,13 @@ Route::get('/', function () {
 );
 
 
-Route::get('/users/delete/{id}', 'UsersController@deleteProfile');
+Route::get('/users/delete/{id}', 'UsersController@deleteUser');
 
 
 
 Route::get('/courses', function () {
 	// 	show all the courses
-				    $courses = Course::all();
+	$courses = Course::all();
 	return view('/courses/courses')->with('courses', $courses);
 }
 );
@@ -59,11 +59,19 @@ Route::get('/courses/delete/{id}', function ($id) {
 Route::get('/courses/modify/{id}', function ($id) {
 	//m	odify the data of a course
 		$course = Course::find($id);
-	return view('/courses/modifyCourse')->with('courses', $course);
+	return view('/courses/modifyCourse')->with('course', $course);
+}
+);
+
+Route::get('/user/new/', function () {
+
+	return view('/users/createUser');
 }
 );
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
+Route::get('/users/modified/{id}', 'UsersController@edit');
+//Route::get('/users/create/', 'UsersController@createUser');
 
 Route::get('/modifiedCourse', function () {
 	//m	odify the data of a course
