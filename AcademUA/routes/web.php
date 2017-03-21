@@ -61,13 +61,14 @@ Route::get('/courses/delete/{id}', function ($id) {
 
 Route::get('/courses/modify/{id}', function ($id) {
 	//m	odify the data of a course
-				    $course = Course::find($id);
+	$course = Course::find($id);
 	return view('/courses/modifyCourse')->with('courses', $course);
 }
 );
 
 Route::get('/courses/modified/{id}', function ($id) {
 	//m	odify the data of a course
+
 	$course = Course::find($id);
 	$courseAux = new Course();
     $name = (String) $_REQUEST['name'];
