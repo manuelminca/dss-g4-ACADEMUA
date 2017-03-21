@@ -58,13 +58,8 @@ Route::get('/courses/delete/{id}', function ($id) {
 
 Route::get('/courses/modify/{id}', function ($id) {
 	//m	odify the data of a course
-<<<<<<< HEAD
 	$course = Course::find($id);
 	return view('/courses/modifyCourse')->with('courses', $course);
-=======
-		$course = Course::find($id);
-	return view('/courses/modifyCourse')->with('course', $course);
->>>>>>> d78f632fc1add9a448932bf419e4ef359fc30764
 }
 );
 
