@@ -1,6 +1,7 @@
 <?php
 use App\User;
 use App\Course;
+use App\Category;
 
 
 
@@ -35,6 +36,7 @@ Route::get('/courses', function () {
 }
 );
 
+
 Route::get('/manageCourses', function () {
 	//l	ist of all the courses 
 				    $courses = Course::where('teacher_id', '2')->get();
@@ -56,8 +58,13 @@ Route::get('/courses/delete/{id}', function ($id) {
 
 Route::get('/courses/modify/{id}', function ($id) {
 	//m	odify the data of a course
+<<<<<<< HEAD
 	$course = Course::find($id);
 	return view('/courses/modifyCourse')->with('courses', $course);
+=======
+		$course = Course::find($id);
+	return view('/courses/modifyCourse')->with('course', $course);
+>>>>>>> d78f632fc1add9a448932bf419e4ef359fc30764
 }
 );
 
@@ -81,4 +88,9 @@ Route::get('/modifiedCourse', function () {
 //Category
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
-
+Route::get('/categories', function () {
+	// 	show all the courses
+				    $categories = Category::all();
+	return view('/categories/categories')->with('categories', $categories);
+}
+);
