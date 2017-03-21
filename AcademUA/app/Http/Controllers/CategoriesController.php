@@ -13,4 +13,12 @@ class CategoriesController extends Controller
 
         return view('/courses/courses')->with('courses', $course);
     }
+
+    public function createCategory(Request $request){
+        $category = new Category();
+        $category->name= $request->input('name');
+        $category->save();
+
+        return view('home');
+    }
 }
