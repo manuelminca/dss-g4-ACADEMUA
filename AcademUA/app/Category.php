@@ -10,4 +10,9 @@ class Category extends Model
 	public function courses() {
 		return $this->belongsToMany('App\Course');
 	}
+	
+	public function deleteCategory ($id) {
+		$category = Category::find($id);
+		$category->delete();
+	}
 }

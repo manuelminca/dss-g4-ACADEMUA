@@ -30,7 +30,7 @@ Route::get('/users/delete/{id}', 'UsersController@deleteUser');
 
 Route::get('/courses', function () {
 	// 	show all the courses
-				    $courses = Course::all();
+	$courses = Course::all();
 	return view('/courses/courses')->with('courses', $courses);
 }
 );
@@ -77,5 +77,8 @@ Route::get('/modifiedCourse', function () {
 	return view('/courses/modifiedCourse');
 }
 );
+
+//Category
+Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
 
