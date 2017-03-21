@@ -14,7 +14,7 @@ class CoursesController extends Controller
             $course->description = $request->input('description');
             $course->save();
         }
-        $course = Course::all();
+        $courses = Course::all();
         return view('/courses/courses')->with('courses', $courses);
     }
     public function delete($id){
