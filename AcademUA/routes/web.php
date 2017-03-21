@@ -69,7 +69,7 @@ Route::get('/user/new/', function () {
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
 Route::get('/users/modified/{id}', 'UsersController@edit');
-//Route::get('/users/create/', 'UsersController@createUser');
+Route::get('/users/create/', 'UsersController@createUser');
 
 Route::get('/modifiedCourse', function () {
 	//m	odify the data of a course
