@@ -2,7 +2,7 @@
 <body>
 @section('title','New Category')
 <ul>
-<form action="{{action('CategoriesController@createCategory')}}" method="POST">
+<form action="/categories/create/">
 {{ csrf_field() }}
 {{ method_field('PUT') }}
   Name:<br>
