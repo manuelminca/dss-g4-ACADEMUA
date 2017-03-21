@@ -24,14 +24,9 @@ Route::get('/', function () {
 );
 
 
-Route::get('/users/delete/{id}', function ($id) {
-	//T	o delete a specific user from the DB
-				    $user = User::find($id);
-	$user->delete();
-	$users = App\User::all();
-	return view('home')->with('users', $users);
-}
-);
+Route::get('/users/delete/{id}', 'UsersController@deleteProfile');
+
+
 
 Route::get('/courses', function () {
 	// 	show all the courses
@@ -61,7 +56,7 @@ Route::get('/courses/delete/{id}', function ($id) {
 
 Route::get('/courses/modify/{id}', function ($id) {
 	//m	odify the data of a course
-	$course = Course::find($id);
+		$course = Course::find($id);
 	return view('/courses/modifyCourse')->with('courses', $course);
 }
 );
