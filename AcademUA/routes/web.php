@@ -73,41 +73,7 @@ Route::get('/courses/modify/{id}', function ($id) {
 }
 );
 
-Route::get('/courses/modified/{id}', function ($id) {
-	//m	odify the data of a course
-
-	$course = Course::find($id);
-	$courseAux = new Course();
-    $name = (String) $_REQUEST['name'];
-    $description = (String) $_REQUEST['description'];
-    
-    $courseAux->id = $id;
-
-	if( $name == ""){
-		$courseAux->name = "VACIO";
-	}
-	else{
-		$courseAux->name = $name;
-	}
-	
-	if( $description == ""){
-		$courseAux->description = "VACIO";
-	}
-	else{
-		$courseAux->description = $description;
-	}
-    
-	$courseAux->price = $course->price;
-	$courseAux->teacher_id = $course->teacher_id;
-	
-	
-	$course->updateCourse($courseAux);
-	
-
-	$course = Course::find($id);
-	return view('/courses/modifyCourse')->with('courses', $course);
-}
-);
+Route::get('/courses/modified/{id}', 'CoursesController@edit');
 
 Route::get('/modifiedCourse', function () {
 	//m	odify the data of a course
