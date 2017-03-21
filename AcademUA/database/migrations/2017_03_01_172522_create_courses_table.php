@@ -19,7 +19,7 @@ class CreateCoursesTable extends Migration
             $table->text('description');
             $table->integer('price');
             $table->integer('teacher_id');
-            $table->foreign('teacher_id')->references('id')->on('users');
+            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
