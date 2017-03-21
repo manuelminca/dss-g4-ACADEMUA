@@ -35,7 +35,7 @@ Route::get('/users/delete/{id}', function ($id) {
 
 Route::get('/courses', function () {
 	// 	show all the courses
-				    $courses = Course::all();
+	$courses = Course::all();
 	return view('/courses/courses')->with('courses', $courses);
 }
 );

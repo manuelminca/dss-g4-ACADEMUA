@@ -1,5 +1,7 @@
-@extends('master')
+@include('master')
 <body>
+@section('title','Modify Course')
+
 <ul>
 
 
