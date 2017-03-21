@@ -4,11 +4,8 @@
 
 <ul>
 <?php
-foreach ($users as $user) {
-    echo "<li>" . $user->name . " - <a href='/users/delete/" .$user->id. "'>Delete</a></li>";
-}
 
-//echo "<li>" . $user->name . " - <a href='/users/delete/" .$user->id. ">Delete</a></li>";
+
 ?>
 </ul>
 <h1>"Welcome to AcademUA"</h1>

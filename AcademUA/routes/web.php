@@ -24,7 +24,7 @@ Route::get('/', function () {
 );
 
 
-Route::get('/users/delete/{id}', 'UsersController@deleteProfile');
+Route::get('/users/delete/{id}', 'UsersController@deleteUser');
 
 
 
@@ -61,7 +61,15 @@ Route::get('/courses/modify/{id}', function ($id) {
 }
 );
 
+Route::get('/user/new/', function () {
+
+	return view('/users/createUser');
+}
+);
+
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
+Route::get('/users/modified/{id}', 'UsersController@edit');
+Route::get('/users/create/', 'UsersController@createUser');
 
 Route::get('/modifiedCourse', function () {
 	//m	odify the data of a course
