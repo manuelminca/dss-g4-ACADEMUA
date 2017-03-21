@@ -24,21 +24,9 @@ Route::get('/', function () {
 );
 
 
-Route::get('/users/delete/{id}', 'UserController@showProfile') {
-	//T	o delete a specific user from the DB
-	/*
-	$user = User::find($id);
-	$user->delete();
-	$users = App\User::all();
-	*/
+Route::get('/users/delete/{id}', 'UsersController@deleteProfile');
 
-	
-	$_users = new UsersController ();
-	$users = $_users -> deleteProfile();
-	
-	return view('home')->with('users', $users);
-}
-);
+
 
 Route::get('/courses', function () {
 	// 	show all the courses

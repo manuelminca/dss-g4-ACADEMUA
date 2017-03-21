@@ -38,12 +38,9 @@ class User extends Authenticatable
 		    ];
 	
 	
-	public function delete($id){
+	public function deleteUser($id){
 		$user = User::find($id);
 		$user->delete();
-		$users = App\User::all();
-
-		return $users;
 	}
 	
 	

@@ -16,8 +16,8 @@ class CreateUserscoursesTable extends Migration
         Schema::create('course_user', function (Blueprint $table) {
             $table->integer('course_id');
             $table->integer('user_id');
-            $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->primary(['course_id', 'user_id']);
             $table->timestamps();
         });
