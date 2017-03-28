@@ -23,11 +23,20 @@ class CoursesController extends Controller
     }
 
     public function showCourses(){
-        $courses = new Course();
-        $list = $courses->allCourses();
+        $list = Course::paginate(6);
 
-        return view('/courses/courses')->with('courses', $list);
+        return view('/courses/courses', ['courses' => $list])->with('courses', $list);
 
     }
-    
+    public function createCourse(Request $request){
+        $course = new Course();
+        $course->name= $request->input('name');
+        $course->description= $request->input('description');
+        $course->price= $request->input('price');
+        $course->teacher_id= $request->input('id');
+
+        $course->save();
+
+        return view('home');
+    }
 }
