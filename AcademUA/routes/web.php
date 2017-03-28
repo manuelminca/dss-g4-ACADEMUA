@@ -25,14 +25,25 @@ Route::get('/', function () {
 );
 
 
+/*##################################################################################################
+####################################USERS###########################################################
+##################################################################################################*/
 Route::get('/users/delete/{id}', 'UsersController@deleteUser');
+Route::get('/users/modified/{id}', 'UsersController@edit');
+Route::get('/users/create/', 'UsersController@createUser');
+Route::get('/user/new/', function () {
 
-Route::get('/courses/new/', function () {
+	return view('/users/createUser');
+}
+);
 
 	return view('/courses/createCourse');
 }
 );
 
+/*##################################################################################################
+####################################COURSES###########################################################
+##################################################################################################*/
 
 Route::get('/courses/create/','CoursesController@createCourse');
 	
@@ -64,15 +75,19 @@ Route::get('/courses/modify/{id}', function ($id) {
 }
 );
 
-Route::get('/user/new/', function () {
-
-	return view('/users/createUser');
+/*
+Route::get('/courses', function () {
+	// 	show all the courses
+	$courses = Course::all();
+	return view('/courses/courses')->with('courses', $courses);
 }
 );
+*/
+Route::get('/courses', 'CoursesController@showCourses');
+
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
-Route::get('/users/modified/{id}', 'UsersController@edit');
-Route::get('/users/create/', 'UsersController@createUser');
+
 
 Route::get('/modifiedCourse', function () {
 	//m	odify the data of a course
@@ -81,11 +96,11 @@ Route::get('/modifiedCourse', function () {
 }
 );
 
-//Category
+
+/*##################################################################################################
+####################################CATEGORIES###########################################################
+##################################################################################################*/
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
-
-Route::get('/courses', 'CoursesController@showCourses');
-
 
 Route::get('/categories', function () {
 	// 	show all the courses
@@ -94,4 +109,10 @@ Route::get('/categories', function () {
 }
 );
 
+Route::get('/categories/create/', 'CategoriesController@createCategory');
+Route::get('/category/new/', function () {
 
+	return view('/categories/createCategory');
+}
+);
+//holii
