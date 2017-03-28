@@ -37,8 +37,8 @@ class Course extends Model
     }
 
     public function allCourses(){
-        $categories = Category::all();
-        return $categories;
+        $courses = Course::all();
+        return $courses;
     }
 }
 
