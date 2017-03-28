@@ -26,11 +26,8 @@ class CoursesController extends Controller
         $courses = new Course();
         $list = $courses->allCourses();
 
-        return view('/categories/categories')->with('categories', $list);
+        return view('/courses/courses')->with('courses', $list);
 
     }
-
-//prueba
-
-
+    
 }
