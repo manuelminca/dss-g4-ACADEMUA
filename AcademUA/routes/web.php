@@ -79,14 +79,6 @@ Route::get('/modifiedCourse', function () {
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
 Route::get('/courses', 'CoursesController@showCourses');
-/*
-Route::get('/courses', function () {
-	// 	show all the courses
-	$courses = Course::all();
-	return view('/courses/courses')->with('courses', $courses);
-}
-);
-*/
 
 
 Route::get('/categories', function () {
