@@ -76,7 +76,8 @@ Route::get('/courses/modify/{id}', function ($id) {
 );
 
 Route::get('/courses', 'CoursesController@showCourses');
-
+Route::get('/courses/filter', 'CoursesController@showCoursesFilter');
+Route::get('/courses/name', 'CoursesController@showCoursesName');
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
 
