@@ -83,7 +83,7 @@ Route::get('/modifiedCourse', function () {
 //Category
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
-Route::get('/categories'), 'CategoriesController@showCourses');
+Route::get('/categories', 'CategoriesController@showCourses');
 
 
 /*
