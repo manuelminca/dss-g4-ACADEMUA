@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title') - AcademUA</title>
         <link rel="stylesheet" type"text/css" href="/css/bootstrap.css"/>
+        <link rel="stylesheet" type"text/css" href="/css/academua.css"/>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- Custom Fonts -->
