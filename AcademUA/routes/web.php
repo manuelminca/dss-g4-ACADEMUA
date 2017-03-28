@@ -97,12 +97,6 @@ Route::get('/modifiedCourse', function () {
 );
 Route::get('/courses/new/', function () {
 
-	return view('/courses/createCourse');
-}
-);
-
-
-Route::get('/courses/create/','CoursesController@createCourse');
 
 /*##################################################################################################
 ####################################CATEGORIES###########################################################
