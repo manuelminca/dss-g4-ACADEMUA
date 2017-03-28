@@ -110,4 +110,3 @@ Route::get('/category/new/', function () {
 	return view('/categories/createCategory');
 }
 );
-//holii
