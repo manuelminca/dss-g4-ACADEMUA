@@ -42,6 +42,8 @@ Route::get('/user/new/', function () {
 ####################################COURSES###########################################################
 ##################################################################################################*/
 
+Route::get('/courses/create/','CoursesController@createCourse');
+	
 
 Route::get('/manageCourses', function () {
 	//l	ist of all the courses 
@@ -89,7 +91,14 @@ Route::get('/modifiedCourse', function () {
 	return view('/courses/modifiedCourse');
 }
 );
+Route::get('/courses/new/', function () {
 
+	return view('/courses/createCourse');
+}
+);
+
+
+Route::get('/courses/create/','CoursesController@createCourse');
 
 /*##################################################################################################
 ####################################CATEGORIES###########################################################
