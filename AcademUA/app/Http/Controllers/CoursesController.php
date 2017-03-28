@@ -29,8 +29,5 @@ class CoursesController extends Controller
         return view('/courses/courses')->with('courses', $list);
 
     }
-
-//prueba
-
-
+    
 }
