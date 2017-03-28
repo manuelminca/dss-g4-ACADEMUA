@@ -30,7 +30,7 @@ class CoursesController extends Controller
 
     }
 
-
+//prueba
 
 
 }
