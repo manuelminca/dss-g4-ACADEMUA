@@ -35,6 +35,11 @@ class Course extends Model
 */
         $course->update();
     }
+
+    public function allCourses(){
+        $courses = Course::all();
+        return $courses;
+    }
 }
 
 

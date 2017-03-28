@@ -6,7 +6,7 @@
 
 
 
-<form action="/courses/modified/2/">
+<form action="/courses/modified/{{$courses->id}}">
   Name of the course:<br>
   <input type="text" name="name"><br>
     Description:<br>
@@ -15,18 +15,6 @@
 </form>
 
 <?php
-
-//$name = isset($_POST['name'])? $_POST['name']: '';
-
-//echo $name;
-
-
-//echo "<li>" . $courses->name . "</li>";
-
-// echo Form::text('name', 'default name');
-
-
-//echo "<li>" . $user->name . " - <a href='/users/delete/" .$user->id. ">Delete</a></li>";
 ?>
 </ul>
 </body>
