@@ -18,11 +18,24 @@ class UsersController extends Controller
     } 
 
     public function createUser(Request $request){
+
+
+
         $user = new User();
+        
+        $this->validate($request,[
+            'email' => 'required | unique:users,email',
+            'name' => 'required',
+            'username' => 'required | unique:users,username',
+            'password' => 'required | min:2',
+            'password_confirmation' => 'required | same:password'
+        ]);
+        
+
         $user->email= $request->input('email');
         $user->name= $request->input('name');
         $user->username= $request->input('username');
-        $user->password= $request->input('pass');
+        $user->password= $request->input('password');
 
         $user->save();
 
