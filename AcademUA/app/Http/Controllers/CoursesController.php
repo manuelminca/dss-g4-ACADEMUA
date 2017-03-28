@@ -21,4 +21,16 @@ class CoursesController extends Controller
         $course = Course::findOrFail($id);
         $course->delete();
     }
+
+    public function showCourses(){
+        $courses = new Course();
+        $list = $courses->allCourses();
+
+        return view('/categories/categories')->with('categories', $list);
+
+    }
+
+
+
+
 }
