@@ -29,5 +29,15 @@ class CoursesController extends Controller
         return view('/courses/courses')->with('courses', $list);
 
     }
-    
+    public function createCourse(Request $request){
+        $course = new Course();
+        $course->name= $request->input('name');
+        $course->description= $request->input('description');
+        $course->price= $request->input('price');
+        $course->teacher_id= $request->input('id');
+
+        $course->save();
+
+        return view('home');
+    }
 }
