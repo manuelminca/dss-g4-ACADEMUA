@@ -45,7 +45,6 @@ Route::get('/user/new/', function () {
 Route::get('/courses/create/','CoursesController@createCourse');
 	
 
-
 Route::get('/manageCourses', function () {
 	//l	ist of all the courses 
 				    $courses = Course::where('teacher_id', '2')->get();
@@ -106,12 +105,6 @@ Route::get('/courses/create/','CoursesController@createCourse');
 ##################################################################################################*/
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
-Route::get('/categories', function () {
-	// 	show all the courses
-	$categories = Category::all();
-	return view('/categories/categories')->with('categories', $categories);
-}
-);
 
 Route::get('/categories/create/', 'CategoriesController@createCategory');
 Route::get('/category/new/', function () {
