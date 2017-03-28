@@ -9,6 +9,7 @@ Commands to input before running the code .
 <p>php artisan db:seed </p>
 <p>php artisan serve </p>
 <p>localhost::8000 </p>
+<p>pruebas git </p>
 
 
 
