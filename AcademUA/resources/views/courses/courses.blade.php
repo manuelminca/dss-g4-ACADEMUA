@@ -16,8 +16,5 @@ foreach ($courses as $course) {
 ?>
 </ul>
 
-
-
-
 </body>
 </html>
