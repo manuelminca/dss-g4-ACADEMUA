@@ -25,16 +25,22 @@ Route::get('/', function () {
 );
 
 
+/*##################################################################################################
+####################################USERS###########################################################
+##################################################################################################*/
 Route::get('/users/delete/{id}', 'UsersController@deleteUser');
+Route::get('/users/modified/{id}', 'UsersController@edit');
+Route::get('/users/create/', 'UsersController@createUser');
+Route::get('/user/new/', function () {
 
-
-
-Route::get('/courses', function () {
-	// 	show all the courses
-	$courses = Course::all();
-	return view('/courses/courses')->with('courses', $courses);
+	return view('/users/createUser');
 }
 );
+
+
+/*##################################################################################################
+####################################COURSES###########################################################
+##################################################################################################*/
 
 
 Route::get('/manageCourses', function () {
@@ -63,15 +69,19 @@ Route::get('/courses/modify/{id}', function ($id) {
 }
 );
 
-Route::get('/user/new/', function () {
-
-	return view('/users/createUser');
+/*
+Route::get('/courses', function () {
+	// 	show all the courses
+	$courses = Course::all();
+	return view('/courses/courses')->with('courses', $courses);
 }
 );
+*/
+Route::get('/courses', 'CoursesController@showCourses');
+
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
-Route::get('/users/modified/{id}', 'UsersController@edit');
-Route::get('/users/create/', 'UsersController@createUser');
+
 
 Route::get('/modifiedCourse', function () {
 	//m	odify the data of a course
@@ -80,13 +90,12 @@ Route::get('/modifiedCourse', function () {
 }
 );
 
-//Category
+
+/*##################################################################################################
+####################################CATEGORIES###########################################################
+##################################################################################################*/
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
-Route::get('/categories', 'CategoriesController@showCourses');
-
-
-/*
 Route::get('/categories', function () {
 	// 	show all the courses
 	$categories = Category::all();
@@ -95,3 +104,9 @@ Route::get('/categories', function () {
 );
 */
 
+Route::get('/categories/create/', 'CategoriesController@createCategory');
+Route::get('/category/new/', function () {
+
+	return view('/categories/createCategory');
+}
+);
