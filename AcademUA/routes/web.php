@@ -29,12 +29,7 @@ Route::get('/users/delete/{id}', 'UsersController@deleteUser');
 
 
 
-Route::get('/courses', function () {
-	// 	show all the courses
-	$courses = Course::all();
-	return view('/courses/courses')->with('courses', $courses);
-}
-);
+
 
 
 Route::get('/manageCourses', function () {
@@ -83,15 +78,22 @@ Route::get('/modifiedCourse', function () {
 //Category
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
-Route::get('/categories'), 'CategoriesController@showCourses');
-
-
+Route::get('/courses', 'CoursesController@showCourses');
 /*
+Route::get('/courses', function () {
+	// 	show all the courses
+	$courses = Course::all();
+	return view('/courses/courses')->with('courses', $courses);
+}
+);
+*/
+
+
 Route::get('/categories', function () {
 	// 	show all the courses
 	$categories = Category::all();
 	return view('/categories/categories')->with('categories', $categories);
 }
 );
-*/
+
 
