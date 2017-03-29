@@ -17,6 +17,7 @@ class CoursesController extends Controller
         $courses = Course::all();
         return view('/courses/courses')->with('courses', $courses);
     }
+    
     public function deleteCourse($id){
         $course = Course::findOrFail($id);
         $course->delete();
