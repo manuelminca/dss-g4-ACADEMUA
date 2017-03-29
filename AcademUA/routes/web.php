@@ -28,6 +28,12 @@ Route::get('/', function () {
 /*##################################################################################################
 ####################################USERS###########################################################
 ##################################################################################################*/
+Route::get('/user/modify/{id}', function ($id) {
+	//m	odify the data of a course
+	$user = User::find($id);
+	return view('/users/modifyUser')->with('user', $user);
+}
+);
 Route::get('/users/delete/{id}', 'UsersController@deleteUser');
 Route::get('/users/modified/{id}', 'UsersController@edit');
 Route::get('/users/create/', 'UsersController@createUser');
@@ -53,13 +59,11 @@ Route::get('/manageCourses', function () {
 );
 
 Route::get('/courses/delete/{id}', function ($id) {
-	//d	eleting only one course 
-				    $course = Course::find($id);
-	
-	
+	//deleting only one course 
+	$course = Course::find($id);
 	$course->delete();
 	
-	$course = App\Courses::all();
+	$course = App\Course::all();
 	return view('/courses/manageCourses')->with('courses', $course);
 }
 );

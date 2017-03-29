@@ -1,7 +1,7 @@
 @extends('master')
 <body>
 <ul>
-<form action="/users/modified/2/">
+<form action="/users/modified/{{$user->id}}">
   Name:<br>
   <input type="text" name="name"><br>
     Email:<br>
