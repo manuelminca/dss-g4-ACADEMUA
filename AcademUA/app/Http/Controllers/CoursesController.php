@@ -14,10 +14,10 @@ class CoursesController extends Controller
             $course->description = $request->input('description');
             $course->save();
         }
-        $courses = Course::all();
-        return view('/courses/courses')->with('courses', $courses);
+         $list = Course::paginate(6);
+        return view('/courses/courses', ['courses' => $list])->with('courses', $list);
     }
-    
+
     public function deleteCourse($id){
         $course = Course::findOrFail($id);
         $course->delete();
