@@ -7,37 +7,51 @@ use App\Course;
 
 class CoursesController extends Controller
 {
-    public function edit(Request $request, $id) {
-        $course = Course::findOrFail($id);
-        if($request->has('name')){
-            $course->name = $request->input('name');
-            $course->description = $request->input('description');
-            $course->save();
-        }
-        $courses = Course::all();
-        return view('/courses/courses')->with('courses', $courses);
-    }
-    public function deleteCourse($id){
-        $course = Course::findOrFail($id);
-        $course->delete();
-    }
-
-    public function showCourses(){
-        $courses = new Course();
-        $list = $courses->allCourses();
-
-        return view('/courses/courses')->with('courses', $list);
-
-    }
-    public function createCourse(Request $request){
-        $course = new Course();
-        $course->name= $request->input('name');
-        $course->description= $request->input('description');
-        $course->price= $request->input('price');
-        $course->teacher_id= $request->input('id');
-
-        $course->save();
-
-        return view('home');
-    }
+	public function edit(Request $request, $id) {
+		
+		
+		$this->validate($request,[
+		            'name' => 'required',
+		            'description' => 'required'
+		        ]);
+		
+		$course = Course::findOrFail($id);
+		if($request->has('name')){
+			$course->name = $request->input('name');
+			$course->description = $request->input('description');
+			$course->save();
+		}
+		$list = Course::paginate(6);
+		return view('/courses/courses', ['courses' => $list])->with('courses', $list);
+	}
+	
+	public function deleteCourse($id){
+		$course = Course::findOrFail($id);
+		$course->delete();
+	}
+	
+	public function showCourses(){
+		$list = Course::paginate(6);
+		
+		return view('/courses/courses', ['courses' => $list])->with('courses', $list);
+		
+	}
+	public function createCourse(Request $request){
+		$course = new Course();
+		//name description price id
+		$this->validate($request,[
+		    'name' => 'required',
+		    'description' => 'required',
+            'price' => 'required | min:0 | numeric'
+		]);
+		
+		$course->name= $request->input('name');
+		$course->description= $request->input('description');
+		$course->price= $request->input('price');
+		$course->teacher_id= $request->input('id');
+		
+		$course->save();
+		
+		return view('home');
+	}
 }
