@@ -75,14 +75,6 @@ Route::get('/courses/modify/{id}', function ($id) {
 }
 );
 
-/*
-Route::get('/courses', function () {
-	// 	show all the courses
-	$courses = Course::all();
-	return view('/courses/courses')->with('courses', $courses);
-}
-);
-*/
 Route::get('/courses', 'CoursesController@showCourses');
 
 
