@@ -1,8 +1,6 @@
 @section('title','Courses')
 @section('courseCurrent','current_page_item')
-@section('headerClass','alt static-header')
 @include('master')
-
             <div class="inner-head">
                 <div class="container">
                     <h1 class="entry-title">Self Development Courses</h1>
@@ -37,63 +35,48 @@
                         <div class="row">
 
 
-<form action="/courses/filter/">
-{{ csrf_field() }}
- Buscar por: <select name="filter">
-                    <option value="precio_menor" selected="selected">Precio máximo</option>
-                    <option value="nombre">nombre</option>
-              </select>
-  <input value="{{ old('valor') }}" type="text" name="valor"><br>
-
-  <input type="submit" value="Submit">
-</form>
-
-
  <?php
- $number = 0;
  
-//Mostramos los cursos
-foreach ($courses as $course) {
-    $number = $number+1;
+//Mostramos los instructores
+foreach ($users as $user) {
 	echo "<div class='col-md-3 col-xs-6'>";
-        echo "<div class='course'>";
-            echo "<div class='course-image'>";
-                echo "<div class='details-overlay'>";
-                echo "<span class='place'>";
-                echo "<i class='fa fa-briefcase'></i>";
-                echo "<span class='text'>Id : " . $course->id ."</span>";
-                echo "</span>";
-                echo "<span class='time'>";
-                echo "<i class='fa fa-money'></i>";
-                echo "<span class='text'>" . $course->price . "€</span>";
-                echo "</span>";
-                echo "</div>";
-                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
-                echo "</div>";
-                echo "<div class='course-info'>";
-                echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
-                echo "<p class='course-description'>" . $course->description . "</p>";
-                echo "<div class='buttons'>";
-                echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-                echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
-                echo "</div>";
-            echo "</div>";
-        echo "</div>";
+	echo "<div class='course'>";
+	echo "<div class='course-image'>";
+	echo "<div class='details-overlay'>";
+	echo "<span class='place'>";
+	echo "<i class='fa fa-map-marker'></i>";
+	echo "<span class='text'>Id : " . $user->id ."</span>";
+	echo "</span>";
+	echo "<span class='time'>";
+	echo "<i class='fa fa-clock-o'></i>";
+	echo "<span class='text'>Price : " . $user->price . "</span>";
+	echo "</span>";
 	echo "</div>";
-    if($number == 4){
-        echo "<div class='clearfix'></div>";
-    }
+	echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+	echo "</div>";
+	echo "<div class='course-info'>";
+	echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $user->name . "</a></h3>";
+	echo "<p class='course-description'>" . $user->description . "</p>";
+	echo "<div class='buttons'>";
+	echo "<a href='/courses/course/" .$user->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
+	echo "<a href='/courses/delete/" .$user->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+	echo "</div>";
+	echo "</div>";
+	echo "</div>";
+	echo "</div>";
 }
 
 ?>
-
-<!-- PAGINATION -->
-<div class="clearfix"></div>
-
-<div class="text-center">
-    {{$courses->links()}}
-</div>
-                            
+                            <div class="col-md-12 pagination">
+                                <ul class="clearfix">
+                                    <li class="ib arrow"><a class="ln-tr" href="#"><i class="fa fa-angle-left"></i></a></li>
+                                    <li class="ib"><a class="ln-tr" href="#">1</a></li>
+                                    <li class="ib"><a class="ln-tr" href="#">2</a></li>
+                                    <li class="ib"><a class="ln-tr" href="#">3</a></li>
+                                    <li class="ib"><a class="ln-tr" href="#">4</a></li>
+                                    <li class="ib arrow"><a class="ln-tr" href="#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </div><!-- End Pagination -->
                         </div><!-- End row -->
                     </div><!-- End Container -->
                 </div><!-- End Latest-Courses Section Content -->

@@ -28,7 +28,7 @@ Route::get('/', function () {
 /*##################################################################################################
 ####################################USERS###########################################################
 ##################################################################################################*/
-Route::get('/user/modify/{id}', function ($id) {
+Route::get('/users/modify/{id}', function ($id) {
 	//m	odify the data of a course
 	$user = User::find($id);
 	return view('/users/modifyUser')->with('user', $user);
@@ -37,11 +37,14 @@ Route::get('/user/modify/{id}', function ($id) {
 Route::get('/users/delete/{id}', 'UsersController@deleteUser');
 Route::get('/users/modified/{id}', 'UsersController@edit');
 Route::get('/users/create/', 'UsersController@createUser');
-Route::get('/user/new/', function () {
+Route::get('/users/new/', function () {
 
 	return view('/users/createUser');
 }
 );
+
+Route::get('/users/instructors/', 'UsersController@showInstructors');
+
 
 
 /*##################################################################################################
@@ -49,24 +52,11 @@ Route::get('/user/new/', function () {
 ##################################################################################################*/
 
 Route::get('/courses/create/','CoursesController@createCourse');
-	
+Route::get('/courses/attend/{course_id}&{user_id}','CoursesController@attendCourse');
+Route::get('/courses/manage/{id}','CoursesController@getCourses');
+Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
 
-Route::get('/manageCourses', function () {
-	//l	ist of all the courses 
-				    $courses = Course::where('teacher_id', '2')->get();
-	return view('/courses/manageCourses')->with('courses', $courses);
-}
-);
 
-Route::get('/courses/delete/{id}', function ($id) {
-	//deleting only one course 
-	$course = Course::find($id);
-	$course->delete();
-	
-	$course = App\Course::all();
-	return view('/courses/manageCourses')->with('courses', $course);
-}
-);
 
 Route::get('/courses/modify/{id}', function ($id) {
 	//m	odify the data of a course
@@ -75,16 +65,16 @@ Route::get('/courses/modify/{id}', function ($id) {
 }
 );
 
-/*
-Route::get('/courses', function () {
-	// 	show all the courses
-	$courses = Course::all();
-	return view('/courses/courses')->with('courses', $courses);
+Route::get('/courses/course/{id}', function ($id) {
+	//m	odify the data of a course
+	$course = Course::find($id);
+	return view('/courses/course')->with('course', $course);
 }
 );
-*/
-Route::get('/courses', 'CoursesController@showCourses');
 
+Route::get('/courses', 'CoursesController@showCourses');
+//Muestra cursos filtrando
+Route::get('/courses/filter', 'CoursesController@showCoursesFilter');
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
 
