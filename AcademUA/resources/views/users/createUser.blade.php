@@ -3,7 +3,7 @@
 @section('title','New User')
 <ul>
 
-<h1>Errors</h1>
+<h1>New User</h1>
 {{-- Error messages --}}
 @if (count($errors) > 0)
 <ul>
@@ -13,24 +13,21 @@
 </ul>
 @endif
 
-
-
 <form action="/users/create/">
-
 
 {{ csrf_field() }}
 {{ method_field('PUT') }}
 
   Name:<br>
-  <input type="text" name="name"><br>
+  <input value="{{ old('name') }}" type="text" name="name"><br>
     Email:<br>
-  <input type="text" name="email" <br><br>
+  <input value="{{ old('email') }}" type="text" name="email" <br><br>
       Password:<br>
   <input type="password" name="password" <br><br>
       Repeat Password:<br>
   <input type="password" name="password_confirmation" <br><br>
       Username:<br>
-  <input type="text" name="username" <br><br>
+  <input value="{{ old('username') }}" type="text" name="username" <br><br>
 
 
   <input type="submit" value="Submit">
