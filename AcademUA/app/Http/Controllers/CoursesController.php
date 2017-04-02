@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Course;
+use App\User;
 
 class CoursesController extends Controller
 {
@@ -11,9 +12,9 @@ class CoursesController extends Controller
 		
 		
 		$this->validate($request,[
-		            'name' => 'required',
-		            'description' => 'required'
-		        ]);
+				            'name' => 'required',
+				            'description' => 'required'
+				        ]);
 		
 		$course = Course::findOrFail($id);
 		if($request->has('name')){
@@ -38,20 +39,33 @@ class CoursesController extends Controller
 	}
 	public function createCourse(Request $request){
 		$course = new Course();
-		//name description price id
-		$this->validate($request,[
-		    'name' => 'required',
-		    'description' => 'required',
-            'price' => 'required | min:0 | numeric'
-		]);
+		//n		ame description price id
+				$this->validate($request,[
+				    'name' => 'required',
+				    'description' => 'required',
+		            'price' => 'required | min:0 | numeric'
+				]);
 		
 		$course->name= $request->input('name');
 		$course->description= $request->input('description');
 		$course->price= $request->input('price');
+		$course->content= $request->input('content');
+		$course->links= $request->input('links');
 		$course->teacher_id= $request->input('id');
 		
 		$course->save();
 		
 		return view('home');
 	}
+
+
+
+
+	public function attendCourse($course_id, $user_id){
+		$course = Course::find($course_id);
+		$user = User::find($user_id);
+
+		$user->courses()->attach($course->id);
+	}
+	
 }

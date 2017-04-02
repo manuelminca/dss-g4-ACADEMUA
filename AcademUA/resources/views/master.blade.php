@@ -32,7 +32,7 @@
             <header id="header">
                 <div class="container">
                     <div class="logo-container fl clearfix">
-                        <a href="#" class="ib">
+                        <a href="/" class="ib">
                             <img src="/img/logo@2x.png" class="fl" alt="Logo">
                             <span class="site-name">AcademUA<span>.</span></span>
                         </a>
@@ -73,3 +73,5 @@
                     </div><!-- end mobile navigation -->
                 </div>
             </header><!-- End Main Header Container -->
+
+  

@@ -9,6 +9,8 @@ class Course extends Model
     private $id = 0;
     private $name = "";
     private $description = "";
+    private $content = "";
+    private $links = "";
     private $price = 0.0;
     private $teacher_id = 0;
 

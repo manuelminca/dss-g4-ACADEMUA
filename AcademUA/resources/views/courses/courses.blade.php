@@ -60,7 +60,8 @@ foreach ($courses as $course) {
                 echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
-                    echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>Edit</a>";
+                   // echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>Edit</a>";
+                    echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>Explore</a>";
                     echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
                 echo "</div>";
             echo "</div>";

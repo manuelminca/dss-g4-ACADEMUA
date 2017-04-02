@@ -49,6 +49,7 @@ Route::get('/user/new/', function () {
 ##################################################################################################*/
 
 Route::get('/courses/create/','CoursesController@createCourse');
+Route::get('/courses/attend/{course_id}&{user_id}','CoursesController@attendCourse');
 	
 
 Route::get('/manageCourses', function () {
@@ -72,6 +73,13 @@ Route::get('/courses/modify/{id}', function ($id) {
 	//m	odify the data of a course
 	$course = Course::find($id);
 	return view('/courses/modifyCourse')->with('courses', $course);
+}
+);
+
+Route::get('/courses/course/{id}', function ($id) {
+	//m	odify the data of a course
+	$course = Course::find($id);
+	return view('/courses/course')->with('course', $course);
 }
 );
 
