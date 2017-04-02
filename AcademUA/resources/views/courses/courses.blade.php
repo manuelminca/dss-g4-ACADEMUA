@@ -67,6 +67,7 @@ foreach ($courses as $course) {
         echo "</div>";
     echo "</div>";
 }
+
 ?>
                      
                                             
