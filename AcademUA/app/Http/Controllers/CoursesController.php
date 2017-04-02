@@ -37,6 +37,7 @@ class CoursesController extends Controller
 		
 	}
 
+	//Muestra cursos filtrando
 	public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
 		if ($filter == 'precio_menor') {
@@ -46,8 +47,6 @@ class CoursesController extends Controller
 			$list = Course::where('name','like','%'.$request->input('valor').'%')->paginate(6);
 			return view('/courses/courses', ['courses' => $list]);
 		}
-
-		//TONTERIA
 		
 		
 	}
