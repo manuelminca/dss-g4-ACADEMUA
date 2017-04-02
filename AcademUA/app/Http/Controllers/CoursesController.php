@@ -37,6 +37,26 @@ class CoursesController extends Controller
 		return view('/courses/courses', ['courses' => $list])->with('courses', $list);
 		
 	}
+
+	//Muestra cursos filtrando
+	public function showCoursesFilter(Request $request){
+		$filter = $_GET["filter"];
+		if ($filter == 'precio_menor') {
+			$list = Course::where('price','<',$request->input('valor'))->paginate(6);
+			return view('/courses/courses', ['courses' => $list]);
+		} elseif ($filter == 'nombre') {
+			$list = Course::where('name','like','%'.$request->input('valor').'%')->paginate(6);
+			return view('/courses/courses', ['courses' => $list]);
+		}
+		
+		
+	}
+
+	public function showCoursesName(){
+		
+		
+	}
+
 	public function createCourse(Request $request){
 		$course = new Course();
 		//n		ame description price id
