@@ -47,7 +47,7 @@ class CoursesController extends Controller
 			return view('/courses/courses', ['courses' => $list]);
 		}
 
-		
+		//TONTERIA
 		
 		
 	}
