@@ -49,11 +49,7 @@
 
  <?php
  
-/*echo Form::text('input');
-echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
-echo Form::open(['action' => 'CoursesController@showCourses']);
-echo Form::submit('Click Me!');
-*/
+//Mostramos los cursos
 foreach ($courses as $course) {
 	echo "<div class='col-md-3 col-xs-6'>";
 	echo "<div class='course'>";
