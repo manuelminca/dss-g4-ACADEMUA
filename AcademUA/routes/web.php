@@ -84,7 +84,8 @@ Route::get('/courses/course/{id}', function ($id) {
 );
 
 Route::get('/courses', 'CoursesController@showCourses');
-
+//Muestra cursos filtrando
+Route::get('/courses/filter', 'CoursesController@showCoursesFilter');
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
 
