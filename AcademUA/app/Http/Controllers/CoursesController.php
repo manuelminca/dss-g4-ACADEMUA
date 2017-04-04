@@ -8,6 +8,9 @@ use App\User;
 
 class CoursesController extends Controller
 {
+
+
+
 	public function edit(Request $request, $id) {
 		
 		

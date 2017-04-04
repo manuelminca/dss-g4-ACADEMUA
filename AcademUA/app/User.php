@@ -39,7 +39,31 @@ class User extends Authenticatable
 			        'password', 'remember_token',
 			    ];
 	
-	
+	/*#############################################
+				GETTERS AND SETTERS
+	###############################################*/
+
+	public function getName(){
+		return $this->name;
+	}
+
+	public function getEmail(){
+		return $this->email;
+	}
+
+	public function getUsername(){
+		return $this->username;
+	}
+
+	//###################################################
+
+
+
+
+
+
+
+
 	public function deleteUser(){
 		$this->delete();
 	}

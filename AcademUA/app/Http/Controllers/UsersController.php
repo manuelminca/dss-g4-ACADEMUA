@@ -8,6 +8,42 @@ use App\User;
 
 class UsersController extends Controller
 {
+
+
+	/*#############################################
+				GETTERS AND SETTERS
+	###############################################*/
+
+	public function getName($id){
+		$user = new User();
+		$name = $user->getName();
+		return $name;
+	}
+
+public function getUsername($id){
+		$user = new User();
+		$username = $user->getUsername();
+		return $username;
+	}
+	public function getEmail($id){
+		$user = new User();
+		$email = $user->getEmail();
+		return $email;
+	}
+
+
+
+//###########################################################
+
+
+
+
+
+
+
+
+
+
 	public function deleteUser ($id){
 		$user = User::find($id);
 		$user->deleteUser();
