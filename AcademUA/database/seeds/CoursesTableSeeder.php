@@ -14,8 +14,8 @@ class CoursesTableSeeder extends Seeder
            
         DB::table('courses')->insert([
             'name' => 'Courso completo',
-            'description' => 'How to build creative, fully-functional Java 8 programs with confidence (whilst having fun, too). How to easily write advanced programs for all computing platforms at once. How to program the right way, cutting out the useless fluff and filler. Expert-level knowledge of Java code (+ advanced tips and tricks used by the pros) ',
-            'content' => 'How to build creative, fully-functional Java 8 programs with confidence (whilst having fun, too). How to easily write advanced programs for all computing platforms at once. How to program the right way, cutting out the useless fluff and filler. Expert-level knowledge of Java code (+ advanced tips and tricks used by the pros)',
+            'description' => 'Learn to master Java 8 core development step-by-step, and make your first unique, advanced program in 30 days ',
+            'content' => 'How to build creative, fully-functional Java 8 programs with confidence (whilst having fun, too). How to easily write advanced programs for all computing platforms at once. How to program the right way, cutting out the useless fluff and filler.',
             'links' => 'google.es',
             'price' => 50,
             'teacher_id' => 1
