@@ -43,7 +43,7 @@ Route::get('/users/new/', function () {
 }
 );
 
-Route::get('/users/instructor/', 'UsersController@showInstructors');
+Route::get('/users/instructors/', 'UsersController@showInstructors');
 
 
 
