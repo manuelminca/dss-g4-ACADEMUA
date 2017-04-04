@@ -28,19 +28,17 @@ class Course extends Model
 	}
 
 
-    public function updateCourse($course){
-        /*
-        $courseAUX = Course::find($course->id);
+	/*#############################################
+				GETTERS AND SETTERS
+	###############################################*/
 
+	public function getCourses($idTeacher){
+		$courses = Course::where('teacher_id', $idTeacher)->get();
 
-        $courseAUX->name = $course->name;
-        $courseAUX->description = $course->description;
-        $courseAUX->price = $course->price;
-        $courseAUX->teacher_id = $course->teacher_id;
-
-*/
-        $course->update();
-    }
+		return $courses;
+	}
+	
+	
 
     public function allCourses(){
         $courses = Course::all();

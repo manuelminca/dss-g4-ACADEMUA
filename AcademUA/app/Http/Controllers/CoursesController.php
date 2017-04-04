@@ -13,9 +13,9 @@ class CoursesController extends Controller
 				GETTERS AND SETTERS
 	###############################################*/
 
-	public function getCourses($id){
+	public function getCourses($teacher_id){
 		$course = new Course();
-		$list_Courses = $user->getCourses();
+		$list_Courses = $course->getCourses($teacher_id);
 		return $list_Courses;
 	}
 
