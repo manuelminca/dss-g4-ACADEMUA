@@ -1,6 +1,12 @@
-@include('master')
-<body>
 @section('title','New User')
+@section('newCourseCurrent','current_page_item')
+@include('master')
+
+
+
+
+<div style="padding-top:200px">
+</div>
 <ul>
 
 <h1>New User</h1>
