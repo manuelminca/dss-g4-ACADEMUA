@@ -3,6 +3,7 @@
 @include('master')
 
 
+
 <div class="inner-head">
                 <div class="container">
                     <h1 class="entry-title">ADD COURSE</h1>
