@@ -21,8 +21,7 @@
                         <div class="col-md-6">
                             <div id="single-slider" class="alt flexslider">
                                 <ul class="slides">
-                                    <li><div class="image"><img src="assets/img/content/single-2-slide-1-870x352.jpg" alt="" class="img-responsive"></div></li>
-                                    <li><div class="image"><img src="assets/img/content/single-2-slide-2-870x352.jpg" alt="" class="img-responsive"></div></li>
+                                    <li><div class="image"><img src="/img/course-slider-img-1-270x178.jpg" alt="" class="img-responsive"></div></li>
                                 </ul><!-- End ul elements -->
                             </div><!-- End Single Slider -->
                         </div><!-- End col-md-6 -->
