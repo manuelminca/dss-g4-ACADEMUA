@@ -42,17 +42,12 @@ class CoursesController extends Controller
 	public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
 		if ($filter == 'precio_menor') {
-			$list = Course::where('price','<',$request->input('valor'))->paginate(6);
+			$list = Course::where('price','<=',$request->input('valor'))->paginate(6);
 			return view('/courses/courses', ['courses' => $list]);
 		} elseif ($filter == 'nombre') {
 			$list = Course::where('name','like','%'.$request->input('valor').'%')->paginate(6);
 			return view('/courses/courses', ['courses' => $list]);
 		}
-		
-		
-	}
-
-	public function showCoursesName(){
 		
 		
 	}
