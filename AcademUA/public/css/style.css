@@ -1885,6 +1885,8 @@ h6.head-title {
 .inner-head .description {
 	color: #a9abb0;
 	max-width: 770px;
+	font-size: 16px;
+	font-weight: 700;
 	margin: auto;
 }
 .inner-head .breadcrumb {
