@@ -20,6 +20,12 @@ class CoursesController extends Controller
 		
 	}
 
+	public function getComments($course_id){
+		$course = new Course();
+		$list_comments = $course->getComments($course_id);
+		return $list_comments;
+	}
+
 
 	//##############################################
 	

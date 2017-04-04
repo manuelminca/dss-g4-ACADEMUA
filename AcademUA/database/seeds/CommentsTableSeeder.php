@@ -14,7 +14,9 @@ class CommentsTableSeeder extends Seeder
 
         DB::table('comments')->insert([
 		            'description' => 'Curso de iniciación a Java',
-                    'rating' => 1
+                    'rating' => 1,
+                    'user_id' => 1,
+                    'course_id' => 4
 		        ]);
     }
 }
