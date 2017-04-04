@@ -37,6 +37,11 @@
   <input value="{{ old('description') }}" type="text" name="description" <br><br>
       Price<br>
   <input value="{{ old('price') }}" type="number" name="price" <br><br>
+      Content:<br>
+      <textarea name="content" cols="50" rows="10"></textarea>
+
+      Links<br>
+  <input value="{{ old('links') }}" type="text" name="links" <br><br>
       Id profesor:<br>
   <input type="number" name="id" <br><br>
       
