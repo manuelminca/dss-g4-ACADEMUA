@@ -1,17 +1,43 @@
 @section('title','Course')
 @section('courseCurrent','current_page_item')
+@section('headerClass','alt static-header')
 @include('master')
 
             <div class="inner-head">
                 <div class="container">
                     <h1 class="entry-title"> <?php  echo $course->name ?> </h1>
                     <p class="description">
-                        <?php echo $course->content ?>
+                        <?php echo $course->description ?>
                     </p>
                 </div><!-- End container -->
             </div><!-- End Inner Page Head -->
 
             <div class="clearfix"></div>
+
+
+            <article class="post alt">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="single-slider" class="alt flexslider">
+                                <ul class="slides">
+                                    <li><div class="image"><img src="assets/img/content/single-2-slide-1-870x352.jpg" alt="" class="img-responsive"></div></li>
+                                    <li><div class="image"><img src="assets/img/content/single-2-slide-2-870x352.jpg" alt="" class="img-responsive"></div></li>
+                                </ul><!-- End ul elements -->
+                            </div><!-- End Single Slider -->
+                        </div><!-- End col-md-6 -->
+                        <div class="col-md-6">
+                            <div class="entry clearfix">
+                                <span class="entry-icon"><i class="fa fa-file-text"></i></span>
+                                <h4 class="overview ib">Description</h4>
+                                <div class="content">
+                                    <p<?php echo $course->content ?>></p>
+                                </div>
+                            </div><!-- End Entry -->
+                        </div><!-- End col-md-6 -->
+                    </div><!-- End row -->
+                </div><!-- End container -->
+            </article>
 
             <section class="full-section latest-courses-section no-slider">
                 <div class="container">
