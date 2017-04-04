@@ -13,13 +13,15 @@ class CoursesTableSeeder extends Seeder
     {
            
         DB::table('courses')->insert([
-            'name' => 'Courso completo',
+            'name' => 'Curso completo',
             'description' => 'Learn to master Java 8 core development step-by-step, and make your first unique, advanced program in 30 days ',
             'content' => 'How to build creative, fully-functional Java 8 programs with confidence (whilst having fun, too). How to easily write advanced programs for all computing platforms at once. How to program the right way, cutting out the useless fluff and filler.',
             'links' => 'google.es',
             'price' => 50,
             'teacher_id' => 1
         ]);
+
+        // 'content' => 'How to build creative, fully-functional Java 8 programs with confidence (whilst having fun, too). How to easily write advanced programs for all computing platforms at once. How to program the right way, cutting out the useless fluff and filler.',
         
         DB::table('courses')->insert([
             'name' => 'Java',

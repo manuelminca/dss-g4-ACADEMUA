@@ -31,7 +31,7 @@
                                 <span class="entry-icon"><i class="fa fa-file-text"></i></span>
                                 <h4 class="overview ib">Description</h4>
                                 <div class="content">
-                                    <p<?php echo $course->content ?>></p>
+                                    <p><?php echo $course->content ?></p>
                                 </div>
                             </div><!-- End Entry -->
                         </div><!-- End col-md-6 -->
