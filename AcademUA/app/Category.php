@@ -15,4 +15,9 @@ class Category extends Model
 		$category = Category::find($id);
 		$category->delete();
 	}
+
+	public function createCategory($name){
+        $this->name=$name;
+        $category->save();
+    }
 }

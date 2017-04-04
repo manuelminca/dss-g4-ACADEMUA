@@ -8,30 +8,56 @@ use App\User;
 
 class UsersController extends Controller
 {
-    public function deleteUser ($id){
-        $user = new User();
-        $user->deleteUser($id);
-    }
+	public function deleteUser ($id){
+		$user = User::find($id);
+		$user->deleteUser();
+		return view('home');
+	}
+	
+	public function edit(Request $request, $id){
+		
+		$this->validate($request,[
+						            'email' => 'required | unique:users,email',
+						            'name' => 'required',
+						            'password' => 'required | min:2',
+						            'password_confirmation' => 'required | same:password'
+						        ]);
+		
+		
+		$user = User::findOrFail($id);
 
-    public function edit($id){
+		$name = $request->input('name');
+		$email = $request->input('email');
+		$password = $request->input('password');
 
-    } 
-
-    public function createUser(Request $request){
-        $user = new User();
-        $user->email= $request->input('email');
-        $user->name= $request->input('name');
-        $user->username= $request->input('username');
-        $user->password= $request->input('pass');
-
-        $user->save();
-
-        return view('home');
-    }
-
-    
-
-
-
-
+		$user->edit($name, $email, $password);
+    	return view('home');
+	}
+	
+	public function createUser(Request $request){
+		
+		$this->validate($request,[
+				            'email' => 'required | unique:users,email',
+				            'name' => 'required',
+				            'username' => 'required | unique:users,username',
+				            'password' => 'required | min:2',
+				            'password_confirmation' => 'required | same:password'
+				        ]);
+		
+		$email= $request->input('email');
+		$name= $request->input('name');
+		$username= $request->input('username');
+		$password= $request->input('password');
+		
+		$user = new User();
+		$user->createUser($email,$name,$username,$password);
+		
+		return view('home');
+	}
+	
+	
+	
+	
+	
+	
 }
