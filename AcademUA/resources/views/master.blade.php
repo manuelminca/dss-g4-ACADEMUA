@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="/css/style.css">
         <!-- Responsiveness -->
         <link rel="stylesheet" href="/css/responsive.css">
+
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <!-- FAV & Touch Icons -->
         <link rel="shortcut icon" href="assets/img/icons/favicon.ico">
         <link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
@@ -49,7 +51,7 @@
                                 <a href="/courses/new" class="ln-tr">Add course</a>
                             </li>
                             <li class="parent-item haschild">
-                                <a href="15-instructors.html" class="ln-tr">Instuctors</a>
+                                <a href="/users/instructors" class="ln-tr">Instuctors</a>
                             </li>
                             <li class="parent-item haschild">
                                 <a href="17-about-1.html" class="ln-tr">About</a>
