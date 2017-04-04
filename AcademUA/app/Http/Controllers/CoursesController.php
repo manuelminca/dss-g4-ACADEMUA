@@ -8,6 +8,9 @@ use App\User;
 
 class CoursesController extends Controller
 {
+
+
+
 	public function edit(Request $request, $id) {
 		
 		
@@ -37,6 +40,7 @@ class CoursesController extends Controller
 		return view('/courses/courses', ['courses' => $list])->with('courses', $list);
 	}
 	
+	//Mostramos cursos filtrando
 	public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
 		$course = new Course();
