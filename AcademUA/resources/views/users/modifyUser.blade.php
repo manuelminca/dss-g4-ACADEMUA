@@ -1,6 +1,9 @@
 @include('master')
 <body>
 @section('title','Edit User')
+
+<div style="padding-top:200px">
+</div>
 <ul>
 
 <h1>Modify User</h1>
