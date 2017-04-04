@@ -91,6 +91,11 @@ class User extends Authenticatable
 		$this->save();
 		
 	}
+
+	public function showInstructors () {
+		$list = User::where('professor','=',true);
+		return $list;
+	}
 	
 	
 }
