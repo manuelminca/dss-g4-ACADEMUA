@@ -17,6 +17,8 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->text('name');
             $table->text('description');
+            $table->text('content');
+            $table->text('links'); //Has to be a string with many links separated by ";"   
             $table->integer('price');
             $table->integer('teacher_id');
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
