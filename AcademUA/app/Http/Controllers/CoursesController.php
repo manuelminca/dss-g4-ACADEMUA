@@ -57,6 +57,15 @@ class CoursesController extends Controller
 		
 		return view('/courses/courses', ['courses' => $list])->with('courses', $list);
 	}
+
+	//no sabemos como pasar dos variables
+
+
+	public function showSingleCourse($id){
+		$course = Course::find($id);
+		$comments = getComments($id); //returns an array with all the comments
+		return view('/courses/course',['comments' => $comments])->with('course', $course)->with('comments', $comments);
+	}
 	
 	//Mostramos cursos filtrando
 	public function showCoursesFilter(Request $request){
@@ -94,7 +103,6 @@ class CoursesController extends Controller
 		$user = User::find($user_id);
 		$course->attendCourse($course->id, $user);
 	}
-
 
 
 

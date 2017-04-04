@@ -49,9 +49,11 @@
 
  <?php
 
-    $comments = new CoursesController();
+ 
     $listComments = $comments->getComments(4);
         echo $listComments;
+
+        
     echo "<div class='col-md-3 col-xs-6'>";
         echo "<div class='course'>";
             echo "<div class='course-image'>";
