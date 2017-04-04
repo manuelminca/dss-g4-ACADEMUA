@@ -16,6 +16,8 @@ class delete extends Seeder
         DB::table('categories')->delete();
 		DB::table('courses')->delete();
         DB::table('users')->delete();
+        DB::table('comments')->delete();
+
 
     }
 }

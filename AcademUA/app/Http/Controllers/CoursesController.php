@@ -83,6 +83,7 @@ class CoursesController extends Controller
 		return view('home');
 	}
 	
+	
 	public function attendCourse($course_id, $user_id){
 		$course = Course::find($course_id);
 		$user = User::find($user_id);
@@ -91,11 +92,26 @@ class CoursesController extends Controller
 
 
 
+/*
+public function createCourse(Request $request){
+		$course = new Course();
+		$this->validate($request,[
+				'name' => 'required',
+				'description' => 'required',
+				'price' => 'required | min:0 | numeric'
+		]);
+		
+		$name= $request->input('name');
+		$description= $request->input('description');
+		$price= $request->input('price');
+		$content= $request->input('content');
+		$links= $request->input('links');
+		$teacher_id= $request->input('id');
+		$course->createCourse($name, $description, $price, $content, $links, $teacher_id);
 
+		return view('home');
+	}
 
-
-
-
-
+*/
 	
 }
