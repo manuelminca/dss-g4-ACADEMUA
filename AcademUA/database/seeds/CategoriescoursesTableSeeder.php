@@ -14,7 +14,7 @@ class CategoriescoursesTableSeeder extends Seeder
 
         
         $pk1 = DB::table('categories')->where('name','programacion')->first();
-        $pk2 = DB::table('courses')->where('name', 'cursoPrueba')->first();
+        $pk2 = DB::table('courses')->where('name', 'Curso completo')->first();
         DB::table('category_course')->insert([
             'category_id' => $pk1->id,
             'course_id' => $pk2->id

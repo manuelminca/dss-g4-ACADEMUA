@@ -1,6 +1,8 @@
 @section('title','Courses')
 @section('courseCurrent','current_page_item')
+@section('headerClass','alt static-header')
 @include('master')
+
             <div class="inner-head">
                 <div class="container">
                     <h1 class="entry-title">Self Development Courses</h1>

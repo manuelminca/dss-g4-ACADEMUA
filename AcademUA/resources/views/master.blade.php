@@ -27,9 +27,9 @@
             <script>window.html5 || document.write('<script src="assets/js/vendor/html5shiv.js"><\/script>')</script>
         <![endif]-->
     </head>
-    <body id="home">
+    <body id="@yield('homeId')">
         <div id="entire">
-            <header id="header">
+            <header id="@yield('headerId')" class="@yield('headerClass')">
                 <div class="container">
                     <div class="logo-container fl clearfix">
                         <a href="/" class="ib">

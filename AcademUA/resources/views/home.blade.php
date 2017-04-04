@@ -1,5 +1,7 @@
 @section('title','Home')  
 @section('homeCurrent','current_page_item')
+@section('headerId','header')
+@section('bodyId','home')
 @include('master')
 
             <div class="tp-banner-container">
