@@ -23,6 +23,10 @@ class Course extends Model
         return $this->belongsToMany('App\User', 'course_user', 'course_id', 'user_id');
     }
 
+	public function comments() {
+		return $this->belongsToMany('App\Comment', 'comments', 'id');
+	}
+
 
     public function updateCourse($course){
         /*
