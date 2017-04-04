@@ -1,7 +1,7 @@
 @section('title','New Course')
 @section('newCourseCurrent','current_page_item')
+@section('headerClass','alt static-header')
 @include('master')
-
 
 <div class="inner-head">
                 <div class="container">
