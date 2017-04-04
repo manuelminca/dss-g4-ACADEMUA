@@ -50,34 +50,39 @@
 
 
  <?php
+ $number = 0;
  
 //Mostramos los cursos
 foreach ($courses as $course) {
+    $number = $number+1;
 	echo "<div class='col-md-3 col-xs-6'>";
-	echo "<div class='course'>";
-	echo "<div class='course-image'>";
-	echo "<div class='details-overlay'>";
-	echo "<span class='place'>";
-	echo "<i class='fa fa-map-marker'></i>";
-	echo "<span class='text'>Id : " . $course->id ."</span>";
-	echo "</span>";
-	echo "<span class='time'>";
-	echo "<i class='fa fa-clock-o'></i>";
-	echo "<span class='text'>Price : " . $course->price . "</span>";
-	echo "</span>";
+        echo "<div class='course'>";
+            echo "<div class='course-image'>";
+                echo "<div class='details-overlay'>";
+                echo "<span class='place'>";
+                echo "<i class='fa fa-map-marker'></i>";
+                echo "<span class='text'>Id : " . $course->id ."</span>";
+                echo "</span>";
+                echo "<span class='time'>";
+                echo "<i class='fa fa-clock-o'></i>";
+                echo "<span class='text'>Price : " . $course->price . "</span>";
+                echo "</span>";
+                echo "</div>";
+                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+                echo "</div>";
+                echo "<div class='course-info'>";
+                echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
+                echo "<p class='course-description'>" . $course->description . "</p>";
+                echo "<div class='buttons'>";
+                echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
+                echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                echo "</div>";
+            echo "</div>";
+        echo "</div>";
 	echo "</div>";
-	echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
-	echo "</div>";
-	echo "<div class='course-info'>";
-	echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
-	echo "<p class='course-description'>" . $course->description . "</p>";
-	echo "<div class='buttons'>";
-	echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-	echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
-	echo "</div>";
-	echo "</div>";
-	echo "</div>";
-	echo "</div>";
+    if($number == 4){
+        echo "<div class='clearfix'></div>";
+    }
 }
 
 ?>
