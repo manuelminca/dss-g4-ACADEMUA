@@ -15,10 +15,8 @@ class CategoriesController extends Controller
     }
     public function createCategory(Request $request){
         $category = new Category();
-        $category->name= $request->input('name');
-
-        $category->save();
-
+        $name=$request->input('name');
+        $category->createCategory($name);
         return view('home');
     }
 }
