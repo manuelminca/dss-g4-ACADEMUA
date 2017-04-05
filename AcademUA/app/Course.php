@@ -41,7 +41,7 @@ class Course extends Model
 	}
 
 	public function getComments($course_id){
-		$comments = Comment::where('course_id', $course_id);
+		$comments = Comment::where('course_id', $course_id)->get();
 		return $comments;
 	}
 	

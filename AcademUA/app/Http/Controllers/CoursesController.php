@@ -41,7 +41,7 @@ class CoursesController extends Controller
 		$course -> edit($name, $description);
 		$list = Course::paginate(6);
 
-		return view('courses.courses', ['courses' => $list])->with('courses', $list);
+		return view('courses.courses', ['courses' => $list]);
 	}
 	
 	public function deleteCourse($id){ //We have to redirect to Manage Courses but we need the session of the teacher(in progress)
@@ -49,13 +49,13 @@ class CoursesController extends Controller
 		$course->deleteCourse();
 
 		$list = Course::paginate(6);
-		return view('courses.courses', ['courses' => $list])->with('courses', $list); //We have to change that in the future
+		return view('courses.courses', ['courses' => $list]); //We have to change that in the future
 	}
 	
 	public function showCourses(){
 		$list = Course::paginate(6);
 		
-		return view('courses.courses', ['courses' => $list])->with('courses', $list);
+		return view('courses.courses', ['courses' => $list]);
 	}
 
 	//no sabemos como pasar dos variables
@@ -63,8 +63,8 @@ class CoursesController extends Controller
 
 	public function showSingleCourse($id){
 		$course = Course::find($id);
-		$comments = getComments($id); //returns an array with all the comments
-		return view('courses.course')->with('comments', $comments)->with('course', $course);
+		$comments = $course->getComments($id); //returns an array with all the comments
+	return view('courses.course', ['comments' => $comments])->with('course', $course);
 
 	}
 	
