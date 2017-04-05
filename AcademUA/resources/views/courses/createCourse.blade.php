@@ -51,6 +51,12 @@
   <input type="submit" value="Submit">
 </form>
 <?php
+
+
+echo $categories[1];
+
+
+
 ?>
 
 </ul>

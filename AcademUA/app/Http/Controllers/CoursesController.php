@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Course;
 use App\User;
-
+use App\Category;
 class CoursesController extends Controller
 {
 	
@@ -25,7 +25,13 @@ class CoursesController extends Controller
 		$list_comments = $course->getComments($course_id);
 		return $list_comments;
 	}
+		
 
+		public function getCategories($course_id){
+		$course = new Course();
+		$list_categories = $course->getCategories($course_id);
+		return $list_categories;
+	}
 
 	//##############################################
 	
@@ -79,7 +85,11 @@ class CoursesController extends Controller
 	}
 	
 	
-	
+	public function newCourse(){
+		$cat = new Category();
+		$categories= $cat->getAllCategories();
+		return view('courses.createCourse')->with('categories', $categories);
+	}
 	public function createCourse(Request $request){
 		$course = new Course();
 		$this->validate($request,[
@@ -105,6 +115,12 @@ class CoursesController extends Controller
 		$course = Course::find($course_id);
 		$user = User::find($user_id);
 		$course->attendCourse($course->id, $user);
+	}
+
+		public function attachCategory($course_id, $category_id){
+		$course = Course::find($course_id);
+		$category = Category::find($category_id);
+		$course->attendCourse($course->id, $category_id);
 	}
 
 
