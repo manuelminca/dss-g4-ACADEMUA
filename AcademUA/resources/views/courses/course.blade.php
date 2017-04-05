@@ -50,8 +50,8 @@
  <?php
 
  
-    $listComments = $comments->getComments(4);
-        echo $listComments;
+       
+        echo $comments;
 
         
     echo "<div class='col-md-3 col-xs-6'>";
