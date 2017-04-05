@@ -8,6 +8,35 @@ use App\User;
 
 class UsersController extends Controller
 {
+
+
+	/*#############################################
+				GETTERS AND SETTERS
+	###############################################*/
+
+	public function getName($id){
+		$user = new User();
+		$name = $user->getName();
+		return $name;
+	}
+
+public function getUsername($id){
+		$user = new User();
+		$username = $user->getUsername();
+		return $username;
+	}
+	public function getEmail($id){
+		$user = new User();
+		$email = $user->getEmail();
+		return $email;
+	}
+
+
+
+//###########################################################
+
+
+
 	public function deleteUser ($id){
 		$user = User::find($id);
 		$user->deleteUser();
@@ -37,12 +66,12 @@ class UsersController extends Controller
 	public function createUser(Request $request){
 		
 		$this->validate($request,[
-				            'email' => 'required | unique:users,email',
-				            'name' => 'required',
-				            'username' => 'required | unique:users,username',
-				            'password' => 'required | min:2',
-				            'password_confirmation' => 'required | same:password'
-				        ]);
+				'email' => 'required | unique:users,email',
+				'name' => 'required',
+				'username' => 'required | unique:users,username',
+				'password' => 'required | min:2',
+				'password_confirmation' => 'required | same:password'
+		]);
 		
 		$email= $request->input('email');
 		$name= $request->input('name');
@@ -56,7 +85,13 @@ class UsersController extends Controller
 	}
 	
 	
-	
+	public function showInstructors(){
+		$user = new User();
+
+		$list = $user->showInstructors()->paginate(6);
+		
+		return view('/users/instructors', ['users' => $list])->with('users', $list);
+	}
 	
 	
 	

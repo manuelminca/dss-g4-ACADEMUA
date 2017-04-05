@@ -51,7 +51,7 @@
                                 <a href="/courses/new" class="ln-tr">Add course</a>
                             </li>
                             <li class="parent-item haschild">
-                                <a href="15-instructors.html" class="ln-tr">Instuctors</a>
+                                <a href="/users/instructors" class="ln-tr">Instuctors</a>
                             </li>
                             <li class="parent-item haschild">
                                 <a href="17-about-1.html" class="ln-tr">About</a>

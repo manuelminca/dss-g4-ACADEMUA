@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    private $id = 0;
-    private $name = "";
-    private $description = "";
-    private $content = "";
-    private $links = "";
-    private $price = 0.0;
-    private $teacher_id = 0;
 
+			/**
+	* The attributes that are mass assignable.
+			     *
+			     * @var array
+			     */
+			    protected $fillable = [
+			        'id', 'name', 'description', 'content', 'links', 'price', 'teacher_id',
+			    ];
+	
 
     public function categories() {
         return $this->belongsToMany('App\Category');
@@ -23,25 +25,83 @@ class Course extends Model
         return $this->belongsToMany('App\User', 'course_user', 'course_id', 'user_id');
     }
 
+	public function comments() {
+		return $this->belongsToMany('App\Comment', 'comments', 'id');
+	}
 
-    public function updateCourse($course){
-        /*
-        $courseAUX = Course::find($course->id);
 
+	/*#############################################
+				GETTERS AND SETTERS
+	###############################################*/
 
-        $courseAUX->name = $course->name;
-        $courseAUX->description = $course->description;
-        $courseAUX->price = $course->price;
-        $courseAUX->teacher_id = $course->teacher_id;
+	public function getCourses($idTeacher){
+		$courses = Course::where('teacher_id', $idTeacher)->get();
 
-*/
-        $course->update();
-    }
+		return $courses;
+	}
+
+	public function getComments($course_id){
+		$comments = Comment::where('course_id', $course_id);
+		return $comments;
+	}
+	
+	
 
     public function allCourses(){
         $courses = Course::all();
         return $courses;
     }
+
+    public function edit($name, $description) {
+		
+		$this->name = $name;
+		$this->description= $description;
+		$this->save();
+		}
+	
+	public function deleteCourse(){
+		$this->delete();
+	}
+	
+	public function showCourses(){
+		$list = Course::all();
+		return $list;
+	}
+
+	//Muestra cursos filtrando
+	public function showCoursesFilter($filter, $valor){
+		
+		if ($filter == 'precio_menor') {
+			$list = Course::where('price','<',$valor);	
+		} elseif ($filter == 'nombre') {
+			$list = Course::where('name','like','%'.$valor.'%');
+		}
+		return $list;
+		
+		
+	}
+
+	
+
+	public function createCourse($name2, $description2, $price2, $content2, $links2,  $teacher_id2){
+		
+		//$course = new Course();
+		$this->name = $name2;
+		$this->description = $description2;
+		$this->price = $price2;
+		$this->content = $content2;
+		$this->links = $links2;
+		$this->teacher_id = $teacher_id2;
+		$this->save();
+	}
+
+
+
+
+	public function attendCourse($course, $user){
+		$user->courses()->attach($course);
+	}
+    
 }
 
 

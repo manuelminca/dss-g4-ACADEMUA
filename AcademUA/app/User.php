@@ -16,7 +16,9 @@ class User extends Authenticatable
 		return $this->belongsToMany('App\Course', 'course_user', 'user_id', 'course_id');
 	}
 	
-	
+	public function comments() {
+		return $this->belongsToMany('App\Comment', 'comments', 'id');
+	}
 	
 	/**
 	* The attributes that are mass assignable.
@@ -39,7 +41,31 @@ class User extends Authenticatable
 			        'password', 'remember_token',
 			    ];
 	
-	
+	/*#############################################
+				GETTERS AND SETTERS
+	###############################################*/
+
+	public function getName(){
+		return $this->name;
+	}
+
+	public function getEmail(){
+		return $this->email;
+	}
+
+	public function getUsername(){
+		return $this->username;
+	}
+
+	//###################################################
+
+
+
+
+
+
+
+
 	public function deleteUser(){
 		$this->delete();
 	}
@@ -64,6 +90,11 @@ class User extends Authenticatable
 		
 		$this->save();
 		
+	}
+
+	public function showInstructors () {
+		$list = User::where('professor','=',true);
+		return $list;
 	}
 	
 	

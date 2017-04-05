@@ -38,7 +38,7 @@
       Price<br>
   <input value="{{ old('price') }}" type="number" name="price" <br><br>
       Content:<br>
-      <textarea name="content" cols="50" rows="10"></textarea>
+      <textarea name="content" cols="50" rows="10"></textarea><br><br>
 
       Links<br>
   <input value="{{ old('links') }}" type="text" name="links" <br><br>
