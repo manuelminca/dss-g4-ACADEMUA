@@ -55,6 +55,7 @@ Route::get('/courses/create/','CoursesController@createCourse');
 Route::get('/courses/attend/{course_id}&{user_id}','CoursesController@attendCourse');
 Route::get('/courses/manage/{id}','CoursesController@getCourses');
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
+Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
 
 
 
