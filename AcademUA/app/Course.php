@@ -14,6 +14,15 @@ class Course extends Model
     private $price = 0.0;
     private $teacher_id = 0;
 
+			/**
+	* The attributes that are mass assignable.
+			     *
+			     * @var array
+			     */
+			    protected $fillable = [
+			        'id', 'name', 'description', 'content', 'links', 'price', 'teacher_id',
+			    ];
+	
 
     public function categories() {
         return $this->belongsToMany('App\Category');
@@ -83,14 +92,14 @@ class Course extends Model
 
 	public function createCourse($name2, $description2, $price2, $content2, $links2,  $teacher_id2){
 		
-		$course = new Course();
-		$course->name = $name2;
-		$course->description = $description2;
-		$course->price = $price2;
-		$course->content = $content2;
-		$course->links = $links2;
-		$course->teacher_id = $teacher_id2;
-		$course->save();
+		//$course = new Course();
+		$this->name = $name2;
+		$this->description = $description2;
+		$this->price = $price2;
+		$this->content = $content2;
+		$this->links = $links2;
+		$this->teacher_id = $teacher_id2;
+		$this->save();
 	}
 
 
