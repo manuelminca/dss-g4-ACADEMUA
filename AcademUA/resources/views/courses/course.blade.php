@@ -49,6 +49,11 @@
 
  <?php
 
+ 
+       
+        echo $comments;
+
+        
     echo "<div class='col-md-3 col-xs-6'>";
         echo "<div class='course'>";
             echo "<div class='course-image'>";
