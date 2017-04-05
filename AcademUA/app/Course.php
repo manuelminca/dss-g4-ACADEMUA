@@ -44,6 +44,11 @@ class Course extends Model
 		$comments = Comment::where('course_id', $course_id)->get();
 		return $comments;
 	}
+
+	public function getCategories($course_id){
+		$categories = Course::find($course_id)->category->name;
+		return $categories;
+	}
 	
 	
 
@@ -93,6 +98,7 @@ class Course extends Model
 		$this->links = $links2;
 		$this->teacher_id = $teacher_id2;
 		$this->save();
+
 	}
 
 
@@ -100,6 +106,10 @@ class Course extends Model
 
 	public function attendCourse($course, $user){
 		$user->courses()->attach($course);
+	}
+
+	public function attachCategory($course, $category_id){
+		$course->categories()->attach($category_id);
 	}
     
 }

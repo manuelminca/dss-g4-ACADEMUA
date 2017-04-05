@@ -57,6 +57,7 @@ Route::get('/courses/manage/{id}','CoursesController@getCourses');
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
 Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
 Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
+Route::get('/courses/new/','CoursesController@newCourse');
 
 
 
@@ -82,11 +83,7 @@ Route::get('/modifiedCourse', function () {
 	return view('/courses/modifiedCourse');
 }
 );
-Route::get('/courses/new/', function () {
 
-	return view('/courses/createCourse');
-}
-);
 
 
 Route::get('/courses/create/','CoursesController@createCourse');

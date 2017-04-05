@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Course;
 use App\User;
-
+use App\Category;
 class CoursesController extends Controller
 {
 	
@@ -25,7 +25,13 @@ class CoursesController extends Controller
 		$list_comments = $course->getComments($course_id);
 		return $list_comments;
 	}
+		
 
+		public function getCategories($course_id){
+		$course = new Course();
+		$list_categories = $course->getCategories($course_id);
+		return $list_categories;
+	}
 
 	//##############################################
 	
@@ -79,7 +85,11 @@ class CoursesController extends Controller
 	}
 	
 	
-	
+	public function newCourse(){
+		$cat = new Category();
+		$categories= $cat->getAllCategories();
+		return view('courses.createCourse')->with('categories', $categories);
+	}
 	public function createCourse(Request $request){
 		$course = new Course();
 		$this->validate($request,[
@@ -94,8 +104,17 @@ class CoursesController extends Controller
 		$content= $request->input('content');
 		$links= $request->input('links');
 		$teacher_id= $request->input('id');
+		$categoryName = $request->input('category');
+
+
+		$catModel = new Category();
+		$categoryID = $catModel->getID($categoryName);
+
+		
 		$course->createCourse($name,$description,$price,$content,$links,$teacher_id);
-		//$course->save();
+		
+		$course->attachCategory($course, $categoryID);
+		
 
 		return view('home');
 	}
@@ -106,7 +125,6 @@ class CoursesController extends Controller
 		$user = User::find($user_id);
 		$course->attendCourse($course->id, $user);
 	}
-
 
 	
 }
