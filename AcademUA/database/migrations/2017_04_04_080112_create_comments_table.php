@@ -17,8 +17,10 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->text('description');
             $table->integer('rating');
-            $table->foreign('id')->references('id')->on('courses')->onDelete('cascade');
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('course_id');
+            $table->integer('user_id');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

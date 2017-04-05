@@ -37,13 +37,6 @@ public function getUsername($id){
 
 
 
-
-
-
-
-
-
-
 	public function deleteUser ($id){
 		$user = User::find($id);
 		$user->deleteUser();
@@ -73,12 +66,12 @@ public function getUsername($id){
 	public function createUser(Request $request){
 		
 		$this->validate($request,[
-				            'email' => 'required | unique:users,email',
-				            'name' => 'required',
-				            'username' => 'required | unique:users,username',
-				            'password' => 'required | min:2',
-				            'password_confirmation' => 'required | same:password'
-				        ]);
+				'email' => 'required | unique:users,email',
+				'name' => 'required',
+				'username' => 'required | unique:users,username',
+				'password' => 'required | min:2',
+				'password_confirmation' => 'required | same:password'
+		]);
 		
 		$email= $request->input('email');
 		$name= $request->input('name');
