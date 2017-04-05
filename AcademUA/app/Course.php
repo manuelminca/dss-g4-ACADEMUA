@@ -98,6 +98,7 @@ class Course extends Model
 		$this->links = $links2;
 		$this->teacher_id = $teacher_id2;
 		$this->save();
+
 	}
 
 
@@ -107,8 +108,8 @@ class Course extends Model
 		$user->courses()->attach($course);
 	}
 
-	public function attachCategory($course, $category){
-		$category->courses()->attach($course);
+	public function attachCategory($course, $category_id){
+		$course->categories()->attach($category_id);
 	}
     
 }

@@ -49,9 +49,6 @@
 
  <?php
 
- 
-      echo $comments[0]->description;
-  
 
         
     echo "<div class='col-md-3 col-xs-6'>";

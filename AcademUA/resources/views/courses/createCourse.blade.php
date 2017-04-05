@@ -42,22 +42,26 @@
 
       Links<br>
   <input value="{{ old('links') }}" type="text" name="links" <br><br>
+
       Id profesor:<br>
   <input type="number" name="id" <br><br>
-      
- 
+
+
+<select name="category">
+<?php
+foreach ($categories as $cat) {
+    echo "<option value='$cat->name'>".$cat->name."</option>";
+}
+
+?>
+</select>
+
 
 
   <input type="submit" value="Submit">
 </form>
-<?php
 
 
-echo $categories[1];
-
-
-
-?>
 
 </ul>
 

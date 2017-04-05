@@ -35,4 +35,9 @@ class Category extends Model
 		$list = Category::all();
 		return $list;
 	}
+
+	public function getID($name){
+		$categoryID = Category::where('name', $name)->get();
+		return $categoryID;
+	}
 }

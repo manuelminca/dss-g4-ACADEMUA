@@ -104,8 +104,17 @@ class CoursesController extends Controller
 		$content= $request->input('content');
 		$links= $request->input('links');
 		$teacher_id= $request->input('id');
+		$categoryName = $request->input('category');
+
+
+		$catModel = new Category();
+		$categoryID = $catModel->getID($categoryName);
+
+		
 		$course->createCourse($name,$description,$price,$content,$links,$teacher_id);
-		//$course->save();
+		
+		$course->attachCategory($course, $categoryID);
+		
 
 		return view('home');
 	}
@@ -116,13 +125,6 @@ class CoursesController extends Controller
 		$user = User::find($user_id);
 		$course->attendCourse($course->id, $user);
 	}
-
-		public function attachCategory($course_id, $category_id){
-		$course = Course::find($course_id);
-		$category = Category::find($category_id);
-		$course->attendCourse($course->id, $category_id);
-	}
-
 
 	
 }
