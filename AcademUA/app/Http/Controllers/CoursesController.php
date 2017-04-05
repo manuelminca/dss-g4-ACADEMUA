@@ -88,13 +88,14 @@ class CoursesController extends Controller
 				'price' => 'required | min:0 | numeric'
 		]);
 		
-		$course->name= $request->input('name');
-		$course->description= $request->input('description');
-		$course->price= $request->input('price');
-		$course->content= $request->input('content');
-		$course->links= $request->input('links');
-		$course->teacher_id= $request->input('id');
-		$course->save();
+		$name= $request->input('name');
+		$description= $request->input('description');
+		$price= $request->input('price');
+		$content= $request->input('content');
+		$links= $request->input('links');
+		$teacher_id= $request->input('id');
+		$course->createCourse($name,$description,$price,$content,$links,$teacher_id);
+		//$course->save();
 
 		return view('home');
 	}
