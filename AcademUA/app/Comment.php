@@ -19,9 +19,8 @@ class Comment extends Model
 			    ];
 	
 	
-	public function deleteComment ($id) {
-		$comment = Comment::find($id);
-		$comment->delete();
+	public function deleteComment(){
+		$this->delete();
 	}
 
 	public function createComment ($description, $rating, $id_course, $id_user) {
