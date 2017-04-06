@@ -45,15 +45,7 @@
                     <div class="container">
                         <div class="row">
 
-
-
- <?php
-
- 
-      echo $comments[0]->description;
-  
-
-        
+ <?php   
     echo "<div class='col-md-3 col-xs-6'>";
         echo "<div class='course'>";
             echo "<div class='course-image'>";
@@ -81,12 +73,83 @@
         echo "</div>";
     echo "</div>";
 
+//echo $comments[0]->description;
 
-?>
-                     
-                                            
+// ########################## COURSE COMMENTS ########################## //
+
+?> 
+    <div class="clearfix"></div>                                        
                                                 
-        
+        <section class="full-section misc-section fadeInDown-animation">
+                <div class="container">
+                    <div class="row" style="width:80%; margin:0 auto;">
+                        <div class="col-md-12 basic-slider-box">
+                            <div class="questions">
+                                <h6 class="head-title">Comments</h6>
+                                <div class="basic-slider flexslider">
+                                    <ul class="slides">
+                                        <li class="questions-slide-item">
+
+                                            <div class="query clearfix">
+                                                <div class="image fl">
+                                                    <img src="assets/img/content/q-img-1-63x61.jpg" alt="">
+                                                </div><!-- End Post Image/Date -->
+                                                <div class="query-content">
+                                                    <h3 class="post-title"><a href="#" class="ln-tr">Lorem ipsum post title.</a></h3>
+                                                    <p class="query-description">
+                                                        Duis dapibus aliquam mi, eget euismod sem scelerisque ut, vivamus at elit quis urna adipiscing iaculis dos Curabitur vitae velit in neque dictum blandit.
+                                                    </p>
+                                                    <div class="details">
+                                                        <div class="date ib">
+                                                            <span class="icon"><i class="fa fa-clock-o"></i></span>
+                                                            <span class="text">Time : 7 Dec, 2014</span>
+                                                        </div><!-- date icon -->
+                                                        <div class="place ib">
+                                                            <span class="icon"><i class="fa fa-map-marker"></i></span>
+                                                            <span class="text">Place : Alex, Miami</span>
+                                                        </div><!-- place icon -->
+                                                        <div class="center ib">
+                                                            <span class="icon"><i class="fa fa-building"></i></span>
+                                                            <span class="text">Yat Academy</span>
+                                                        </div><!-- center icon -->
+                                                    </div><!-- End Details Box -->
+                                                </div><!-- End Question Content -->
+                                            </div><!-- End 1st Question -->
+
+                                            <div class="query clearfix">
+                                                <div class="image fl">
+                                                    <img src="assets/img/content/q-img-2-63x61.jpg" alt="">
+                                                </div><!-- End Post Image/Date -->
+                                                <div class="query-content">
+                                                    <h3 class="post-title"><a href="#" class="ln-tr">Lorem ipsum post title.</a></h3>
+                                                    <p class="query-description">
+                                                        Duis dapibus aliquam mi, eget euismod sem scelerisque ut, vivamus at elit quis urna adipiscing iaculis dos Curabitur vitae velit in neque dictum blandit.
+                                                    </p>
+                                                    <div class="details">
+                                                        <div class="date ib">
+                                                            <span class="icon"><i class="fa fa-clock-o"></i></span>
+                                                            <span class="text">Time : 7 Dec, 2014</span>
+                                                        </div><!-- date icon -->
+                                                        <div class="place ib">
+                                                            <span class="icon"><i class="fa fa-map-marker"></i></span>
+                                                            <span class="text">Place : Alex, Miami</span>
+                                                        </div><!-- place icon -->
+                                                        <div class="center ib">
+                                                            <span class="icon"><i class="fa fa-building"></i></span>
+                                                            <span class="text">Yat Academy</span>
+                                                        </div><!-- center icon -->
+                                                    </div><!-- End Details Box -->
+                                                </div><!-- End Question Content -->
+                                            </div><!-- End 1st Question -->
+
+                                        </li><!-- End 1st Post Slide Item -->
+                                    </ul><!-- End ul Items -->
+                                </div><!-- End Posts Slider -->
+                            </div><!-- End Blog Posts/Latest News -->
+                        </div><!-- End col-md-6 -->
+                    </div><!-- End row -->
+                </div><!-- End container -->
+            </section><!-- End MISC Section -->
                             
                            
                         </div><!-- End row -->
