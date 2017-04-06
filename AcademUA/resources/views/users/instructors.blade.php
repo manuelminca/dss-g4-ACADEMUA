@@ -67,16 +67,12 @@ foreach ($users as $user) {
 }
 
 ?>
-                            <div class="col-md-12 pagination">
-                                <ul class="clearfix">
-                                    <li class="ib arrow"><a class="ln-tr" href="#"><i class="fa fa-angle-left"></i></a></li>
-                                    <li class="ib"><a class="ln-tr" href="#">1</a></li>
-                                    <li class="ib"><a class="ln-tr" href="#">2</a></li>
-                                    <li class="ib"><a class="ln-tr" href="#">3</a></li>
-                                    <li class="ib"><a class="ln-tr" href="#">4</a></li>
-                                    <li class="ib arrow"><a class="ln-tr" href="#"><i class="fa fa-angle-right"></i></a></li>
-                                </ul>
-                            </div><!-- End Pagination -->
+<!-- PAGINATION -->
+<div class="clearfix"></div>
+
+<div class="text-center">
+    {{$users->links()}}
+</div>
                         </div><!-- End row -->
                     </div><!-- End Container -->
                 </div><!-- End Latest-Courses Section Content -->

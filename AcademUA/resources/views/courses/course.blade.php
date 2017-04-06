@@ -72,43 +72,9 @@
             echo "</div>";
         echo "</div>";
     echo "</div>";
-
-    $number = 1;
-    foreach ($comments as $comment) {
-        $number = $number+1;
-        echo "<div class='col-md-3 col-xs-6'>";
-            echo "<div class='course'>";
-                echo "<div class='course-image'>";
-                    echo "<div class='details-overlay'>";
-                    echo "<span class='place'>";
-                    echo "<i class='fa fa-briefcase'></i>";
-                    echo "<span class='text'>Rating : " . $comment->id ."</span>";
-                    echo "</span>";
-                    echo "<span class='time'>";
-                    echo "<i class='fa fa-money'></i>";
-                    echo "<span class='text'>" . $comment->rating . "</span>";
-                    echo "</span>";
-                    echo "</div>";
-                    echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
-                    echo "</div>";
-                    echo "<div class='course-info'>";
-                    echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $comment->id . "</a></h3>";
-                    echo "<p class='course-description'>" . $comment->description . "</p>";
-                    echo "<div class='buttons'>";
-                    //echo "<a href='/comments/comment/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-                    echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
-                    echo "</div>";
-                echo "</div>";
-            echo "</div>";
-        echo "</div>";
-        if($number == 4){
-            echo "<div class='clearfix'></div>";
-        }
-    }
-
 ?>
 
-
+<div class="clearfix"></div>
 <form action="/comments/create/{{$course->id}}">
 
 {{ csrf_field() }}
@@ -126,9 +92,8 @@
 
   <input type="submit" value="Submit">
 </form>
-                     
-                                            
-                                                
+
+    <!-- ############################ COMMENTS ############################## -->
         <section class="full-section misc-section fadeInDown-animation">
                 <div class="container">
                     <div class="row" style="width:80%; margin:0 auto;">
@@ -138,58 +103,40 @@
                                 <div class="basic-slider flexslider">
                                     <ul class="slides">
                                         <li class="questions-slide-item">
+<?php
+$number = 1;
+                                        foreach ($comments as $comment) {
+                                            echo "<div class='query clearfix'>";
+                                                echo "<div class='image fl'>";
+                                                    echo "<img src='/img/users/user1.jpg' alt=''>";
+                                                echo "</div>";
+                                                echo "<div class='query-content'>";
+                                                    echo "<h3 class='post-title'>#". $number . ": Manolo</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
+                                                    echo "<p class='query-description'>". $comment->description . "</p>";
+                                                    echo "<div class='details'>";
+                                                        echo " <div class='date ib'>";
+                                                            echo "<span class='icon'><i class='fa fa-clock-o'></i></span>";
+                                                            echo "<span class='text'>Time : 7 Dec, 2014</span>";
+                                                        echo "</div>";
+                                                       echo " <div class='date ib'>";
+                                                            echo "<span class='icon'><i class='fa fa-star'></i></span>";
+                                                            echo "<span class='text'>Rating: " . $comment->rating . "</span>";
+                                                        echo "</div>";
+                                                        echo "<div class='place ib'>";
+                                                            echo "<span class='icon'><i class='fa fa-building'></i></span>";
+                                                            echo "<span class='text'>Yat Academy</span>";
+                                                       echo "</div>";
+                                                        echo "<div class='center ib'>";
+                                                            echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                                                        echo "</div>";
+                                                        
 
-                                            <div class="query clearfix">
-                                                <div class="image fl">
-                                                    <img src="assets/img/content/q-img-1-63x61.jpg" alt="">
-                                                </div><!-- End Post Image/Date -->
-                                                <div class="query-content">
-                                                    <h3 class="post-title"><a href="#" class="ln-tr">Lorem ipsum post title.</a></h3>
-                                                    <p class="query-description">
-                                                        Duis dapibus aliquam mi, eget euismod sem scelerisque ut, vivamus at elit quis urna adipiscing iaculis dos Curabitur vitae velit in neque dictum blandit.
-                                                    </p>
-                                                    <div class="details">
-                                                        <div class="date ib">
-                                                            <span class="icon"><i class="fa fa-clock-o"></i></span>
-                                                            <span class="text">Time : 7 Dec, 2014</span>
-                                                        </div><!-- date icon -->
-                                                        <div class="place ib">
-                                                            <span class="icon"><i class="fa fa-map-marker"></i></span>
-                                                            <span class="text">Place : Alex, Miami</span>
-                                                        </div><!-- place icon -->
-                                                        <div class="center ib">
-                                                            <span class="icon"><i class="fa fa-building"></i></span>
-                                                            <span class="text">Yat Academy</span>
-                                                        </div><!-- center icon -->
-                                                    </div><!-- End Details Box -->
-                                                </div><!-- End Question Content -->
-                                            </div><!-- End 1st Question -->
-
-                                            <div class="query clearfix">
-                                                <div class="image fl">
-                                                    <img src="assets/img/content/q-img-2-63x61.jpg" alt="">
-                                                </div><!-- End Post Image/Date -->
-                                                <div class="query-content">
-                                                    <h3 class="post-title"><a href="#" class="ln-tr">Lorem ipsum post title.</a></h3>
-                                                    <p class="query-description">
-                                                        Duis dapibus aliquam mi, eget euismod sem scelerisque ut, vivamus at elit quis urna adipiscing iaculis dos Curabitur vitae velit in neque dictum blandit.
-                                                    </p>
-                                                    <div class="details">
-                                                        <div class="date ib">
-                                                            <span class="icon"><i class="fa fa-clock-o"></i></span>
-                                                            <span class="text">Time : 7 Dec, 2014</span>
-                                                        </div><!-- date icon -->
-                                                        <div class="place ib">
-                                                            <span class="icon"><i class="fa fa-map-marker"></i></span>
-                                                            <span class="text">Place : Alex, Miami</span>
-                                                        </div><!-- place icon -->
-                                                        <div class="center ib">
-                                                            <span class="icon"><i class="fa fa-building"></i></span>
-                                                            <span class="text">Yat Academy</span>
-                                                        </div><!-- center icon -->
-                                                    </div><!-- End Details Box -->
-                                                </div><!-- End Question Content -->
-                                            </div><!-- End 1st Question -->
+                                                    echo "</div>";
+                                                echo "</div>";
+                                            echo "</div>";
+                                            $number = $number+1;
+                                        }
+?>
 
                                         </li><!-- End 1st Post Slide Item -->
                                     </ul><!-- End ul Items -->
