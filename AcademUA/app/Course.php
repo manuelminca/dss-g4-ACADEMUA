@@ -69,12 +69,31 @@ class Course extends Model
 	}
 
 	//Muestra cursos filtrando
-	public function showCoursesFilter($filter, $valor){
+	public function showCoursesFilter($filter, $valor, $order, $how){
 		
 		if ($filter == 'precio_menor') {
-			$list = Course::where('price','<',$valor);	
+
+			if ($order == 'precio' && $how == 'asc' ) {
+				
+				$list = Course::where('price','<',$valor)->orderBy('price');
+			} else if ($order == 'precio' && $how == 'desc' )  {
+				$list = Course::where('price','<',$valor)->orderBy('price', "desc");
+			} else if ($order == 'nombre' && $how == 'desc' )  {
+				$list = Course::where('price','<',$valor)->orderBy('name');
+			} else {
+				$list = Course::where('price','<',$valor)->orderBy('name', 'desc');
+			}
+				
 		} elseif ($filter == 'nombre') {
-			$list = Course::where('name','like','%'.$valor.'%');
+			if ($order == 'precio' && $how == 'asc' ) {
+				$list = Course::where('name','like','%'.$valor.'%')->orderBy('price');
+			} else if ($order == 'precio' && $how == 'desc' )  {
+				$list = Course::where('name','like','%'.$valor.'%')->orderBy('price', 'desc');
+			} else if ($order == 'nombre' && $how == 'desc' )  {
+				$list = Course::where('name','like','%'.$valor.'%')->orderBy('name');
+			} else {
+				$list = Course::where('name','like','%'.$valor.'%')->orderBy('name', 'desc');
+			}
 		}
 		return $list;
 		
