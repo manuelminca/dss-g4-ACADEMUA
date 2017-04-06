@@ -39,7 +39,7 @@ class CommentsController extends Controller
         $comment->attachUser($id_user);*/
 		
         $coursesCon = new CoursesController();
-        return $coursesCon->showSingleCourse($course_id);
+        return $coursesCon->showSingleCourse($course_id)->with('id_user', $id_user);
 		//return view('courses.course.'.$id_course);
 	}
 
