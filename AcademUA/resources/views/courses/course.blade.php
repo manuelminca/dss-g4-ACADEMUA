@@ -114,7 +114,7 @@
 ?>
 
 
-<form action="/comments/create/">
+<form action="/comments/create/{{$course->id}}">
 
 {{ csrf_field() }}
 {{ method_field('POST') }}
@@ -123,9 +123,6 @@
   <input value="{{ old('rating') }}" type="number" name="rating" min="0" max="5"> <br><br>
       Description:<br>
       <textarea name="description" cols="50" rows="10"></textarea><br><br>
-
-      Id course:<br>
-  <input type="number" name="id_course" min="0" <br><br>
       Id user:<br>
   <input type="number" name="id_user" min="0" <br><br>
   <!-- Con esto podremos analizar la URI:
