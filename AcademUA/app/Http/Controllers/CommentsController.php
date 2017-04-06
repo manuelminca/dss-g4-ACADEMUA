@@ -19,11 +19,10 @@ class CommentsController extends Controller
 		return view('courses.courses', ['courses' => $list]);
 	}*/
 
-	public function createComment (Request $request) {
+	public function createComment (Request $request, $course_id) {
 		$comment = new Comment();
 		$this->validate($request,[
 				'id_user' => 'required',
-                'id_course' => 'required',
 				'description' => 'required',
 				'rating' => 'required | min:0 | max:5 | numeric'
 		]);
@@ -31,17 +30,16 @@ class CommentsController extends Controller
 		
 		$description= $request->input('description');
 		$rating= $request->input('rating');
-		$id_course= $request->input('id_course');
         $id_user= $request->input('id_user');
 
 		
-		$comment->createComment($description, $rating, $id_course, $id_user);
+		$comment->createComment($description, $rating, $course_id, $id_user);
 		
 		/*$comment->attachCourse($id_course);
         $comment->attachUser($id_user);*/
 		
         $coursesCon = new CoursesController();
-        return $coursesCon->showSingleCourse($id_course);
+        return $coursesCon->showSingleCourse($course_id);
 		//return view('courses.course.'.$id_course);
 	}
 
