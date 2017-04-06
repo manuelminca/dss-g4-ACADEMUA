@@ -95,6 +95,7 @@ class CoursesController extends Controller
 		$this->validate($request,[
 				'name' => 'required',
 				'description' => 'required',
+				'id' => 'required',
 				'price' => 'required | min:0 | numeric'
 		]);
 		
