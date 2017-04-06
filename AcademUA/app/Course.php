@@ -104,12 +104,12 @@ class Course extends Model
 
 
 
-	public function attendCourse($course, $user){
-		$user->courses()->attach($course);
+	public function attendCourse($user_id){
+		$this->courses()->attach($user_id);
 	}
 
-	public function attachCategory($course, $category_id){
-		$course->categories()->attach($category_id);
+	public function attachCategory($category_id){
+		$this->categories()->attach($category_id);
 	}
     
 }
