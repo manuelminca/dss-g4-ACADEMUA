@@ -45,5 +45,16 @@ class CommentsController extends Controller
 		//return view('courses.course.'.$id_course);
 	}
 
+		public function deleteComment ($comment_id, $course_id) {
+
+		$comment = Comment::find($comment_id);
+		$comment->deleteComment();
+
+		$course = Course::find($course_id);
+		$comments = $course->getComments($course_id); //returns an array with all the comments
+	return view('courses.course', ['comments' => $comments])->with('course', $course);
+		
+	}
+
 	
 }
