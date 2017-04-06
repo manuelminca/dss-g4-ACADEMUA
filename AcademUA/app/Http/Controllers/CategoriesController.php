@@ -26,9 +26,9 @@ class CategoriesController extends Controller
 		
 		return view('home');
 	}
-	public function showCategories(){
+	public function getAllcategories(){
 		$cat = new Category();
-		return $cat->showCategories();
+		return $cat->getAllCategories();
 	}
 	
 }

@@ -56,6 +56,8 @@ Route::get('/courses/attend/{course_id}&{user_id}','CoursesController@attendCour
 Route::get('/courses/manage/{id}','CoursesController@getCourses');
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
 Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
+Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
+Route::get('/courses/new/','CoursesController@newCourse');
 
 
 
@@ -66,12 +68,7 @@ Route::get('/courses/modify/{id}', function ($id) {
 }
 );
 
-Route::get('/courses/course/{id}', function ($id) {
-	//m	odify the data of a course
-	$course = Course::find($id);
-	return view('/courses/course')->with('course', $course);
-}
-);
+
 
 Route::get('/courses', 'CoursesController@showCourses');
 //Muestra cursos filtrando
@@ -86,11 +83,7 @@ Route::get('/modifiedCourse', function () {
 	return view('/courses/modifiedCourse');
 }
 );
-Route::get('/courses/new/', function () {
 
-	return view('/courses/createCourse');
-}
-);
 
 
 Route::get('/courses/create/','CoursesController@createCourse');
@@ -102,8 +95,16 @@ Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
 
 Route::get('/categories/create/', 'CategoriesController@createCategory');
-Route::get('/category/new/', function () {
+Route::get('/categories/new/', function () {
 
 	return view('/categories/createCategory');
 }
 );
+
+
+/*##################################################################################################
+####################################COMMENTS###########################################################
+##################################################################################################*/
+
+Route::get('/comments/create/', 'CommentsController@createComment');
+Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment');
