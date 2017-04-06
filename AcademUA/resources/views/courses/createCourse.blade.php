@@ -26,7 +26,7 @@
 </ul>
 @endif
 
-<form action="/courses/create/">
+<form action="/courses/create/" >
 
 {{ csrf_field() }}
 {{ method_field('PUT') }}

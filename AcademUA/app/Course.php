@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-
+	//Activate timestamps
+	public $timestamps = true;
+	
 			/**
 	* The attributes that are mass assignable.
 			     *
 			     * @var array
 			     */
 			    protected $fillable = [
-			        'id', 'name', 'description', 'content', 'links', 'price', 'teacher_id',
+			        'id', 'name', 'description', 'content', 'links', 'price', 'teacher_id', 
 			    ];
+	
 	
 
     public function categories() {
@@ -138,6 +141,7 @@ class Course extends Model
 	}
     
 }
+
 
 
 
