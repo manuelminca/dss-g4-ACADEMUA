@@ -70,7 +70,7 @@
                 echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
-                    echo "<a href='/courses/attend/" .$course->id. "&1' class='btn grad-btn orange-btn read-btn'>Attend</a>";
+                    echo "<a href='/courses/attend/" .$course->id. "&1' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
 
                    echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
                 echo "</div>";
@@ -101,7 +101,7 @@
                     echo "<p class='course-description'>" . $comment->description . "</p>";
                     echo "<div class='buttons'>";
                     //echo "<a href='/comments/comment/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-                    echo "<a href='/comments/delete/" .$comment->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                    echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
                     echo "</div>";
                 echo "</div>";
             echo "</div>";
@@ -114,7 +114,7 @@
 ?>
 
 
-<form action="/comments/create/">
+<form action="/comments/create/{{$course->id}}">
 
 {{ csrf_field() }}
 {{ method_field('POST') }}
@@ -123,9 +123,6 @@
   <input value="{{ old('rating') }}" type="number" name="rating" min="0" max="5"> <br><br>
       Description:<br>
       <textarea name="description" cols="50" rows="10"></textarea><br><br>
-
-      Id course:<br>
-  <input type="number" name="id_course" min="0" <br><br>
       Id user:<br>
   <input type="number" name="id_user" min="0" <br><br>
   <!-- Con esto podremos analizar la URI:

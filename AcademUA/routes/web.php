@@ -95,7 +95,7 @@ Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
 
 Route::get('/categories/create/', 'CategoriesController@createCategory');
-Route::get('/category/new/', function () {
+Route::get('/categories/new/', function () {
 
 	return view('/categories/createCategory');
 }
@@ -106,4 +106,5 @@ Route::get('/category/new/', function () {
 ####################################COMMENTS###########################################################
 ##################################################################################################*/
 
-Route::get('/comments/create/', 'CommentsController@createComment');
+Route::get('/comments/create/{course_id}', 'CommentsController@createComment');
+Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment');
