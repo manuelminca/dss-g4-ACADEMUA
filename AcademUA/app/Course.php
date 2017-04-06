@@ -13,7 +13,7 @@ class Course extends Model
 			     * @var array
 			     */
 			    protected $fillable = [
-			        'id', 'name', 'description', 'content', 'links', 'price', 'teacher_id',
+			        'id', 'name', 'description', 'content', 'links', 'price', 'teacher_id', 
 			    ];
 	
 
@@ -41,8 +41,13 @@ class Course extends Model
 	}
 
 	public function getComments($course_id){
-		$comments = Comment::where('course_id', $course_id);
+		$comments = Comment::where('course_id', $course_id)->get();
 		return $comments;
+	}
+
+	public function getCategories($course_id){
+		$categories = Course::find($course_id)->category->name;
+		return $categories;
 	}
 	
 	
@@ -93,16 +98,22 @@ class Course extends Model
 		$this->links = $links2;
 		$this->teacher_id = $teacher_id2;
 		$this->save();
+
 	}
 
 
 
 
-	public function attendCourse($course, $user){
-		$user->courses()->attach($course);
+	public function attendCourse($user_id){
+		$this->courses()->attach($user_id);
+	}
+
+	public function attachCategory($category_id){
+		$this->categories()->attach($category_id);
 	}
     
 }
+
 
 
 
