@@ -35,12 +35,5 @@ class Comment extends Model
 		$this->save();
 	}
 
-	/*public function attachCourse($course_id){
-		$this->courses()->attach($course_id);
-	}
-
-	public function attachUser($user_id){
-		$this->user()->attach($user_id);
-	}*/
 
 }
