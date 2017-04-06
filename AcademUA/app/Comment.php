@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+
+	//Activate timestamps
+	public $timestamps = true;
+
 	public function courses() {
 		return $this->belongsTo('App\Course');
 	}
