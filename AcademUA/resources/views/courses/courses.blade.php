@@ -43,6 +43,14 @@
                     <option value="precio_menor" selected="selected">Precio máximo</option>
                     <option value="nombre">nombre</option>
               </select>
+Ordenar por: <select name="order">
+                    <option value="precio" selected="selected">Precio</option>
+                    <option value="nombre">nombre</option>
+              </select>
+De manera:    <select name="how">
+                    <option value="asc" selected="selected">Ascendente</option>
+                    <option value="desc">Descendente</option>
+              </select>
   <input value="{{ old('valor') }}" type="text" name="valor"><br>
 
   <input type="submit" value="Submit">

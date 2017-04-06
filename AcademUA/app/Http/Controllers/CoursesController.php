@@ -77,9 +77,11 @@ class CoursesController extends Controller
 	//Mostramos cursos filtrando
 	public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
+		$order = $_GET["order"];
+		$how = $_GET["how"];
 		$course = new Course();
 		$valor = $request->input('valor');
-		$list = $course->showCoursesFilter($filter, $valor)->paginate(6);
+		$list = $course->showCoursesFilter($filter, $valor, $order, $how)->paginate(6);
 		
 		return view('courses.courses', ['courses' => $list]);
 	}
