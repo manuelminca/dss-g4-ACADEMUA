@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-	private $name = "";
+
+	/**
+	* The attributes that are mass assignable.
+			     *
+			     * @var array
+			     */
+			    protected $fillable = [
+			        'name',
+			    ];
+	
+
 	public function courses() {
 		return $this->belongsToMany('App\Course');
 	}
@@ -18,6 +28,16 @@ class Category extends Model
 
 	public function createCategory($name){
         $this->name=$name;
-        $category->save();
+        $this->save();
     }
+
+	public function getAllCategories(){
+		$list = Category::all();
+		return $list;
+	}
+
+	public function getID($name){
+		$categoryID = Category::where('name', $name)->get();
+		return $categoryID;
+	}
 }

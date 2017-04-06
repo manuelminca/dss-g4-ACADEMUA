@@ -13,6 +13,11 @@ class Comment extends Model
     public function users() {
         return $this->belongsTo('App\User');
     }
+
+	protected $fillable = [
+			        'id', 'description', 'rating', 'course_id', 'user_id',
+			    ];
+	
 	
 	public function deleteComment ($id) {
 		$comment = Comment::find($id);

@@ -49,9 +49,6 @@
 
  <?php
 
- 
-       
-        echo $comments;
 
         
     echo "<div class='col-md-3 col-xs-6'>";
