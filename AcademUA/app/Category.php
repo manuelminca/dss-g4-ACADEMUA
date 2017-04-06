@@ -31,8 +31,13 @@ class Category extends Model
         $this->save();
     }
 
-	public function showCategories(){
+	public function getAllCategories(){
 		$list = Category::all();
 		return $list;
+	}
+
+	public function getID($name){
+		$categoryID = Category::where('name', $name)->get();
+		return $categoryID;
 	}
 }

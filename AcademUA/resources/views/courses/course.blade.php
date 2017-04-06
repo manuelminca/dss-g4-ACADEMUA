@@ -65,20 +65,69 @@
                 echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
-                    echo "<a href='/courses/attend/" .$course->id. "&1' class='btn grad-btn orange-btn read-btn'>Attend</a>";
+                    echo "<a href='/courses/attend/" .$course->id. "&1' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
 
-                   echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                   echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn subscribe-btn'>Modify</a>";
                 echo "</div>";
             echo "</div>";
         echo "</div>";
     echo "</div>";
 
-//echo $comments[0]->description;
+    $number = 1;
+    foreach ($comments as $comment) {
+        $number = $number+1;
+        echo "<div class='col-md-3 col-xs-6'>";
+            echo "<div class='course'>";
+                echo "<div class='course-image'>";
+                    echo "<div class='details-overlay'>";
+                    echo "<span class='place'>";
+                    echo "<i class='fa fa-briefcase'></i>";
+                    echo "<span class='text'>Rating : " . $comment->id ."</span>";
+                    echo "</span>";
+                    echo "<span class='time'>";
+                    echo "<i class='fa fa-money'></i>";
+                    echo "<span class='text'>" . $comment->rating . "</span>";
+                    echo "</span>";
+                    echo "</div>";
+                    echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+                    echo "</div>";
+                    echo "<div class='course-info'>";
+                    echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $comment->id . "</a></h3>";
+                    echo "<p class='course-description'>" . $comment->description . "</p>";
+                    echo "<div class='buttons'>";
+                    //echo "<a href='/comments/comment/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
+                    echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                    echo "</div>";
+                echo "</div>";
+            echo "</div>";
+        echo "</div>";
+        if($number == 4){
+            echo "<div class='clearfix'></div>";
+        }
+    }
 
-// ########################## COURSE COMMENTS ########################## //
+?>
 
-?> 
-    <div class="clearfix"></div>                                        
+
+<form action="/comments/create/{{$course->id}}">
+
+{{ csrf_field() }}
+{{ method_field('POST') }}
+
+      Rating:<br>
+  <input value="{{ old('rating') }}" type="number" name="rating" min="0" max="5"> <br><br>
+      Description:<br>
+      <textarea name="description" cols="50" rows="10"></textarea><br><br>
+      Id user:<br>
+  <input type="number" name="id_user" min="0" <br><br>
+  <!-- Con esto podremos analizar la URI:
+  <input type="hidden" id="current_url" name="current_url" value="<?php echo 'http://localhost:8080',$_SERVER['REQUEST_URI'];?>"-->
+
+
+  <input type="submit" value="Submit">
+</form>
+                     
+                                            
                                                 
         <section class="full-section misc-section fadeInDown-animation">
                 <div class="container">
