@@ -106,5 +106,5 @@ Route::get('/categories/new/', function () {
 ####################################COMMENTS###########################################################
 ##################################################################################################*/
 
-Route::get('/comments/create/', 'CommentsController@createComment');
+Route::get('/comments/create/{course_id}', 'CommentsController@createComment');
 Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment');
