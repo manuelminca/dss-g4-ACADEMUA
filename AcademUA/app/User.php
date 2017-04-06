@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
 	use Notifiable;
+
+	//Activate timestamps
+	public $timestamps = true;
 	
 	//T	his variable will store the birthdate of the user.
 			private $birthdate = "";
