@@ -95,6 +95,7 @@ class CoursesController extends Controller
 		$this->validate($request,[
 				'name' => 'required',
 				'description' => 'required',
+				'id' => 'required',
 				'price' => 'required | min:0 | numeric'
 		]);
 		
@@ -113,17 +114,17 @@ class CoursesController extends Controller
 		
 		$course->createCourse($name,$description,$price,$content,$links,$teacher_id);
 		
-		$course->attachCategory($course, $categoryID);
+		$course->attachCategory($categoryID);
 		
 
 		return view('home');
 	}
 	
 	
-	public function attendCourse($course_id, $user_id){
+	public function attendCourse($course_id){
 		$course = Course::find($course_id);
 		$user = User::find($user_id);
-		$course->attendCourse($course->id, $user);
+		$course->attendCourse($user);
 	}
 
 	
