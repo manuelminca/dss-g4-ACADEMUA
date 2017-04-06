@@ -3,11 +3,6 @@
 @section('headerClass','alt static-header')
 @include('master')
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> Mario
 <div class="inner-head">
                 <div class="container">
                     <h1 class="entry-title">ADD COURSE</h1>
@@ -31,7 +26,7 @@
 </ul>
 @endif
 
-<form action="/courses/create/">
+<form action="/courses/create/" >
 
 {{ csrf_field() }}
 {{ method_field('PUT') }}

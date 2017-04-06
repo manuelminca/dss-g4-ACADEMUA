@@ -13,7 +13,7 @@ class Course extends Model
 			     * @var array
 			     */
 			    protected $fillable = [
-			        'id', 'name', 'description', 'content', 'links', 'price', 'teacher_id',
+			        'id', 'name', 'description', 'content', 'links', 'price', 'teacher_id', 
 			    ];
 	
 
@@ -113,6 +113,7 @@ class Course extends Model
 	}
     
 }
+
 
 
 
