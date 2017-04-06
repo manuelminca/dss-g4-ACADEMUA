@@ -31,6 +31,12 @@
   <input value="{{ old('name') }}" type="text" name="name"><br>
     Description:<br>
   <input value="{{ old('description') }}" type="text" name="description" <br><br>
+      Content:<br>
+  <input value="{{ old('content') }}" type="text" name="content" <br><br>
+      Links:<br>
+  <input value="{{ old('links') }}" type="text" name="links" <br><br>
+      Price: (If you do not want to change the price, enter the old price manually)<br>
+  <input value="{{ old('price') }}" type="number" name="price" <br><br>
   <input type="submit" value="Submit">
 </form>
 
