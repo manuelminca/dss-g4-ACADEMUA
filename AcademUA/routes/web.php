@@ -57,16 +57,7 @@ Route::get('/courses/manage/{id}','CoursesController@getCourses');
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
 Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
 Route::get('/courses/new/','CoursesController@newCourse');
-
-
-
-Route::get('/courses/modify/{id}', function ($id) {
-	//m	odify the data of a course
-	$course = Course::find($id);
-	return view('/courses/modifyCourse')->with('courses', $course);
-}
-);
-
+Route::get('/courses/modify/{id}','CoursesController@modifyCourse');
 
 
 Route::get('/courses', 'CoursesController@showCourses');

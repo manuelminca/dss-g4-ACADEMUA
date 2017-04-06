@@ -57,12 +57,7 @@ class Course extends Model
         return $courses;
     }
 
-    public function edit($name, $description) {
-		
-		$this->name = $name;
-		$this->description= $description;
-		$this->save();
-		}
+
 	
 	public function deleteCourse(){
 		$this->delete();
@@ -88,19 +83,30 @@ class Course extends Model
 
 	
 
-	public function createCourse($name2, $description2, $price2, $content2, $links2,  $teacher_id2){
+	public function createCourse($name, $description, $price, $content, $links,  $teacher_id){
 		
-		//$course = new Course();
-		$this->name = $name2;
-		$this->description = $description2;
-		$this->price = $price2;
-		$this->content = $content2;
-		$this->links = $links2;
-		$this->teacher_id = $teacher_id2;
+		if($name != null){
+			$this->name = $name;
+		}
+		if($description != null){
+			$this->description = $description;
+		}
+		if($price != null){
+			$this->price = $price;
+		}
+		if($content != null){
+			$this->content = $content;
+		}
+		if($links != null){
+			$this->links = $links;
+		}
+		if($teacher_id != null){
+			$this->teacher_id = $teacher_id;
+		}
+
 		$this->save();
 
 	}
-
 
 
 
