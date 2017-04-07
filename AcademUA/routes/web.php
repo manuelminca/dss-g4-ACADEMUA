@@ -90,3 +90,17 @@ Route::get('/categories/new/', function () {
 
 Route::get('/comments/create/{course_id}', 'CommentsController@createComment');
 Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment');
+
+/*##################################################################################################
+####################################MESSAGES###########################################################
+##################################################################################################*/
+
+Route::get('/messages/create/', 'MessagesController@createMessage');
+Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage');
+Route::get('/messages/new/', function () {
+
+	return view('/messages/createMessage');
+}
+);
+Route::get('/messages', 'MessagesController@showMessages');
+

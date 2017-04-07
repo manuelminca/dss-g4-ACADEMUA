@@ -90,7 +90,8 @@ class User extends Authenticatable
 		$this->name= $name;
 		$this->username= $name;
 		$this->password= $password;
-		$this->professor=$professor;
+		$this->professor = $professor;
+		
 		$this->save();
 		
 	}
