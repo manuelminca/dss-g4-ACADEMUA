@@ -1,5 +1,5 @@
 @section('title','Instructors')
-@section('courseCurrent','current_page_item')
+@section('instructorsCurrent','current_page_item')
 @section('headerClass','alt static-header')
 @include('master')
             <div class="inner-head">
