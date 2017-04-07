@@ -29,6 +29,10 @@ class Message extends Model
     public function deleteMessage(){
 		$this->delete();
 	}
+	public function showMessages(){
+		$list = Message::all();
+		return $list;
+	}
 
 	public function createMessage ($subject, $sender_id, $receiver_id, $message) {
 		$this->subject = $subject;
