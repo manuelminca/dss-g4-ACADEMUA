@@ -50,7 +50,7 @@
                             <li class="parent-item courses-menu @yield('newCourseCurrent')">
                                 <a href="/courses/new" class="ln-tr">Add course</a>
                             </li>
-                            <li class="parent-item haschild">
+                            <li class="parent-item haschild @yield('instructorsCurrent')">
                                 <a href="/users/instructors" class="ln-tr">Instuctors</a>
                             </li>
                             <li class="parent-item haschild">
