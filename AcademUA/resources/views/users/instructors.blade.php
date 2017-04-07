@@ -1,35 +1,17 @@
-@section('title','Courses')
+@section('title','Instructors')
 @section('courseCurrent','current_page_item')
+@section('headerClass','alt static-header')
 @include('master')
             <div class="inner-head">
                 <div class="container">
-                    <h1 class="entry-title">Self Development Courses</h1>
+                    <h1 class="entry-title">OUR INSTRUCTORS</h1>
                     <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
+                        In this section you can find information related with our instructors.
                     </p>
-                    <div class="breadcrumb">
-                        <ul class="clearfix">
-                            <li class="ib"><a href="">Home</a></li>
-                            <li class="ib current-page"><a href="">Courses</a></li>
-                        </ul>
-                    </div>
                 </div><!-- End container -->
             </div><!-- End Inner Page Head -->
             <div class="clearfix"></div>
             <section class="full-section latest-courses-section no-slider">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="add-courses top-margin">
-                                <img src="assets/img/icons/addcourse-icon.png" alt="" class="fl add-courses-icon">
-                                <a href="#" class="add-courses-title ln-tr">You Are an Instructor ? Add Your Courses Now !</a>
-                                <p class="add-courses-description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
-                                </p>
-                            </div><!-- End Add Courses -->
-                        </div>
-                    </div><!-- End row -->
-                </div>
                 <div class="section-content latest-courses-content fadeInDown-animation">
                     <div class="container">
                         <div class="row">

@@ -106,6 +106,7 @@
 <?php
 $number = 1;
                                         foreach ($comments as $comment) {
+                                            
                                             echo "<div class='query clearfix'>";
                                                 echo "<div class='image fl'>";
                                                     echo "<img src='/img/users/user1.jpg' alt=''>";
