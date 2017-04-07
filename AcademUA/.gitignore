@@ -6,3 +6,5 @@
 /.idea
 Homestead.json
 Homestead.yaml
+/database/database.sqlite
+phpunit-5.7.phar
