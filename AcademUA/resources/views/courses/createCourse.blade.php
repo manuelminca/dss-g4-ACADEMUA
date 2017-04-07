@@ -15,7 +15,7 @@
             <section class="full-section latest-courses-section no-slider">
 
 <ul>
-
+<!--
 <h1>New Course</h1>
 {{-- Error messages --}}
 @if (count($errors) > 0)
@@ -25,6 +25,9 @@
 @endforeach
 </ul>
 @endif
+<style>
+input{width : 100%;}
+</style>
 
 <form action="/courses/create/" >
 
@@ -32,7 +35,12 @@
 {{ method_field('PUT') }}
 
   Name:<br>
-  <input value="{{ old('name') }}" type="text" name="name"><br>
+
+  <div class="input-group margin-bottom-sm">
+  <span class="input-group-addon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
+  <input class="form-control" value="{{ old('name') }}" type="text" name="name">
+    </div>
+
     Description:<br>
   <input value="{{ old('description') }}" type="text" name="description" <br><br>
       Price<br>
@@ -48,6 +56,7 @@
 
 
 <select name="category">
+
 <?php
 foreach ($categories as $cat) {
     echo "<option value='$cat->name'>".$cat->name."</option>";
@@ -59,7 +68,75 @@ foreach ($categories as $cat) {
 
 
   <input type="submit" value="Submit">
+ 
 </form>
+ -->
+            <form action="/courses/create/" >
+            <div class="login-page" style="width:80%; margin:0 auto;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="login-form">
+                                    <div class="login-title">
+                                        <span class="text">Create a new course</span>
+                                        
+                                    </div><!-- End Title -->
+                                    <form method="post" action="/" id="login-form">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input type="text" value="{{ old('name') }}" name="name" placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input  value="{{ old('price') }}" type="number" name="price" placeholder="Price">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input  type="number" name="id" placeholder="Teacher id">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input  value="{{ old('links') }}" type="text" name="links" placeholder="Links">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-6">
+                                                <div class="input">
+                                                    <input  value="{{ old('description') }}" type="text" name="description" placeholder="Description">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-6">
+                                                <div class="input" >
+                                                    <input name="content" cols="50" rows="10" placeholder="Content"style = "min-height:200px">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-6">
+                                                <div class="dropdown" >
+                                                    <select name="category">
+                                                            <?php
+                                                            foreach ($categories as $cat) {
+                                                                echo "<option value='$cat->name'>".$cat->name."</option>";
+                                                            }
+
+                                                            ?>
+                                                            </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="input clearfix">
+                                                    <input type="submit" value="Submit">
+                                                </div>
+                                            </div>
+                                            
+                                        </div><!-- end row -->
+                                    </form><!-- End form -->
+                                </div><!-- end login form -->
+                            </form>
+                            </div><!-- end col-md-12 -->
+                        </div><!-- end row -->
+                    </div><!-- End Login Page -->
 
 
 
@@ -75,4 +152,5 @@ foreach ($categories as $cat) {
                     </div><!-- End Container -->
                 </div><!-- End Latest-Courses Section Content -->
             </section><!-- End Courses Section -->
+
 @include('footer')
