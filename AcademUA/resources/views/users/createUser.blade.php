@@ -1,8 +1,15 @@
 @section('title','New User')
-@section('newCourseCurrent','current_page_item')
+@section('newUserCurrent','current_page_item')
+@section('headerClass','alt static-header')
 @include('master')
 
+            <div class="inner-head">
+                <div class="container">
+                    <h1 class="entry-title">Register</h1>
+                </div><!-- End container -->
+            </div><!-- End Inner Page Head -->
 
+            <div class="clearfix"></div>
 
 
 <div style="padding-top:200px">
