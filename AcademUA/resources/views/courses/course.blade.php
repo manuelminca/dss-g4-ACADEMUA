@@ -163,7 +163,7 @@ $number = 1;
                                                         echo "</div>";
                                                         echo "<div class='place ib'>";
                                                             echo "<span class='icon'><i class='fa fa-building'></i></span>";
-                                                            echo "<span class='text'>Yat Academy</span>";
+                                                            echo "<span class='text'>Academua</span>";
                                                        echo "</div>";
                                                         echo "<div class='center ib'>";
                                                             echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";

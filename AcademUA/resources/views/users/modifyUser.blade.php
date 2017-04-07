@@ -1,6 +1,9 @@
-@include('master')
-<body>
 @section('title','Edit User')
+@section('courseCurrent','current_page_item')
+@section('headerClass','alt static-header')
+@include('master')
+
+
 
 <div style="padding-top:200px">
 </div>
@@ -34,5 +37,4 @@
 <?php
 ?>
 </ul>
-</body>
-</html>
+@include('footer')
