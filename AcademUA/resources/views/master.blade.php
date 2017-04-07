@@ -54,6 +54,9 @@
                                 <a href="/users/instructors" class="ln-tr">Instuctors</a>
                             </li>
                             <li class="parent-item haschild">
+                                <a href="/messages/new" class="ln-tr">New Message</a>
+                            </li>
+                            <li class="parent-item haschild">
                                 <a href="#" class="ln-tr">About</a>
                             </li>
                             <li class="parent-item haschild">

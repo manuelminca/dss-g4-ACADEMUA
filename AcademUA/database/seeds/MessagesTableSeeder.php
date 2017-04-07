@@ -15,15 +15,15 @@ class MessagesTableSeeder extends Seeder
         
         DB::table('messages')->insert([
             'subject' => 'Programación',
-            'sender_id' => 41,
-            'receiver_id' => 42,
+            'sender_id' => 1,
+            'receiver_id' => 2,
             'message' => 'hola'
         ]);
 
         DB::table('messages')->insert([
             'subject' => 'Programación',
-            'sender_id' => 42,
-            'receiver_id' => 41,
+            'sender_id' =>2,
+            'receiver_id' => 1,
             'message' => 'adios'
         ]);
     }
