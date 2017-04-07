@@ -46,7 +46,7 @@ public function getUsername($id){
 	public function edit(Request $request, $id){
 		
 		$this->validate($request,[
-						            'email' => 'required | unique:users,email',
+						            'email' => 'required | email | unique:users,email',
 						            'name' => 'required',
 						            'password' => 'required | min:2',
 						            'password_confirmation' => 'required | same:password'
