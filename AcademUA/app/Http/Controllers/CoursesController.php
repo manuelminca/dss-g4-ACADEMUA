@@ -138,10 +138,11 @@ class CoursesController extends Controller
 	}
 
 	
-	public function attendCourse($course_id){
+	public function attendCourse($course_id, $user_id){
 		$course = Course::find($course_id);
 		$user = User::find($user_id);
-		$course->attendCourse($user);
+		$course->attendCourse($course->id, $user);
+		
 	}
 
 	

@@ -32,7 +32,7 @@
     <body id="@yield('homeId')">
         <div id="entire">
             <header id="@yield('headerId')" class="@yield('headerClass')">
-                <div class="container">
+                <div class="container" style="width:100%; background-color:#f8f7f7;"> 
                     <div class="logo-container fl clearfix">
                         <a href="/" class="ib">
                             <img src="/img/logo@2x.png" class="fl" alt="Logo">
@@ -50,14 +50,14 @@
                             <li class="parent-item courses-menu @yield('newCourseCurrent')">
                                 <a href="/courses/new" class="ln-tr">Add course</a>
                             </li>
-                            <li class="parent-item haschild">
+                            <li class="parent-item haschild @yield('instructorsCurrent')">
                                 <a href="/users/instructors" class="ln-tr">Instuctors</a>
                             </li>
                             <li class="parent-item haschild">
-                                <a href="17-about-1.html" class="ln-tr">About</a>
+                                <a href="#" class="ln-tr">About</a>
                             </li>
                             <li class="parent-item haschild">
-                                <a href="33-contact-1.html" class="ln-tr">Contact</a>
+                                <a href="#" class="ln-tr">Contact</a>
                                 <ul class="submenu">
                                     <li class="sub-item"><a href="33-contact-1.html" class="ln-tr">Contact 1</a></li>
                                     <li class="sub-item"><a href="34-contact-2.html" class="ln-tr">Contact 2</a></li>
@@ -66,6 +66,9 @@
                             </li>
                             <li class="parent-item login">
                                 <a href="#" class="ln-tr" data-toggle="modal" data-target="#login-modal"><span class="grad-btn">Login</span></a>
+                            </li>
+                            <li class="parent-item login">
+                                <a href="/users/new" class="ln-tr" data-toggle="modal" data-target="#login-modal"><span class="grad-btn">Register</span></a>
                             </li>
                         </ul>
                     </nav><!-- End NAV Container -->
