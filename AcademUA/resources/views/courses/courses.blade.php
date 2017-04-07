@@ -39,17 +39,17 @@
 
 <form action="/courses/filter/">
 {{ csrf_field() }}
- Buscar por: <select name="filter">
-                    <option value="precio_menor" selected="selected">Precio máximo</option>
-                    <option value="nombre">nombre</option>
+ Search by: <select name="filter">
+                    <option value="precio_menor" selected="selected">Maximum price</option>
+                    <option value="nombre">Name</option>
               </select>
-Ordenar por: <select name="order">
-                    <option value="precio" selected="selected">Precio</option>
-                    <option value="nombre">nombre</option>
+ Order by: <select name="order">
+                    <option value="precio" selected="selected">Price</option>
+                    <option value="nombre">Name</option>
               </select>
-De manera:    <select name="how">
-                    <option value="asc" selected="selected">Ascendente</option>
-                    <option value="desc">Descendente</option>
+Asc/Desc:    <select name="how">
+                    <option value="asc" selected="selected">Ascending</option>
+                    <option value="desc">Descending</option>
               </select>
   <input value="{{ old('valor') }}" type="text" name="valor"><br>
 

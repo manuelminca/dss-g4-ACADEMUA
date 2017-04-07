@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+
+	//Activate timestamps
+	public $timestamps = true;
+
 	public function courses() {
 		return $this->belongsTo('App\Course');
 	}
@@ -31,12 +35,5 @@ class Comment extends Model
 		$this->save();
 	}
 
-	/*public function attachCourse($course_id){
-		$this->courses()->attach($course_id);
-	}
-
-	public function attachUser($user_id){
-		$this->user()->attach($user_id);
-	}*/
 
 }

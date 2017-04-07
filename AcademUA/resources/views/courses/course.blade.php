@@ -45,12 +45,7 @@
                     <div class="container">
                         <div class="row">
 
-
-
- <?php
-
-
-        
+ <?php   
     echo "<div class='col-md-3 col-xs-6'>";
         echo "<div class='course'>";
             echo "<div class='course-image'>";
@@ -77,43 +72,9 @@
             echo "</div>";
         echo "</div>";
     echo "</div>";
-
-    $number = 1;
-    foreach ($comments as $comment) {
-        $number = $number+1;
-        echo "<div class='col-md-3 col-xs-6'>";
-            echo "<div class='course'>";
-                echo "<div class='course-image'>";
-                    echo "<div class='details-overlay'>";
-                    echo "<span class='place'>";
-                    echo "<i class='fa fa-briefcase'></i>";
-                    echo "<span class='text'>Rating : " . $comment->id ."</span>";
-                    echo "</span>";
-                    echo "<span class='time'>";
-                    echo "<i class='fa fa-money'></i>";
-                    echo "<span class='text'>" . $comment->rating . "</span>";
-                    echo "</span>";
-                    echo "</div>";
-                    echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
-                    echo "</div>";
-                    echo "<div class='course-info'>";
-                    echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $comment->id . "</a></h3>";
-                    echo "<p class='course-description'>" . $comment->description . "</p>";
-                    echo "<div class='buttons'>";
-                    //echo "<a href='/comments/comment/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-                    echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
-                    echo "</div>";
-                echo "</div>";
-            echo "</div>";
-        echo "</div>";
-        if($number == 4){
-            echo "<div class='clearfix'></div>";
-        }
-    }
-
 ?>
 
-
+<div class="clearfix"></div>
 <form action="/comments/create/{{$course->id}}">
 
 {{ csrf_field() }}
@@ -131,10 +92,61 @@
 
   <input type="submit" value="Submit">
 </form>
-                     
+
+    <!-- ############################ COMMENTS ############################## -->
+        <section class="full-section misc-section fadeInDown-animation">
+                <div class="container">
+                    <div class="row" style="width:80%; margin:0 auto;">
+                        <div class="col-md-12 basic-slider-box">
+                            <div class="questions">
+                                <h6 class="head-title">Comments</h6>
+                                <div class="basic-slider flexslider">
+                                    <ul class="slides">
+                                        <li class="questions-slide-item">
+<?php
+$number = 1;
+                                        foreach ($comments as $comment) {
                                             
-                                                
-        
+                                            echo "<div class='query clearfix'>";
+                                                echo "<div class='image fl'>";
+                                                    echo "<img src='/img/users/user1.jpg' alt=''>";
+                                                echo "</div>";
+                                                echo "<div class='query-content'>";
+                                                    echo "<h3 class='post-title'>#". $number . ": Manolo</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
+                                                    echo "<p class='query-description'>". $comment->description . "</p>";
+                                                    echo "<div class='details'>";
+                                                        echo " <div class='date ib'>";
+                                                            echo "<span class='icon'><i class='fa fa-clock-o'></i></span>";
+                                                            echo "<span class='text'>Time : 7 Dec, 2014</span>";
+                                                        echo "</div>";
+                                                       echo " <div class='date ib'>";
+                                                            echo "<span class='icon'><i class='fa fa-star'></i></span>";
+                                                            echo "<span class='text'>Rating: " . $comment->rating . "</span>";
+                                                        echo "</div>";
+                                                        echo "<div class='place ib'>";
+                                                            echo "<span class='icon'><i class='fa fa-building'></i></span>";
+                                                            echo "<span class='text'>Yat Academy</span>";
+                                                       echo "</div>";
+                                                        echo "<div class='center ib'>";
+                                                            echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                                                        echo "</div>";
+                                                        
+
+                                                    echo "</div>";
+                                                echo "</div>";
+                                            echo "</div>";
+                                            $number = $number+1;
+                                        }
+?>
+
+                                        </li><!-- End 1st Post Slide Item -->
+                                    </ul><!-- End ul Items -->
+                                </div><!-- End Posts Slider -->
+                            </div><!-- End Blog Posts/Latest News -->
+                        </div><!-- End col-md-6 -->
+                    </div><!-- End row -->
+                </div><!-- End container -->
+            </section><!-- End MISC Section -->
                             
                            
                         </div><!-- End row -->
