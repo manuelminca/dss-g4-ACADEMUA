@@ -42,6 +42,10 @@
       Username:<br>
   <input value="{{ old('username') }}" type="text" name="username" <br><br>
 
+        Teacher? (y,n):<br>
+  <input value="{{ old('professor') }}" type="text" name="professor" <br><br>
+
+
 
   <input type="submit" value="Submit">
 </form>
