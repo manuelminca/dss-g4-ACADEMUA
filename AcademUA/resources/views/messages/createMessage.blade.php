@@ -28,27 +28,26 @@
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
-                                                Subject:
-                                                    <input type="text" value="{{ old('subject') }}" name="subject">
+                                                    <input type="text" value="{{ old('subject') }}" name="subject" placeholder = "Subject">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
-                                                Sender id:
-                                                    <input  value="{{ old('sender_id') }}" type="number" name="sender_id">
+            
+                                                    <input  value="{{ old('sender_id') }}" type="number" name="sender_id" placeholder = "Sender id">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
-                                                Receiver id:
-                                                    <input  value="{{ old('receiver_id') }}" type="number" name="receiver_id">
+                           
+                                                    <input  value="{{ old('receiver_id') }}" type="number" name="receiver_id" placeholder = "Receiver id">
                                                 </div>
                                             </div>
                                             
                                             <div class="col-md-12 col-sm-6">
                                                 <div class="input">
-                                                Message:
-                                                    <input  value="{{ old('message') }}" type="text" name="message" >
+                                                
+                                                    <input  value="{{ old('message') }}" type="text" name="message" placeholder = "Message" >
                                                 </div>
                                             </div>
                                             
