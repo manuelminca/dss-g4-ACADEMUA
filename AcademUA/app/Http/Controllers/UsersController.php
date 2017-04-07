@@ -77,9 +77,10 @@ public function getUsername($id){
 		$name= $request->input('name');
 		$username= $request->input('username');
 		$password= $request->input('password');
+		$professor = $request->input('professor');
 		
 		$user = new User();
-		$user->createUser($email,$name,$username,$password);
+		$user->createUser($email,$name,$username,$password, $professor);
 		
 		return view('home');
 	}

@@ -13,7 +13,7 @@
             </div><!-- End Inner Page Head -->
             <div class="clearfix"></div>
             <section class="full-section latest-courses-section no-slider">
-
+<!--
 <ul>
 <h1>Modify Course</h1>
 {{-- Error messages --}}
@@ -39,15 +39,64 @@
   <input value="{{ old('price') }}" type="number" name="price" <br><br>
   <input type="submit" value="Submit">
 </form>
-
-<?php
-?>
 </ul>
-                                                
-        
+-->         
+
+<form action="/courses/modified/{{$courses->id}}" >
+            <div class="login-page" style="width:80%; margin:0 auto;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="login-form">
+                                    <div class="login-title">
+                                        <span class="text">Modify course</span>
+                                        
+                                    </div><!-- End Title -->
+                                    <form method="post" action="/" id="login-form">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input type="text" value="{{ old('name') }}" name="name" placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input  value="{{ old('price') }}" type="number" name="price" placeholder="Price">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input  value="{{ old('links') }}" type="text" name="links" placeholder="Links">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input  value="{{ old('description') }}" type="text" name="description" placeholder="Description">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-6">
+                                                <div class="input" >
+                                                    <input name="content" cols="50" rows="10" placeholder="Content"style = "min-height:200px">
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="col-md-12">
+                                                <div class="input clearfix">
+                                                    <input type="submit" value="Submit">
+                                                </div>
+                                            </div>
+                                            
+                                        </div><!-- end row -->
+                                    </form><!-- End form -->
+                                </div><!-- end modify course form -->
+                            </form>
+                            </div><!-- end col-md-12 -->
+                        </div><!-- end row -->
+                    </div><!-- End modify Page -->                                       
+         </ul>
                             
                         </div><!-- End row -->
                     </div><!-- End Container -->
                 </div><!-- End Latest-Courses Section Content -->
             </section><!-- End Courses Section -->
+           
 @include('footer')
