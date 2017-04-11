@@ -25,73 +25,82 @@ Route::get('/', function () {
 );
 
 
-Route::get('/users/delete/{id}', 'UsersController@deleteUser');
-
-
-
-Route::get('/courses', function () {
-	// 	show all the courses
-	$courses = Course::all();
-	return view('/courses/courses')->with('courses', $courses);
-}
-);
-
-
-Route::get('/manageCourses', function () {
-	//l	ist of all the courses 
-				    $courses = Course::where('teacher_id', '2')->get();
-	return view('/courses/manageCourses')->with('courses', $courses);
-}
-);
-
-Route::get('/courses/delete/{id}', function ($id) {
-	//d	eleting only one course 
-				    $course = Course::find($id);
-	
-	
-	$course->delete();
-	
-	$course = App\Courses::all();
-	return view('/courses/manageCourses')->with('courses', $course);
-}
-);
-
-Route::get('/courses/modify/{id}', function ($id) {
+/*##################################################################################################
+####################################USERS###########################################################
+##################################################################################################*/
+Route::get('/users/modify/{id}', function ($id) {
 	//m	odify the data of a course
-	$course = Course::find($id);
-	return view('/courses/modifyCourse')->with('courses', $course);
+	$user = User::find($id);
+	return view('/users/modifyUser')->with('user', $user);
 }
 );
-
-Route::get('/user/new/', function () {
+Route::get('/users/delete/{id}', 'UsersController@deleteUser');
+Route::get('/users/modified/{id}', 'UsersController@edit');
+Route::get('/users/create/', 'UsersController@createUser');
+Route::get('/users/new/', function () {
 
 	return view('/users/createUser');
 }
 );
 
+Route::get('/users/instructors/', 'UsersController@showInstructors');
+
+
+
+/*##################################################################################################
+####################################COURSES###########################################################
+##################################################################################################*/
+
+Route::get('/courses/create/','CoursesController@createCourse');
+Route::get('/courses/attend/{course_id}&{user_id}','CoursesController@attendCourse');
+Route::get('/courses/manage/{id}','CoursesController@getCourses');
+Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
+Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
+Route::get('/courses/new/','CoursesController@newCourse');
+Route::get('/courses/modify/{id}','CoursesController@modifyCourse');
+
+
+Route::get('/courses', 'CoursesController@showCourses');
+//Muestra cursos filtrando
+Route::get('/courses/filter', 'CoursesController@showCoursesFilter');
+
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
-Route::get('/users/modified/{id}', 'UsersController@edit');
-Route::get('/users/create/', 'UsersController@createUser');
 
-Route::get('/modifiedCourse', function () {
-	//m	odify the data of a course
 
-	return view('/courses/modifiedCourse');
-}
-);
 
-//Category
+Route::get('/courses/create/','CoursesController@createCourse');
+
+/*##################################################################################################
+####################################CATEGORIES###########################################################
+##################################################################################################*/
 Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
 
-Route::get('/categories', function () {
-	// 	show all the categories
-				    $categories = Category::all();
-	return view('/categories/categories')->with('categories', $categories);
-}
-);
 
-Route::get('/category/new/', function () {
+Route::get('/categories/create/', 'CategoriesController@createCategory');
+Route::get('/categories/new/', function () {
 
 	return view('/categories/createCategory');
 }
 );
+
+
+/*##################################################################################################
+####################################COMMENTS###########################################################
+##################################################################################################*/
+
+Route::get('/comments/create/{course_id}', 'CommentsController@createComment');
+Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment');
+
+/*##################################################################################################
+####################################MESSAGES###########################################################
+##################################################################################################*/
+
+Route::get('/messages/create/', 'MessagesController@createMessage');
+Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage');
+Route::get('/messages/new/', function () {
+
+	return view('/messages/createMessage');
+}
+);
+Route::get('/messages', 'MessagesController@showMessages');
+
