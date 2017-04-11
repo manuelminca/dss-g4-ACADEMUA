@@ -12,7 +12,7 @@
 
                     <h1 class="entry-title">ACADEMUA</h1>
                     <p class="description">
-                        WELCOME PAGE IN PROGRESS
+                        WELCOME PAGE IN PROGRESS.
                     </p>
                     
                 </div><!-- End container -->
