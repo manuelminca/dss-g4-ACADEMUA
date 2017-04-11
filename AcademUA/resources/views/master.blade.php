@@ -32,7 +32,7 @@
     <body id="@yield('homeId')">
         <div id="entire">
             <header id="@yield('headerId')" class="@yield('headerClass')">
-                <div class="container" style="width:100%; background-color:#f8f7f7;"> 
+                <div class="container" @yield('navbar')> 
                     <div class="logo-container fl clearfix">
                         <a href="/" class="ib">
                             <img src="/img/logo@2x.png" class="fl" alt="Logo">
@@ -50,8 +50,11 @@
                             <li class="parent-item courses-menu @yield('newCourseCurrent')">
                                 <a href="/courses/new" class="ln-tr">Add course</a>
                             </li>
-                            <li class="parent-item haschild">
+                            <li class="parent-item haschild @yield('instructorsCurrent')">
                                 <a href="/users/instructors" class="ln-tr">Instuctors</a>
+                            </li>
+                            <li class="parent-item haschild">
+                                <a href="/messages/new" class="ln-tr">New Message</a>
                             </li>
                             <li class="parent-item haschild">
                                 <a href="#" class="ln-tr">About</a>

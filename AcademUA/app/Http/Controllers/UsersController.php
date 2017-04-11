@@ -46,7 +46,7 @@ public function getUsername($id){
 	public function edit(Request $request, $id){
 		
 		$this->validate($request,[
-						            'email' => 'required | unique:users,email',
+						            'email' => 'required | email | unique:users,email',
 						            'name' => 'required',
 						            'password' => 'required | min:2',
 						            'password_confirmation' => 'required | same:password'
@@ -66,7 +66,7 @@ public function getUsername($id){
 	public function createUser(Request $request){
 		
 		$this->validate($request,[
-				'email' => 'required | unique:users,email',
+				'email' => 'required | email |  unique:users,email',
 				'name' => 'required',
 				'username' => 'required | unique:users,username',
 				'password' => 'required | min:2',
@@ -77,9 +77,16 @@ public function getUsername($id){
 		$name= $request->input('name');
 		$username= $request->input('username');
 		$password= $request->input('password');
+		$professor= $request->input('professor');
+
+		if($professor == "y"){
+			$professor = true;
+		}else{
+			$professor = false;
+		}
 		
 		$user = new User();
-		$user->createUser($email,$name,$username,$password);
+		$user->createUser($email,$name,$username,$password, $professor);
 		
 		return view('home');
 	}

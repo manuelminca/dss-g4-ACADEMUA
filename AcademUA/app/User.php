@@ -84,12 +84,13 @@ class User extends Authenticatable
 		
 	}
 
-	public function createUser($email,$name,$username,$password){
+	public function createUser($email,$name,$username,$password, $professor){
 				
 		$this->email= $email;
 		$this->name= $name;
 		$this->username= $name;
 		$this->password= $password;
+		$this->professor = $professor;
 		
 		$this->save();
 		

@@ -10,12 +10,11 @@
             </div><!-- End Inner Page Head -->
 
             <div class="clearfix"></div>
+            <section class="full-section latest-courses-section no-slider">
 
 
-<div style="padding-top:200px">
-</div>
-<ul>
 
+<!--
 <h1>New User</h1>
 {{-- Error messages --}}
 @if (count($errors) > 0)
@@ -42,11 +41,73 @@
       Username:<br>
   <input value="{{ old('username') }}" type="text" name="username" <br><br>
 
+        Teacher? (y,n):<br>
+  <input value="{{ old('professor') }}" type="text" name="professor" <br><br>
+
+
 
   <input type="submit" value="Submit">
 </form>
-<?php
-?>
-</ul>
-</body>
-</html>
+-->
+<form action="/users/create/" >
+            <div class="login-page" style="width:80%; margin:0 auto;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="login-form">
+                                    <div class="login-title">
+                                        <span class="text">Register</span>
+                                        
+                                    </div><!-- End Title -->
+                                    <form method="post" action="/" id="login-form">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input value="{{ old('name') }}" type="text" name="name" placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input value="{{ old('email') }}" type="text" name="email" placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input type="password" name="password" placeholder="Password">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input type="password" name="password_confirmation" placeholder = "Repeat password">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input" >
+                                                    <input value="{{ old('username') }}" type="text" name="username" placeholder="Username">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input" >
+                                                    <input  type="text" name="professor" placeholder="Professor 1">
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="col-md-12">
+                                                <div class="input clearfix">
+                                                    <input type="submit" value="Submit">
+                                                </div>
+                                            </div>
+                                            
+                                        </div><!-- end row -->
+                                    </form><!-- End form -->
+                                </div><!-- end modify course form -->
+
+                            </form>
+                        
+                            </div><!-- end col-md-12 -->
+                        </div><!-- end row -->
+                    </div><!-- End modify Page -->    
+
+
+
+</section><!-- End Courses Section -->
+@include('footer')
