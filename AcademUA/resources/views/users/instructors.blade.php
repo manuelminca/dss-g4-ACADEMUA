@@ -26,13 +26,10 @@ foreach ($users as $user) {
 	echo "<div class='course-image'>";
 	echo "<div class='details-overlay'>";
 	echo "<span class='place'>";
-	echo "<i class='fa fa-map-marker'></i>";
+	echo "<i class='fa'></i>";
 	echo "<span class='text'>Id : " . $user->id ."</span>";
 	echo "</span>";
-	echo "<span class='time'>";
-	echo "<i class='fa fa-clock-o'></i>";
-	echo "<span class='text'>Price : " . $user->price . "</span>";
-	echo "</span>";
+
 	echo "</div>";
 	echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
 	echo "</div>";
@@ -40,8 +37,8 @@ foreach ($users as $user) {
 	echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $user->name . "</a></h3>";
 	echo "<p class='course-description'>" . $user->description . "</p>";
 	echo "<div class='buttons'>";
-	echo "<a href='/courses/course/" .$user->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-	echo "<a href='/courses/delete/" .$user->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+	echo "<a href='/users/modify/" .$user->id. "' class='btn grad-btn orange-btn read-btn'>Modify</a>";
+	echo "<a href='/users/delete/" .$user->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";

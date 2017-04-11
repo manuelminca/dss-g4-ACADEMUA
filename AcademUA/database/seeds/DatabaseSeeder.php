@@ -13,13 +13,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 		//Insert data into DB
-		/*$this->call(UsersTableSeeder::class);
+		$this->call(UsersTableSeeder::class);
 		$this->call(CoursesTableSeeder::class);
 		$this->call(CategoriesTableSeeder::class);
 		
 		$this->call(UserscoursesTableSeeder::class);
 		$this->call(CategoriescoursesTableSeeder::class);
-		$this->call(CommentsTableSeeder::class);*/
+		$this->call(CommentsTableSeeder::class);
 		$this->call(MessagesTableSeeder::class);
 		
 		//Delete data from database

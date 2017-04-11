@@ -75,6 +75,7 @@
 ?>
 
 <div class="clearfix"></div>
+<!--
 <form action="/comments/create/{{$course->id}}">
 
 {{ csrf_field() }}
@@ -86,13 +87,50 @@
       <textarea name="description" cols="50" rows="10"></textarea><br><br>
       Id user:<br>
   <input type="number" name="id_user" min="0" <br><br>
-  <!-- Con esto podremos analizar la URI:
-  <input type="hidden" id="current_url" name="current_url" value="<?php echo 'http://localhost:8080',$_SERVER['REQUEST_URI'];?>"-->
-
+ 
 
   <input type="submit" value="Submit">
 </form>
-
+-->
+<form action="/comments/create/{{$course->id}}" >
+            {{ csrf_field() }}
+            {{ method_field('POST') }}
+            <div class="login-page" style="width:80%; margin:0 auto;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="login-form">
+                                    <div class="login-title">
+                                        <span class="text">Comment</span>
+                                        
+                                    </div><!-- End Title -->
+                                    <form method="post" action="/" id="login-form">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input value="{{ old('rating') }}" type="number" name="rating" min="0" max="5" placeholder="Rating">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input type="number" name="id_user" min="0" placeholder="User id">
+                                                </div>
+                                            </div>                  
+                                            <div class="col-md-12 col-sm-6">
+                                                <div class="input" >
+                                                    <input name="description" cols="50" rows="10" placeholder="Content"style = "min-height:200px">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-12">
+                                                <div class="input clearfix">
+                                                    <input type="submit" value="Submit">
+                                                </div>
+                                            </div>
+                                            
+                                        </div><!-- end row -->
+                                    </form><!-- End form -->
+                                </div><!-- end login form -->
+                            </form>
     <!-- ############################ COMMENTS ############################## -->
         <section class="full-section misc-section fadeInDown-animation">
                 <div class="container">
@@ -125,7 +163,7 @@ $number = 1;
                                                         echo "</div>";
                                                         echo "<div class='place ib'>";
                                                             echo "<span class='icon'><i class='fa fa-building'></i></span>";
-                                                            echo "<span class='text'>Yat Academy</span>";
+                                                            echo "<span class='text'>Academua</span>";
                                                        echo "</div>";
                                                         echo "<div class='center ib'>";
                                                             echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
