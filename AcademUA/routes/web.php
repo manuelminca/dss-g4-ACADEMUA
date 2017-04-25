@@ -6,7 +6,8 @@ use App\Category;
 
 
 
-
+Route::get('ajaxImageUpload', ['uses'=>'AjaxImageUploadController@ajaxImageUpload']);
+Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUploadController@ajaxImageUploadPost']);
 /*
 -----------------------------------------------------------------------
 | Web Routes
