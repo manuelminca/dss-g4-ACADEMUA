@@ -14,10 +14,8 @@ class CoursesController extends Controller
 	###############################################*/
 
 	public function getCourses($teacher_id){
-		$course = new Course();
-		$list_Courses = $course->getCourses($teacher_id);
-		return view('courses.manageCourses')->with('courses', $list_Courses);
-		
+		$list = Course::where('teacher_id', '=', $teacher_id)->paginate(8);
+		return view('courses.manageCourses', ['courses' => $list]);
 	}
 
 	public function getComments($course_id){
