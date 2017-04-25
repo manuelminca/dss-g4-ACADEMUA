@@ -30,7 +30,7 @@ Route::get('/', function () {
 ####################################USERS###########################################################
 ##################################################################################################*/
 Route::get('/users/modify/{id}', function ($id) {
-	//m	odify the data of a course
+	//modify the data of a course
 	$user = User::find($id);
 	return view('/users/modifyUser')->with('user', $user);
 }

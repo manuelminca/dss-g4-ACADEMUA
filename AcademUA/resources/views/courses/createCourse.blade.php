@@ -15,7 +15,7 @@
             <section class="full-section latest-courses-section no-slider">
 
 <ul>
-<!--
+
 <h1>New Course</h1>
 {{-- Error messages --}}
 @if (count($errors) > 0)
@@ -28,7 +28,7 @@
 <style>
 input{width : 100%;}
 </style>
-
+<!--
 <form action="/courses/create/" >
 
 {{ csrf_field() }}
