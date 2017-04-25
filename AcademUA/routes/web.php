@@ -105,3 +105,7 @@ Route::get('/messages/new/', function () {
 );
 Route::get('/messages', 'MessagesController@showMessages');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
