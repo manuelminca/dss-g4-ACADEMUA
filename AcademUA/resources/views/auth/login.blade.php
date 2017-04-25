@@ -1,6 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+@section('title','New User')
+@section('newUserCurrent','current_page_item')
+@section('headerClass','alt static-header')
+@include('master')
+
+            <div class="inner-head">
+                <div class="container">
+                    <h1 class="entry-title">Login</h1>
+                </div><!-- End container -->
+            </div><!-- End Inner Page Head -->
+
+            <div class="clearfix"></div>
+            <section class="full-section latest-courses-section no-slider">
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

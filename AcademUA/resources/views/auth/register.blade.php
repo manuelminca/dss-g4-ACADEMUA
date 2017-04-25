@@ -1,6 +1,25 @@
 @extends('layouts.app')
 
-@section('content')
+ @section('content')
+
+
+
+@section('title','New User')
+@section('newUserCurrent','current_page_item')
+@section('headerClass','alt static-header')
+@include('master')
+
+            <div class="inner-head">
+                <div class="container">
+                    <h1 class="entry-title">Register</h1>
+                </div><!-- End container -->
+            </div><!-- End Inner Page Head -->
+
+            <div class="clearfix"></div>
+            <section class="full-section latest-courses-section no-slider">
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -35,6 +54,29 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">username</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                         <div class="form-group{{ $errors->has('professor') ? ' has-error' : '' }}">
+                            <label for="professor" class="col-md-4 control-label">Are you a teacher?</label>
+
+                            <div class="col-md-6">
+                                <input id="professor" type="checkbox" class="form-control" name="professor" value="yes">
+
                             </div>
                         </div>
 
