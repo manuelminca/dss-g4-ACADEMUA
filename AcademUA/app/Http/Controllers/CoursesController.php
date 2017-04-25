@@ -42,7 +42,10 @@ class CoursesController extends Controller
 		$course = Course::findOrFail($id);
 		$this->validate($request,[
 
-				'price' => 'min:0 | numeric'
+				'price' => 'min:0 | numeric | required',
+				'name' => 'required',
+				'description' => 'required',
+				'content' => 'required',
 		]);
 		
 		$name= $request->input('name');
