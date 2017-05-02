@@ -68,10 +68,10 @@
                                 </ul>
                             </li>
                             <li class="parent-item login">
-                                <a href="#" class="ln-tr" data-toggle="modal" data-target="#login-modal"><span class="grad-btn">Login</span></a>
+                                <a href="/login" class="ln-tr" data-toggle="modal" data-target="#login-modal"><span class="grad-btn">Login</span></a>
                             </li>
                             <li class="parent-item login">
-                                <a href="/users/new" class="ln-tr" data-toggle="modal" data-target="#login-modal"><span class="grad-btn">Register</span></a>
+                                <a href="/register" class="ln-tr" data-toggle="modal" data-target="#login-modal"><span class="grad-btn">Register</span></a>
                             </li>
                         </ul>
                     </nav><!-- End NAV Container -->

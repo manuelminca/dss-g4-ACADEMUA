@@ -6,7 +6,8 @@ use App\Category;
 
 
 
-
+Route::get('ajaxImageUpload', ['uses'=>'AjaxImageUploadController@ajaxImageUpload']);
+Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUploadController@ajaxImageUploadPost']);
 /*
 -----------------------------------------------------------------------
 | Web Routes
@@ -29,7 +30,7 @@ Route::get('/', function () {
 ####################################USERS###########################################################
 ##################################################################################################*/
 Route::get('/users/modify/{id}', function ($id) {
-	//m	odify the data of a course
+	//modify the data of a course
 	$user = User::find($id);
 	return view('/users/modifyUser')->with('user', $user);
 }
@@ -104,3 +105,7 @@ Route::get('/messages/new/', function () {
 );
 Route::get('/messages', 'MessagesController@showMessages');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
