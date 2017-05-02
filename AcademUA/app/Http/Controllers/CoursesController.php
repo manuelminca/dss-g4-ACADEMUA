@@ -89,7 +89,19 @@ class CoursesController extends Controller
 	
 	//Mostramos cursos filtrando
 	public function showCoursesFilter(Request $request){
+
 		$filter = $_GET["filter"];
+		if ($filter == 'precio_menor') {
+			$this->validate($request,[
+					'valor' => 'required | min:1 | numeric'
+			]);
+		} else {
+			$this->validate($request,[
+					'valor' => 'required'
+			]);
+		}
+	
+		
 		$order = $_GET["order"];
 		$how = $_GET["how"];
 		$course = new Course();
