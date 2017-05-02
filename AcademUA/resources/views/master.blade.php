@@ -47,15 +47,26 @@
                             <li class="parent-item courses-menu @yield('courseCurrent')">
                                 <a href="/courses" class="ln-tr">Courses</a>
                             </li>
+
+                            @if(Auth::check())
+                            @if (Auth::user()->checkTeacher())
+
                             <li class="parent-item courses-menu @yield('newCourseCurrent')">
                                 <a href="/courses/new" class="ln-tr">Add course</a>
                             </li>
+
+                            @endif
+                            @endif
+
                             <li class="parent-item haschild @yield('instructorsCurrent')">
                                 <a href="/users/instructors" class="ln-tr">Instuctors</a>
                             </li>
+
+                             @if(Auth::check())
                             <li class="parent-item haschild">
                                 <a href="/messages/new" class="ln-tr">New Message</a>
                             </li>
+                             @endif
                             <li class="parent-item haschild">
                                 <a href="#" class="ln-tr">About</a>
                             </li>

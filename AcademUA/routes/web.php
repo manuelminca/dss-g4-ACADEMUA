@@ -57,7 +57,7 @@ Route::get('/courses/attend/{course_id}&{user_id}','CoursesController@attendCour
 Route::get('/courses/manage/{id}','CoursesController@getCourses');
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
 Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
-Route::get('/courses/new/','CoursesController@newCourse');
+Route::get('/courses/new/','CoursesController@newCourse')->middleware('auth')->middleware('teacher');
 Route::get('/courses/modify/{id}','CoursesController@modifyCourse');
 
 
@@ -74,10 +74,10 @@ Route::get('/courses/create/','CoursesController@createCourse');
 /*##################################################################################################
 ####################################CATEGORIES###########################################################
 ##################################################################################################*/
-Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
+Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory')->middleware('auth');
 
 
-Route::get('/categories/create/', 'CategoriesController@createCategory');
+Route::get('/categories/create/', 'CategoriesController@createCategory')->middleware('auth');
 Route::get('/categories/new/', function () {
 
 	return view('/categories/createCategory');
@@ -89,21 +89,21 @@ Route::get('/categories/new/', function () {
 ####################################COMMENTS###########################################################
 ##################################################################################################*/
 
-Route::get('/comments/create/{course_id}', 'CommentsController@createComment');
-Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment');
+Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth');
+Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth');
 
 /*##################################################################################################
 ####################################MESSAGES###########################################################
 ##################################################################################################*/
 
-Route::get('/messages/create/', 'MessagesController@createMessage');
-Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage');
+Route::get('/messages/create/', 'MessagesController@createMessage')->middleware('auth');
+Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
 Route::get('/messages/new/', function () {
 
 	return view('/messages/createMessage');
 }
 );
-Route::get('/messages', 'MessagesController@showMessages');
+Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 
 
 Auth::routes();
