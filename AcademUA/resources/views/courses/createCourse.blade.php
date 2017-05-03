@@ -29,7 +29,7 @@
 <style>
 input{width : 100%;}
 </style>
-
+<!--
 <form action="/courses/create/" >
 
 {{ csrf_field() }}

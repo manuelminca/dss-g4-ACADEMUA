@@ -13,9 +13,8 @@
             </div><!-- End Inner Page Head -->
             <div class="clearfix"></div>
             <section class="full-section latest-courses-section no-slider">
-<!--
-<ul>
-<h1>Modify Course</h1>
+
+<!--<ul>
 {{-- Error messages --}}
 @if (count($errors) > 0)
 <ul>
@@ -23,9 +22,9 @@
 <li>{{ $error }}</li>
 @endforeach
 </ul>
-@endif
+@endif-->
 
-
+<!--
 <form action="/courses/modified/{{$courses->id}}">
   Name of the course:<br>
   <input value="{{ old('name') }}" type="text" name="name"><br>
@@ -55,6 +54,14 @@
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
+                                                    {{-- Error messages --}}
+                                                    @if ($errors->has('name') > 0)
+                                                    <ul>
+                                                    @foreach ($errors->get('name') as $error)
+                                                    <li>{{ $error }}</li>
+                                                    @endforeach
+                                                    </ul>
+                                                    @endif
                                                     <input type="text" value="{{ old('name') }}" name="name" placeholder="Name">
                                                 </div>
                                             </div>
