@@ -38,7 +38,7 @@ class CoursesTableSeeder extends Seeder
             'content' => 'Descripcion extensa del curso aqui se tiene que poner todo mas detallado',
             'links' => 'google.es',
             'price' => 10000,
-            'teacher_id' => 2
+            'teacher_id' => 1
         ]);
 
         DB::table('courses')->insert([

@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
         */
     public function run()
     {
-		//Insert data into DB
+		if(true){
 		$this->call(UsersTableSeeder::class);
 		$this->call(CoursesTableSeeder::class);
 		$this->call(CategoriesTableSeeder::class);
@@ -21,8 +21,12 @@ class DatabaseSeeder extends Seeder
 		$this->call(CategoriescoursesTableSeeder::class);
 		$this->call(CommentsTableSeeder::class);
 		$this->call(MessagesTableSeeder::class);
+		}else{
+			//Delete data from database
+	 		$this->call(delete::class);
+		}
+		//Insert data into DB
+
 		
-		//Delete data from database
-		// 		$this->call(delete::class);
 	}
 }
