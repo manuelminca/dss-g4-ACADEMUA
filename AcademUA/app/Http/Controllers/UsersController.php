@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class UsersController extends Controller
@@ -21,13 +22,11 @@ class UsersController extends Controller
 	}
 
 public function getUsername($id){
-		$user = new User();
-		$username = $user->getUsername();
+		$username = Auth::user()->username;
 		return $username;
 	}
-	public function getEmail($id){
-		$user = new User();
-		$email = $user->getEmail();
+	public function getEmail(){
+		$email = Auth::user()->email;
 		return $email;
 	}
 
@@ -37,13 +36,18 @@ public function getUsername($id){
 
 
 
-	public function deleteUser ($id){
-		$user = User::find($id);
+	public function deleteUser (){
+		$user = User::find(Auth::user()->id);
 		$user->deleteUser();
 		return view('home');
 	}
+
+	public function ModifyUser (){
+		$user = User::find(Auth::user()->id);
+		return view('/users/modifyUser')->with('user', $user);
+	}
 	
-	public function edit(Request $request, $id){
+	public function edit(Request $request){
 		
 		$this->validate($request,[
 						            'email' => 'required | email | unique:users,email',
@@ -53,7 +57,7 @@ public function getUsername($id){
 						        ]);
 		
 		
-		$user = User::findOrFail($id);
+		$user = User::findOrFail(Auth::user()->id);
 
 		$name = $request->input('name');
 		$email = $request->input('email');
