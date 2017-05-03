@@ -17,7 +17,7 @@ class TeacherSession
     public function handle($request, Closure $next)
     {
        if(Auth::user()->checkTeacher() == false){
-            return redirect()->intended('/');
+            return redirect()->intended('/courses');
         }
         return $next($request);
     }

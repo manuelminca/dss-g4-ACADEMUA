@@ -29,21 +29,11 @@ Route::get('/', function () {
 /*##################################################################################################
 ####################################USERS###########################################################
 ##################################################################################################*/
-Route::get('/users/modify/{id}', function ($id) {
-	//m	odify the data of a course
-	$user = User::find($id);
-	return view('/users/modifyUser')->with('user', $user);
-}
-);
-Route::get('/users/delete/{id}', 'UsersController@deleteUser');
-Route::get('/users/modified/{id}', 'UsersController@edit');
-Route::get('/users/create/', 'UsersController@createUser');
-Route::get('/users/new/', function () {
 
-	return view('/users/createUser');
-}
-);
-
+Route::get('/users/modify/', 'UsersController@ModifyUser')->middleware('auth'); //everything OK
+Route::get('/users/delete/', 'UsersController@deleteUser')->middleware('auth'); //Everything OK
+Route::get('/users/modified/', 'UsersController@edit')->middleware('auth');
+//Route::get('/users/create/', 'UsersController@createUser');
 Route::get('/users/instructors/', 'UsersController@showInstructors');
 
 
@@ -52,10 +42,10 @@ Route::get('/users/instructors/', 'UsersController@showInstructors');
 ####################################COURSES###########################################################
 ##################################################################################################*/
 
-Route::get('/courses/create/','CoursesController@createCourse');
-Route::get('/courses/attend/{course_id}&{user_id}','CoursesController@attendCourse');
+Route::get('/courses/create/','CoursesController@createCourse'); 
+Route::get('/courses/attend/{course_id}','CoursesController@attendCourse');
 Route::get('/courses/manage/{id}','CoursesController@getCourses');
-Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
+Route::get('/courses/delete/{id}','CoursesController@deleteCourse')->middleware('auth')->middleware('teacher');
 Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
 Route::get('/courses/new/','CoursesController@newCourse')->middleware('auth')->middleware('teacher');
 Route::get('/courses/modify/{id}','CoursesController@modifyCourse');

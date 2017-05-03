@@ -30,7 +30,7 @@
 
 -->
 
-<form action="/users/modified/{{$user->id}}" >
+<form action="/users/modified/" >
             {{ csrf_field() }}
             {{ method_field('POST') }}
             <div class="login-page" style="width:80%; margin:0 auto;">

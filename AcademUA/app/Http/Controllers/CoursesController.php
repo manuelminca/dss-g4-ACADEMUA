@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\User;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 class CoursesController extends Controller
 {
 	
@@ -138,9 +139,9 @@ class CoursesController extends Controller
 	}
 
 	
-	public function attendCourse($course_id, $user_id){
+	public function attendCourse($course_id){
 		$course = Course::find($course_id);
-		$user = User::find($user_id);
+		$user = User::find(Auth::user()->id);
 		$course->attendCourse($course->id, $user);
 		
 	}
