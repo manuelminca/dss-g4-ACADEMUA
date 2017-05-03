@@ -13,7 +13,17 @@
             </div><!-- End Inner Page Head -->
 
             <div class="clearfix"></div>
+            @if(Auth::check())
+            @if (Auth::user()->checkAttendingCourse($course->id))
+                <h1>You can see this because you are attending this course!</h1>
+            @endif
+            @endif
 
+            @if(Auth::check())
+            @if (!Auth::user()->checkAttendingCourse($course->id))
+                <h1>You can see this even if you are not attending the course</h1>
+            @endif
+            @endif
 
             <article class="post alt">
                 <div class="container">
@@ -65,7 +75,7 @@
                 echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
-                    echo "<a href='/courses/attend/" .$course->id. "&1' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
+                    echo "<a href='/courses/attend/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
 
                    echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn subscribe-btn'>Modify</a>";
                 echo "</div>";

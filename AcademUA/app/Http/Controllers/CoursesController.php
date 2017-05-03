@@ -171,6 +171,9 @@ class CoursesController extends Controller
 		$course = Course::find($course_id);
 		$user = User::find(Auth::user()->id);
 		$course->attendCourse($course->id, $user);
+		$comments = $course->getComments($course_id);
+		//r		eturns an array with all the comments
+			return view('courses.course', ['comments' => $comments])->with('course', $course);
 	}
 	
 	
