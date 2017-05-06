@@ -4,8 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-
-class UserSession
+class AdminSession
 {
     /**
      * Handle an incoming request.
@@ -16,7 +15,7 @@ class UserSession
      */
     public function handle($request, Closure $next)
     {
-       if(Auth::user()->checkTeacher() == true && Auth::user()->admin == 0){
+        if(Auth::user()->checkAdmin() == false){
             return redirect()->intended('/courses');
         }
         return $next($request);

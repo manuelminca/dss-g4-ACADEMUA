@@ -16,33 +16,46 @@ class UsersTableSeeder extends Seeder
             'name' => 'profesor1',
             'username' => 'profesor1',
             'email' => 'profesor1@gmail.com',
-            'password' => 'dasdas',
-            'professor' => true
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
         ]);
 
          DB::table('users')->insert([
             'name' => 'manuel',
             'username' => 'manuelminca',
             'email' => 'manuelminca@gmail.com',
-            'password' => 'dasdas',
-            'professor' => false
+            'password' => bcrypt('dasdas'),
+            'professor' => false,
+            'admin' => false
         ]);
 
          DB::table('users')->insert([
             'name' => 'yerai',
             'username' => 'asehhu',
             'email' => 'asehhu@gmail.com',
-            'password' => 'dasdas',
-            'professor' => false
+            'password' => bcrypt('dasdas'),
+            'professor' => false,
+            'admin' => false
         ]);
 
          DB::table('users')->insert([
             'name' => 'quico',
             'username' => 'quico14',
             'email' => 'quico14@gmail.com',
-            'password' => 'dasdas',
-            'professor' => true
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'username' => 'Admin',
+            'email' => 'Admin@academua.com',
+            'password' => bcrypt('dasdas'),
+            'professor' => false,
+            'admin' => true
         ]);
         
     }
 }
+
