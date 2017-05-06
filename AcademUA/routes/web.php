@@ -69,7 +69,7 @@ Route::get('/categories/new/','CategoriesController@newCategory')->middleware('a
 ####################################COMMENTS###########################################################
 ##################################################################################################*/
 
-Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth');
+Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth')->middleware('student');
 Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth');
 
 /*##################################################################################################

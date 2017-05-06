@@ -112,6 +112,16 @@ class User extends Authenticatable
 		}
 
 	}
+
+	public function checkAttendingCourse($course_id){
+
+		$list = $this->courses()->where('id', $course_id)->get();
+		if ($list != null) {
+			return true;
+		}
+		return false;
+
+	}
 	
 	
 }
