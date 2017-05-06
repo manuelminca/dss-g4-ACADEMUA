@@ -57,15 +57,12 @@ Route::get('/courses/modified/{id}', 'CoursesController@edit');
 /*##################################################################################################
 ####################################CATEGORIES###########################################################
 ##################################################################################################*/
-Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory')->middleware('auth');
+Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory')->middleware('auth')->middleware('admin');
 
 
-Route::get('/categories/create/', 'CategoriesController@createCategory')->middleware('auth');
-Route::get('/categories/new/', function () {
+Route::get('/categories/create/', 'CategoriesController@createCategory')->middleware('auth')->middleware('admin');
+Route::get('/categories/new/','CategoriesController@newCategory')->middleware('auth')->middleware('admin'); //Everything OK
 
-	return view('/categories/createCategory');
-}
-);
 
 
 /*##################################################################################################

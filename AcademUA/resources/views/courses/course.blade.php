@@ -65,7 +65,7 @@
                 echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
-                    echo "<a href='/courses/attend/" .$course->id. "&1' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
+                    echo "<a href='/courses/attend/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
 
                    echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn subscribe-btn'>Modify</a>";
                 echo "</div>";

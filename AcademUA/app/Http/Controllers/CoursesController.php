@@ -86,7 +86,7 @@ class CoursesController extends Controller
 		return view('courses.courses', ['courses' => $list]);
 	}
 	
-	//n	o sabemos como pasar dos variables
+	//no sabemos como pasar dos variables
 	
 	
 	public function showSingleCourse($id){

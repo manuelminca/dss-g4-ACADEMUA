@@ -30,7 +30,7 @@ class User extends Authenticatable
 			     * @var array
 			     */
 			    protected $fillable = [
-			        'name', 'email', 'password', 'username', 'professor',
+			        'name', 'email', 'password', 'username', 'professor','admin',
 			    ];
 	
 	
@@ -85,6 +85,7 @@ class User extends Authenticatable
 		$this->username= $name;
 		$this->password= $password;
 		$this->professor = $professor;
+		$this->admin = false;
 		
 		$this->save();
 		
@@ -96,7 +97,15 @@ class User extends Authenticatable
 	}
 
 	public function checkTeacher(){
-		if($this->professor == 1){
+		if($this->professor == 1 || $this->admin == 1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+		public function checkAdmin(){
+		if($this->admin == 1){
 			return true;
 		}else{
 			return false;
