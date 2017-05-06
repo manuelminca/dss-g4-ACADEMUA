@@ -165,7 +165,7 @@ $number = 1;
                                                     echo "<div class='details'>";
                                                         echo " <div class='date ib'>";
                                                             echo "<span class='icon'><i class='fa fa-clock-o'></i></span>";
-                                                            echo "<span class='text'>Time : 7 Dec, 2014</span>";
+                                                            echo "<span class='text'>" . $comment->created_at . "</span>";
                                                         echo "</div>";
                                                        echo " <div class='date ib'>";
                                                             echo "<span class='icon'><i class='fa fa-star'></i></span>";
@@ -176,7 +176,7 @@ $number = 1;
                                                             echo "<span class='text'>Academua</span>";
                                                        echo "</div>";
 
-                                                        if (Auth::user()->id == $comment->user_id){
+                                                        if (Auth::user()->id == $comment->user_id || Auth::user()->checkAdmin()){
                                                              echo "<div class='center ib'>";
                                                             echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
                                                         echo "</div>";
