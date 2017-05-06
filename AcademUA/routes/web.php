@@ -57,7 +57,7 @@ Route::get('/courses/modified/{id}', 'CoursesController@edit');
 /*##################################################################################################
 ####################################CATEGORIES###########################################################
 ##################################################################################################*/
-Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory')->middleware('auth')->middleware('admin');
+Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory')->middleware('auth')->middleware('admin'); ////Everything OK
 
 
 Route::get('/categories/create/', 'CategoriesController@createCategory')->middleware('auth')->middleware('admin');
@@ -70,7 +70,7 @@ Route::get('/categories/new/','CategoriesController@newCategory')->middleware('a
 ##################################################################################################*/
 
 Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth')->middleware('student');
-Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth');
+Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth')->middleware('student');
 
 /*##################################################################################################
 ####################################MESSAGES###########################################################
@@ -78,11 +78,7 @@ Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@dele
 
 Route::get('/messages/create/', 'MessagesController@createMessage')->middleware('auth');
 Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
-Route::get('/messages/new/', function () {
-
-	return view('/messages/createMessage');
-}
-);
+Route::get('/messages/new/','MessagesController@newMessage')->middleware('auth'); //Everything OK
 Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 
 
