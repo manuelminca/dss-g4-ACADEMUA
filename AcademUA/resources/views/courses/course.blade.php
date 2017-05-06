@@ -160,7 +160,7 @@ $number = 1;
                                                     echo "<img src='/img/users/user1.jpg' alt=''>";
                                                 echo "</div>";
                                                 echo "<div class='query-content'>";
-                                                    echo "<h3 class='post-title'>#". $number . ": Manolo</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
+                                                    echo "<h3 class='post-title'>#". $number . ":" . Auth::user()->username . "</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
                                                     echo "<p class='query-description'>". $comment->description . "</p>";
                                                     echo "<div class='details'>";
                                                         echo " <div class='date ib'>";
@@ -175,9 +175,14 @@ $number = 1;
                                                             echo "<span class='icon'><i class='fa fa-building'></i></span>";
                                                             echo "<span class='text'>Academua</span>";
                                                        echo "</div>";
-                                                        echo "<div class='center ib'>";
+
+                                                        if (Auth::user()->id == $comment->user_id){
+                                                             echo "<div class='center ib'>";
                                                             echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
                                                         echo "</div>";
+                                                        }
+                                                       
+                                                        
                                                         
 
                                                     echo "</div>";
