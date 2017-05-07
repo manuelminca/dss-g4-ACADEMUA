@@ -87,7 +87,7 @@
                         <div class="row">
                             <div class="col-md-3 col-xs-6">
                                 <div class="instructor">
-                                    <div class="avatar"><img src="assets/img/content/instructor-avatar-1-270x270.jpg" class="img-responsive" alt=""></div><!-- End Avatar -->
+                                    <div class="avatar"><img src="/img/teacher1.jpg" class="img-responsive" alt=""></div><!-- End Avatar -->
                                     <div class="instructor-info">
                                         <p class="name">Ibrahim Abo Seada</p>
                                         <span class="position">Web Developer</span>
