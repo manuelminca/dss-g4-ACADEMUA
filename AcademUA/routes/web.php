@@ -17,7 +17,7 @@ Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUpload
 |
 */
 
-Route::get('/', 'HomeController@inicio'); 
+Route::get('/', 'HomeController@index'); 
 
 
 /*##################################################################################################
@@ -84,4 +84,4 @@ Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@inicio');

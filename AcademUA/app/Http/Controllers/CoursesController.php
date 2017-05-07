@@ -174,6 +174,16 @@ class CoursesController extends Controller
 		//r		eturns an array with all the comments
 			return view('courses.course', ['comments' => $comments])->with('course', $course);
 	}
+
+
+	public static function appendLink($links, $link){
+		if($links == null){
+			$links = $link . ";";
+		}else{
+			$links = $links . ";" . $link;
+		}
+		return $links;
+	}
 	
 	
 }
