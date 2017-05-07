@@ -17,7 +17,7 @@ Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUpload
 |
 */
 
-Route::get('/', 'HomeController@inicio'); 
+Route::get('/', 'HomeController@index'); 
 
 
 /*##################################################################################################
