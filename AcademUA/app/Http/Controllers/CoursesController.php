@@ -11,14 +11,15 @@ class CoursesController extends Controller
 {
 	
 	
+	
 	/*#############################################
-				GETTERS AND SETTERS
-	###############################################*/
-
+	GETTERS AND SETTERS
+		###############################################*/
+	
 	public function getCourses($teacher_id){
 		$list = Course::where('teacher_id', '=', $teacher_id)->paginate(8);
 		return view('courses.manageCourses', ['courses' => $list]);
-
+		
 	}
 	
 	public function getComments($course_id){
@@ -44,7 +45,7 @@ class CoursesController extends Controller
 		$this->validate($request,[
 		
 		'price' => 'min:0 | numeric'
-				]);
+						]);
 		
 		$name= $request->input('name');
 		$description= $request->input('description');
@@ -58,23 +59,24 @@ class CoursesController extends Controller
 		
 		$comments = $course->getComments($id);
 		//r		eturns an array with all the comments
-				return view('courses.course', ['comments' => $comments])->with('course', $course);
+						return view('courses.course', ['comments' => $comments])->with('course', $course);
 		
 	}
 	
 	public function deleteCourse($id){
-		//We have to redirect to Manage Courses but we need the session of the teacher(in progress)
+		//W		e have to redirect to Manage Courses but we need the session of the teacher(in progress)
 		
 		$course = Course::findOrFail($id);
-
+		
 		if($course->teacher_id == Auth::user()->id){
 			$course->deleteCourse();
 			
 			$list = Course::paginate(6);
 			return view('courses.courses', ['courses' => $list]);
-			//We have to change that in the future
+			//W			e have to change that in the future
 			
-		}else{
+		}
+		else{
 			return view('home');
 		}
 	}
@@ -85,30 +87,31 @@ class CoursesController extends Controller
 		return view('courses.courses', ['courses' => $list]);
 	}
 	
-	//no sabemos como pasar dos variables
+	//n	o sabemos como pasar dos variables
 	
 	
 	public function showSingleCourse($id){
 		$course = Course::find($id);
 		$comments = $course->getComments($id);
 		//r		eturns an array with all the comments
-			return view('courses.course', ['comments' => $comments])->with('course', $course);
+					return view('courses.course', ['comments' => $comments])->with('course', $course);
 		
 	}
 	
 	//M	ostramos cursos filtrando
-		public function showCoursesFilter(Request $request){
+			public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
 		if ($filter == 'precio_menor') {
 			$this->validate($request,[
-					'valor' => 'required | min:1 | numeric'
-			]);
-		} else {
-			$this->validate($request,[
-					'valor' => 'required'
-			]);
+								'valor' => 'required | min:1 | numeric'
+						]);
 		}
-	
+		else {
+			$this->validate($request,[
+								'valor' => 'required'
+						]);
+		}
+		
 		
 		$order = $_GET["order"];
 		$how = $_GET["how"];
@@ -128,10 +131,10 @@ class CoursesController extends Controller
 	public function createCourse(Request $request){
 		$course = new Course();
 		$this->validate($request,[
-						'name' => 'required',
-						'description' => 'required',
-						'price' => 'required | min:0 | numeric'
-				]);
+								'name' => 'required',
+								'description' => 'required',
+								'price' => 'required | min:0 | numeric'
+						]);
 		
 		$name= $request->input('name');
 		$description= $request->input('description');
@@ -156,13 +159,14 @@ class CoursesController extends Controller
 	
 	public function modifyCourse($course_id){
 		$course = Course::find($course_id);
-
+		
 		if($course->teacher_id == Auth::user()->id){
-		return view('/courses/modifyCourse')->with('courses', $course);
-		}else{
+			return view('/courses/modifyCourse')->with('courses', $course);
+		}
+		else{
 			return view('home');
 		}
-
+		
 	}
 	
 	
@@ -171,18 +175,21 @@ class CoursesController extends Controller
 		$user = User::find(Auth::user()->id);
 		$course->attendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
-		//r		eturns an array with all the comments
-			return view('courses.course', ['comments' => $comments])->with('course', $course);
+		//returns an array with all the comments
+		return view('courses.course', ['comments' => $comments])->with('course', $course);
 	}
-
-
-	public static function appendLink($links, $link){
-		if($links == null){
-			$links = $link . ";";
-		}else{
-			$links = $links . ";" . $link;
-		}
-		return $links;
+	
+	
+	public function appendLink($link){
+		$course = new Course();
+		$course->appendLink($link);
+	}
+	
+	public static function splitLinks(){
+		$course = new Course();
+		$links = $course->getLinks();
+		$arrayLinks = explode(';', $links);
+		return $arrayLinks;
 	}
 	
 	
