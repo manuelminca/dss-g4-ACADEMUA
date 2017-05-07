@@ -13,18 +13,18 @@ class UsersTableSeeder extends Seeder
     {
         
         DB::table('users')->insert([
-            'name' => 'profesor1',
-            'username' => 'profesor1',
-            'email' => 'profesor1@gmail.com',
+            'name' => 'prof',
+            'username' => 'prof',
+            'email' => 'prof@gmail.com',
             'password' => bcrypt('dasdas'),
             'professor' => true,
             'admin' => false
         ]);
 
          DB::table('users')->insert([
-            'name' => 'manuel',
-            'username' => 'manuelminca',
-            'email' => 'manuelminca@gmail.com',
+            'name' => 'alum',
+            'username' => 'alum',
+            'email' => 'alum@gmail.com',
             'password' => bcrypt('dasdas'),
             'professor' => false,
             'admin' => false
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Admin',
             'username' => 'Admin',
-            'email' => 'Admin@academua.com',
+            'email' => 'admin@academua.com',
             'password' => bcrypt('dasdas'),
             'professor' => false,
             'admin' => true

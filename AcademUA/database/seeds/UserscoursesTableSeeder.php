@@ -13,14 +13,14 @@ class UserscoursesTableSeeder extends Seeder
         public function run()
         {
       
-        $pk1 = DB::table('users')->where('email','profesor1@gmail.com')->first();
+        $pk1 = DB::table('users')->where('email','prof@gmail.com')->first();
         $pk2 = DB::table('courses')->where('name', 'Curso completo')->first();
         DB::table('course_user')->insert([
                     'user_id' => $pk1->id,
                     'course_id' => $pk2->id
                 ]);
         
-        $pk1 = DB::table('users')->where('email','manuelminca@gmail.com')->first();
+        $pk1 = DB::table('users')->where('email','alum@gmail.com')->first();
         $pk2 = DB::table('courses')->where('name', 'Curso completo')->first();
         DB::table('course_user')->insert([
                     'user_id' => $pk1->id,

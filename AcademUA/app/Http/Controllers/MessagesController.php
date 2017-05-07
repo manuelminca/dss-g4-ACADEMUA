@@ -9,11 +9,18 @@ use App\User;
 use App\Category;
 use App\Comment;
 use App\Message;
+
+use Illuminate\Support\Facades\Auth;
+
 class MessagesController extends Controller
 {
     public function deleteMessage($id){ //We have to redirect to Manage Courses but we need the session of the teacher(in progress)
 		$message = Message::findOrFail($id);
-		$message->deleteMessage();
+
+		if(Auth::user()->id == $message->sender_id){
+			$message->deleteMessage();
+		}
+		
 
 		$list = Message::paginate(6);
 		return view('messages.messages', ['messages' => $list]); //We have to change that in the future
