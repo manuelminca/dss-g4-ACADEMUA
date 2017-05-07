@@ -12,14 +12,13 @@ class CoursesController extends Controller
 	
 	
 	/*#############################################
-	GETTERS AND SETTERS
-		###############################################*/
-	
-	public function getCourses(){
-		$course = new Course();
-		$list_Courses = $course->getCourses(Auth::user()->id);
-		return view('courses.manageCourses')->with('courses', $list_Courses);
-		
+				GETTERS AND SETTERS
+	###############################################*/
+
+	public function getCourses($teacher_id){
+		$list = Course::where('teacher_id', '=', $teacher_id)->paginate(8);
+		return view('courses.manageCourses', ['courses' => $list]);
+
 	}
 	
 	public function getComments($course_id){
