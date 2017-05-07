@@ -13,7 +13,17 @@
             </div><!-- End Inner Page Head -->
 
             <div class="clearfix"></div>
+            @if(Auth::check())
+            @if (Auth::user()->checkAttendingCourse($course->id))
+                <h1>You can see this because you are attending this course!</h1>
+            @endif
+            @endif
 
+            @if(Auth::check())
+            @if (!Auth::user()->checkAttendingCourse($course->id))
+                <h1>You can see this even if you are not attending the course</h1>
+            @endif
+            @endif
 
             <article class="post alt">
                 <div class="container">
@@ -65,7 +75,7 @@
                 echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
-                    echo "<a href='/courses/attend/" .$course->id. "&1' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
+                    echo "<a href='/courses/attend/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
 
                    echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn subscribe-btn'>Modify</a>";
                 echo "</div>";
@@ -150,12 +160,12 @@ $number = 1;
                                                     echo "<img src='/img/users/user1.jpg' alt=''>";
                                                 echo "</div>";
                                                 echo "<div class='query-content'>";
-                                                    echo "<h3 class='post-title'>#". $number . ": Manolo</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
+                                                    echo "<h3 class='post-title'>#". $number . ":" . Auth::user()->username . "</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
                                                     echo "<p class='query-description'>". $comment->description . "</p>";
                                                     echo "<div class='details'>";
                                                         echo " <div class='date ib'>";
                                                             echo "<span class='icon'><i class='fa fa-clock-o'></i></span>";
-                                                            echo "<span class='text'>Time : 7 Dec, 2014</span>";
+                                                            echo "<span class='text'>" . $comment->created_at . "</span>";
                                                         echo "</div>";
                                                        echo " <div class='date ib'>";
                                                             echo "<span class='icon'><i class='fa fa-star'></i></span>";
@@ -165,9 +175,14 @@ $number = 1;
                                                             echo "<span class='icon'><i class='fa fa-building'></i></span>";
                                                             echo "<span class='text'>Academua</span>";
                                                        echo "</div>";
-                                                        echo "<div class='center ib'>";
+
+                                                        if (Auth::user()->id == $comment->user_id || Auth::user()->checkAdmin()){
+                                                             echo "<div class='center ib'>";
                                                             echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
                                                         echo "</div>";
+                                                        }
+                                                       
+                                                        
                                                         
 
                                                     echo "</div>";

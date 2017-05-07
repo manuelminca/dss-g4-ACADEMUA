@@ -4,9 +4,8 @@ use App\Course;
 use App\Category;
 
 
-
-
-
+Route::get('ajaxImageUpload', ['uses'=>'AjaxImageUploadController@ajaxImageUpload']);
+Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUploadController@ajaxImageUploadPost']);
 /*
 -----------------------------------------------------------------------
 | Web Routes
@@ -18,31 +17,17 @@ use App\Category;
 |
 */
 
-Route::get('/', function () {
-	$users = User::all();
-	return view('home')->with('users', $users);
-}
-);
+Route::get('/', 'HomeController@inicio'); 
 
 
 /*##################################################################################################
 ####################################USERS###########################################################
 ##################################################################################################*/
-Route::get('/users/modify/{id}', function ($id) {
-	//m	odify the data of a course
-	$user = User::find($id);
-	return view('/users/modifyUser')->with('user', $user);
-}
-);
-Route::get('/users/delete/{id}', 'UsersController@deleteUser');
-Route::get('/users/modified/{id}', 'UsersController@edit');
-Route::get('/users/create/', 'UsersController@createUser');
-Route::get('/users/new/', function () {
 
-	return view('/users/createUser');
-}
-);
-
+Route::get('/users/modify/', 'UsersController@ModifyUser')->middleware('auth'); //everything OK
+Route::get('/users/delete/', 'UsersController@deleteUser')->middleware('auth'); //Everything OK
+Route::get('/users/modified/', 'UsersController@edit')->middleware('auth');
+//Route::get('/users/create/', 'UsersController@createUser');
 Route::get('/users/instructors/', 'UsersController@showInstructors');
 
 
@@ -51,13 +36,14 @@ Route::get('/users/instructors/', 'UsersController@showInstructors');
 ####################################COURSES###########################################################
 ##################################################################################################*/
 
+Route::get('/courses/create/','CoursesController@createCourse'); 
+Route::get('/courses/attend/{course_id}','CoursesController@attendCourse')->middleware('auth')->middleware('student'); // the link should not be accesible throught the browser 
+Route::get('/courses/manage/','CoursesController@getCourses')->middleware('auth')->middleware('teacher'); //Everything OK
+Route::get('/courses/delete/{id}','CoursesController@deleteCourse')->middleware('auth')->middleware('teacher');//Everything OK
+Route::get('/courses/course/{id}','CoursesController@showSingleCourse')->middleware('auth')->middleware('student'); //Everything OK
+Route::get('/courses/new/','CoursesController@newCourse')->middleware('auth')->middleware('teacher'); //Everything OK
 Route::get('/courses/create/','CoursesController@createCourse');
-Route::get('/courses/attend/{course_id}&{user_id}','CoursesController@attendCourse');
-Route::get('/courses/manage/{id}','CoursesController@getCourses');
-Route::get('/courses/delete/{id}','CoursesController@deleteCourse');
-Route::get('/courses/course/{id}','CoursesController@showSingleCourse');
-Route::get('/courses/new/','CoursesController@newCourse');
-Route::get('/courses/modify/{id}','CoursesController@modifyCourse');
+Route::get('/courses/modify/{id}','CoursesController@modifyCourse')->middleware('auth')->middleware('teacher');  //Everything OK
 
 
 Route::get('/courses', 'CoursesController@showCourses');
@@ -68,39 +54,34 @@ Route::get('/courses/modified/{id}', 'CoursesController@edit');
 
 
 
-Route::get('/courses/create/','CoursesController@createCourse');
-
 /*##################################################################################################
 ####################################CATEGORIES###########################################################
 ##################################################################################################*/
-Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory');
+Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory')->middleware('auth')->middleware('admin'); ////Everything OK
 
 
-Route::get('/categories/create/', 'CategoriesController@createCategory');
-Route::get('/categories/new/', function () {
+Route::get('/categories/create/', 'CategoriesController@createCategory')->middleware('auth')->middleware('admin');
+Route::get('/categories/new/','CategoriesController@newCategory')->middleware('auth')->middleware('admin'); //Everything OK
 
-	return view('/categories/createCategory');
-}
-);
 
 
 /*##################################################################################################
 ####################################COMMENTS###########################################################
 ##################################################################################################*/
 
-Route::get('/comments/create/{course_id}', 'CommentsController@createComment');
-Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment');
+Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth')->middleware('student');
+Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth')->middleware('student');
 
 /*##################################################################################################
 ####################################MESSAGES###########################################################
 ##################################################################################################*/
 
-Route::get('/messages/create/', 'MessagesController@createMessage');
-Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage');
-Route::get('/messages/new/', function () {
+Route::get('/messages/create/', 'MessagesController@createMessage')->middleware('auth');
+Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
+Route::get('/messages/new/','MessagesController@newMessage')->middleware('auth'); //Everything OK
+Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 
-	return view('/messages/createMessage');
-}
-);
-Route::get('/messages', 'MessagesController@showMessages');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
