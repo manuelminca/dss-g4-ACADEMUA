@@ -115,12 +115,14 @@ class User extends Authenticatable
 
 	public function checkAttendingCourse($course_id){
 
-		$list = $this->courses()->where('id', $course_id)->get();
-		if ($list != null) {
-			return true;
+		$courses = User::find(Auth::user()->id)->courses()->get();
+
+		foreach ($courses as $course){
+			if($course->id == $course_id){
+				return true;
+			}
 		}
 		return false;
-
 	}
 	
 	
