@@ -40,7 +40,7 @@ Route::get('/courses/create/','CoursesController@createCourse');
 Route::get('/courses/attend/{course_id}','CoursesController@attendCourse')->middleware('auth')->middleware('student'); // the link should not be accesible throught the browser 
 Route::get('/courses/manage/','CoursesController@getCourses')->middleware('auth')->middleware('teacher'); //Everything OK
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse')->middleware('auth')->middleware('teacher');//Everything OK
-Route::get('/courses/course/{id}','CoursesController@showSingleCourse')->middleware('auth')->middleware('student'); //Everything OK
+Route::get('/courses/course/{id}','CoursesController@showSingleCourse')->middleware('auth'); //Everything OK
 Route::get('/courses/new/','CoursesController@newCourse')->middleware('auth')->middleware('teacher'); //Everything OK
 Route::get('/courses/create/','CoursesController@createCourse');
 Route::get('/courses/modify/{id}','CoursesController@modifyCourse')->middleware('auth')->middleware('teacher');  //Everything OK
