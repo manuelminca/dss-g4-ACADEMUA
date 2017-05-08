@@ -37,7 +37,7 @@ Route::get('/users/instructors/', 'UsersController@showInstructors');
 ##################################################################################################*/
 
 Route::get('/courses/create/','CoursesController@createCourse'); 
-Route::get('/courses/attend/{course_id}','CoursesController@attendCourse')->middleware('auth')->middleware('student'); // the link should not be accesible throught the browser 
+Route::get('/courses/attend/{course_id}','CoursesController@attendCourse')->middleware('auth'); // the link should not be accesible throught the browser 
 Route::get('/courses/manage/','CoursesController@getCourses')->middleware('auth')->middleware('teacher'); //Everything OK
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse')->middleware('auth')->middleware('teacher');//Everything OK
 Route::get('/courses/course/{id}','CoursesController@showSingleCourse')->middleware('auth'); //Everything OK
@@ -69,8 +69,8 @@ Route::get('/categories/new/','CategoriesController@newCategory')->middleware('a
 ####################################COMMENTS###########################################################
 ##################################################################################################*/
 
-Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth')->middleware('student');
-Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth')->middleware('student');
+Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth');
+Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth');
 
 /*##################################################################################################
 ####################################MESSAGES###########################################################
