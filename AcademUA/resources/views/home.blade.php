@@ -7,8 +7,6 @@
     <div class="tp-banner">
         <ul>
             <li>
-                <!-- MAIN IMAGE -->
-                
                 <!-- LAYERS -->
                 <!-- LAYER NR. 1 -->
                 <div class="caption tp-resizeme white"
@@ -36,16 +34,13 @@
                     data-elementdelay="0.1" 
                     data-endelementdelay="0.1" 
                     data-endspeed="500" style="z-index: 99; white-space: pre-line;">
-                    <p class="slide-description">Lorem Ipsum is simply dummy of the printing and typesetting 's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p class="slide-description">AcademUA provides easy access to the courses that you desire. Easy to learn and easy to follow, take the time you need.</p>
                 </div>
             </li>
         </ul>
-        <h2 class="tp-text">HOLA</p>
     </div>
 </div>
-<div class="text">
-       Text of variable length
-    </div>
+
 <div class="clearfix"></div>
 <div class="course-search fancy-shadow">
                 <div class="container">
@@ -77,64 +72,14 @@
 
             <div class="clearfix"></div>
 
-            <section class="full-section features-section fancy-shadow">
-                <div class="container">
-                    <h3 class="section-title">Welcome Dear Visitor in Coursaty</h3>
-                    <p class="section-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
-                    </p><!-- End Section Description -->
-                </div>
-                <div class="section-content features-content fadeInDown-animation">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 col-xs-6">
-                                <div class="feature-box">
-                                    <div class="icon"><img src="assets/img/icons/feature-icon-1.png" class="es-tr" alt=""></div><!-- End Icon -->
-                                    <h5 class="feature-title">Learn Anything Online</h5>
-                                    <p class="feature-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing.
-                                    </p>
-                                </div><!-- End Features Box -->
-                            </div>
-                            <div class="col-md-3 col-xs-6">
-                                <div class="feature-box">
-                                    <div class="icon"><img src="assets/img/icons/feature-icon-2.png" class="es-tr" alt=""></div><!-- End Icon -->
-                                    <h5 class="feature-title">Talk to Our Instructors</h5>
-                                    <p class="feature-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing.
-                                    </p>
-                                </div><!-- End Features Box -->
-                            </div>
-                            <div class="col-md-3 col-xs-6">
-                                <div class="feature-box">
-                                    <div class="icon"><img src="assets/img/icons/feature-icon-3.png" class="es-tr" alt=""></div><!-- End Icon -->
-                                    <h5 class="feature-title">Communicate with Others</h5>
-                                    <p class="feature-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing.
-                                    </p>
-                                </div><!-- End Features Box -->
-                            </div>
-                            <div class="col-md-3 col-xs-6">
-                                <div class="feature-box">
-                                    <div class="icon"><img src="assets/img/icons/feature-icon-4.png" class="es-tr" alt=""></div><!-- End Icon -->
-                                    <h5 class="feature-title">Check for Centers</h5>
-                                    <p class="feature-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing.
-                                    </p>
-                                </div><!-- End Features Box -->
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- End Features Section Content -->
-            </section><!-- End Features Section -->
-
+           
             <div class="clearfix"></div>
 
             <section class="full-section instructors-section fancy-shadow">
                 <div class="container">
                     <h3 class="section-title">Meet Our Instructors</h3>
-                    <p class="section-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie
+                    <p class="section-description" style="display:inline">
+                       In this section you can find the related instructors. You can visit the section <h3 class="course-title" style="display:inline" ><a href="/users/instructors" class="ln-tr">instructors</a></h3> to see all of them.
                     </p><!-- End Section Description -->
                 </div>
                 <div class="section-content instructors-content fadeInDown-animation">
@@ -142,7 +87,7 @@
                         <div class="row">
                             <div class="col-md-3 col-xs-6">
                                 <div class="instructor">
-                                    <div class="avatar"><img src="assets/img/content/instructor-avatar-1-270x270.jpg" class="img-responsive" alt=""></div><!-- End Avatar -->
+                                    <div class="avatar"><img src="/img/teacher1.jpg" class="img-responsive" alt=""></div><!-- End Avatar -->
                                     <div class="instructor-info">
                                         <p class="name">Ibrahim Abo Seada</p>
                                         <span class="position">Web Developer</span>
