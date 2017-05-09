@@ -7,6 +7,7 @@ use App\Course;
 use App\User;
 use App\Category;
 use App\Comment;
+use App\Session;
 use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
@@ -26,7 +27,7 @@ class SessionsController extends Controller
         $video = $request->input('video');
 
 		$session->createSession($title, $content, $video, $course_id);
-		
+		//AQUI HAY QUE REDIRECCIONAR A MANAGE COURSE 
         $course = Course::find($course_id);
 		$comments = $course->getComments($course_id);
 		$sessions = $session->getSessions($course_id);

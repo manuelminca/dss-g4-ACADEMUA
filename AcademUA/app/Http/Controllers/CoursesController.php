@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\User;
 use App\Category;
+use App\Session;
 use Illuminate\Support\Facades\Auth;
 class CoursesController extends Controller
 {
 	
 	
 	
+	
+	
+	
 	/*#############################################
 	GETTERS AND SETTERS
-		###############################################*/
+					###############################################*/
 	
 	public function getCourses($teacher_id){
 		$list = Course::where('teacher_id', '=', $teacher_id)->paginate(8);
@@ -45,7 +49,7 @@ class CoursesController extends Controller
 		$this->validate($request,[
 		
 		'price' => 'min:0 | numeric'
-						]);
+												]);
 		
 		$name= $request->input('name');
 		$description= $request->input('description');
@@ -59,7 +63,7 @@ class CoursesController extends Controller
 		
 		$comments = $course->getComments($id);
 		//r		eturns an array with all the comments
-						return view('courses.course', ['comments' => $comments])->with('course', $course);
+												return view('courses.course', ['comments' => $comments])->with('course', $course);
 		
 	}
 	
@@ -93,23 +97,25 @@ class CoursesController extends Controller
 	public function showSingleCourse($id){
 		$course = Course::find($id);
 		$comments = $course->getComments($id);
+		$session = new Session();
+		$sessions = $session->getSessions($id);
 		//r		eturns an array with all the comments
-					return view('courses.course', ['comments' => $comments])->with('course', $course);
+				return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
 	}
 	
 	//M	ostramos cursos filtrando
-			public function showCoursesFilter(Request $request){
+		public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
 		if ($filter == 'precio_menor') {
 			$this->validate($request,[
-								'valor' => 'required | min:1 | numeric'
-						]);
+																	'valor' => 'required | min:1 | numeric'
+															]);
 		}
 		else {
 			$this->validate($request,[
-								'valor' => 'required'
-						]);
+																	'valor' => 'required'
+															]);
 		}
 		
 		
@@ -131,10 +137,10 @@ class CoursesController extends Controller
 	public function createCourse(Request $request){
 		$course = new Course();
 		$this->validate($request,[
-								'name' => 'required',
-								'description' => 'required',
-								'price' => 'required | min:0 | numeric'
-						]);
+			'name' => 'required',
+			'description' => 'required',
+			'price' => 'required | min:0 | numeric'
+		]);
 		
 		$name= $request->input('name');
 		$description= $request->input('description');
@@ -161,7 +167,7 @@ class CoursesController extends Controller
 		$course = Course::find($course_id);
 		
 		if($course->teacher_id == Auth::user()->id){
-			return view('/courses/modifyCourse')->with('courses', $course);
+			return view('courses.modifyCourse')->with('courses', $course);
 		}
 		else{
 			return view('home');
@@ -171,26 +177,36 @@ class CoursesController extends Controller
 	
 	
 	public function attendCourse($course_id){
+		
+		
+		$CoursesUser = Auth::user()->courses()->get();
+		
+		foreach ($CoursesUser as $course){
+			if($course->id == $course_id){
+				return $this->showSingleCourse($course_id);
+				
+			}
+		}
+		
 		$course = Course::find($course_id);
 		$user = User::find(Auth::user()->id);
 		$course->attendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
-		//returns an array with all the comments
+		//r		eturns an array with all the comments
+				return view('courses.course', ['comments' => $comments])->with('course', $course);
+		
+	}
+
+	public function unAttendCourse($course_id){
+		
+				
+		$course = Course::find($course_id);
+		$user = User::find(Auth::user()->id);
+		$course->unAttendCourse($course->id, $user);
+		$comments = $course->getComments($course_id);
+		//r		eturns an array with all the comments
 		return view('courses.course', ['comments' => $comments])->with('course', $course);
+		
 	}
-	
-	
-	public function appendLink($link){
-		$course = new Course();
-		$course->appendLink($link);
-	}
-	
-	public static function splitLinks(){
-		$course = new Course();
-		$links = $course->getLinks();
-		$arrayLinks = explode(';', $links);
-		return $arrayLinks;
-	}
-	
-	
+		
 }

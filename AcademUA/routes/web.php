@@ -44,6 +44,7 @@ Route::get('/courses/course/{id}','CoursesController@showSingleCourse')->middlew
 Route::get('/courses/new/','CoursesController@newCourse')->middleware('auth')->middleware('teacher'); //Everything OK
 Route::get('/courses/create/','CoursesController@createCourse');
 Route::get('/courses/modify/{id}','CoursesController@modifyCourse')->middleware('auth')->middleware('teacher');  //Everything OK
+Route::get('/courses/quit/{course_id}','CoursesController@unAttendCourse')->middleware('auth'); // the link should not be accesible throught the browser 
 
 
 Route::get('/courses', 'CoursesController@showCourses');
