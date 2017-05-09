@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    use Notifiable;
 
 	//Activate timestamps
 	public $timestamps = true;
@@ -46,8 +45,4 @@ class Session extends Model
 		$this->course_id = $course_id;
 		$this->save();
 	}
-	
-	
-
-
 }

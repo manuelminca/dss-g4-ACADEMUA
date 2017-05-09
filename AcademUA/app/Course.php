@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -46,6 +47,15 @@ class Course extends Model
 
 		return $courses;
 	}
+
+
+	public function getUserCourses(){
+		$CoursesUser = Auth::user()->courses()->get();
+
+		return $CoursesUser;
+	}
+
+
 
 	public function getComments($course_id){
 		$comments = Comment::where('course_id', $course_id)->get();
@@ -152,8 +162,32 @@ class Course extends Model
 		$user->courses()->attach($course);
 	}
 
+	public function unAttendCourse($course, $user){
+		$user->courses()->detach($course);
+	}
+
 	public function attachCategory($category_id){
 		$this->categories()->attach($category_id);
+	}
+
+
+	public function checkAttend(){
+		
+		$CoursesUser = Auth::user()->courses()->get();
+		foreach ($CoursesUser as $course){
+			if($course->id == $this->id){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public function checkTeacher(){
+		if($this->teacher_id == Auth::user()->id){
+			return true;
+		}else{
+			return false;
+		}
 	}
     
 }

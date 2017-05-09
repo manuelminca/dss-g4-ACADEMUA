@@ -12,14 +12,6 @@ use Illuminate\Support\Facades\Auth;
 class CommentsController extends Controller
 {
 	
-	/*public function deleteComment ($id) {
-		$comment = Comment::findOrFail($id);
-		$comment->deleteComment();
-
-		$list = Comment::paginate(6);
-		return view('courses.courses', ['courses' => $list]);
-	}*/
-
 	public function createComment (Request $request, $course_id) {
 		$comment = new Comment();
 		$this->validate($request,[
