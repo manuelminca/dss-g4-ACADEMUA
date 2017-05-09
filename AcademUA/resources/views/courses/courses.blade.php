@@ -92,7 +92,7 @@
                         <div class="row">
  <?php
  $number = 0;
- 
+ use Illuminate\Support\Facades\Auth;
 //Mostramos los cursos
 foreach ($courses as $course) {
     $number = $number+1;
@@ -116,7 +116,12 @@ foreach ($courses as $course) {
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
                 echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-                echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                
+                if(Auth::check()){
+                if($course->checkTeacher()){
+                    echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                }
+                }
                 echo "</div>";
             echo "</div>";
         echo "</div>";
