@@ -119,11 +119,6 @@
                                                 <div class="input">
                                                     <input value="{{ old('rating') }}" type="number" name="rating" min="0" max="5" placeholder="Rating">
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input type="number" name="id_user" min="0" placeholder="User id">
-                                                </div>
                                             </div>                  
                                             <div class="col-md-12 col-sm-6">
                                                 <div class="input" >
