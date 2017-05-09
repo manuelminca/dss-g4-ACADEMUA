@@ -52,6 +52,10 @@ class Course extends Model
 		$categories = Course::find($course_id)->category->name;
 		return $categories;
 	}
+
+	public function getLinks(){
+		return $this->links;
+	}
 	
 	
 
@@ -128,6 +132,14 @@ class Course extends Model
 
 		$this->save();
 
+	}
+	public function appendLink($link){
+		if($this->links == null){
+			$this->links = $link . ";";
+		}else{
+			$this->links = $this->links . ";" . $link;
+		}
+		$this->save();
 	}
 
 
