@@ -2,8 +2,6 @@
 
  @section('content')
 
-
-
 @section('title','New User')
 @section('newUserCurrent','current_page_item')
 @section('headerClass','alt static-header')
