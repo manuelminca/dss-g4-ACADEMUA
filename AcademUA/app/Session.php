@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    use Notifiable;
 
 	//Activate timestamps
 	public $timestamps = true;
