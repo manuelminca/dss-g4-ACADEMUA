@@ -30,5 +30,9 @@ class CategoriesController extends Controller
 		$cat = new Category();
 		return $cat->getAllCategories();
 	}
+
+	public function newCategory(){
+		return view('categories.createCategory');
+	}
 	
 }
