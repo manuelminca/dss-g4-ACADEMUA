@@ -18,14 +18,14 @@
                 </div><!-- End container -->
             </div><!-- End Inner Page Head -->
             <div class="clearfix"></div>
-            <section style="margin-top: -50px;" class="full-section latest-courses-section no-slider">
+            <section class="cursos full-section latest-courses-section no-slider">
          
                 
 
 <!-- https://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/ -->
 <form action="/courses/filter/">
         {{ csrf_field() }}
-<div class="login-page" style="max-width:60%; margin:0 auto; margin-bottom: -100px;">
+<div class="login login-page" style="max-width:60%;">
     <div class="dropdowns">
         <div class="row">
             <div class="col-md-12">
