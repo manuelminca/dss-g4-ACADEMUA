@@ -80,6 +80,25 @@ select {
   background: url(/img/arrow.png) 96% / 15% no-repeat #eee;
 }
 
+.cursos {
+	margin-top: -50px;
+}
+
+.login {
+	margin:0 auto;
+	margin-bottom: -50px;
+}
+
+@media screen and (min-width: 992px) {
+	.cursos {
+		margin-top: -170px;
+	}
+	.login {
+		margin:0 auto;
+		margin-bottom: -200px;
+	}
+}
+
 .bboxed {
 	background-image: url(assets/img/patterns/bg13.png);
 	background-repeat: repeat;
