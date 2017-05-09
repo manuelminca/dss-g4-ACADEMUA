@@ -46,8 +46,4 @@ class Session extends Model
 		$this->course_id = $course_id;
 		$this->save();
 	}
-	
-	
-
-
 }
