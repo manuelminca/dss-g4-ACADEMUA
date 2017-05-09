@@ -781,30 +781,39 @@ header.alt .mobile-navigation .mobile-btn span:after {
 /* 04 - Revolution Slider */
 .tp-banner-container {
 	width:100%;
+	min-height: 700px;
 	position:relative;
 	padding:0;
+	background-image: url("/img/01-home-slide-item-1-1600x770.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .tp-banner, .fullscreen {
 	width:100%;
 	position:relative;
 }
+
 .tp-banner > ul li:after, .fullscreen > ul li:after {
 	content: '';
 	display: block;
 	width: 100%;
-	height: 100%;
+	min-height: 700px;
 	position: absolute;
 	left: 0;
 	top: 0;
 	z-index: 21;
-	background: rgba(47, 51, 66, .9);
+	
 }
 .tp-banner > ul li .tp-caption, .fullscreen > ul li .tp-caption {
 	z-index: 22 !important;
+	margin: 0 auto;
+	display: table;
+
 }
 .tp-banner > ul li .slide-title, .fullscreen > ul li .slide-title {
 	color: #fff;
 	position: relative;
+	top: 300px;
 	text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 .tp-banner ul li .slide-title:after, .fullscreen ul li .slide-title:after {
@@ -820,12 +829,15 @@ header.alt .mobile-navigation .mobile-btn span:after {
 }
 .tp-banner ul li .slide-description, .fullscreen ul li .slide-description {
 	position: relative;
-	font-size: 15px;
+	font-size: 19px;
 	line-height: 24px;
 	color: #a9abb0;
 	margin-top: 37px;
 	text-align: center;
 	max-width: 950px;
+	left: 50px;
+	margin-left: 100px;
+	top: 300px;
 }
 .slider-overlay:after {
 	content: '';
@@ -838,9 +850,7 @@ header.alt .mobile-navigation .mobile-btn span:after {
 	width: 100%;
 	height: 100%;
 }
-.onepage .slider-overlay:after {
-	display: none;
-}
+
 .mobile_nav-open .tp-banner-container,
 .mobile_nav-open .tp-banner,
 .modal-open .tp-banner-container,
@@ -929,7 +939,7 @@ header.alt .mobile-navigation .mobile-btn span:after {
 /* 06 - Instructors */
 .instructors-section {
 	position: relative;
-	background: #fff;
+	background: #f5f5f5;;
 	text-align: center;
 	border-top: 1px solid rgba(0, 0, 0, .05);
 }
@@ -937,10 +947,21 @@ header.alt .mobile-navigation .mobile-btn span:after {
 	border-radius: 3px 3px 0 0;
 }
 .instructors-section .instructor-info {
-	background: #f5f5f5;
+	background: #fff;
 	border-radius: 0 0 3px 3px;
 	padding: 27px 0 30px;
 }
+
+.instructors-section .course-title a {
+	display: inline;
+	color: #383c4b;
+}
+
+.instructors-section .course-title a:hover {
+	display: inline;
+	color: #fe9d68;
+}
+
 .instructors-section .instructor-info .name {
 	font-size: 17px;
 	font-weight: bold;
@@ -2032,7 +2053,7 @@ h6.head-title {
 }
 /* 14 - Blog */
 .post {
-	padding-top: 100px;
+	padding-top: 50px;
 	background: #f5f5f5;
 }
 .post #single-slider {
