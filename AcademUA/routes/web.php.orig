@@ -4,8 +4,6 @@ use App\Course;
 use App\Category;
 
 
-
-
 Route::get('ajaxImageUpload', ['uses'=>'AjaxImageUploadController@ajaxImageUpload']);
 Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUploadController@ajaxImageUploadPost']);
 /*
@@ -25,16 +23,6 @@ Route::get('/', 'HomeController@index');
 /*##################################################################################################
 ####################################USERS###########################################################
 ##################################################################################################*/
-Route::get('/users/modify/{id}', function ($id) {
-	//m	odify the data of a course
-	$user = User::find($id);
-	return view('/users/modifyUser')->with('user', $user);
-}
-);
-Route::get('/users/delete/{id}', 'UsersController@deleteUser');
-Route::get('/users/modified/{id}', 'UsersController@edit');
-Route::get('/users/create/', 'UsersController@createUser');
-Route::get('/users/new/', function () {
 
 Route::get('/users/modify/', 'UsersController@ModifyUser')->middleware('auth'); //everything OK
 Route::get('/users/delete/', 'UsersController@deleteUser')->middleware('auth'); //Everything OK
@@ -66,8 +54,6 @@ Route::get('/courses/modified/{id}', 'CoursesController@edit');
 
 
 
-Route::get('/courses/create/','CoursesController@createCourse');
-
 /*##################################################################################################
 ####################################CATEGORIES###########################################################
 ##################################################################################################*/
@@ -77,9 +63,6 @@ Route::get('/categories/delete/{id}', 'CategoriesController@deleteCategory')->mi
 Route::get('/categories/create/', 'CategoriesController@createCategory')->middleware('auth')->middleware('admin');
 Route::get('/categories/new/','CategoriesController@newCategory')->middleware('auth')->middleware('admin'); //Everything OK
 
-	return view('/categories/createCategory');
-}
-);
 
 
 /*##################################################################################################
@@ -98,11 +81,11 @@ Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middlew
 Route::get('/messages/new/','MessagesController@newMessage')->middleware('auth'); //Everything OK
 Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 
-	return view('/messages/createMessage');
-}
-);
-Route::get('/messages', 'MessagesController@showMessages');
 
 Auth::routes();
 
+<<<<<<< HEAD
+Route::get('/home', 'HomeController@index');
+=======
 Route::get('/home', 'HomeController@inicio');
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120

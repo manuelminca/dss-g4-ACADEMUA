@@ -63,13 +63,6 @@ class User extends Authenticatable
 
 	//###################################################
 
-
-
-
-
-
-
-
 	public function deleteUser(){
 		$this->delete();
 	}
@@ -122,6 +115,14 @@ class User extends Authenticatable
 
 	public function checkAttendingCourse($course_id){
 
+<<<<<<< HEAD
+		$list = $this->courses()->where('id', $course_id)->get();
+		if ($list != null) {
+			return true;
+		}
+		return false;
+
+=======
 		$courses = User::find(Auth::user()->id)->courses()->get();
 
 		foreach ($courses as $course){
@@ -130,6 +131,7 @@ class User extends Authenticatable
 			}
 		}
 		return false;
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 	}
 	
 	

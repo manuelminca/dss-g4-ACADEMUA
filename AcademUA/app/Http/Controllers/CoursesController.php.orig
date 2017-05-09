@@ -11,7 +11,10 @@ class CoursesController extends Controller
 {
 	
 	
+<<<<<<< HEAD
+=======
 	
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 	/*#############################################
 	GETTERS AND SETTERS
 		###############################################*/
@@ -19,7 +22,11 @@ class CoursesController extends Controller
 	public function getCourses($teacher_id){
 		$list = Course::where('teacher_id', '=', $teacher_id)->paginate(8);
 		return view('courses.manageCourses', ['courses' => $list]);
+<<<<<<< HEAD
+
+=======
 		
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 	}
 	
 	public function getComments($course_id){
@@ -45,7 +52,11 @@ class CoursesController extends Controller
 		$this->validate($request,[
 		
 		'price' => 'min:0 | numeric'
+<<<<<<< HEAD
+				]);
+=======
 						]);
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 		
 		$name= $request->input('name');
 		$description= $request->input('description');
@@ -59,24 +70,41 @@ class CoursesController extends Controller
 		
 		$comments = $course->getComments($id);
 		//r		eturns an array with all the comments
+<<<<<<< HEAD
+				return view('courses.course', ['comments' => $comments])->with('course', $course);
+=======
 						return view('courses.course', ['comments' => $comments])->with('course', $course);
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 		
 	}
 	
 	public function deleteCourse($id){
+<<<<<<< HEAD
+		//We have to redirect to Manage Courses but we need the session of the teacher(in progress)
+		
+		$course = Course::findOrFail($id);
+
+=======
 		//W		e have to redirect to Manage Courses but we need the session of the teacher(in progress)
 		
 		$course = Course::findOrFail($id);
 		
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 		if($course->teacher_id == Auth::user()->id){
 			$course->deleteCourse();
 			
 			$list = Course::paginate(6);
 			return view('courses.courses', ['courses' => $list]);
+<<<<<<< HEAD
+			//We have to change that in the future
+			
+		}else{
+=======
 			//W			e have to change that in the future
 			
 		}
 		else{
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 			return view('home');
 		}
 	}
@@ -87,18 +115,40 @@ class CoursesController extends Controller
 		return view('courses.courses', ['courses' => $list]);
 	}
 	
+<<<<<<< HEAD
+	//no sabemos como pasar dos variables
+=======
 	//n	o sabemos como pasar dos variables
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 	
 	
 	public function showSingleCourse($id){
 		$course = Course::find($id);
 		$comments = $course->getComments($id);
 		//r		eturns an array with all the comments
+<<<<<<< HEAD
+			return view('courses.course', ['comments' => $comments])->with('course', $course);
+=======
 					return view('courses.course', ['comments' => $comments])->with('course', $course);
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 		
 	}
 	
 	//M	ostramos cursos filtrando
+<<<<<<< HEAD
+		public function showCoursesFilter(Request $request){
+		$filter = $_GET["filter"];
+		if ($filter == 'precio_menor') {
+			$this->validate($request,[
+					'valor' => 'required | min:1 | numeric'
+			]);
+		} else {
+			$this->validate($request,[
+					'valor' => 'required'
+			]);
+		}
+	
+=======
 			public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
 		if ($filter == 'precio_menor') {
@@ -112,6 +162,7 @@ class CoursesController extends Controller
 						]);
 		}
 		
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 		
 		$order = $_GET["order"];
 		$how = $_GET["how"];
@@ -131,10 +182,17 @@ class CoursesController extends Controller
 	public function createCourse(Request $request){
 		$course = new Course();
 		$this->validate($request,[
+<<<<<<< HEAD
+						'name' => 'required',
+						'description' => 'required',
+						'price' => 'required | min:0 | numeric'
+				]);
+=======
 								'name' => 'required',
 								'description' => 'required',
 								'price' => 'required | min:0 | numeric'
 						]);
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 		
 		$name= $request->input('name');
 		$description= $request->input('description');
@@ -159,6 +217,18 @@ class CoursesController extends Controller
 	
 	public function modifyCourse($course_id){
 		$course = Course::find($course_id);
+<<<<<<< HEAD
+
+		if($course->teacher_id == Auth::user()->id){
+		return view('/courses/modifyCourse')->with('courses', $course);
+		}else{
+			return view('home');
+		}
+
+	}
+	
+	
+=======
 		
 		if($course->teacher_id == Auth::user()->id){
 			return view('/courses/modifyCourse')->with('courses', $course);
@@ -170,11 +240,18 @@ class CoursesController extends Controller
 	}
 	
 	
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 	public function attendCourse($course_id){
 		$course = Course::find($course_id);
 		$user = User::find(Auth::user()->id);
 		$course->attendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
+<<<<<<< HEAD
+		//r		eturns an array with all the comments
+			return view('courses.course', ['comments' => $comments])->with('course', $course);
+	}
+	
+=======
 		//returns an array with all the comments
 		return view('courses.course', ['comments' => $comments])->with('course', $course);
 	}
@@ -192,5 +269,6 @@ class CoursesController extends Controller
 		return $arrayLinks;
 	}
 	
+>>>>>>> 71c69b7ff849e9b8af3c81d2c1664b18d6f83120
 	
 }
