@@ -18,116 +18,78 @@
                 </div><!-- End container -->
             </div><!-- End Inner Page Head -->
             <div class="clearfix"></div>
-            <section class="full-section latest-courses-section no-slider">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="add-courses top-margin">
-                                <img src="assets/img/icons/addcourse-icon.png" alt="" class="fl add-courses-icon">
-                                <a href="#" class="add-courses-title ln-tr">You Are an Instructor ? Add Your Courses Now !</a>
-                                <p class="add-courses-description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
-                                </p>
-                            </div><!-- End Add Courses -->
-                        </div>
-                    </div><!-- End row -->
-                </div>
-                <div class="section-content latest-courses-content fadeInDown-animation">
-                    <div class="container">
-                        <div class="row">
+            <section style="margin-top: -50px;" class="full-section latest-courses-section no-slider">
+         
+                
 
-
+<!-- https://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/ -->
 <form action="/courses/filter/">
-{{ csrf_field() }}
- Search by: <select name="filter">
-                    <option value="precio_menor" selected="selected">Maximum price</option>
-                    <option value="nombre">Name</option>
-              </select>
- Order by: <select name="order">
-                    <option value="precio" selected="selected">Price</option>
-                    <option value="nombre">Name</option>
-              </select>
-Asc/Desc:    <select name="how">
-                    <option value="asc" selected="selected">Ascending</option>
-                    <option value="desc">Descending</option>
-                </select>
-    <!-- <input value="{{ old('valor') }}" type="text" name="valor">
-        @if ($errors->has('valor'))
-            <span class="help-block">
-                <strong>{{ $errors->first('valor') }}</strong>
-            </span>
-        @endif-->
-    <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
-
-            <input id="valor" type="text" class="form-control" name="valor" required>
-
-            @if ($errors->has('valor'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('valor') }}</strong>
-                </span>
-            @endif
-    </div>
-
-    <br>
-
-  <input type="submit" value="Submit">
-</form>
-
-
-                    <!--<form class="form-horizontal" role="form" method="POST" action="/courses/filter/">
-                        {{ csrf_field() }}
-
-                            <label for="searchBy" class="col-md-4 control-label">Search by</label>
-
-                            <div class="col-md-6">
-                                <select name="filter">
-                                    <option value="precio_menor" selected="selected">Maximum price</option>
-                                    <option value="nombre">Name</option>
-                                </select>
-                            </div>
-
-                            <label for="orderBy" class="col-md-4 control-label">Order by</label>
-
-                            <div class="col-md-6">
+        {{ csrf_field() }}
+<div class="login-page" style="max-width:60%; margin:0 auto; margin-bottom: -100px;">
+    <div class="dropdowns">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="login-form">
+                    <div class="login-title">
+                        <span class="text">Apply filters</span>
+                        
+                    </div><!-- End Title -->
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <p class="dropdown-text">Order by: </p>
+                            
                                 <select name="order">
-                                    <option value="precio" selected="selected">Price</option>
-                                    <option value="nombre">Name</option>
+                                        <option value="precio" selected="selected">Price</option>
+                                        <option value="nombre">Name</option>
                                 </select>
                             </div>
 
-                            <label for="ascDesc" class="col-md-4 control-label">Asc/Desc</label>
-
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-6">
+                                <p class="dropdown-text">Asc/Desc: </p>
+                            
                                 <select name="how">
                                     <option value="asc" selected="selected">Ascending</option>
                                     <option value="desc">Descending</option>
                                 </select>
                             </div>
 
-                        <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
-                            <label for="valor" class="col-md-4 control-label">Valor</label>
-
-                            <div class="col-md-6">
-                                <input id="valor" type="text" class="form-control" name="valor" required>
-
-                                @if ($errors->has('valor'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('valor') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="col-md-6 col-sm-6">
+                                <p class="dropdown-text">Search by: </p>
+        
+                                <select name="filter">
+                                    <option value="precio_menor" selected="selected">Maximum price</option>
+                                    <option value="nombre">Name</option>
+                                </select>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Submit
-                                </button>
+                        
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
+                                    <input id="valor" type="text" class="form-control" name="valor" placeholder="Enter value" required>
+                                    @if ($errors->has('valor'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('valor') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </form>-->
 
+                            <div class="col-md-12">
+                                <div class="input clearfix">
+                                    <input type="submit" value="Submit">
+                                </div>
+                            </div>
+                            
+                        </div><!-- end row -->
+                </div><!-- end login form -->
+            </form>
+        </div><!-- end col-md-12 --> 
+    </div>   <!-- end row -->
+    </div><!-- dropdowns -->
+</div><!-- end login page -->
 
+<div class="section-content latest-courses-content fadeInDown-animation">
+                    <div class="container">
+                        <div class="row">
  <?php
  $number = 0;
  
