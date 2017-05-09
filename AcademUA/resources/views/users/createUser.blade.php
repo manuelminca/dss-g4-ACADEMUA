@@ -14,7 +14,7 @@
 
 
 
-<!--
+
 <h1>New User</h1>
 {{-- Error messages --}}
 @if (count($errors) > 0)
@@ -25,6 +25,8 @@
 </ul>
 @endif
 
+
+<!--
 <form action="/users/create/">
 
 {{ csrf_field() }}

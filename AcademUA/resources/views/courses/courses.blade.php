@@ -50,11 +50,82 @@
 Asc/Desc:    <select name="how">
                     <option value="asc" selected="selected">Ascending</option>
                     <option value="desc">Descending</option>
-              </select>
-  <input value="{{ old('valor') }}" type="text" name="valor"><br>
+                </select>
+    <!-- <input value="{{ old('valor') }}" type="text" name="valor">
+        @if ($errors->has('valor'))
+            <span class="help-block">
+                <strong>{{ $errors->first('valor') }}</strong>
+            </span>
+        @endif-->
+    <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
+
+            <input id="valor" type="text" class="form-control" name="valor" required>
+
+            @if ($errors->has('valor'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('valor') }}</strong>
+                </span>
+            @endif
+    </div>
+
+    <br>
 
   <input type="submit" value="Submit">
 </form>
+
+
+                    <!--<form class="form-horizontal" role="form" method="POST" action="/courses/filter/">
+                        {{ csrf_field() }}
+
+                            <label for="searchBy" class="col-md-4 control-label">Search by</label>
+
+                            <div class="col-md-6">
+                                <select name="filter">
+                                    <option value="precio_menor" selected="selected">Maximum price</option>
+                                    <option value="nombre">Name</option>
+                                </select>
+                            </div>
+
+                            <label for="orderBy" class="col-md-4 control-label">Order by</label>
+
+                            <div class="col-md-6">
+                                <select name="order">
+                                    <option value="precio" selected="selected">Price</option>
+                                    <option value="nombre">Name</option>
+                                </select>
+                            </div>
+
+                            <label for="ascDesc" class="col-md-4 control-label">Asc/Desc</label>
+
+                            <div class="col-md-6">
+                                <select name="how">
+                                    <option value="asc" selected="selected">Ascending</option>
+                                    <option value="desc">Descending</option>
+                                </select>
+                            </div>
+
+                        <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
+                            <label for="valor" class="col-md-4 control-label">Valor</label>
+
+                            <div class="col-md-6">
+                                <input id="valor" type="text" class="form-control" name="valor" required>
+
+                                @if ($errors->has('valor'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('valor') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>-->
 
 
  <?php

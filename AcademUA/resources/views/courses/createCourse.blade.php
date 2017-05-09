@@ -15,8 +15,7 @@
             <section class="full-section latest-courses-section no-slider">
 
 <ul>
-<!--
-<h1>New Course</h1>
+
 {{-- Error messages --}}
 @if (count($errors) > 0)
 <ul>
@@ -25,10 +24,12 @@
 @endforeach
 </ul>
 @endif
+
+<!--
 <style>
 input{width : 100%;}
 </style>
-
+<!--
 <form action="/courses/create/" >
 
 {{ csrf_field() }}
@@ -92,11 +93,7 @@ foreach ($categories as $cat) {
                                                     <input  value="{{ old('price') }}" type="number" name="price" placeholder="Price">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input  type="number" name="id" placeholder="Teacher id">
-                                                </div>
-                                            </div>
+                                           
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
                                                     <input  value="{{ old('links') }}" type="text" name="links" placeholder="Links">
