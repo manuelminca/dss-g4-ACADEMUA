@@ -42,33 +42,6 @@
 </div>
 
 <div class="clearfix"></div>
-<div class="course-search fancy-shadow">
-                <div class="container">
-                    <form action="10-courses-grid-1.html" id="course-search-form" class="clearfix">
-                        <input type="text" name="course-name" id="course-name" placeholder="Write the course name here then choose Time, Category & Country">
-                        <div class="select-time ib">
-                            <select class="dropdown" name="course-time" id="course-time" data-settings='{"cutOff": 7}'>
-                                <option value="" class="label">Time (this month)</option>
-                                <option value="1">Today</option>
-                            </select>
-                        </div><!-- End Select Time -->
-                        <div class="select-category ib">
-                            <select class="dropdown" name="course-category" id="course-category" data-settings='{"cutOff": 7}'>
-                                <option value="" class="label">Business (3 courses)</option>
-                                <option value="1">Social Marketing</option>
-                            </select>
-                        </div><!-- End Select Category -->
-                        <div class="select-country ib">
-                            <select class="dropdown" name="course-country" id="course-country" data-settings='{"cutOff": 7}'>
-                                <option value="" class="label">UAE (7 courses)</option>
-                                <option value="AF">Afghanistan</option>
-                                <option value="AL">Albania</option>
-                            </select>
-                        </div><!-- End Select Country -->
-                        <input type="submit" name="search-btn" id="search-btn" class="grad-btn ln-tr" value="Search">
-                    </form><!-- End Sourse Search Form -->
-                </div>
-            </div><!-- End Course Container -->
 
             <div class="clearfix"></div>
 

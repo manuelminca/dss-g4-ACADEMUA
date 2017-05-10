@@ -14,16 +14,25 @@
 
             <div class="clearfix"></div>
             @if(Auth::check())
-            @if (Auth::user()->checkAttendingCourse($course->id))
+            @if ($course->checkAttend())
                 <h1>You can see this because you are attending this course!</h1>
             @endif
             @endif
 
             @if(Auth::check())
-            @if (!Auth::user()->checkAttendingCourse($course->id))
+            @if ($course->checkAttend() == false)
                 <h1>You can see this even if you are not attending the course</h1>
             @endif
             @endif
+
+
+
+            <?php
+            foreach ($course->getUserCourses() as $cour){
+                echo $cour->id;
+            }
+
+            ?>
             
 
             <article class="post alt">
@@ -50,9 +59,15 @@
                                         <span class="text"> <?php echo $course->price ?>€</span>
                                     </div>
                                     <?php
-                                        echo "<a href='/courses/attend/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>Attend</a>"; //HERE WE HAVE TO PUT & USER ID IN THE FUTURE
-                                        echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn subscribe-btn'>Modify</a>";
-                                        echo "<a href='#' class='btn grad-btn subscribe-btn'>Quit</a>";
+                                        if($course->checkAttend() == false && $course->checkTeacher() == false){
+                                            echo "<a href='/courses/attend/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>Attend</a>"; 
+                                        }
+                                        if($course->checkTeacher()){
+                                            echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn subscribe-btn'>Modify</a>";
+                                        }
+                                        if($course->checkAttend() && $course->checkTeacher() == false ){
+                                             echo "<a href='/courses/quit/" . $course->id. "' class='btn grad-btn subscribe-btn'>Quit</a>";
+                                        }
                                     ?>
                                 </div>
                             </div><!-- End Entry -->
