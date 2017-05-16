@@ -87,8 +87,9 @@ class CoursesController extends Controller
 	
 	public function showCourses(){
 		$list = Course::paginate(6);
+		$filtering = false;
 		
-		return view('courses.courses', ['courses' => $list]);
+		return view('courses.courses', ['courses' => $list])/*->with('filter', $filter)->with('valor', $valor)->with('order',$order)->with('how',$how)*/->with('filtering',$filtering);
 	}
 	
 	//n	o sabemos como pasar dos variables
@@ -99,7 +100,7 @@ class CoursesController extends Controller
 		$comments = $course->getComments($id);
 		$session = new Session();
 		$sessions = $session->getSessions($id);
-		//r		eturns an array with all the comments
+		//returns an array with all the comments
 				return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
 	}
@@ -108,14 +109,10 @@ class CoursesController extends Controller
 		public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
 		if ($filter == 'precio_menor') {
-			$this->validate($request,[
-																	'valor' => 'required | min:1 | numeric'
-															]);
+			$this->validate($request,['valor' => 'required | min:1 | numeric']);
 		}
 		else {
-			$this->validate($request,[
-																	'valor' => 'required'
-															]);
+			$this->validate($request,['valor' => 'required']);
 		}
 		
 		
@@ -123,9 +120,10 @@ class CoursesController extends Controller
 		$how = $_GET["how"];
 		$course = new Course();
 		$valor = $request->input('valor');
-		$list = $course->showCoursesFilter($filter, $valor, $order, $how)->paginate(6);
+		$list = $course->showCoursesFilter($filter, $valor, $order, $how);
+		$filtering = true;
 		
-		return view('courses.courses', ['courses' => $list]);
+		return view('courses.courses', ['courses' => $list])->with('filter', $filter)->with('valor', $valor)->with('order',$order)->with('how',$how)->with('filtering',$filtering);
 	}
 	
 	
