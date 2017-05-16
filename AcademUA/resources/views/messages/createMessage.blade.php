@@ -33,17 +33,10 @@
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
-            
-                                                    <input  value="{{ old('sender_id') }}" type="number" name="sender_id" placeholder = "Sender id">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
                            
-                                                    <input  value="{{ old('receiver_id') }}" type="number" name="receiver_id" placeholder = "Receiver id">
+                                                    <input  value="{{ old('receiver') }}" type="text" name="receiver" placeholder = "Receiver">
                                                 </div>
                                             </div>
-                                            
                                             <div class="col-md-12 col-sm-6">
                                                 <div class="input">
                                                 
