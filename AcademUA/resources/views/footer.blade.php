@@ -80,8 +80,8 @@
                                 <div class="footer-links">
                                     <ul>
                                         <li><a href="/courses" class="ln-tr">Courses</a></li>
-                                        <li><a href="#" class="ln-tr">Sitemap</a></li>
-                                        <li><a href="#" class="ln-tr">Mobile</a></li>
+                                        <li><a href="#" class="ln-tr">Instructors</a></li>
+                                        <li><a href="#" class="ln-tr">About</a></li>
                                         <li><a href="#" class="ln-tr">Privacy Policy</a></li>
                                         <li><a href="#" class="ln-tr">Support</a></li>
                                         <li><a href="#" class="ln-tr">Careers</a></li>
