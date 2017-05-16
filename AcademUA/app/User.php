@@ -104,6 +104,15 @@ class User extends Authenticatable
 		}
 	}
 
+	public function checkCurrentTeacher($course){
+		if($course->teacher_id == Auth::user()->id){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
 		public function checkAdmin(){
 		if($this->admin == 1){
 			return true;
@@ -118,7 +127,7 @@ class User extends Authenticatable
 		$courses = User::find(Auth::user()->id)->courses()->get();
 
 		foreach ($courses as $course){
-			if($course->id == $course_id){
+			if($course->id == $course_id || $this->admin == 1){
 				return true;
 			}
 		}

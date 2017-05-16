@@ -84,25 +84,27 @@
                             <li class="parent-item login"><a href="{{ route('login') }}" class="ln-tr"><span class="grad-btn">Login</span></a></li>
                             <li class="parent-item login"><a href="{{ route('register') }}" class="ln-tr"><span class="grad-btn">Register</span></a></li>
                         @else
-                            <li class="dropdown">
+                            <li class="parent-item hashchild">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    Hello, {{ Auth::user()->name }} </span>
                                 </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
+                                <ul class="submenu">
+                                    <li class="sub-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">Logout</a></li>
+                                    <li class="sub-item"><a href="/users/modify" class="ln-tr">Modify user</a></li>
+                                    <li class="sub-item"><a href="/users/delete" class="ln-tr">Delete user</a></li>
                                 </ul>
                             </li>
+
+                            <li class="parent-item login">
+                                
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        
+                            
                         @endif
                     
 

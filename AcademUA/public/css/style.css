@@ -56,6 +56,49 @@ body {
 	color: #353a48;
 	overflow: auto;
 }
+
+
+.dropdowns .dropdown-text {
+	font-weight: 600;
+	font-size:16px;
+	color: #5a5e6a;
+	display: inline-block;
+}
+
+select {
+  margin: 20px;
+  border: 1px solid #111;
+  background: transparent;
+  width: 150px;
+  padding: 5px 25px 5px 5px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(/img/arrow.png) 96% / 15% no-repeat #eee;
+}
+
+.cursos {
+	margin-top: -50px;
+}
+
+.login {
+	margin:0 auto;
+	margin-bottom: -50px;
+}
+
+@media screen and (min-width: 992px) {
+	.cursos {
+		margin-top: -170px;
+	}
+	.login {
+		margin:0 auto;
+		margin-bottom: -200px;
+	}
+}
+
 .bboxed {
 	background-image: url(assets/img/patterns/bg13.png);
 	background-repeat: repeat;
@@ -834,9 +877,8 @@ header.alt .mobile-navigation .mobile-btn span:after {
 	color: #a9abb0;
 	margin-top: 37px;
 	text-align: center;
-	max-width: 950px;
-	left: 50px;
-	margin-left: 100px;
+	max-width: 80%;
+	left: 10%;
 	top: 300px;
 }
 .slider-overlay:after {
@@ -1541,14 +1583,7 @@ h6.head-title {
 	background: #fe9d68;
 	border-radius: 4px;
 }
-.course-search.alt .dropdown, .course-search.alt #course-name {
-	background: #fff;
-	box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, .05);
-	border: none;
-}
-.course-search.alt .dropdown div {
-	left: 0;
-}
+
 .course-search.alt:before {
 	display: none;
 }
@@ -3547,15 +3582,9 @@ blockquote.blockquote-4 .story {
 }
 .dark .top-bar,
 .dark .course-search #course-name,
-.dark .course-search.alt .dropdown,
-.dark .dropdown,
-.dark .dropdown.open div {
-	background: #353842;
-}
+
 .dark .course-search #course-name,
-.dark .course-search.alt .dropdown,
-.dark .dropdown,
-.dark .dropdown div,
+
 .dark .comment-form .input input:not([type=submit]),
 .dark .comment-form .input textarea,
 .dark .contact-form .input input:not([type=submit]),
@@ -3564,17 +3593,10 @@ blockquote.blockquote-4 .story {
 .dark .coming-soon .share-icons, .dark .error-page .share-icons {
 	border: 1px solid #50525c;
 }
-.dark .course-search.alt .dropdown div {
-	left: -1px;
-}
-.dark .dropdown li {
-	border-bottom-color: #50525c;
-}
+
 /* light text */
 .dark header .main-navigation li.courses-menu li .single-item .courses-num,
 .dark header .main-navigation li.courses-menu li .single-item a:hover,
-.dark .dropdown .selected,
-.dark .dropdown li.active,
 .dark .full-section .section-description,
 .dark .basic-slider-box .post-title a:hover,
 .dark .basic-slider-box .post .meta a:hover,
@@ -3587,9 +3609,6 @@ blockquote.blockquote-4 .story {
 .dark #login-modal .close-modal,
 .dark #register-modal .close-modal {
 	color: #97989b;
-}
-.dark .dropdown li.focus {
-	background-color: #202126;
 }
 .dark .course-search #search-btn {
 	background-color: #111217;
