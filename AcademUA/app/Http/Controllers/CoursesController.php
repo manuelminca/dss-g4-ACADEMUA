@@ -62,16 +62,17 @@ class CoursesController extends Controller
 	}
 	
 	public function deleteCourse($id){
-		//W		e have to redirect to Manage Courses but we need the session of the teacher(in progress)
-		
+		//We have to redirect to Manage Courses but we need the session of the teacher(in progress)
+		$filtering = false;
 		$course = Course::findOrFail($id);
 		
 		if($course->teacher_id == Auth::user()->id){
 			$course->deleteCourse();
 			
 			$list = Course::paginate(6);
-			return view('courses.courses', ['courses' => $list]);
-			//W			e have to change that in the future
+
+			return redirect('/courses');
+			//We have to change that in the future
 			
 		}
 		else{
