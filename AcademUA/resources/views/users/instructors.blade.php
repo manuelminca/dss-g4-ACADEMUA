@@ -37,8 +37,7 @@ foreach ($users as $user) {
 	echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $user->name . "</a></h3>";
 	echo "<p class='course-description'>" . $user->description . "</p>";
 	echo "<div class='buttons'>";
-	echo "<a href='/users/modify/" .$user->id. "' class='btn grad-btn orange-btn read-btn'>Modify</a>";
-	echo "<a href='/users/delete/" .$user->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+	echo "<a href='/courses/manage/" .$user->id. "' class='btn grad-btn orange-btn read-btn'>View Related Courses</a>";
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
