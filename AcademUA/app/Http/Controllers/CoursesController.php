@@ -18,7 +18,6 @@ class CoursesController extends Controller
 	public function getCourses($teacher_id){
 		$list = Course::where('teacher_id', '=', $teacher_id)->paginate(8);
 		return view('courses.manageCourses', ['courses' => $list]);
-		
 	}
 	
 	public function getComments($course_id){
@@ -86,7 +85,12 @@ class CoursesController extends Controller
 		return view('courses.courses', ['courses' => $list])/*->with('filter', $filter)->with('valor', $valor)->with('order',$order)->with('how',$how)*/->with('filtering',$filtering);
 	}
 	
-	//n	o sabemos como pasar dos variables
+	public function showTeacherCourses($teacher_id){
+
+		$list = Course::where('teacher_id',$teacher_id)->paginate(6);
+		$filtering = false;		
+		return view('courses.courses', ['courses' => $list])->with('filtering',$filtering);
+	}
 	
 	
 	public function showSingleCourse($id){
@@ -95,7 +99,7 @@ class CoursesController extends Controller
 		$session = new Session();
 		$sessions = $session->getSessions($id);
 		//returns an array with all the comments
-				return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
 	}
 	
