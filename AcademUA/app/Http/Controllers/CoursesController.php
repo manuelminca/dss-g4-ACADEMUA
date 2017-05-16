@@ -11,14 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class CoursesController extends Controller
 {
 	
-	
-	
-	
-	
-	
 	/*#############################################
 	GETTERS AND SETTERS
-					###############################################*/
+	###############################################*/
 	
 	public function getCourses($teacher_id){
 		$list = Course::where('teacher_id', '=', $teacher_id)->paginate(8);
@@ -46,24 +41,23 @@ class CoursesController extends Controller
 		
 		
 		$course = Course::findOrFail($id);
+		/*
 		$this->validate($request,[
 		
 		'price' => 'min:0 | numeric'
-												]);
-		
+		]);
+		*/
 		$name= $request->input('name');
 		$description= $request->input('description');
 		$price= $request->input('price');
-		$content= $request->input('content');
-		$links= $request->input('links');
-		$teacher_id= $course->teacher_id;
+		$content= $request->input('content');;
 		
 		
-		$course->createCourse($name,$description,$price,$content,$links,$teacher_id);
+		$course->editCourse($name,$description,$price,$content);
 		
 		$comments = $course->getComments($id);
 		//r		eturns an array with all the comments
-												return view('courses.course', ['comments' => $comments])->with('course', $course);
+		return view('courses.course', ['comments' => $comments])->with('course', $course);
 		
 	}
 	
@@ -138,14 +132,13 @@ class CoursesController extends Controller
 		$this->validate($request,[
 			'name' => 'required',
 			'description' => 'required',
-			'price' => 'required | min:0 | numeric'
+			'price' => 'required | min:-1 | numeric'
 		]);
 		
 		$name= $request->input('name');
 		$description= $request->input('description');
 		$price= $request->input('price');
 		$content= $request->input('content');
-		$links= $request->input('links');
 		$teacher_id= Auth::user()->id;
 		$categoryName = $request->input('category');
 		
@@ -154,7 +147,7 @@ class CoursesController extends Controller
 		$categoryID = $catModel->getID($categoryName);
 		
 		
-		$course->createCourse($name,$description,$price,$content,$links,$teacher_id);
+		$course->createCourse($name,$description,$price,$content,$teacher_id);
 		
 		$course->attachCategory($categoryID);
 		

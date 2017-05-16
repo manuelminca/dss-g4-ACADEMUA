@@ -5,7 +5,7 @@
 
 <div class="inner-head">
                 <div class="container">
-                    <h1 class="entry-title">ADD COURSE</h1>
+                    <h1 class="entry-title">MODIFY COURSE</h1>
                     <p class="description">
                         Please enter all the data required to create a new course.
                     </p>
@@ -15,14 +15,7 @@
             <section class="full-section latest-courses-section no-slider">
 
 <!--<ul>
-{{-- Error messages --}}
-@if (count($errors) > 0)
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-@endif-->
+
 
 <!--
 <form action="/courses/modified/{{$courses->id}}">
@@ -40,6 +33,14 @@
 </form>
 </ul>
 -->         
+{{-- Error messages --}}
+@if (count($errors) > 0)
+<ul>
+@foreach ($errors->all() as $error)
+<li>{{ $error }}</li>
+@endforeach
+</ul>
+@endif
 
 <form action="/courses/modified/{{$courses->id}}" >
             <div class="login-page" style="width:80%; margin:0 auto;">
@@ -68,11 +69,6 @@
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
                                                     <input  value="{{ old('price') }}" type="number" name="price" placeholder="Price">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input  value="{{ old('links') }}" type="text" name="links" placeholder="Links">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
