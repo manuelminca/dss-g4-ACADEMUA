@@ -54,42 +54,22 @@
                                 <h6 class="widget-title">Latest Courses</h6>
                                 <div id="footer-courses-slider" class="flexslider">
                                     <ul class="slides">
-                                        <li class="clearfix">
-                                            <div class="course-icon fl">
-                                                <span class="icon grad-btn"><i class="fa fa-bookmark"></i></span>
-                                            </div><!-- End Course Icon -->
-                                            <div class="course-info">
-                                                <h4 class="footer-course-title"><a href="#" class="ln-tr">How to Design website?</a></h4>
-                                                <p class="footer-course-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem</p>
-                                                <span class="course-date">Dec 8, 2015</span>
-                                            </div><!-- End Course Info -->
-                                            <div class="course-icon fl">
-                                                <span class="icon"><i class="fa fa-bookmark"></i></span>
-                                            </div><!-- End Course Icon -->
-                                            <div class="course-info">
-                                                <h4 class="footer-course-title"><a href="#" class="ln-tr">How to Design website?</a></h4>
-                                                <p class="footer-course-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem</p>
-                                                <span class="course-date">Dec 8, 2015</span>
-                                            </div><!-- End Course Info -->
-                                        </li><!-- End 1st Slide Item -->
-                                        <li class="clearfix">
-                                            <div class="course-icon fl">
-                                                <span class="icon grad-btn"><i class="fa fa-bookmark"></i></span>
-                                            </div><!-- End Course Icon -->
-                                            <div class="course-info">
-                                                <h4 class="footer-course-title"><a href="#" class="ln-tr">How to Design website?</a></h4>
-                                                <p class="footer-course-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem</p>
-                                                <span class="course-date">Dec 8, 2015</span>
-                                            </div><!-- End Course Info -->
-                                            <div class="course-icon fl">
-                                                <span class="icon"><i class="fa fa-bookmark"></i></span>
-                                            </div><!-- End Course Icon -->
-                                            <div class="course-info">
-                                                <h4 class="footer-course-title"><a href="#" class="ln-tr">How to Design website?</a></h4>
-                                                <p class="footer-course-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem</p>
-                                                <span class="course-date">Dec 8, 2015</span>
-                                            </div><!-- End Course Info -->
-                                        </li><!-- End 2nd Slide Item -->
+                                        <?php
+                                        //Mostramos los cursos
+                                        foreach ($courses as $course) {
+                                            echo "<li class='clearfix' style='padding-top:20px; padding-bottom:20px;'>";
+                                                echo "<div class='course-icon fl'>";
+                                                    echo "<span class='icon grad-btn'><i class='fa fa-bookmark'></i></span>";
+                                                echo "</div><!-- End Course Icon -->";
+                                                echo "<div class='course-info'>";
+                                                    echo "<h4 class='footer-course-title'><a href='/courses/course/" .$course->id. "' class='ln-tr'>" . $course->name . "</a></h4>";
+                                                    echo "<p class='footer-course-description'>" . $course->description . "</p>";
+                                                    echo "<span class='course-date'>das" . $course->created_at . "</span>";
+                                                echo "</div><!-- End Course Info -->";
+                                            echo "</li><!-- End 1st Slide Item -->";
+                                            echo "<hr>";
+                                        }
+                                        ?>            
                                     </ul><!--- End ul Items -->
                                 </div><!-- End Footer Scourses Slider -->
                             </div><!-- End Courses Widget -->
@@ -99,7 +79,7 @@
                                 <h6 class="widget-title">Quick Links</h6>
                                 <div class="footer-links">
                                     <ul>
-                                        <li><a href="#" class="ln-tr">Help</a></li>
+                                        <li><a href="/courses" class="ln-tr">Courses</a></li>
                                         <li><a href="#" class="ln-tr">Sitemap</a></li>
                                         <li><a href="#" class="ln-tr">Mobile</a></li>
                                         <li><a href="#" class="ln-tr">Privacy Policy</a></li>

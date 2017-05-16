@@ -25,7 +25,7 @@
 <!-- https://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/ -->
 <form action="/courses/filter/">
         {{ csrf_field() }}
-<div class="login login-page" style="max-width:60%;">
+<div class="loginForm login-page" style="max-width:60%;">
     <div class="dropdowns">
         <div class="row">
             <div class="col-md-12">
@@ -112,7 +112,7 @@ foreach ($courses as $course) {
                 echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
                 echo "</div>";
                 echo "<div class='course-info'>";
-                echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
+                echo "<h3 class='course-title'><a href='/courses/course/" .$course->id. "' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
                 echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
