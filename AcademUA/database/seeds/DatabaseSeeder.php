@@ -26,7 +26,5 @@ class DatabaseSeeder extends Seeder
 	 		$this->call(delete::class);
 		}
 		//Insert data into DB
-
-		
 	}
 }

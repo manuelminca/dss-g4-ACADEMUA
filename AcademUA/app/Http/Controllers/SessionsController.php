@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Auth;
 class SessionsController extends Controller
 {
 	
+	public function sessions($course_id){
+
+		$list = Session::where('course_id',$course_id)->paginate(8);	
+		return view('sessions.sessions', ['sessions' => $list])->with('course',$course_id);
+
+	}
 
 
 	public function createSession (Request $request, $course_id) {

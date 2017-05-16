@@ -84,4 +84,13 @@ Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@inicio');
+Route::get('/home', 'HomeController@index');
+
+
+/*##################################################################################################
+####################################SESSIONS###########################################################
+##################################################################################################*/
+
+Route::get('/sessions/new/{course_id}', 'SessionsController@sessions')->middleware('auth')->middleware('teacher');
+//Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
+Route::get('/sessions', 'MessagesController@showMessages')->middleware('auth');
