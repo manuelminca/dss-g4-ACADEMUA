@@ -201,8 +201,11 @@ class CoursesController extends BaseController
 		$course->unAttendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
 		//r		eturns an array with all the comments
-		return view('courses.course', ['comments' => $comments])->with('course', $course);
-		
+
+		$session = new Session();
+		$sessions = $session->getSessions($course_id);
+
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 	}
 		
 }
