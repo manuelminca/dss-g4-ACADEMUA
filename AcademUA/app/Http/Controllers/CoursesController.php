@@ -7,7 +7,7 @@ use App\Course;
 use App\User;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
-class CoursesController extends Controller
+class CoursesController extends BaseController
 {
 	
 	

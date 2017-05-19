@@ -6,18 +6,19 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\User;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+     /*
     public function __construct()
     {
         //$this->middleware('auth');
     }
-
+*/
     /**
      * Show the application dashboard.
      *
@@ -31,6 +32,8 @@ class HomeController extends Controller
         $user = new User();
 		
 		$listInstructors = $user->showInstructors()->paginate(4);
+
+        $coursesFooter = Course::paginate(4);
 
         return view('home', ['courses' => $list], ['users' => $listInstructors]);
     }

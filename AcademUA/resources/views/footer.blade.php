@@ -56,7 +56,7 @@
                                     <ul class="slides">
                                         <?php
                                         //Mostramos los cursos
-                                        foreach ($courses as $course) {
+                                        foreach ($coursesFooter as $course) {
                                             echo "<li class='clearfix' style='padding-top:20px; padding-bottom:20px;'>";
                                                 echo "<div class='course-icon fl'>";
                                                     echo "<span class='icon grad-btn'><i class='fa fa-bookmark'></i></span>";
