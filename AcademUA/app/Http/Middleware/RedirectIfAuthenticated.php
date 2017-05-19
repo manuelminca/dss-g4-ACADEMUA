@@ -21,7 +21,10 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }
-        
+
+        $request->attributes->add(['error' => true]);
+        $request->attributes->add(['message' => 'You need to be logged in to continue.']);
+
 
         return $next($request);
     }
