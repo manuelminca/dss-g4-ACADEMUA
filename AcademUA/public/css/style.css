@@ -84,7 +84,7 @@ select {
 	margin-top: -50px;
 }
 
-.login {
+.loginForm {
 	margin:0 auto;
 	margin-bottom: -50px;
 }
@@ -93,7 +93,7 @@ select {
 	.cursos {
 		margin-top: -170px;
 	}
-	.login {
+	.loginForm {
 		margin:0 auto;
 		margin-bottom: -200px;
 	}
@@ -1139,7 +1139,7 @@ header.alt .mobile-navigation .mobile-btn span:after {
 }
 /* Latest Courses Section */
 .latest-courses-section {
-	background: #f5f5f5;
+	background: #eee;
 	text-align: center;
 }
 .latest-courses-section .latest-courses-content {
@@ -3719,6 +3719,11 @@ footer h6.widget-title {
 	text-align: left;
 	padding-bottom: 11px;
 	margin-bottom: 14px;
+	border-bottom: 3px solid #3d404d;
+}
+
+hr {
+	border: 0px;
 	border-bottom: 1px solid #3d404d;
 }
 /* About Widget */

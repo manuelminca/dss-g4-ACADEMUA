@@ -12,7 +12,7 @@ use App\Message;
 
 use Illuminate\Support\Facades\Auth;
 
-class MessagesController extends Controller
+class MessagesController extends BaseController
 {
     public function deleteMessage($id){ //We have to redirect to Manage Courses but we need the session of the teacher(in progress)
 		$message = Message::findOrFail($id);
@@ -29,14 +29,13 @@ class MessagesController extends Controller
     public function createMessage(Request $request){
 		$message = new Message();
 		$this->validate($request,[
-				'sender_id' => 'required',
-				'receiver_id' => 'required',
+				'receiver' => 'required',
 				'subject' => 'required',
 				'message' => 'required'
 		]);
 		
-		$sender_id= $request->input('sender_id');
-		$receiver_id= $request->input('receiver_id');
+		$sender_id = Auth::user()->id;
+		$receiver_id = User::getIdFromName($request->input('receiver'));
 		$subject= $request->input('subject');
 		$messageReceived= $request->input('message');
 
