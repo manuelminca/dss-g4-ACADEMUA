@@ -100,7 +100,7 @@ foreach ($courses as $course) {
         echo "<div class='course'>";
             echo "<div class='course-image'>";
                 echo "<div class='details-overlay'>";
-                echo "<span class='place'>";
+                echo "<span class='place'>"; 
                 echo "<i class='fa fa-briefcase'></i>";
                 echo "<span class='text'>Id : " . $course->id ."</span>";
                 echo "</span>";
@@ -112,7 +112,7 @@ foreach ($courses as $course) {
                 echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
                 echo "</div>";
                 echo "<div class='course-info'>";
-                echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
+                echo "<h3 class='course-title'><a href='/courses/course/" .$course->id. "' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
                 echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
@@ -137,7 +137,13 @@ foreach ($courses as $course) {
 <div class="clearfix"></div>
 
 <div class="text-center">
-    {{$courses->links()}}
+    @if ($filtering)
+        {{$courses->appends('filter', $filter)->appends('order', $order)->appends('how', $how)->appends('valor', $valor)->links()}}
+    @endif
+    @if (!$filtering)
+        {{$courses->links()}}
+    @endif
+
 </div>
                             
                         </div><!-- End row -->

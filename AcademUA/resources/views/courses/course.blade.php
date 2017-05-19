@@ -24,15 +24,6 @@
                 <h1>You can see this even if you are not attending the course</h1>
             @endif
             @endif
-
-
-
-            <?php
-            foreach ($course->getUserCourses() as $cour){
-                echo $cour->id;
-            }
-
-            ?>
             
 
             <article class="post alt">
@@ -64,6 +55,7 @@
                                         }
                                         if($course->checkTeacher()){
                                             echo "<a href='/courses/modify/" .$course->id. "' class='btn grad-btn subscribe-btn'>Modify</a>";
+                                            echo "<a href='/sessions/new/" .$course->id. "' class='btn grad-btn subscribe-btn'>Add Session</a>";
                                         }
                                         if($course->checkAttend() && $course->checkTeacher() == false ){
                                              echo "<a href='/courses/quit/" . $course->id. "' class='btn grad-btn subscribe-btn'>Quit</a>";

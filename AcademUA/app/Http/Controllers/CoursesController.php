@@ -11,19 +11,13 @@ use Illuminate\Support\Facades\Auth;
 class CoursesController extends Controller
 {
 	
-	
-	
-	
-	
-	
 	/*#############################################
 	GETTERS AND SETTERS
-					###############################################*/
+	###############################################*/
 	
 	public function getCourses($teacher_id){
 		$list = Course::where('teacher_id', '=', $teacher_id)->paginate(8);
 		return view('courses.manageCourses', ['courses' => $list]);
-		
 	}
 	
 	public function getComments($course_id){
@@ -46,38 +40,38 @@ class CoursesController extends Controller
 		
 		
 		$course = Course::findOrFail($id);
+		/*
 		$this->validate($request,[
 		
 		'price' => 'min:0 | numeric'
-												]);
-		
+		]);
+		*/
 		$name= $request->input('name');
 		$description= $request->input('description');
 		$price= $request->input('price');
-		$content= $request->input('content');
-		$links= $request->input('links');
-		$teacher_id= $course->teacher_id;
+		$content= $request->input('content');;
 		
 		
-		$course->createCourse($name,$description,$price,$content,$links,$teacher_id);
+		$course->editCourse($name,$description,$price,$content);
 		
 		$comments = $course->getComments($id);
 		//r		eturns an array with all the comments
-												return view('courses.course', ['comments' => $comments])->with('course', $course);
+		return view('courses.course', ['comments' => $comments])->with('course', $course);
 		
 	}
 	
 	public function deleteCourse($id){
-		//W		e have to redirect to Manage Courses but we need the session of the teacher(in progress)
-		
+		//We have to redirect to Manage Courses but we need the session of the teacher(in progress)
+		$filtering = false;
 		$course = Course::findOrFail($id);
 		
 		if($course->teacher_id == Auth::user()->id){
 			$course->deleteCourse();
 			
 			$list = Course::paginate(6);
-			return view('courses.courses', ['courses' => $list]);
-			//W			e have to change that in the future
+
+			return redirect('/courses');
+			//We have to change that in the future
 			
 		}
 		else{
@@ -87,11 +81,17 @@ class CoursesController extends Controller
 	
 	public function showCourses(){
 		$list = Course::paginate(6);
+		$filtering = false;
 		
-		return view('courses.courses', ['courses' => $list]);
+		return view('courses.courses', ['courses' => $list])/*->with('filter', $filter)->with('valor', $valor)->with('order',$order)->with('how',$how)*/->with('filtering',$filtering);
 	}
 	
-	//n	o sabemos como pasar dos variables
+	public function showTeacherCourses($teacher_id){
+
+		$list = Course::where('teacher_id',$teacher_id)->paginate(6);
+		$filtering = false;		
+		return view('courses.courses', ['courses' => $list])->with('filtering',$filtering);
+	}
 	
 	
 	public function showSingleCourse($id){
@@ -99,8 +99,8 @@ class CoursesController extends Controller
 		$comments = $course->getComments($id);
 		$session = new Session();
 		$sessions = $session->getSessions($id);
-		//r		eturns an array with all the comments
-				return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
+		//returns an array with all the comments
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
 	}
 	
@@ -108,14 +108,10 @@ class CoursesController extends Controller
 		public function showCoursesFilter(Request $request){
 		$filter = $_GET["filter"];
 		if ($filter == 'precio_menor') {
-			$this->validate($request,[
-																	'valor' => 'required | min:1 | numeric'
-															]);
+			$this->validate($request,['valor' => 'required | min:1 | numeric']);
 		}
 		else {
-			$this->validate($request,[
-																	'valor' => 'required'
-															]);
+			$this->validate($request,['valor' => 'required']);
 		}
 		
 		
@@ -123,9 +119,10 @@ class CoursesController extends Controller
 		$how = $_GET["how"];
 		$course = new Course();
 		$valor = $request->input('valor');
-		$list = $course->showCoursesFilter($filter, $valor, $order, $how)->paginate(6);
+		$list = $course->showCoursesFilter($filter, $valor, $order, $how);
+		$filtering = true;
 		
-		return view('courses.courses', ['courses' => $list]);
+		return view('courses.courses', ['courses' => $list])->with('filter', $filter)->with('valor', $valor)->with('order',$order)->with('how',$how)->with('filtering',$filtering);
 	}
 	
 	
@@ -139,14 +136,13 @@ class CoursesController extends Controller
 		$this->validate($request,[
 			'name' => 'required',
 			'description' => 'required',
-			'price' => 'required | min:0 | numeric'
+			'price' => 'required | min:-1 | numeric'
 		]);
 		
 		$name= $request->input('name');
 		$description= $request->input('description');
 		$price= $request->input('price');
 		$content= $request->input('content');
-		$links= $request->input('links');
 		$teacher_id= Auth::user()->id;
 		$categoryName = $request->input('category');
 		
@@ -154,7 +150,7 @@ class CoursesController extends Controller
 		$categoryID = $catModel->getID($categoryName);
 		
 		
-		$course->createCourse($name,$description,$price,$content,$links,$teacher_id);
+		$course->createCourse($name,$description,$price,$content,$teacher_id);
 		
 		$course->attachCategory($categoryID);
 		

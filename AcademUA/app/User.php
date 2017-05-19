@@ -30,7 +30,7 @@ class User extends Authenticatable
 			     * @var array
 			     */
 			    protected $fillable = [
-			        'name', 'email', 'password', 'username', 'professor','admin',
+			        'id','name', 'email', 'password', 'username', 'professor','admin',
 			    ];
 	
 	
@@ -48,6 +48,10 @@ class User extends Authenticatable
 	/*#############################################
 				GETTERS AND SETTERS
 	###############################################*/
+
+	public function getId() {
+		return $this->id;
+	}
 
 	public function getName(){
 		return $this->name;
@@ -132,6 +136,11 @@ class User extends Authenticatable
 			}
 		}
 		return false;
+	}
+
+	public static function getIdFromName ($username) {
+		$user = User::where('username','=',$username)->first();
+		return  $user->id;
 	}
 	
 	
