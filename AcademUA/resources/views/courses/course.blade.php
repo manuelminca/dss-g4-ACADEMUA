@@ -87,8 +87,6 @@
                                             <?php
                                                 $number = 1;
                                                 foreach ($sessions as $session) {
-
-                                                    
                                                     echo "<div class='query clearfix'>";
                                                         echo "<div class='query-content'>";
                                                             echo "<h3 class='post-title'>#". $number . ": " . $session->title . "</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
