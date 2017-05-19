@@ -40,8 +40,18 @@ class Session extends Model
 
 	public function createSession ($title, $content, $video, $course_id) {
 		$this->title = $title;
-		$this->content = $content;
-		$this->video = $video;
+		if($content == null){
+			$this->content = "";
+		}else{
+			$this->content = $content;
+		}
+
+		if($video == null){
+			$this->video = "";
+		}else{
+			$this->video = $video;
+		}
+
 		$this->course_id = $course_id;
 		$this->save();
 	}

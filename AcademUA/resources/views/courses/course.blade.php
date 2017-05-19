@@ -75,6 +75,9 @@
                 </div><!-- End container -->
             </article>
 
+
+            @if (Auth::user()->checkTeacher() || $course->checkAttend())
+
             <section class="full-section latest-courses-section no-slider">
                 <div class="container">
                     <div class="row" style="width:80%; margin:0 auto;">
@@ -86,35 +89,28 @@
                                         <li class="questions-slide-item">
                                             <?php
                                                 $number = 1;
-                                                foreach ($comments as $comment) {
-                                                    
+                                                foreach ($sessions as $session) {
                                                     echo "<div class='query clearfix'>";
                                                         echo "<div class='query-content'>";
-                                                            echo "<h3 class='post-title'>#". $number . ": " . "VIDEO NAME HERE" . "</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
+                                                            echo "<h3 class='post-title'>#". $number . ": " . $session->title . "</h3>"; 
                                                             echo "<p class='query-description'> </p>";
-                                                            echo "<iframe width='560' height='315' src='https://www.youtube.com/embed/iCUV3iv9xOs' frameborder='0' allowfullscreen></iframe>";
+                                                            echo "<iframe width='560' height='315' src='" . $session->video . "' frameborder='0' allowfullscreen></iframe>";
                                                 
-                                                            echo "<p class='query-description'>". $comment->description . "</p>";
+                                                            echo "<p class='query-description'>". $session->content . "</p>";
                                                             echo "<div class='details'>";
                                                                 echo " <div class='date ib'>";
                                                                     echo "<span class='icon'><i class='fa fa-clock-o'></i></span>";
-                                                                    echo "<span class='text'>" . $comment->created_at . "</span>";
+                                                                    echo "<span class='text'>" . $session->created_at . "</span>";
                                                                 echo "</div>";
                                                                 echo " <div class='date ib'>";
                                                                     echo "<span class='icon'><i class='fa fa-star'></i></span>";
-                                                                    echo "<span class='text'>Rating: " . $comment->rating . "</span>";
+                                                                    echo "<span class='text'>Rating: " . "borrar". "</span>";
                                                                 echo "</div>";
                                                                 echo "<div class='place ib'>";
                                                                     echo "<span class='icon'><i class='fa fa-building'></i></span>";
                                                                     echo "<span class='text'>Academua</span>";
                                                             echo "</div>";
-
-                                                                if (Auth::user()->id == $comment->user_id || Auth::user()->checkAdmin()){
-                                                                echo "<div class='center ib'>";
-                                                                    echo "<a href='/comments/delete/" .$comment->id. "&" . $course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
-                                                                echo "</div>";
-                                                                }
-                                                            echo "</div>";
+                                                   echo "</div>";
                                                         echo "</div>";
                                                     echo "</div>";
                                                     $number = $number+1;
@@ -127,6 +123,9 @@
                         </div><!-- End col-md-6 -->
                     </div><!-- End row -->
                 </div><!-- End container -->
+
+                @endif
+
                 <div class="clearfix"></div>
                 <form action="/comments/create/{{$course->id}}" >
                     {{ csrf_field() }}

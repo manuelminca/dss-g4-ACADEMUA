@@ -8,7 +8,7 @@ use App\User;
 use App\Category;
 use App\Session;
 use Illuminate\Support\Facades\Auth;
-class CoursesController extends Controller
+class CoursesController extends BaseController
 {
 	
 	/*#############################################
@@ -190,8 +190,10 @@ class CoursesController extends Controller
 		$user = User::find(Auth::user()->id);
 		$course->attendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
-		//r		eturns an array with all the comments
-				return view('courses.course', ['comments' => $comments])->with('course', $course);
+		$session = new Session();
+		$sessions = $session->getSessions($course_id);
+
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 		
 	}
 
@@ -203,8 +205,11 @@ class CoursesController extends Controller
 		$course->unAttendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
 		//r		eturns an array with all the comments
-		return view('courses.course', ['comments' => $comments])->with('course', $course);
-		
+
+		$session = new Session();
+		$sessions = $session->getSessions($course_id);
+
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 	}
 		
 }

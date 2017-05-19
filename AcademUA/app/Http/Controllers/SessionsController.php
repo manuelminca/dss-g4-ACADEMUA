@@ -33,11 +33,11 @@ class SessionsController extends Controller
         $video = $request->input('video');
 
 		$session->createSession($title, $content, $video, $course_id);
-		//AQUI HAY QUE REDIRECCIONAR A MANAGE COURSE 
-        $course = Course::find($course_id);
-		$comments = $course->getComments($course_id);
-		$sessions = $session->getSessions($course_id);
-		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions',$sessions);
+
+
+
+		$list = Session::where('course_id',$course_id)->paginate(8);	
+		return view('sessions.sessions', ['sessions' => $list])->with('course',$course_id);
 
 	}
 
@@ -48,10 +48,8 @@ class SessionsController extends Controller
 			$session->deleteSession();
 		}
 
-		$course = Course::find($course_idid);
-		$comments = $course->getComments($course_id);
-		$sessions = $session->getSessions($course_id);
-		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions',$sessions);
+		$list = Session::where('course_id',$course_id)->paginate(8);	
+		return view('sessions.sessions', ['sessions' => $list])->with('course',$course_id);
 		
 	}
 
