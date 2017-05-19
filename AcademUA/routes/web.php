@@ -36,7 +36,7 @@ Route::get('/users/instructors/', 'UsersController@showInstructors');
 ####################################COURSES###########################################################
 ##################################################################################################*/
 
-Route::get('/courses/create/','CoursesController@createCourse'); 
+Route::post('/courses/create/','CoursesController@createCourse'); 
 Route::get('/courses/attend/{course_id}','CoursesController@attendCourse')->middleware('auth'); // the link should not be accesible throught the browser 
 Route::get('/courses/manage/','CoursesController@getCourses')->middleware('auth')->middleware('teacher'); //Everything OK
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse')->middleware('auth')->middleware('teacher');//Everything OK
@@ -54,7 +54,7 @@ Route::get('/courses/filter', 'CoursesController@showCoursesFilter');
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
 
 
-//PUTA HORA
+
 /*##################################################################################################
 ####################################CATEGORIES###########################################################
 ##################################################################################################*/

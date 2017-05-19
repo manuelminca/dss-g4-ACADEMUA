@@ -109,7 +109,7 @@ foreach ($courses as $course) {
                 echo "<span class='text'>" . $course->price . "€</span>";
                 echo "</span>";
                 echo "</div>";
-                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+                echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
                 echo "</div>";
                 echo "<div class='course-info'>";
                 echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";

@@ -93,6 +93,10 @@ class UsersController extends Controller
 		
 		$user = new User();
 		$user->createUser($email,$name,$username,$password, $professor);
+
+		$iduser = $user->id;
+		$destination = "images/users/";
+		$request->file('image')->move($destination, $iduser);
 		
 		return view('home');
 	}

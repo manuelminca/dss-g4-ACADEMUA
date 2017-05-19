@@ -41,7 +41,7 @@
                         <div class="col-md-6">
                             <div id="single-slider" class="alt flexslider">
                                 <ul class="slides">
-                                    <li><div class="image"><img src="/img/course-slider-img-1-270x178.jpg" alt="" class="img-responsive"></div></li>
+                                    <li><div class="image"><img src="/images/courses/{{ $course->id }}" alt="/img/course-slider-img-1-270x178.jpg" class="img-responsive"></div></li>
                                 </ul><!-- End ul elements -->
                             </div><!-- End Single Slider -->
                         </div><!-- End col-md-6 -->
@@ -52,7 +52,7 @@
                                 <div class="details" style="text-align:center;">
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-asterisk"></i></span>
-                                        <span class="text"> id: <?php echo $course->price ?> </span>
+                                        <span class="text"> id: <?php echo $course->id ?> </span>
                                     </div>
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-euro"></i></span>

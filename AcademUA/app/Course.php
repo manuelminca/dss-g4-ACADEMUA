@@ -147,6 +147,7 @@ class Course extends Model
 		$this->save();
 
 	}
+	
 	public function appendLink($link){
 		if($this->links == null){
 			$this->links = $link . ";";
