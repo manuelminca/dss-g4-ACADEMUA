@@ -12,7 +12,7 @@ use App\Message;
 
 use Illuminate\Support\Facades\Auth;
 
-class MessagesController extends Controller
+class MessagesController extends BaseController
 {
     public function deleteMessage($id){ //We have to redirect to Manage Courses but we need the session of the teacher(in progress)
 		$message = Message::findOrFail($id);

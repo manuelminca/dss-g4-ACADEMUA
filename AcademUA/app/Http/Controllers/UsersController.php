@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 
 
-class UsersController extends Controller
+class UsersController extends BaseController
 {
 	
 	

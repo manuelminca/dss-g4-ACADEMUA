@@ -81,8 +81,9 @@
 
 
                         @if (Auth::guest())
-                            <li class="parent-item login"><a href="{{ route('login') }}" class="ln-tr"><span class="grad-btn">Login</span></a></li>
                             <li class="parent-item login"><a href="{{ route('register') }}" class="ln-tr"><span class="grad-btn">Register</span></a></li>
+                            <li class="parent-item login"><a href="{{ route('login') }}" class="ln-tr"><span class="grad-btn">Login</span></a></li>
+                           
                         @else
                             <li class="parent-item hashchild">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

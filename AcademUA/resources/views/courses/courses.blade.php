@@ -25,7 +25,7 @@
 <!-- https://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/ -->
 <form action="/courses/filter/">
         {{ csrf_field() }}
-<div class="login login-page" style="max-width:60%;">
+<div class="loginForm login-page" style="max-width:60%;">
     <div class="dropdowns">
         <div class="row">
             <div class="col-md-12">
