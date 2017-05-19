@@ -8,6 +8,13 @@
 @section('headerClass','alt static-header')
 @include('master')
 
+@if(Request::get('error'))
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Error!</strong> {{ Request::get('message', '') }}
+    </div>
+@endif
+
             <div class="inner-head">
                 <div class="container">
                     <h1 class="entry-title">Login</h1>
