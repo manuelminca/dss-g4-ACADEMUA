@@ -30,7 +30,7 @@ class User extends Authenticatable
 			     * @var array
 			     */
 			    protected $fillable = [
-			        'name', 'email', 'password', 'username', 'professor','admin',
+			        'id','name', 'email', 'password', 'username', 'professor','admin',
 			    ];
 	
 	
@@ -48,6 +48,10 @@ class User extends Authenticatable
 	/*#############################################
 				GETTERS AND SETTERS
 	###############################################*/
+
+	public function getId() {
+		return $this->id;
+	}
 
 	public function getName(){
 		return $this->name;
@@ -104,6 +108,15 @@ class User extends Authenticatable
 		}
 	}
 
+	public function checkCurrentTeacher($course){
+		if($course->teacher_id == Auth::user()->id){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
 		public function checkAdmin(){
 		if($this->admin == 1){
 			return true;
@@ -118,11 +131,16 @@ class User extends Authenticatable
 		$courses = User::find(Auth::user()->id)->courses()->get();
 
 		foreach ($courses as $course){
-			if($course->id == $course_id){
+			if($course->id == $course_id || $this->admin == 1){
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public static function getIdFromName ($username) {
+		$user = User::where('username','=',$username)->first();
+		return  $user->id;
 	}
 	
 	

@@ -37,13 +37,14 @@ Route::get('/users/instructors/', 'UsersController@showInstructors');
 ##################################################################################################*/
 
 Route::get('/courses/create/','CoursesController@createCourse'); 
-Route::get('/courses/attend/{course_id}','CoursesController@attendCourse')->middleware('auth')->middleware('student'); // the link should not be accesible throught the browser 
-Route::get('/courses/manage/','CoursesController@getCourses')->middleware('auth')->middleware('teacher'); //Everything OK
+Route::get('/courses/attend/{course_id}','CoursesController@attendCourse')->middleware('auth'); // the link should not be accesible throught the browser 
+Route::get('/courses/manage/{id}','CoursesController@showTeacherCourses'); //the id is the user id
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse')->middleware('auth')->middleware('teacher');//Everything OK
-Route::get('/courses/course/{id}','CoursesController@showSingleCourse')->middleware('auth')->middleware('student'); //Everything OK
+Route::get('/courses/course/{id}','CoursesController@showSingleCourse')->middleware('auth'); //Everything OK
 Route::get('/courses/new/','CoursesController@newCourse')->middleware('auth')->middleware('teacher'); //Everything OK
 Route::get('/courses/create/','CoursesController@createCourse');
 Route::get('/courses/modify/{id}','CoursesController@modifyCourse')->middleware('auth')->middleware('teacher');  //Everything OK
+Route::get('/courses/quit/{course_id}','CoursesController@unAttendCourse')->middleware('auth'); // the link should not be accesible throught the browser 
 
 
 Route::get('/courses', 'CoursesController@showCourses');
@@ -51,7 +52,6 @@ Route::get('/courses', 'CoursesController@showCourses');
 Route::get('/courses/filter', 'CoursesController@showCoursesFilter');
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
-
 
 
 /*##################################################################################################
@@ -69,8 +69,8 @@ Route::get('/categories/new/','CategoriesController@newCategory')->middleware('a
 ####################################COMMENTS###########################################################
 ##################################################################################################*/
 
-Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth')->middleware('student');
-Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth')->middleware('student');
+Route::get('/comments/create/{course_id}', 'CommentsController@createComment')->middleware('auth');
+Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@deleteComment')->middleware('auth');
 
 /*##################################################################################################
 ####################################MESSAGES###########################################################
@@ -84,4 +84,13 @@ Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@inicio');
+Route::get('/home', 'HomeController@index');
+
+
+/*##################################################################################################
+####################################SESSIONS###########################################################
+##################################################################################################*/
+
+Route::get('/sessions/new/{course_id}', 'SessionsController@sessions')->middleware('auth')->middleware('teacher');
+//Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
+Route::get('/sessions', 'MessagesController@showMessages')->middleware('auth');
