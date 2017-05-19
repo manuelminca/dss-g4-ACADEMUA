@@ -75,6 +75,9 @@
                 </div><!-- End container -->
             </article>
 
+
+            @if (Auth::user()->checkTeacher() || $course->checkAttend())
+
             <section class="full-section latest-courses-section no-slider">
                 <div class="container">
                     <div class="row" style="width:80%; margin:0 auto;">
@@ -89,7 +92,7 @@
                                                 foreach ($sessions as $session) {
                                                     echo "<div class='query clearfix'>";
                                                         echo "<div class='query-content'>";
-                                                            echo "<h3 class='post-title'>#". $number . ": " . $session->title . "</h3>"; //AQUI HAY QUE MOSTRAR EL NOMBRE DEL USUARIO QUE HACE EL COMMENT.
+                                                            echo "<h3 class='post-title'>#". $number . ": " . $session->title . "</h3>"; 
                                                             echo "<p class='query-description'> </p>";
                                                             echo "<iframe width='560' height='315' src='" . $session->video . "' frameborder='0' allowfullscreen></iframe>";
                                                 
@@ -120,6 +123,9 @@
                         </div><!-- End col-md-6 -->
                     </div><!-- End row -->
                 </div><!-- End container -->
+
+                @endif
+
                 <div class="clearfix"></div>
                 <form action="/comments/create/{{$course->id}}" >
                     {{ csrf_field() }}
