@@ -131,7 +131,11 @@ foreach ($courses as $course) {
                     echo "</span>";
                     
                 echo "</div>";
-                echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
+                $filename = '/images/courses/. $course->id .';
+                if(file_exists($filename)){
+                    echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
+                }
+               
                 echo "</div>";
                 echo "<div class='course-info'>";
                 echo "<h3 class='course-title'><a href='/courses/course/" .$course->id. "' class='n-tr'>" . $course->name . "</a></h3>";
