@@ -41,7 +41,7 @@ class UsersController extends BaseController
 	public function deleteUser (){
 		$user = User::find(Auth::user()->id);
 		$user->deleteUser();
-		return view('home');
+		return redirect('/home');
 	}
 	
 	public function ModifyUser (){
@@ -64,8 +64,14 @@ class UsersController extends BaseController
 		$name = $request->input('name');
 		$email = $request->input('email');
 		$password = $request->input('password');
+
+		if($user->professor == 1){
+			$description = $request->input('description');
+		}else{
+			$description = "Im a student";
+		}
 		
-		$user->edit($name, $email, $password);
+		$user->edit($name, $email, $password, $description);
 
 		return redirect('/home');
 	}
@@ -85,6 +91,12 @@ class UsersController extends BaseController
 		$username= $request->input('username');
 		$password= $request->input('password');
 		$professor= $request->input('professor');
+
+		if($professor == 1){
+			$description = $request->input('description');
+		}else{
+			$description = "Im a student";
+		}
 		
 		if($professor == "y"){
 			$professor = true;
@@ -94,7 +106,7 @@ class UsersController extends BaseController
 		}
 		
 		$user = new User();
-		$user->createUser($email,$name,$username,$password, $professor);
+		$user->createUser($email,$name,$username,$password, $professor, $description);
 		
 		return view('home');
 	}

@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'prof',
             'username' => 'prof',
             'email' => 'prof@gmail.com',
+            'description' => 'If been teaching for 10 years',
             'password' => bcrypt('dasdas'),
             'professor' => true,
             'admin' => false
@@ -26,6 +27,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'alum',
             'email' => 'alum@gmail.com',
             'password' => bcrypt('dasdas'),
+            'description' => 'Im a student',
             'professor' => false,
             'admin' => false
         ]);
@@ -34,6 +36,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'yerai',
             'username' => 'asehhu',
             'email' => 'asehhu@gmail.com',
+            'description' => 'Im a student',
             'password' => bcrypt('dasdas'),
             'professor' => false,
             'admin' => false
@@ -43,6 +46,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'quico',
             'username' => 'quico14',
             'email' => 'quico14@gmail.com',
+            'description' => 'The sky is the limit',
             'password' => bcrypt('dasdas'),
             'professor' => true,
             'admin' => false
@@ -51,6 +55,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin',
             'username' => 'Admin',
             'email' => 'admin@academua.com',
+            'description' => 'Im a student',
             'password' => bcrypt('dasdas'),
             'professor' => false,
             'admin' => true

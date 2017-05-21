@@ -99,7 +99,7 @@
                         </div><!-- End Copyright -->
                         <div class="fr footer-social-icons">
                             <ul class="clearfix">
-                                <li><a href="#" class="fb-icon ln-tr"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/?lang=es" class="fb-icon ln-tr"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#" class="tw-icon ln-tr"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#" class="gp-icon ln-tr"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="#" class="in-icon ln-tr"><i class="fa fa-linkedin"></i></a></li>
