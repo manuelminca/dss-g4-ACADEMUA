@@ -101,7 +101,7 @@ class UsersController extends BaseController
 	public function showInstructors(){
 		$user = new User();
 		
-		$list = $user->showInstructors()->paginate(6);
+		$list = $user->showInstructors()->paginate(8);
 		
 		return view('/users/instructors', ['users' => $list])->with('users', $list);
 	}
