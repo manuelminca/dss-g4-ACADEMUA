@@ -79,7 +79,9 @@ Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@dele
 Route::get('/messages/create/', 'MessagesController@createMessage')->middleware('auth');
 Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
 Route::get('/messages/new/','MessagesController@newMessage')->middleware('auth'); //Everything OK
-Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
+Route::get('/messages', 'MessagesController@showReceivedMessages')->middleware('auth');
+Route::get('/messages/received', 'MessagesController@showReceivedMessages')->middleware('auth');
+Route::get('/messages/sent', 'MessagesController@showSentMessages')->middleware('auth');
 
 
 Auth::routes();
@@ -91,6 +93,8 @@ Route::get('/home', 'HomeController@index');
 ####################################SESSIONS###########################################################
 ##################################################################################################*/
 
+Route::get('/sessions/create/{id}', 'SessionsController@createSession')->middleware('auth')->middleware('teacher');
+
 Route::get('/sessions/new/{course_id}', 'SessionsController@sessions')->middleware('auth')->middleware('teacher');
-//Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
+Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
 Route::get('/sessions', 'MessagesController@showMessages')->middleware('auth');

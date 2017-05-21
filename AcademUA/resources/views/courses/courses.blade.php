@@ -25,7 +25,7 @@
 <!-- https://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/ -->
 <form action="/courses/filter/">
         {{ csrf_field() }}
-<div class="loginForm login-page" style="max-width:60%;">
+<div class="loginForm login-page" style="max-width:60%; background-color:transparent;">
     <div class="dropdowns">
         <div class="row">
             <div class="col-md-12">
@@ -100,14 +100,29 @@ foreach ($courses as $course) {
         echo "<div class='course'>";
             echo "<div class='course-image'>";
                 echo "<div class='details-overlay'>";
-                echo "<span class='place'>"; 
-                echo "<i class='fa fa-briefcase'></i>";
-                echo "<span class='text'>Id : " . $course->id ."</span>";
-                echo "</span>";
-                echo "<span class='time'>";
-                echo "<i class='fa fa-money'></i>";
-                echo "<span class='text'>" . $course->price . "€</span>";
-                echo "</span>";
+                 echo "<span class='time'>"; 
+
+
+                        echo "<span class='text'> $course->price";
+                            //$course->getAverage();
+                            //$course->getNumberStudents();
+                            $rating = 5;
+                            for($i = 1; $i<$rating; $i++) {
+                                echo "&#9733;";
+                            }
+                        echo "</span>";
+                    echo "</span>";
+                    echo "<span class='place'>"; 
+                        echo "<div class='col-xs-6' style='text-align: left'>";
+                            echo "<span class='text'>" . $course->price ." </span>";
+                            echo "<i class='fa fa-eur'></i>";
+                        echo "</div>";
+                        echo "<div class='col-xs-6' style='text-align: right'>";
+                            echo "<span class='text'>" . $course->price ." </span>";
+                            echo "<i class='fa fa-users'></i>";
+                        echo "</div>";
+                    echo "</span>";
+                    
                 echo "</div>";
                 echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
                 echo "</div>";

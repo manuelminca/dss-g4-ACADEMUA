@@ -51,10 +51,17 @@ class MessagesController extends BaseController
 		return view('messages.createMessage');
 	}
 
-    public function showMessages(){
-		$list = Message::paginate(6);
+    public function showReceivedMessages(){
+		$list = Message::getReceivedMessages(Auth::user()->id);
 		
-		return view('messages.messages', ['messages' => $list]);
+		
+		return view('messages.receivedMessages', ['messages' => $list]);
+	}
+
+	public function showSentMessages(){
+		$list = Message::getSentMessages(Auth::user()->id);
+		
+		return view('messages.sentMessages', ['messages' => $list]);
 	}
 
 }
