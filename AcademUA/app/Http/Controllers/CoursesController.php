@@ -101,7 +101,7 @@ class CoursesController extends BaseController
 		$course = Course::find($id);
 		$comments = $course->getComments($id);
 		$session = new Session();
-		$sessions = $session->getSessions($id);
+		$sessions = Session::where('course_id', $id)->paginate(1);
 		//returns an array with all the comments
 		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
