@@ -68,7 +68,7 @@
                             </li>
                              @endif
                             <li class="parent-item haschild">
-                                <a href="#" class="ln-tr">About</a>
+                                <a href="/about" class="ln-tr">About</a>
                             </li>
                             <li class="parent-item haschild">
                                 <a href="#" class="ln-tr">Contact</a>

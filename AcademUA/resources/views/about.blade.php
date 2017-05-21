@@ -1,5 +1,4 @@
 @section('title','About us')
-@section('courseCurrent','current_page_item')
 @section('headerClass','alt static-header')
 
 @section('bodyId','home')
@@ -109,11 +108,3 @@
             
 
     </section>
- 
- Elegir archivos Elegir archivos
-
-
-
-
-
-@include('footer')
