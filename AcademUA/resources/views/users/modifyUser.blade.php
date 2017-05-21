@@ -30,6 +30,15 @@
 
 -->
 
+{{-- Error messages --}}
+@if (count($errors) > 0)
+<ul>
+@foreach ($errors->all() as $error)
+<li>{{ $error }}</li>
+@endforeach
+</ul>
+@endif
+
 <form action="/users/modified/" >
             {{ csrf_field() }}
             {{ method_field('POST') }}
