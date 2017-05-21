@@ -32,7 +32,6 @@ foreach ($users as $user) {
 
 	echo "</div>";
 
-	//$filename = 'public://images/users/1';
     if(file_exists(public_path().'/images/users/' . $user->id)){
 		echo "<img src='/images/users/" . $user->id . "' class='img-responsive'>";
     }else{
