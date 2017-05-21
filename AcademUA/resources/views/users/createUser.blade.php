@@ -73,6 +73,17 @@
                                                     <input value="{{ old('email') }}" type="text" name="email" placeholder="Email">
                                                 </div>
                                             </div>
+
+                                            @if (Auth::user()->checkTeacher())
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input type="text" name="description" placeholder="Description">
+                                                </div>
+                                            </div>
+                                            @endif
+
+
+
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
                                                     <input type="password" name="password" placeholder="Password">

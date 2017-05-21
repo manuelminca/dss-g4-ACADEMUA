@@ -31,7 +31,14 @@ foreach ($users as $user) {
 	echo "</span>";
 
 	echo "</div>";
-	echo "<img src='/images/users/" . $user->id . "' class='img-responsive'>";
+
+	//$filename = 'public://images/users/1';
+    if(file_exists(public_path().'/images/users/' . $user->id)){
+		echo "<img src='/images/users/" . $user->id . "' class='img-responsive'>";
+    }else{
+		echo "<img src='/img/teacher1.jpg' class='img-responsive'>";
+	}
+	
 	echo "</div>";
 	echo "<div class='course-info'>";
 	echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $user->name . "</a></h3>";
