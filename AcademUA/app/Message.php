@@ -19,11 +19,11 @@ class Message extends Model
 			    ];
 
     public function user_receiver(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'receiver_id');
     }
 
 	public function user_sender() {
-		return $this->belongsTo('App\User');
+		return $this->belongsTo('App\User', 'sender_id');
 	}
 
     public function deleteMessage(){
@@ -40,5 +40,30 @@ class Message extends Model
 		$this->receiver_id = $receiver_id;
 		$this->message = $message;
 		$this->save();
+	}
+
+	public static function getReceivedMessages ($id) {
+		$user = Message::where('receiver_id','=',$id)->get();
+		return  $user;
+	}
+
+	public static function getSentMessages ($id) {
+		$user = Message::where('sender_id','=',$id)->get();
+		return  $user;
+	}
+
+	public static function getSender () {
+		$user = Message::where('sender_id','=',$id)->get();
+		return  $user;
+	}
+
+	public function getUserSend () {
+		$user = $this->user_sender()->get()->getUsername();
+		return  $user;
+	}
+
+	public function getUserReceive () {
+		$name = $this->user_receiver->getUsername();
+		return  $name;
 	}
 }

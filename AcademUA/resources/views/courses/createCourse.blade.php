@@ -72,7 +72,8 @@ foreach ($categories as $cat) {
  
 </form>
  -->
-            <form action="/courses/create/" >
+            <form action="/courses/create/" method="post" enctype="multipart/form-data" >
+            {{ csrf_field() }}
             <div class="login-page" style="width:80%; margin:0 auto;">
                         <div class="row">
                             <div class="col-md-12">
@@ -119,6 +120,11 @@ foreach ($categories as $cat) {
 
                                                             ?>
                                                             </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input  type="file" name="image" id = "image">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">

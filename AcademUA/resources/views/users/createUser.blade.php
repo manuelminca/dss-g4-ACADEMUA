@@ -51,7 +51,8 @@
   <input type="submit" value="Submit">
 </form>
 -->
-<form action="/users/create/" >
+<form action="/users/create/" method="post" enctype="multipart/form-data" >
+            {{ csrf_field() }} >
             <div class="login-page" style="width:80%; margin:0 auto;">
                         <div class="row">
                             <div class="col-md-12">
@@ -72,6 +73,17 @@
                                                     <input value="{{ old('email') }}" type="text" name="email" placeholder="Email">
                                                 </div>
                                             </div>
+
+                                            @if (Auth::user()->checkTeacher())
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input type="text" name="description" placeholder="Description">
+                                                </div>
+                                            </div>
+                                            @endif
+
+
+
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
                                                     <input type="password" name="password" placeholder="Password">
