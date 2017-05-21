@@ -7,6 +7,7 @@ use App\Course;
 use App\User;
 use App\Category;
 use App\Session;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 class CoursesController extends BaseController
 {
@@ -32,6 +33,8 @@ class CoursesController extends BaseController
 		$list_categories = $course->getCategories($course_id);
 		return $list_categories;
 	}
+
+
 	
 	//#	#############################################
 	
@@ -188,8 +191,10 @@ class CoursesController extends BaseController
 		$user = User::find(Auth::user()->id);
 		$course->attendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
-		//r		eturns an array with all the comments
-				return view('courses.course', ['comments' => $comments])->with('course', $course);
+		$session = new Session();
+		$sessions = $session->getSessions($course_id);
+
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 		
 	}
 
@@ -201,8 +206,17 @@ class CoursesController extends BaseController
 		$course->unAttendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
 		//r		eturns an array with all the comments
-		return view('courses.course', ['comments' => $comments])->with('course', $course);
-		
+
+		$session = new Session();
+		$sessions = $session->getSessions($course_id);
+
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 	}
+
+
+
+
+
+
 		
 }
