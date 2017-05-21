@@ -43,7 +43,7 @@
                                 <div class="details" style="text-align:center;">
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-asterisk"></i></span>
-                                        <span class="text"> id: <?php echo $course->id ?> </span>
+                                        <span class="text"> Rating: <?php echo $course->getAverage() ?> </span>
                                     </div>
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-euro"></i></span>
