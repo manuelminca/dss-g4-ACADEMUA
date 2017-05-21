@@ -23,6 +23,14 @@ class User extends Authenticatable
 	public function comments() {
 		return $this->belongsToMany('App\Comment', 'comments', 'id');
 	}
+
+	public function messages_sended() {
+		return $this->hasOne('App\Message', 'messages', 'id');
+	}
+
+	public function messages_received() {
+		return $this->hasOne('App\Message', 'messages', 'id');
+	}
 	
 	/**
 	* The attributes that are mass assignable.

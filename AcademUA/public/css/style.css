@@ -1216,8 +1216,8 @@ header.alt .mobile-navigation .mobile-btn span:after {
 	top: -100%;
 	width: 100%;
 	height: 100%;
-	padding: 48px 20px 0;
-	background: rgba(254, 157, 104, .9);
+	padding: 0px 0px 0;
+	background: rgba(254, 157, 104, .5);
 	border-radius: 4px 4px 0 0;
 	-webkit-transition: all .2s ease-in;
 	   -moz-transition: all .2s ease-in;
@@ -1227,12 +1227,14 @@ header.alt .mobile-navigation .mobile-btn span:after {
 }
 .latest-courses-section .course-image .details-overlay .place,
 .latest-courses-section .course-image .details-overlay .time {
-	background-color: rgba(54, 58, 73, .8);
+	background-color: rgba(54, 58, 73, .6);
 	position: relative;
-	left: -250px;
+	left: -350px;
 	display: block;
-	height: 36px;
+	height: 46px;
 	line-height: 36px;
+	font-size: 16px;
+	font-weight: 700;
 	color: #fff;
 	text-align: left;
 	padding-left: 10px;
@@ -1246,6 +1248,11 @@ header.alt .mobile-navigation .mobile-btn span:after {
 }
 .latest-courses-section .course-image .details-overlay .time {
 	margin-bottom: 0;
+	text-align: center;
+
+	font-size: 24px;
+	padding: -100px 0 0;
+	margin-bottom: 80px;
 	-webkit-transition: all .25s ease-out .35s;
 	   -moz-transition: all .25s ease-out .35s;
 	    -ms-transition: all .25s ease-out .35s;
