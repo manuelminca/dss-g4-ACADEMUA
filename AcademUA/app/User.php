@@ -73,10 +73,15 @@ class User extends Authenticatable
 	
 	
 	public function edit($name, $email, $password){
-		
-		$this->name = $name;
-		$this->email = $email;
-		$this->password = $password;
+		if($name != null){
+			$this->name = $name;
+		}
+		if($email != null){
+			$this->email = $email;
+		}
+		if($password != null){
+			$this->password = $password;
+		}
 	
 		$this->save();
 		
