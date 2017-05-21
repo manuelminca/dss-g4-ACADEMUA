@@ -60,7 +60,11 @@ class UsersController extends BaseController
 		
 			
 		$user = User::findOrFail(Auth::user()->id);
-		
+
+		$iduser = $user->id;
+		$destination = "images/users/";
+		$request->file('image')->move($destination, $iduser);
+
 		$name = $request->input('name');
 		$email = $request->input('email');
 		$password = $request->input('password');
@@ -106,7 +110,11 @@ class UsersController extends BaseController
 		}
 		
 		$user = new User();
-		$user->createUser($email,$name,$username,$password, $professor, $description);
+		$user->createUser($email,$name,$username,$password, $professor);
+
+		$iduser = $user->id;
+		$destination = "images/users/";
+		$request->file('image')->move($destination, $iduser);
 		
 		return view('home');
 	}

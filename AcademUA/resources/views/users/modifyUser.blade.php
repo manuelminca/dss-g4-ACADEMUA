@@ -35,7 +35,7 @@
 </ul>
 @endif
 
-<form action="/users/modified/" >
+<form action="/users/modified/" method="post" enctype="multipart/form-data" >
             {{ csrf_field() }}
             {{ method_field('POST') }}
             <div class="login-page" style="width:80%; margin:0 auto;">
@@ -73,6 +73,11 @@
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input" >
                                                     <input type="password" name="password_confirmation" placeholder="Password confirmation">
+                                                </div>
+                                            </div>
+                                             <div class="col-md-6 col-sm-6">
+                                                <div class="input">
+                                                    <input  type="file" name="image" id = "image">
                                                 </div>
                                             </div>
                                             
