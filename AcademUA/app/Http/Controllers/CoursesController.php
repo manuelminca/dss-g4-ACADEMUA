@@ -149,7 +149,6 @@ class CoursesController extends BaseController
 		$teacher_id= Auth::user()->id;
 		$categoryName = $request->input('category');
 		
-		
 		$catModel = new Category();
 		$categoryID = $catModel->getID($categoryName);
 		
@@ -158,6 +157,9 @@ class CoursesController extends BaseController
 		
 		$course->attachCategory($categoryID);
 		
+		$idcourse = $course->id;
+		$destination = "images/courses/";
+		$request->file('image')->move($destination, $idcourse);
 		
 		return view('home');
 	}

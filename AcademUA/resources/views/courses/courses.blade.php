@@ -124,7 +124,7 @@ foreach ($courses as $course) {
                     echo "</span>";
                     
                 echo "</div>";
-                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+                echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
                 echo "</div>";
                 echo "<div class='course-info'>";
                 echo "<h3 class='course-title'><a href='/courses/course/" .$course->id. "' class='n-tr'>" . $course->name . "</a></h3>";
