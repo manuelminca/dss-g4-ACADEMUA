@@ -64,7 +64,12 @@
                             foreach ($users as $user) {
                                 echo "<div class='col-md-3 col-xs-6'>";
                                     echo "<div class='instructor'>";
-                                        echo "<div class='avatar'><img src='/img/teacher1.jpg' class='img-responsive'></div>";
+                                        if(file_exists(public_path().'/images/users/' . $user->id)){
+		                                        echo "<img src='/images/users/" . $user->id . "' class='img-responsive'>";
+                                        }else{
+		                                        echo "<img src='/img/teacher1.jpg' class='img-responsive'>";
+	                                        }
+	
                                             echo "<div class='instructor-info'>";
                                                 echo "<p class='name'>" . $user->name . "</p>";
                                                 echo "<span class='position'>Web Developer</span>";
