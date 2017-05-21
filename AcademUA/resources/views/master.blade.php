@@ -64,7 +64,7 @@
 
                              @if(Auth::check())
                             <li class="parent-item haschild">
-                                <a href="/messages/new" class="ln-tr">New Message</a>
+                                <a href="/messages/new" class="ln-tr">Messages</a>
                             </li>
                              @endif
                             <li class="parent-item haschild">
