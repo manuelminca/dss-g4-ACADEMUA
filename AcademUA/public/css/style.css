@@ -1637,6 +1637,14 @@ h6.head-title {
 .questions .flexslider li .query .query-content {
 	margin-left: 105px;
 }
+
+.questions .flexslider li .query .query-content .post .entry {
+	background: #fff;
+	padding: 20px;
+	border-radius: 4px;
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.13), inset 0px -2px 0px 0px rgba(0, 0, 0, 0.12);
+}
+
 .questions .post-title a {
 	padding-bottom: 15px;
 }

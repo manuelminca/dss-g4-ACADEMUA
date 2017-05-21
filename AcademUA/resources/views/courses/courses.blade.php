@@ -103,13 +103,26 @@ foreach ($courses as $course) {
                  echo "<span class='time'>"; 
 
 
-                        echo "<span class='text'> $course->price";
+                        echo "<span class='text'>";
+                            $rating = $course->getAverage();
+                            $string = "N/A";
+                            if(strcmp($rating, $string) == 0){
+                                echo "0 COMMENTS";
+                                $rating = 0;
+                            } else {
+                                echo $rating;
+                                echo "    ";
+                            }
                             //$course->getAverage();
                             //$course->getNumberStudents();
-                            $rating = 5;
-                            for($i = 1; $i<$rating; $i++) {
-                                echo "&#9733;";
+                            if($rating == 0){
+
+                            } else {
+                                for($i = 0; $i<floor($rating); $i++) {
+                                    echo "&#9733;";
+                                }
                             }
+                            
                         echo "</span>";
                     echo "</span>";
                     echo "<span class='place'>"; 
@@ -118,7 +131,7 @@ foreach ($courses as $course) {
                             echo "<i class='fa fa-eur'></i>";
                         echo "</div>";
                         echo "<div class='col-xs-6' style='text-align: right'>";
-                            echo "<span class='text'>" . $course->price ." </span>";
+                            echo "<span class='text'>" . $course->getNumStudents() ." </span>";
                             echo "<i class='fa fa-users'></i>";
                         echo "</div>";
                     echo "</span>";
