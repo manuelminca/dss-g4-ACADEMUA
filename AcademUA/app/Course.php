@@ -192,6 +192,42 @@ class Course extends Model
 			return false;
 		}
 	}
+
+
+
+	public function getAverage(){
+		
+		$list_comments = Comment::where('course_id', $this->id)->get();
+
+		$total = 0;
+		$iterations = 0;
+		foreach ($list_comments as $comment) {
+			$total = $total + $comment->rating;
+			$iterations = $iterations + 1;
+		}
+
+		if($iterations != 0){
+			$average = ($total / $iterations);
+		}else{
+			$average = "N/A";
+		}
+		
+		return $average;
+	}
+
+	public function getNumStudents(){
+		
+		$list_users = $this->users()->get();
+
+
+		$iterations = 0;
+		foreach ($list_users as $comment) {
+			
+			$iterations = $iterations + 1;
+		}
+		return $iterations;
+	}
+
 	
 }
 

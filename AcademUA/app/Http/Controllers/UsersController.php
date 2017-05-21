@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Course;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -49,15 +50,15 @@ class UsersController extends BaseController
 	}
 	
 	public function edit(Request $request){
-		
-		$this->validate($request,[
-			'email' => 'required | email | unique:users,email',
-			'name' => 'required',
+
+		if($request->input('password') != null){
+			$this->validate($request,[
 			'password' => 'required | min:2',
 			'password_confirmation' => 'required | same:password'
 		]);
+		}
 		
-		
+			
 		$user = User::findOrFail(Auth::user()->id);
 		
 		$name = $request->input('name');
@@ -65,7 +66,8 @@ class UsersController extends BaseController
 		$password = $request->input('password');
 		
 		$user->edit($name, $email, $password);
-		return view('home');
+
+		return redirect('/home');
 	}
 	
 	public function createUser(Request $request){
@@ -105,7 +107,7 @@ class UsersController extends BaseController
 	public function showInstructors(){
 		$user = new User();
 		
-		$list = $user->showInstructors()->paginate(6);
+		$list = $user->showInstructors()->paginate(8);
 		
 		return view('/users/instructors', ['users' => $list])->with('users', $list);
 	}

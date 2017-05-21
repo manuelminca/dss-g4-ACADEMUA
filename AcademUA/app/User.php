@@ -23,6 +23,14 @@ class User extends Authenticatable
 	public function comments() {
 		return $this->belongsToMany('App\Comment', 'comments', 'id');
 	}
+
+	public function messages_sended() {
+		return $this->hasOne('App\Message', 'messages', 'id');
+	}
+
+	public function messages_received() {
+		return $this->hasOne('App\Message', 'messages', 'id');
+	}
 	
 	/**
 	* The attributes that are mass assignable.
@@ -73,10 +81,15 @@ class User extends Authenticatable
 	
 	
 	public function edit($name, $email, $password){
-		
-		$this->name = $name;
-		$this->email = $email;
-		$this->password = $password;
+		if($name != null){
+			$this->name = $name;
+		}
+		if($email != null){
+			$this->email = $email;
+		}
+		if($password != null){
+			$this->password = $password;
+		}
 	
 		$this->save();
 		

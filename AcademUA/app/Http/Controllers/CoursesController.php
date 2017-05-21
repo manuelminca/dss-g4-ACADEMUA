@@ -7,6 +7,7 @@ use App\Course;
 use App\User;
 use App\Category;
 use App\Session;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 class CoursesController extends BaseController
 {
@@ -32,6 +33,8 @@ class CoursesController extends BaseController
 		$list_categories = $course->getCategories($course_id);
 		return $list_categories;
 	}
+
+
 	
 	//#	#############################################
 	
@@ -68,7 +71,7 @@ class CoursesController extends BaseController
 		if($course->teacher_id == Auth::user()->id){
 			$course->deleteCourse();
 			
-			$list = Course::paginate(6);
+			$list = Course::paginate(8);
 
 			return redirect('/courses');
 			//We have to change that in the future
@@ -80,7 +83,7 @@ class CoursesController extends BaseController
 	}
 	
 	public function showCourses(){
-		$list = Course::paginate(6);
+		$list = Course::paginate(8);
 		$filtering = false;
 		
 		return view('courses.courses', ['courses' => $list])/*->with('filter', $filter)->with('valor', $valor)->with('order',$order)->with('how',$how)*/->with('filtering',$filtering);
@@ -88,7 +91,7 @@ class CoursesController extends BaseController
 	
 	public function showTeacherCourses($teacher_id){
 
-		$list = Course::where('teacher_id',$teacher_id)->paginate(6);
+		$list = Course::where('teacher_id',$teacher_id)->paginate(8);
 		$filtering = false;		
 		return view('courses.courses', ['courses' => $list])->with('filtering',$filtering);
 	}
@@ -211,5 +214,11 @@ class CoursesController extends BaseController
 
 		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 	}
+
+
+
+
+
+
 		
 }
