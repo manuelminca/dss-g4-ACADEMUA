@@ -26,7 +26,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/users/modify/', 'UsersController@ModifyUser')->middleware('auth'); //everything OK
 Route::get('/users/delete/', 'UsersController@deleteUser')->middleware('auth'); //Everything OK
-Route::get('/users/modified/', 'UsersController@edit')->middleware('auth');
+Route::post('/users/modified/', 'UsersController@edit')->middleware('auth');
 //Route::get('/users/create/', 'UsersController@createUser');
 Route::get('/users/instructors/', 'UsersController@showInstructors');
 
