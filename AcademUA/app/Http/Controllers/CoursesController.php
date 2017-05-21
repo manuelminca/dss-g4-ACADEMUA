@@ -7,6 +7,7 @@ use App\Course;
 use App\User;
 use App\Category;
 use App\Session;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 class CoursesController extends BaseController
 {
@@ -32,6 +33,8 @@ class CoursesController extends BaseController
 		$list_categories = $course->getCategories($course_id);
 		return $list_categories;
 	}
+
+
 	
 	//#	#############################################
 	
@@ -209,5 +212,11 @@ class CoursesController extends BaseController
 
 		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 	}
+
+
+
+
+
+
 		
 }

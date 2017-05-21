@@ -7,9 +7,10 @@ use App\Course;
 use App\User;
 use App\Category;
 use App\Comment;
+use App\Session;
 use Illuminate\Support\Facades\Auth;
 
-class CommentsController extends Controller
+class CommentsController extends BaseController
 {
 	
 	public function createComment (Request $request, $course_id) {
@@ -30,9 +31,9 @@ class CommentsController extends Controller
 		/*$comment->attachCourse($id_course);
         $comment->attachUser($id_user);*/
 		
-        $coursesCon = new CoursesController();
-        return $coursesCon->showSingleCourse($course_id)->with('id_user', $id_user);
-		//return view('courses.course.'.$id_course);
+
+		return redirect()->action(
+   		 'CoursesController@showSingleCourse', ['id' => $course_id]);
 	}
 
 		public function deleteComment ($comment_id, $course_id) {
@@ -43,7 +44,10 @@ class CommentsController extends Controller
 		}
 		$course = Course::find($course_id);
 		$comments = $course->getComments($course_id); //returns an array with all the comments
-		return view('courses.course', ['comments' => $comments])->with('course', $course);
+		$session = new Session();
+		$sessions = $session->getSessions($course_id);
+		//returns an array with all the comments
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
 	}
 
