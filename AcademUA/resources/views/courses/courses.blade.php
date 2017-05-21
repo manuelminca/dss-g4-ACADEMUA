@@ -5,16 +5,9 @@
 
             <div class="inner-head">
                 <div class="container">
-                    <h1 class="entry-title">Academua's Courses</h1>
+                    <h1 class="entry-title">Self Development Courses</h1>
                     <p class="description">
-
-                        @if(Auth::check() == false)
-                        To view the courses it is necessary to be logged in. 
-                        <br>
-                        @endif
-
-                        
-                        You can filter the courses depending on your preferences.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
                     </p>
                     <div class="breadcrumb">
                         <ul class="clearfix">
@@ -144,10 +137,14 @@ foreach ($courses as $course) {
                     echo "</span>";
                     
                 echo "</div>";
-                $filename = '/images/courses/. $course->id .';
-                if(file_exists($filename)){
-                    echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
-                }
+               
+                if(file_exists(public_path().'/images/courses/' . $course->id)){
+		                echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
+                }else{
+		                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+	            }
+                    
+               
                
                 echo "</div>";
                 echo "<div class='course-info'>";
