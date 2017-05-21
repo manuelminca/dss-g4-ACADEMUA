@@ -76,7 +76,7 @@
             </article>
 
 
-            @if (Auth::user()->checkTeacher() || $course->checkAttend())
+            @if ($course->checkTeacher() || $course->checkAttend())
 
             <section class="full-section latest-courses-section no-slider">
                 <div class="container">
@@ -126,6 +126,9 @@
 
                 @endif
 
+
+ @if ($course->checkTeacher() || $course->checkAttend())
+
                 <div class="clearfix"></div>
                 <form action="/comments/create/{{$course->id}}" >
                     {{ csrf_field() }}
@@ -161,6 +164,8 @@
                         </div> <!-- end row -->
                     </div><!-- end login-page -->
                 </form><!-- end form -->
+
+                 @endif
                           
     <!-- ############################ COMMENTS ############################## -->
         
