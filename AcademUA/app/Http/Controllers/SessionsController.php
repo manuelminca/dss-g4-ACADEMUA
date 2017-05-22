@@ -15,7 +15,7 @@ class SessionsController extends Controller
 	
 	public function sessions($course_id){
 
-		$list = Session::where('course_id',$course_id)->paginate(8);	
+		$list = Session::where('course_id',$course_id)->paginate(4);	
 		return view('sessions.sessions', ['sessions' => $list])->with('course',$course_id);
 
 	}
@@ -36,7 +36,7 @@ class SessionsController extends Controller
 
 
 
-		$list = Session::where('course_id',$course_id)->paginate(8);	
+		$list = Session::where('course_id',$course_id)->paginate(4);	
 		return view('sessions.sessions', ['sessions' => $list])->with('course',$course_id);
 
 	}

@@ -13,18 +13,7 @@
             </div><!-- End Inner Page Head -->
 
             <div class="clearfix"></div>
-            @if(Auth::check())
-            @if ($course->checkAttend())
-                <h1>You can see this because you are attending this course!</h1>
-            @endif
-            @endif
 
-            @if(Auth::check())
-            @if ($course->checkAttend() == false)
-                <h1>You can see this even if you are not attending the course</h1>
-            @endif
-            @endif
-            
 
             <article class="post alt">
                 <div class="container">
@@ -43,7 +32,7 @@
                                 <div class="details" style="text-align:center;">
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-asterisk"></i></span>
-                                        <span class="text"> id: <?php echo $course->id ?> </span>
+                                        <span class="text"> Rating: <?php echo round($course->getAverage(), 1) ?> </span>
                                     </div>
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-euro"></i></span>

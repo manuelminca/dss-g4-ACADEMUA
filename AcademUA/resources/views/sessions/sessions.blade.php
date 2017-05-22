@@ -13,27 +13,48 @@ sirve para llamar a /sessions/new/{$course_id}
 <div class="section-content latest-courses-content fadeInDown-animation">
                     <div class="container">
                         <div class="row">
- <?php
- $number = 0;
- use Illuminate\Support\Facades\Auth;
-//Mostramos las sesiones
-foreach ($sessions as $session) {
-    $number = $number+1;
-	
-    echo $session->title;
-    echo "<br>";
+
+
+   <section class="full-section latest-courses-section no-slider">
+                <div class="container">
+                    <div class="row" style="width:80%; margin:0 auto;">
+                        <div class="col-md-12 basic-slider-box">
+                            <div class="questions">
+                                <h6 class="head-title">Videos</h6>
+                                <div class="basic-slider flexslider">
+                                    <ul class="slides">
+                                        <li class="questions-slide-item">
+                                            <?php
+                                                $number = 1;
+                                                foreach ($sessions as $session) {
+                                                    echo "<div class='query clearfix'>";
+                                                        echo "<div class='query-content'>";
+                                                            echo "<h3 class='post-title'>#". $number . ": " . $session->title . "</h3>"; 
+                
+                                                            echo "<iframe style='padding-top: 20px; margin-left:-150px;' width='560' height='315' src='" . $session->video . "' frameborder='0' allowfullscreen></iframe>";
+                                                            
+                                                            echo "<div class='post' style='margin-left:-105px; background-color:transparent;'>";
+                                                                echo "<div class='entry clearfix' style='margin-top: 0px; padding-top: 10;'>";
+                                                                    echo "<span class='entry-icon'><i class='fa fa-file-text'></i></span>";
+                                                                    echo "<h4 class='overview ib'>Session content</h4>";
+                                                                    echo "<div class='content'>";
+                                                                        echo "<p>" . $session->content ." </p>";
+                                                                    echo "</div>";
+                                                                echo "</div><!-- End Entry -->";
+                                                            echo "</div>";
+
+                                                        echo "</div>"; 
+                                                    echo "</div>";
+                                                    $number = $number+1;
+                                                }
+                                                
+                                            ?>
+                                                            <div class="text-center">
+    {{$sessions->links()}}
+</div>
 
 
 
-
-
-
-    if($number == 4){
-        echo "<div class='clearfix'></div>";
-    }
-}
-
-?>
 
 <ul>
             <form action="/sessions/create/{{$course}}" >
@@ -83,22 +104,7 @@ foreach ($sessions as $session) {
 
 </ul>
 
-
-
-
-
-
-<!-- PAGINATION -->
-<div class="clearfix"></div>
-
-<div class="text-center">
-   
-
-    {{$sessions->links()}}
-
-
-</div>
-                            
+                
                         </div><!-- End row -->
                     </div><!-- End Container -->
                 </div><!-- End Latest-Courses Section Content -->

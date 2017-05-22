@@ -80,12 +80,10 @@
                                 <div class="footer-links">
                                     <ul>
                                         <li><a href="/courses" class="ln-tr">Courses</a></li>
-                                        <li><a href="#" class="ln-tr">Instructors</a></li>
-                                        <li><a href="#" class="ln-tr">About</a></li>
-                                        <li><a href="#" class="ln-tr">Privacy Policy</a></li>
-                                        <li><a href="#" class="ln-tr">Support</a></li>
-                                        <li><a href="#" class="ln-tr">Careers</a></li>
-                                        <li><a href="#" class="ln-tr">Instructors</a></li>
+                                        <li><a href="/users/instructors" class="ln-tr">Instructors</a></li>
+                                        <li><a href="/about" class="ln-tr">About</a></li>
+                                        <li><a href="/messages/new" class="ln-tr">Write a Message</a></li>
+
                                     </ul>
                                 </div><!-- End Footer Links -->
                             </div><!-- End Links Widget -->
@@ -95,16 +93,12 @@
                 <div id="bottom">
                     <div class="container">
                         <div class="fl copyright">
-                            <p>All Rights Reserved &copy; Coursaty Template | By <a target="_blank" href="http://iseada.com/" class="ln-tr">iSeada</a> & <a target="_blank" href="http://7oroof.com/" class="ln-tr">7oroof</a></p>
+                            <p>All Rights Reserved &copy; AcademUA | By Group 4 </p>
                         </div><!-- End Copyright -->
                         <div class="fr footer-social-icons">
                             <ul class="clearfix">
-                                <li><a href="https://twitter.com/?lang=es" class="fb-icon ln-tr"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="tw-icon ln-tr"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="gp-icon ln-tr"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" class="in-icon ln-tr"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#" class="yt-icon ln-tr"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a href="#" class="rss-icon ln-tr"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=100017271163676" class="fb-icon ln-tr"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/academua" class="tw-icon ln-tr"><i class="fa fa-twitter"></i></a></li>
                             </ul>
                         </div><!-- End Social Media Icons -->
                     </div><!-- End container -->
