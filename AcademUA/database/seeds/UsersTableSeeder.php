@@ -60,6 +60,33 @@ class UsersTableSeeder extends Seeder
             'professor' => false,
             'admin' => true
         ]);
+        DB::table('users')->insert([
+            'name' => 'Carlos',
+            'username' => 'carlos',
+            'email' => 'carlos@gmail.com',
+            'description' => 'DSS professor',
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Eli',
+            'username' => 'eli',
+            'email' => 'ali@gmail.com',
+            'description' => 'Im the coordinator of PPSS',
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Guardiola',
+            'username' => 'guardiola',
+            'email' => 'guardiola@gmail.com',
+            'description' => 'Manchester City <3',
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
+        ]);
         
     }
 }

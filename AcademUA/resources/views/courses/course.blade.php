@@ -32,7 +32,7 @@
                                 <div class="details" style="text-align:center;">
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-asterisk"></i></span>
-                                        <span class="text"> Rating: <?php echo $course->getAverage() ?> </span>
+                                        <span class="text"> Rating: <?php echo round($course->getAverage(), 1) ?> </span>
                                     </div>
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-euro"></i></span>
