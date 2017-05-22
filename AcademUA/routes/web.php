@@ -78,7 +78,7 @@ Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@dele
 Route::get('/messages/create/', 'MessagesController@createMessage')->middleware('auth');
 Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
 Route::get('/messages/new/','MessagesController@newMessage')->middleware('auth'); //Everything OK
-Route::get('/messages', 'MessagesController@showReceivedMessages')->middleware('auth');
+Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 Route::get('/messages/received', 'MessagesController@showReceivedMessages')->middleware('auth');
 Route::get('/messages/sent', 'MessagesController@showSentMessages')->middleware('auth');
 
