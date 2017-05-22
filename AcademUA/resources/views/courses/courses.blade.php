@@ -116,7 +116,7 @@ foreach ($courses as $course) {
                                 echo "0 COMMENTS";
                                 $rating = 0;
                             } else {
-                                echo $rating;
+                                echo round($course->getAverage(), 1);
                                 echo "    ";
                             }
                             //$course->getAverage();
