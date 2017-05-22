@@ -97,12 +97,8 @@
                         </div><!-- End Copyright -->
                         <div class="fr footer-social-icons">
                             <ul class="clearfix">
-                                <li><a href="https://twitter.com/?lang=es" class="fb-icon ln-tr"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="tw-icon ln-tr"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="gp-icon ln-tr"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" class="in-icon ln-tr"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#" class="yt-icon ln-tr"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a href="#" class="rss-icon ln-tr"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="https://www.facebook.com/profile.php?id=100017271163676" class="fb-icon ln-tr"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/academua" class="tw-icon ln-tr"><i class="fa fa-twitter"></i></a></li>
                             </ul>
                         </div><!-- End Social Media Icons -->
                     </div><!-- End container -->
