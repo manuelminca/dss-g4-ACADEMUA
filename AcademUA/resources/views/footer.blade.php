@@ -126,5 +126,9 @@
         <script src="/js/jquery.viewportchecker.min.js"></script>
         <script src="/js/jquery.waypoints.min.js"></script>
         <script src="/js/scripts.js"></script>
+        <script>
+        // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script> 
     </body>
 </html>

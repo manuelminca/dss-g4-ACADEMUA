@@ -112,9 +112,9 @@
                                                 }
                                                 
                                             ?>
-                                                            <div class="text-center">
-    {{$sessions->links()}}
-</div>
+                                            <div class="text-center">
+                                                {{$sessions->links()}}
+                                            </div>
 
                                         </li><!-- End 1st Post Slide Item -->
                                     </ul><!-- End ul Items -->
