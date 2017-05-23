@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class MessagesController extends BaseController
 {
-    public function deleteMessage($id){ //We have to redirect to Manage Courses but we need the session of the teacher(in progress)
+    public function deleteMessage($id){ 
 		$message = Message::findOrFail($id);
 
-		if(Auth::user()->id == $message->sender_id){
+		if(Auth::user()->id == $message->sender_id || Auth::user()->id == $message->receiver_id ){
 			$message->deleteMessage();
 		}
 		
