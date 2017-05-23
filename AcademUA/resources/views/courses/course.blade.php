@@ -13,18 +13,7 @@
             </div><!-- End Inner Page Head -->
 
             <div class="clearfix"></div>
-            @if(Auth::check())
-            @if ($course->checkAttend())
-                <h1>You can see this because you are attending this course!</h1>
-            @endif
-            @endif
 
-            @if(Auth::check())
-            @if ($course->checkAttend() == false)
-                <h1>You can see this even if you are not attending the course</h1>
-            @endif
-            @endif
-            
 
             <article class="post alt">
                 <div class="container">
@@ -43,7 +32,7 @@
                                 <div class="details" style="text-align:center;">
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-asterisk"></i></span>
-                                        <span class="text"> id: <?php echo $course->id ?> </span>
+                                        <span class="text"> Rating: <?php echo round($course->getAverage(), 1) ?> </span>
                                     </div>
                                     <div class="date ib">
                                         <span class="icon"><i class="fa fa-euro"></i></span>
@@ -93,29 +82,29 @@
                                                     echo "<div class='query clearfix'>";
                                                         echo "<div class='query-content'>";
                                                             echo "<h3 class='post-title'>#". $number . ": " . $session->title . "</h3>"; 
-                                                            echo "<p class='query-description'> </p>";
-                                                            echo "<iframe width='560' height='315' src='" . $session->video . "' frameborder='0' allowfullscreen></iframe>";
-                                                
-                                                            echo "<p class='query-description'>". $session->content . "</p>";
-                                                            echo "<div class='details'>";
-                                                                echo " <div class='date ib'>";
-                                                                    echo "<span class='icon'><i class='fa fa-clock-o'></i></span>";
-                                                                    echo "<span class='text'>" . $session->created_at . "</span>";
-                                                                echo "</div>";
-                                                                echo " <div class='date ib'>";
-                                                                    echo "<span class='icon'><i class='fa fa-star'></i></span>";
-                                                                    echo "<span class='text'>Rating: " . "borrar". "</span>";
-                                                                echo "</div>";
-                                                                echo "<div class='place ib'>";
-                                                                    echo "<span class='icon'><i class='fa fa-building'></i></span>";
-                                                                    echo "<span class='text'>Academua</span>";
+                
+                                                            echo "<iframe style='padding-top: 20px; margin-left:-150px;' width='560' height='315' src='" . $session->video . "' frameborder='0' allowfullscreen></iframe>";
+                                                            
+                                                            echo "<div class='post' style='margin-left:-105px; background-color:transparent;'>";
+                                                                echo "<div class='entry clearfix' style='margin-top: 0px; padding-top: 10;'>";
+                                                                    echo "<span class='entry-icon'><i class='fa fa-file-text'></i></span>";
+                                                                    echo "<h4 class='overview ib'>Session content</h4>";
+                                                                    echo "<div class='content'>";
+                                                                        echo "<p>" . $session->content ." </p>";
+                                                                    echo "</div>";
+                                                                echo "</div><!-- End Entry -->";
                                                             echo "</div>";
-                                                   echo "</div>";
-                                                        echo "</div>";
+
+                                                        echo "</div>"; 
                                                     echo "</div>";
                                                     $number = $number+1;
                                                 }
+                                                
                                             ?>
+                                            <div class="text-center">
+                                                {{$sessions->links()}}
+                                            </div>
+
                                         </li><!-- End 1st Post Slide Item -->
                                     </ul><!-- End ul Items -->
                                 </div><!-- End Posts Slider -->
