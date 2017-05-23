@@ -35,9 +35,8 @@ class SessionsController extends Controller
 		$session->createSession($title, $content, $video, $course_id);
 
 
-
-		$list = Session::where('course_id',$course_id)->paginate(4);	
-		return view('sessions.sessions', ['sessions' => $list])->with('course',$course_id);
+		return redirect()->action(
+   		 'SessionsController@sessions', ['id' => $course_id]);
 
 	}
 

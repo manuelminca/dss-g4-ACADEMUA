@@ -28,7 +28,7 @@ class Session extends Model
 
 
     public function getSessions($course_id){
-		$sessions = Session::where('course_id', $course_id)->get();
+		$sessions = Session::where('course_id', $course_id)->paginate(1);
 
 		return $sessions;
 	}
