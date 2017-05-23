@@ -120,7 +120,7 @@
                                   echo "<td class='view-message' >"  . $message->subject . "</td>";
                                   echo "<td class='view-message text-right'  >". $message->created_at . "</td>";
                                   echo "<td class='inbox-small-cells' >";
-                                      echo "<a href='/messages/delete/" .$message->id. "'>Delete</a>";
+                                      echo "<a href='/messages/delete/" .$message->id . "'>Delete</a>";
                                   echo "</td>";
                                   echo "<td class='inbox-small-cells' >";
                                         echo "<a href='#modalMessage" . $message->id . "' data-toggle='modal'>View</a>";
