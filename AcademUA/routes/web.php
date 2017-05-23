@@ -17,6 +17,7 @@ use App\Category;
 
 Route::get('/', 'HomeController@index'); 
 Route::get('/about', function() { return view ('about');}); 
+Route::get('/contact', function() { return view ('contact');}); 
 
 
 /*##################################################################################################
