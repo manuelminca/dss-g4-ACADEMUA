@@ -67,17 +67,13 @@
                                 <a href="/messages" class="ln-tr">Messages</a>
                             </li>
                              @endif
-                            <li class="parent-item haschild">
-                                <a href="#" class="ln-tr">About</a>
+                            <li class="parent-item haschild @yield('aboutCurrent')">
+                                <a href="/about" class="ln-tr">About</a>
                             </li>
-                            <li class="parent-item haschild">
-                                <a href="#" class="ln-tr">Contact</a>
-                                <ul class="submenu">
-                                    <li class="sub-item"><a href="33-contact-1.html" class="ln-tr">Contact 1</a></li>
-                                    <li class="sub-item"><a href="34-contact-2.html" class="ln-tr">Contact 2</a></li>
-                                    <li class="sub-item"><a href="35-contact-3.html" class="ln-tr">Contact 3</a></li>
-                                </ul>
+                            <li class="parent-item haschild @yield('contactCurrent')">
+                                <a href="/contact" class="ln-tr">Contact</a>
                             </li>
+                            
 
 
                         @if (Auth::guest())
