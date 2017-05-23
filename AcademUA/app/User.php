@@ -38,7 +38,7 @@ class User extends Authenticatable
 			     * @var array
 			     */
 			    protected $fillable = [
-			        'id','name', 'email', 'password', 'username', 'professor','admin',
+			        'id','name', 'email', 'password', 'username', 'professor','admin', 'description',
 			    ];
 	
 	
@@ -80,11 +80,17 @@ class User extends Authenticatable
 	}
 	
 	
-	public function edit($name, $email, $password){
-		
-		$this->name = $name;
-		$this->email = $email;
-		$this->password = $password;
+	public function edit($name, $email, $password, $description){
+		if($name != null){
+			$this->name = $name;
+		}
+		if($email != null){
+			$this->email = $email;
+		}
+		if($password != null){
+			$this->password = $password;
+		}
+		$this->description = $description;
 	
 		$this->save();
 		

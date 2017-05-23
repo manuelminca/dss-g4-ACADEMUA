@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'username'=> $data['username'],
             'professor' => true,
             'admin' => false,
+            'description' => "",
             'password' => bcrypt($data['password']),
             ]);
         }else{
@@ -79,6 +80,7 @@ class RegisterController extends Controller
             'username'=> $data['username'],
             'professor' => false,
             'admin' => false,
+            'description' => "",
             'password' => bcrypt($data['password']),
             ]);
         }

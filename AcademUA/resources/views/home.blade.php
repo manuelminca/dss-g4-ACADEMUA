@@ -40,14 +40,9 @@
         </ul>
     </div>
 </div>
-
 <div class="clearfix"></div>
-
             <div class="clearfix"></div>
-
-           
             <div class="clearfix"></div>
-
             <section class="full-section instructors-section fancy-shadow">
                 <div class="container">
                     <h3 class="section-title">Starred Instructors</h3>
@@ -60,35 +55,39 @@
                         <div class="row">
                             <?php
 
-                            //Mostramos los instructores
+//Mostramos los instructores
                             foreach ($users as $user) {
-                                echo "<div class='col-md-3 col-xs-6'>";
-                                    echo "<div class='instructor'>";
-                                        echo "<div class='avatar'><img src='/img/teacher1.jpg' class='img-responsive'></div>";
-                                            echo "<div class='instructor-info'>";
-                                                echo "<p class='name'>" . $user->name . "</p>";
-                                                echo "<span class='position'>Web Developer</span>";
-                                                echo "<div class='social-icons'>";
-                                                    echo "<ul class='clearfix'>";
-                                                        echo "<li><a href='#' class='fb-icon es-tr'><i class='fa fa-facebook'></i></a></li>";
-                                                        echo "<li><a href='#' class='tw-icon es-tr'><i class='fa fa-twitter'></i></a></li>";
-                                                        echo "<li><a href='#' class='gp-icon es-tr'><i class='fa fa-google-plus'></i></a></li>";
-                                                        echo "<li><a href='#' class='in-icon es-tr'><i class='fa fa-linkedin'></i></a></li>";
-                                                    echo "</ul>";
-                                                echo "</div>";
-                                        echo "</div>";
-                                    echo "</div>";
-                                echo "</div>";
-                            }
+	echo "<div class='col-md-3 col-xs-6'>";
+	echo "<div class='instructor'>";
+	if(file_exists(public_path().'/images/users/' . $user->id)){
+		echo "<img src='/images/users/" . $user->id . "' class='img-responsive'>";
+	}
+	else{
+		echo "<img src='/img/teacher1.jpg' class='img-responsive'>";
+	}
+	
+	echo "<div class='instructor-info'>";
+	echo "<p class='name'>" . $user->name . "</p>";
+	echo "<span class='position'>" . $user->description . "</span>";
+	echo "<div class='social-icons'>";
+	echo "<ul class='clearfix'>";
+	echo "<li><a href='#' class='fb-icon es-tr'><i class='fa fa-facebook'></i></a></li>";
+	echo "<li><a href='#' class='tw-icon es-tr'><i class='fa fa-twitter'></i></a></li>";
+	echo "<li><a href='#' class='gp-icon es-tr'><i class='fa fa-google-plus'></i></a></li>";
+	echo "<li><a href='#' class='in-icon es-tr'><i class='fa fa-linkedin'></i></a></li>";
+	echo "</ul>";
+	echo "</div>";
+	echo "</div>";
+	echo "</div>";
+	echo "</div>";
+}
 
-                            ?>
+?>
                         </div>
                     </div>
                 </div><!-- End Instructors Section Content -->
             </section><!-- End Our Instructors Container -->
-
             <div class="clearfix"></div>
-
             <section class="full-section latest-courses-section">
                 <div class="container">
                     <h3 class="section-title">Our latests courses</h3>
@@ -101,45 +100,82 @@
                         <div class="row">
                             <?php
 
-                            //Mostramos los cursos
+//Mostramos los cursos
                             foreach ($courses as $course) {
                                 echo "<div class='col-md-3 col-xs-6'>";
-                                    echo "<div class='course'>";
-                                        echo "<div class='course-image'>";
-                                            echo "<div class='details-overlay'>";
-                                            echo "<span class='place'>";
-                                            echo "<i class='fa fa-briefcase'></i>";
-                                            echo "<span class='text'>Id : " . $course->id ."</span>";
-                                            echo "</span>";
-                                            echo "<span class='time'>";
-                                            echo "<i class='fa fa-money'></i>";
-                                            echo "<span class='text'>" . $course->price . "€</span>";
-                                            echo "</span>";
-                                            echo "</div>";
-                                            echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
-                                            echo "</div>";
-                                            echo "<div class='course-info'>";
-                                            echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
-                                            echo "<p class='course-description'>" . $course->description . "</p>";
-                                            echo "<div class='buttons'>";
-                                            echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-                                            echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
-                                            echo "</div>";
-                                        echo "</div>";
-                                    echo "</div>";
+                                echo "<div class='course'>";
+                                echo "<div class='course-image'>";
+                                echo "<div class='details-overlay'>";
+                                echo "<span class='time'>";
+                                echo "<span class='text'>";
+                                $rating = $course->getAverage();
+                                $string = "N/A";
+                                if(strcmp($rating, $string) == 0){
+                                    echo "0 COMMENTS";
+                                    $rating = 0;
+                                }
+                                else {
+                                    echo $rating;
+                                    echo "    ";
+                                }
+                                //$	course->getAverage();
+                                //$	course->getNumberStudents();
+                                if($rating == 0){
+                                    
+                                }
+                                else {
+                                    for ($i = 0; $i<floor($rating); $i++) {
+                                        echo "&#9733;";
+                                    }
+                                }
+                                
+                                echo "</span>";
+                                echo "</span>";
+                                echo "<span class='place'>";
+                                echo "<div class='col-xs-6' style='text-align: left'>";
+                                echo "<span class='text'>" . $course->price ." </span>";
+                                echo "<i class='fa fa-eur'></i>";
+                                echo "</div>";
+                                echo "<div class='col-xs-6' style='text-align: right'>";
+                                echo "<span class='text'>" . $course->getNumStudents() ." </span>";
+                                echo "<i class='fa fa-users'></i>";
+                                echo "</div>";
+                                echo "</span>";
+                                
+                                echo "</div>";
+                                
+                                if(file_exists(public_path().'/images/courses/' . $course->id)){
+                                    echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
+                                }
+                                else{
+                                    echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+                                }
+                                
+                                
+                                
+                                echo "</div>";
+                                echo "<div class='course-info'>";
+                                echo "<h3 class='course-title'><a href='/courses/course/" .$course->id. "' class='n-tr'>" . $course->name . "</a></h3>";
+                                echo "<p class='course-description'>" . $course->description . "</p>";
+                                echo "<div class='buttons'>";
+                                echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
+                                
+                                if(Auth::check()){
+                                    if($course->checkTeacher()){
+                                        echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                                    }
+                                }
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
                                 echo "</div>";
                             }
 
-                            ?>
-
+?>
                         </div>
                         <div class="clearfix"></div>
                     </div><!-- End Container -->
                 </div><!-- End Latest-Courses Section Content -->
             </section><!-- End Courses Section -->
-
             <div class="clearfix"></div>
-
-            
-
 @include('footer')

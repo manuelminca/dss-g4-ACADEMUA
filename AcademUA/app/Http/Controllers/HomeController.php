@@ -45,4 +45,5 @@ class HomeController extends BaseController
 		
 		return view('courses.courses', ['courses' => $list]);
     }
+    
 }

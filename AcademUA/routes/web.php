@@ -4,8 +4,6 @@ use App\Course;
 use App\Category;
 
 
-Route::get('ajaxImageUpload', ['uses'=>'AjaxImageUploadController@ajaxImageUpload']);
-Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUploadController@ajaxImageUploadPost']);
 /*
 -----------------------------------------------------------------------
 | Web Routes
@@ -18,6 +16,8 @@ Route::post('ajaxImageUpload', ['as'=>'ajaxImageUpload','uses'=>'AjaxImageUpload
 */
 
 Route::get('/', 'HomeController@index'); 
+Route::get('/about', function() { return view ('about');}); 
+Route::get('/contact', function() { return view ('contact');}); 
 
 
 /*##################################################################################################
@@ -26,7 +26,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/users/modify/', 'UsersController@ModifyUser')->middleware('auth'); //everything OK
 Route::get('/users/delete/', 'UsersController@deleteUser')->middleware('auth'); //Everything OK
-Route::get('/users/modified/', 'UsersController@edit')->middleware('auth');
+Route::post('/users/modified/', 'UsersController@edit')->middleware('auth');
 //Route::get('/users/create/', 'UsersController@createUser');
 Route::get('/users/instructors/', 'UsersController@showInstructors');
 
@@ -36,7 +36,7 @@ Route::get('/users/instructors/', 'UsersController@showInstructors');
 ####################################COURSES###########################################################
 ##################################################################################################*/
 
-Route::get('/courses/create/','CoursesController@createCourse'); 
+Route::post('/courses/create/','CoursesController@createCourse'); 
 Route::get('/courses/attend/{course_id}','CoursesController@attendCourse')->middleware('auth'); // the link should not be accesible throught the browser 
 Route::get('/courses/manage/{id}','CoursesController@showTeacherCourses'); //the id is the user id
 Route::get('/courses/delete/{id}','CoursesController@deleteCourse')->middleware('auth')->middleware('teacher');//Everything OK
@@ -52,6 +52,7 @@ Route::get('/courses', 'CoursesController@showCourses');
 Route::get('/courses/filter', 'CoursesController@showCoursesFilter');
 
 Route::get('/courses/modified/{id}', 'CoursesController@edit');
+
 
 
 /*##################################################################################################
@@ -79,7 +80,7 @@ Route::get('/comments/delete/{comment_id}&{course_id}', 'CommentsController@dele
 Route::get('/messages/create/', 'MessagesController@createMessage')->middleware('auth');
 Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
 Route::get('/messages/new/','MessagesController@newMessage')->middleware('auth'); //Everything OK
-Route::get('/messages', 'MessagesController@showReceivedMessages')->middleware('auth');
+Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 Route::get('/messages/received', 'MessagesController@showReceivedMessages')->middleware('auth');
 Route::get('/messages/sent', 'MessagesController@showSentMessages')->middleware('auth');
 

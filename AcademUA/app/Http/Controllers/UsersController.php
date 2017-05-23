@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Course;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -40,7 +41,7 @@ class UsersController extends BaseController
 	public function deleteUser (){
 		$user = User::find(Auth::user()->id);
 		$user->deleteUser();
-		return view('home');
+		return redirect('/home');
 	}
 	
 	public function ModifyUser (){
@@ -49,23 +50,34 @@ class UsersController extends BaseController
 	}
 	
 	public function edit(Request $request){
-		
-		$this->validate($request,[
-			'email' => 'required | email | unique:users,email',
-			'name' => 'required',
+
+		if($request->input('password') != null){
+			$this->validate($request,[
 			'password' => 'required | min:2',
 			'password_confirmation' => 'required | same:password'
 		]);
+		}
 		
-		
+			
 		$user = User::findOrFail(Auth::user()->id);
-		
+
+		$iduser = $user->id;
+		$destination = "images/users/";
+		$request->file('image')->move($destination, $iduser);
+
 		$name = $request->input('name');
 		$email = $request->input('email');
 		$password = $request->input('password');
+
+		if($user->professor == 1){
+			$description = $request->input('description');
+		}else{
+			$description = "Im a student";
+		}
 		
-		$user->edit($name, $email, $password);
-		return view('home');
+		$user->edit($name, $email, $password, $description);
+
+		return redirect('/home');
 	}
 	
 	public function createUser(Request $request){
@@ -83,6 +95,12 @@ class UsersController extends BaseController
 		$username= $request->input('username');
 		$password= $request->input('password');
 		$professor= $request->input('professor');
+
+		if($professor == 1){
+			$description = $request->input('description');
+		}else{
+			$description = "Im a student";
+		}
 		
 		if($professor == "y"){
 			$professor = true;
@@ -93,6 +111,10 @@ class UsersController extends BaseController
 		
 		$user = new User();
 		$user->createUser($email,$name,$username,$password, $professor);
+
+		$iduser = $user->id;
+		$destination = "images/users/";
+		$request->file('image')->move($destination, $iduser);
 		
 		return view('home');
 	}

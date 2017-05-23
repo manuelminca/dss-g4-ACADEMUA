@@ -101,7 +101,7 @@ class CoursesController extends BaseController
 		$course = Course::find($id);
 		$comments = $course->getComments($id);
 		$session = new Session();
-		$sessions = $session->getSessions($id);
+		$sessions = Session::where('course_id', $id)->paginate(1);
 		//returns an array with all the comments
 		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
@@ -149,7 +149,6 @@ class CoursesController extends BaseController
 		$teacher_id= Auth::user()->id;
 		$categoryName = $request->input('category');
 		
-		
 		$catModel = new Category();
 		$categoryID = $catModel->getID($categoryName);
 		
@@ -158,6 +157,9 @@ class CoursesController extends BaseController
 		
 		$course->attachCategory($categoryID);
 		
+		$idcourse = $course->id;
+		$destination = "images/courses/";
+		$request->file('image')->move($destination, $idcourse);
 		
 		return view('home');
 	}
@@ -191,8 +193,8 @@ class CoursesController extends BaseController
 		$user = User::find(Auth::user()->id);
 		$course->attendCourse($course->id, $user);
 		$comments = $course->getComments($course_id);
-		$session = new Session();
-		$sessions = $session->getSessions($course_id);
+
+		$sessions = Session::where('course_id', $course_id)->paginate(1);
 
 		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 		
@@ -208,7 +210,8 @@ class CoursesController extends BaseController
 		//r		eturns an array with all the comments
 
 		$session = new Session();
-		$sessions = $session->getSessions($course_id);
+		$sessions = Session::where('course_id', $course_id)->paginate(1);
+
 
 		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);		
 	}

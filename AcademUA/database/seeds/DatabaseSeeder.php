@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 		$this->call(UserscoursesTableSeeder::class);
 		$this->call(CategoriescoursesTableSeeder::class);
 		$this->call(CommentsTableSeeder::class);
-		//$this->call(MessagesTableSeeder::class);
+		$this->call(MessagesTableSeeder::class);
 		$this->call(SessionsTableSeeder::class);
 		}else{
 			//Delete data from database

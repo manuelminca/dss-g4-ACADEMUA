@@ -14,16 +14,17 @@ use Illuminate\Support\Facades\Auth;
 
 class MessagesController extends BaseController
 {
-    public function deleteMessage($id){ //We have to redirect to Manage Courses but we need the session of the teacher(in progress)
+    public function deleteMessage($id){ 
 		$message = Message::findOrFail($id);
 
-		if(Auth::user()->id == $message->sender_id){
+		if(Auth::user()->id == $message->sender_id || Auth::user()->id == $message->receiver_id ){
 			$message->deleteMessage();
 		}
 		
+		$listInbox = Message::getReceivedMessages(Auth::user()->id);
+		$listOutbox = Message::getSentMessages(Auth::user()->id);
 
-		$list = Message::paginate(6);
-		return view('messages.messages', ['messages' => $list]); //We have to change that in the future
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
     public function createMessage(Request $request){
@@ -43,8 +44,10 @@ class MessagesController extends BaseController
 		$message->createMessage($subject,$sender_id,$receiver_id,$messageReceived);
 		
 		
+		$listInbox = Message::getReceivedMessages(Auth::user()->id);
+		$listOutbox = Message::getSentMessages(Auth::user()->id);
 
-		return view('home');
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
     public function newMessage(){
@@ -62,6 +65,13 @@ class MessagesController extends BaseController
 		$list = Message::getSentMessages(Auth::user()->id);
 		
 		return view('messages.sentMessages', ['messages' => $list]);
+	}
+
+	public function showMessages(){
+		$listInbox = Message::getReceivedMessages(Auth::user()->id);
+		$listOutbox = Message::getSentMessages(Auth::user()->id);
+
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
 }
