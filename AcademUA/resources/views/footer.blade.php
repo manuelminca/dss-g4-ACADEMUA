@@ -13,9 +13,8 @@
                                 </p>
                                 <div class="footer-links">
                                     <ul>
-                                        <li><a href="#" class="ln-tr">About Us</a></li>
-                                        <li><a href="#" class="ln-tr">Meet Our Team</a></li>
-                                        <li><a href="#" class="ln-tr">Contact Us</a></li>
+                                        <li><a href="/about" class="ln-tr">About Us</a></li>
+                                        <li><a href="/contact" class="ln-tr">Contact Us</a></li>
                                     </ul>
                                 </div><!-- End Footer Links -->
                             </div><!-- End About Widget -->
@@ -120,5 +119,9 @@
         <script src="/js/jquery.viewportchecker.min.js"></script>
         <script src="/js/jquery.waypoints.min.js"></script>
         <script src="/js/scripts.js"></script>
+        <script>
+        // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script> 
     </body>
 </html>
