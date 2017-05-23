@@ -65,7 +65,6 @@
 
   </div>
 </div>
-<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
  <div class="mail-box">
                   <aside class="sm-side">
                       <div class="user-head">
@@ -96,12 +95,18 @@
 
                   </aside>
                   <aside class="lg-side">
-                      <div class="inbox-head">
+                      <div class="inbox-head ">
         
                           <form action="#" class="pull-right position">
                               <div class="input-append">
-                                  <input type="text" class="sr-input" placeholder="Search Mail">
-                                  <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                                <div class="row">
+                                    <div class="col-md-8" style="margin: 0 auto; padding: 0 0 0;">
+                                        <input type="text" class="sr-input" placeholder="Search Mail">
+                                    </div>
+                                    <div class="col-md-4" style="margin: 0 auto; padding: 6px 0 0;">
+                                        <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
                               </div>
                           </form>
                       </div>
@@ -153,7 +158,7 @@
                             foreach ($messagesOutbox as $message) {
                             
                                 echo "<tr class='unread'>";
-                                echo "<a href='#modalMessage1' data-toggle='modal'>";
+                                echo "<a href='#modalMessageOutbox1' data-toggle='modal'>";
                                     echo "<td class='inbox-small-cells' >";
                                         echo "<input type='checkbox' class='mail-checkbox'>";
                                     echo "</td>";
@@ -164,21 +169,21 @@
                                         echo "<a href='/messages/delete/" .$message->id. "'>Delete</a>";
                                     echo "</td>";
                                     echo "<td class='inbox-small-cells' >";
-                                        echo "<a href='#modalMessage1' data-toggle='modal'>View</a>";
+                                        echo "<a href='#modalMessageOutbox" . $message->id . "' data-toggle='modal'>View</a>";
                                     echo "</td>";
              
                                     echo "</a>";
                                 echo "</tr>"; 
                                 // MODAL //
-                              echo "<div id='modalMessage" . $message->id . "' class='modal fade' role='dialog'>";
+                              echo "<div id='modalMessageOutbox" . $message->id . "' class='modal fade' role='dialog'>";
                                 echo "<div class='modal-dialog'>";
                                     echo "<div class='modal-content'>";
                                     echo "<div class='modal-header'>";
-                                        echo "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
-                                        echo "<h4 class='modal-title'>Modal Header</h4>";
+                                        echo "<button type='button' style='float:right;' class='close' data-dismiss='modal'>&times;</button>";
+                                        echo "<h4 class='modal-title'>" . $message->subject . "</h4>";
                                     echo "</div>";
                                     echo "<div class='modal-body'>";
-                                        echo "<p>Some text in the modal.</p>";
+                                        echo "<p>" . $message->message . "</p>";
                                     echo "</div>";
                                     echo "</div>";
                                 echo "</div>";

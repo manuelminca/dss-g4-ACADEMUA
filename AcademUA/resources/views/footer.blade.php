@@ -58,7 +58,12 @@
                                         foreach ($coursesFooter as $course) {
                                             echo "<li class='clearfix' style='padding-top:20px; padding-bottom:20px;'>";
                                                 echo "<div class='course-icon fl'>";
-                                                    echo "<span class='icon grad-btn'><i class='fa fa-bookmark'></i></span>";
+                                                    if(file_exists(public_path().'/images/courses/' . $course->id)){
+                                                            echo "<img src='/images/courses/" . $course->id . "' class='img-footer' >";
+                                                    }else{
+                                                            echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive img-height'>";
+                                                    }
+                                                   
                                                 echo "</div><!-- End Course Icon -->";
                                                 echo "<div class='course-info'>";
                                                     echo "<h4 class='footer-course-title'><a href='/courses/course/" .$course->id. "' class='ln-tr'>" . $course->name . "</a></h4>";

@@ -145,9 +145,9 @@ foreach ($courses as $course) {
                 echo "</div>";
                
                 if(file_exists(public_path().'/images/courses/' . $course->id)){
-		                echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
+		                echo "<img src='/images/courses/" . $course->id . "' class='img-responsive img-height'>";
                 }else{
-		                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+		                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive img-height'>";
 	            }
                     
                
