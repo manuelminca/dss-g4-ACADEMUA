@@ -32,6 +32,7 @@
                     @endforeach
                     </ul>
                     @endif</div>
+                    <!-- Maldita hora-->
             <section class="cursos full-section latest-courses-section no-slider">
 
 
