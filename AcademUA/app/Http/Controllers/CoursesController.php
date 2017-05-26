@@ -139,7 +139,8 @@ class CoursesController extends BaseController
 		$this->validate($request,[
 			'name' => 'required',
 			'description' => 'required',
-			'price' => 'required | min:-1 | numeric'
+			'price' => 'required | min:-1 | numeric',
+			'image' => 'required | mimes:jpeg,jpg,png | max:2000'
 		]);
 		
 		$name= $request->input('name');
