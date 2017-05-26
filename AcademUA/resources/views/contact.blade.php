@@ -22,13 +22,13 @@
   <form action="/action_page.php">
   
     <label for="mail">Email</label>
-    <input type="text" id="email" name="email" placeholder="Your email..">
+    <input type="text2" id="email" name="email" placeholder="Your email..">
 
     <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <input type="text2" id="fname" name="firstname" placeholder="Your name..">
 
     <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <input type="text2" id="lname" name="lastname" placeholder="Your last name..">
 
     
     
