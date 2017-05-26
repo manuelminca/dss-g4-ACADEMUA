@@ -31,7 +31,14 @@ class MessagesTableSeeder extends Seeder
             'subject' => 'Programación',
             'sender_id' => 1,
             'receiver_id' => 2,
-            'message' => 'Hey! Could you help me with an exercise?'
+            'message' => 'Thanks for helping!'
+        ]);
+
+        DB::table('messages')->insert([
+            'subject' => 'Programación',
+            'sender_id' => 2,
+            'receiver_id' => 1,
+            'message' => 'Your are welcome'
         ]);
 
         DB::table('messages')->insert([
