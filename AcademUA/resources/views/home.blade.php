@@ -50,39 +50,48 @@
                        In this section you can find the related instructors. You can visit the section <h3 class="course-title" style="display:inline" ><a href="/users/instructors" class="ln-tr">instructors</a></h3> to see all of them.
                     </p><!-- End Section Description -->
                 </div>
-                <div class="section-content instructors-content fadeInDown-animation">
+
+            <section class="full-section latest-courses-section no-slider" style="background-color: transparent; margin: 0 auto; padding: 0 0 0;">
+                <div class="section-content latest-courses-content fadeInDown-animation">
                     <div class="container">
                         <div class="row">
-                            <?php
 
+
+ <?php
+ 
 //Mostramos los instructores
-    foreach ($users as $user) {
+foreach ($users as $user) {
 	echo "<div class='col-md-3 col-xs-6'>";
-	echo "<div class='instructor'>";
-	if(file_exists(public_path().'/images/users/' . $user->id)){
+	echo "<div class='course'>";
+	echo "<div class='course-image'>";
+
+    if(file_exists(public_path().'/images/users/' . $user->id)){
 		echo "<img src='/images/users/" . $user->id . "' class='img-responsive img-height'>";
-	}
-	else{
+    }else{
 		echo "<img src='/img/teacher1.jpg' class='img-responsive img-height'>";
 	}
 	
-	echo "<div class='instructor-info'>";
-	echo "<p class='name'>" . $user->name . "</p>";
-	echo "<span class='position'>" . $user->description . "</span>";
-	echo "<div class='social-icons'>";
-	echo "<ul class='clearfix'>";
-	echo "<li><a href='#' class='fb-icon es-tr'><i class='fa fa-facebook'></i></a></li>";
-	echo "<li><a href='#' class='tw-icon es-tr'><i class='fa fa-twitter'></i></a></li>";
-	echo "<li><a href='#' class='gp-icon es-tr'><i class='fa fa-google-plus'></i></a></li>";
-	echo "<li><a href='#' class='in-icon es-tr'><i class='fa fa-linkedin'></i></a></li>";
-	echo "</ul>";
+	echo "</div>";
+	echo "<div class='course-info'>";
+	echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $user->name . "</a></h3>";
+	echo "<p class='course-description'>" . $user->description . "</p>";
+	echo "<div class='buttons'>";
+	echo "<a href='/courses/manage/" .$user->id. "' class='btn grad-btn orange-btn read-btn' style='margin: 0 auto;'>View Related Courses</a>";
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
 }
 
+
+
+
 ?>
+
+                        </div><!-- End row -->
+                    </div><!-- End Container -->
+                </div><!-- End Latest-Courses Section Content -->
+            </section><!-- End Courses Section -->
                         </div>
                     </div>
                 </div><!-- End Instructors Section Content -->
@@ -150,7 +159,6 @@
                                 else{
                                     echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive img-height'>";
                                 }
-                                
                                 
                                 
                                 echo "</div>";
