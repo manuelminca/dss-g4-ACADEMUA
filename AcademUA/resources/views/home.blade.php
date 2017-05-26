@@ -56,14 +56,14 @@
                             <?php
 
 //Mostramos los instructores
-                            foreach ($users as $user) {
+    foreach ($users as $user) {
 	echo "<div class='col-md-3 col-xs-6'>";
 	echo "<div class='instructor'>";
 	if(file_exists(public_path().'/images/users/' . $user->id)){
-		echo "<img src='/images/users/" . $user->id . "' class='img-responsive'>";
+		echo "<img src='/images/users/" . $user->id . "' class='img-responsive img-height'>";
 	}
 	else{
-		echo "<img src='/img/teacher1.jpg' class='img-responsive'>";
+		echo "<img src='/img/teacher1.jpg' class='img-responsive img-height'>";
 	}
 	
 	echo "<div class='instructor-info'>";
@@ -145,10 +145,10 @@
                                 echo "</div>";
                                 
                                 if(file_exists(public_path().'/images/courses/' . $course->id)){
-                                    echo "<img src='/images/courses/" . $course->id . "' class='img-responsive'>";
+                                    echo "<img src='/images/courses/" . $course->id . "' class='img-responsive img-height' >";
                                 }
                                 else{
-                                    echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+                                    echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive img-height'>";
                                 }
                                 
                                 
