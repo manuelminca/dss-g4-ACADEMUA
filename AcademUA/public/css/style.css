@@ -5040,7 +5040,7 @@ ul.social-buttons li a:active {
 /*contact form*/
 
 /* Style inputs with type="text", select elements and textareas */
-input[type=text], textarea {
+input[type=text2], textarea {
     width: 100%; /* Full width */
     padding: 12px; /* Some padding */  
     border: 1px solid #ccc; /* Gray border */
