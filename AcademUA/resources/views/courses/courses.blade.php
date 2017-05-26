@@ -160,15 +160,15 @@ foreach ($courses as $course) {
                 echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
                 
                 if(Auth::check()){
-                if($course->checkTeacher()){
-                    echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
-                }
+                    if($course->checkTeacher()){
+                        echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                    }
                 }
                 echo "</div>";
             echo "</div>";
         echo "</div>";
 	echo "</div>";
-    if($number == 4){
+    if($number == 4 || $number == 12){
         echo "<div class='clearfix'></div>";
     }
 }

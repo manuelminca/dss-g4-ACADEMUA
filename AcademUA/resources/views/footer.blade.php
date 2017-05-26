@@ -26,24 +26,18 @@
                                     <ul class="slides">
                                         <li>
                                             <div class="tweet">
-                                                <a href="#" class="ln-tr">@begha</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.
-                                                <div class="date">Dec. 6, 2014</div>
+                                                <a href="#" class="ln-tr">@AcademUA</a> ¡Nuevo curso de Java añadido!
+                                                <div class="date">25 de Diciembre de 2017</div>
                                             </div><!-- End Single Tweet -->
                                             <div class="tweet">
-                                                <a href="#" class="ln-tr">@begha</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.
-                                                <div class="date">Dec. 6, 2014</div>
+                                                <a href="#" class="ln-tr">@AcademUA</a> ¿Todavía no tienes cuenta en AcademUA?<a href="/register">regístrate</a>!
+                                                <div class="date">24 de Diciembre de 2017</div>
+                                            </div><!-- End Single Tweet -->
+                                            <div class="tweet">
+                                                <a href="#" class="ln-tr">@AcademUA</a> Tenemos un usuario nuevo que ha subido un curso, visita la sección "related instructors" para más información.
+                                                <div class="date">22 de Diciembre de 2017</div>
                                             </div><!-- End Single Tweet -->
                                         </li><!-- End 1st Tweet Slide Item -->
-                                        <li>
-                                            <div class="tweet">
-                                                <a href="#" class="ln-tr">@begha</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.
-                                                <div class="date">Dec. 6, 2014</div>
-                                            </div><!-- End Single Tweet -->
-                                            <div class="tweet">
-                                                <a href="#" class="ln-tr">@begha</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam.
-                                                <div class="date">Dec. 6, 2014</div>
-                                            </div><!-- End Single Tweet -->
-                                        </li><!-- End 2nd Tweet Slide Item -->
                                     </ul><!-- End ul Items -->
                                 </div><!-- End Tweets Slider -->
                             </div><!-- End Twitter Widget -->
@@ -68,7 +62,7 @@
                                                 echo "<div class='course-info'>";
                                                     echo "<h4 class='footer-course-title'><a href='/courses/course/" .$course->id. "' class='ln-tr'>" . $course->name . "</a></h4>";
                                                     echo "<p class='footer-course-description'>" . $course->description . "</p>";
-                                                    echo "<span class='course-date'>das" . $course->created_at . "</span>";
+                                                    echo "<span class='course-date'>" . $course->created_at . "</span>";
                                                 echo "</div><!-- End Course Info -->";
                                             echo "</li><!-- End 1st Slide Item -->";
                                             echo "<hr>";
@@ -128,5 +122,35 @@
         // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         </script> 
+        <script>
+        $('.main-navigation').find('ul:first').clone().appendTo('.mobile-container');
+
+    $('.mobile-navigation').find('.mobile-btn').on("click", function(event) {
+        $('body').addClass('mobile_nav-open');
+        $('.mobile-navigation').find('.mobile-container').slideToggle();
+        $(this).toggleClass('show-menu');
+        event.preventDefault();
+    });
+
+    $('.mobile-navigation').find('.haschild').each(function() {
+        var mobile_submenu = $(this).find('ul:first');
+        $(this).hover(function() { 
+            mobile_submenu.stop().css({overflow:'hidden', height:'auto', display:'none', paddingTop:0}).slideDown(500, function() {
+                $(this).css({overflow:'visible', height:'auto'});
+            }); 
+        },function() {
+            mobile_submenu.stop().slideUp(500, function() {   
+                $(this).css({overflow:'hidden', display:'none'});
+            });
+        }); 
+    });
+
+    $('.mobile-navigation').find('.haschild').children('a').one('click',function() {
+        return false;
+    }).on("click", function() {
+        return true;
+    });
+        </script>
+        
     </body>
 </html>

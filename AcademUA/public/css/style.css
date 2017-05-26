@@ -1259,12 +1259,24 @@ header.alt .mobile-navigation .mobile-btn span:after {
 	        transition: all .25s ease-out .25s;
 }
 .latest-courses-section .course-image .details-overlay .time {
-	margin-bottom: 0;
+	position: absolute;
 	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+	top: 0;
+	-webkit-transition: all .25s ease-out .35s;
+	   -moz-transition: all .25s ease-out .35s;
+	    -ms-transition: all .25s ease-out .35s;
+	     -o-transition: all .25s ease-out .35s;
+	        transition: all .25s ease-out .35s;
+}
 
-	font-size: 24px;
-	padding: -100px 0 0;
-	margin-bottom: 80px;
+.latest-courses-section .course-image .details-overlay .place {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+	bottom: 0;
 	-webkit-transition: all .25s ease-out .35s;
 	   -moz-transition: all .25s ease-out .35s;
 	    -ms-transition: all .25s ease-out .35s;
