@@ -30,9 +30,10 @@ class MessagesController extends BaseController
     public function createMessage(Request $request){
 		$message = new Message();
 		$this->validate($request,[
-				'receiver' => 'required',
+
 				'subject' => 'required',
-				'message' => 'required'
+				'message' => 'required',
+				'receiver' => 'required | exists:users,username'
 		]);
 		
 		$sender_id = Auth::user()->id;

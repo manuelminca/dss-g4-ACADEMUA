@@ -58,8 +58,12 @@ class CoursesController extends BaseController
 		$course->editCourse($name,$description,$price,$content);
 		
 		$comments = $course->getComments($id);
-		//r		eturns an array with all the comments
-		return view('courses.course', ['comments' => $comments])->with('course', $course);
+		
+		$session = new Session();
+		$sessions = $session->getSessions($id); 
+		//returns an array with all the comments
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
+
 		
 	}
 	
@@ -101,7 +105,7 @@ class CoursesController extends BaseController
 		$course = Course::find($id);
 		$comments = $course->getComments($id);
 		$session = new Session();
-		$sessions = Session::where('course_id', $id)->paginate(1);
+		$sessions = $session->getSessions($id); 
 		//returns an array with all the comments
 		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
