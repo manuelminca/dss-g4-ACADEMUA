@@ -78,7 +78,8 @@
                     <div class="row" style="width:80%; margin:0 auto;">
                         <div class="col-md-12 basic-slider-box">
                             <div class="questions">
-                                <h6 class="head-title">Videos</h6>
+                                <h6 style="text-align: center" class="head-title">Sessions</h6>
+                                <span> The sessions of the course </span>
                                 <div class="basic-slider flexslider">
                                     <ul class="slides">
                                         <li class="questions-slide-item">
@@ -128,7 +129,7 @@
                 <form action="/comments/create/{{$course->id}}" >
                     {{ csrf_field() }}
                     {{ method_field('POST') }}
-                    <div class="login-page" style="width:80%; margin:0 auto;">
+                    <div class="login-page" style="width:80%; margin:0 auto; background-color: transparent">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="login-form">
