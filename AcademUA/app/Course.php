@@ -7,23 +7,23 @@ use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
-	//A	ctivate timestamps
-		public $timestamps = true;
+	//Activate timestamps
+	public $timestamps = true;
 	
 	
 	/**
 	* The attributes that are mass assignable.
-				     *
-				     * @var array
-				     */
-				    protected $fillable = [
-				        'id', 'name', 'description', 'content', 'price', 'teacher_id', 
-				    ];
+	*
+	* @var array
+	*/
+	protected $fillable = [
+		'id', 'name', 'description', 'content', 'price', 'teacher_id', 
+	];
 
-		/*#############################################
-					Relationships
-		###############################################*/
-	
+
+	/*#############################################
+				Relationships
+	###############################################*/
 	
 	//Relation between courses and categories
 	public function categories() {
@@ -46,21 +46,19 @@ class Course extends Model
 	}
 	
 	
-		/*#############################################
-					GETTERS AND SETTERS
-		###############################################*/
+	/*#############################################
+				GETTERS AND SETTERS
+	###############################################*/
 	
 	//Get the courses from id teacher
 	public function getCourses($idTeacher){
 		$courses = Course::where('teacher_id', $idTeacher)->get();
-		
 		return $courses;
 	}
 
 	//Get the courses of the Authed user
 	public function getUserCourses(){
 		$CoursesUser = Auth::user()->courses()->get();
-		
 		return $CoursesUser;
 	}
 	
@@ -83,10 +81,9 @@ class Course extends Model
 	}
 
 
-		/*#############################################
-					Other functions
-		###############################################*/
-	
+	/*#############################################
+				Other functions
+	###############################################*/
 	
 	
 	public function deleteCourse(){
@@ -95,11 +92,8 @@ class Course extends Model
 	
 	//Get courses filtering
 		public function showCoursesFilter($filter, $valor, $order, $how){
-		
 		if ($filter == 'precio_menor') {
-			
 			if ($order == 'precio' && $how == 'asc' ) {
-				
 				$list = Course::where('price','<',$valor)->orderBy('price')->paginate(6);
 			} else if ($order == 'precio' && $how == 'desc' )  {
 				$list = Course::where('price','<',$valor)->orderBy('price', "desc")->paginate(6);
@@ -108,7 +102,6 @@ class Course extends Model
 			} else {
 				$list = Course::where('price','<',$valor)->orderBy('name', 'desc')->paginate(6);
 			}
-			
 		}
 		elseif ($filter == 'nombre') {
 			if ($order == 'precio' && $how == 'asc' ) {
@@ -122,11 +115,8 @@ class Course extends Model
 			}
 		}
 		return $list;
-		
-		
 	}
-	
-	
+
 	//Edit a course changing the name, description, price or content of it
 	public function editCourse($name, $description, $price, $content){
 		
@@ -143,29 +133,22 @@ class Course extends Model
 			$this->content = $content;
 		}	
 		$this->save();
-		
 	}
 	
 	//create a course given its name, description, price, content, teacher_id
 	public function createCourse($name, $description, $price, $content, $teacher_id){
-		
-		
 		$this->name = $name;
 		$this->description = $description;
 		$this->price = $price;
 		$this->teacher_id = $teacher_id;
-		
 		if($content != null){
 			$this->content = $content;
 		}
 		else{
 			$this->content = "";
 		}
-		
 		$this->save();
-		
 	}
-	
 	
 	//It attaches a course with a user
 	public function attendCourse($course, $user){

@@ -16,12 +16,13 @@ class Session extends Model
 	
 	/**
 	* The attributes that are mass assignable.
-			     *
-			     * @var array
-			     */
-			    protected $fillable = [
-			        'title', 'content', 'video','course_id'
-			    ];
+	*
+	* @var array
+	*/
+	protected $fillable = [
+		'title', 'content', 'video','course_id'
+	];
+
 
 	 /*#############################################
 					Relationships
@@ -32,6 +33,7 @@ class Session extends Model
 		return $this->belongsTo('App\Course', 'teacher_id');
 	}
 
+
 		/*#############################################
 					GETTERS AND SETTERS
 		###############################################*/
@@ -39,14 +41,13 @@ class Session extends Model
 	//Get sessions of a given course_id
     public function getSessions($course_id){
 		$sessions = Session::where('course_id', $course_id)->paginate(1);
-
 		return $sessions;
 	}
 
 
-		/*#############################################
-					Other functions
-		###############################################*/
+	/*#############################################
+				Other functions
+	###############################################*/
 
 	public function deleteSession(){
 		$this->delete();
@@ -60,13 +61,11 @@ class Session extends Model
 		}else{
 			$this->content = $content;
 		}
-
 		if($video == null){
 			$this->video = "";
 		}else{
 			$this->video = $video;
 		}
-
 		$this->course_id = $course_id;
 		$this->save();
 	}
