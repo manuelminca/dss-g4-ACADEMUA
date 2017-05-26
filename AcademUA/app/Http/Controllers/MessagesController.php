@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MessagesController extends BaseController
 {
+	//to delete a message given the id
     public function deleteMessage($id){ 
 		$message = Message::findOrFail($id);
 
@@ -27,6 +28,7 @@ class MessagesController extends BaseController
 		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
+	//creates a new message into the DB
     public function createMessage(Request $request){
 		$message = new Message();
 		$this->validate($request,[
@@ -40,28 +42,28 @@ class MessagesController extends BaseController
 		$receiver_id = User::getIdFromName($request->input('receiver'));
 		$subject= $request->input('subject');
 		$messageReceived= $request->input('message');
-
 		
 		$message->createMessage($subject,$sender_id,$receiver_id,$messageReceived);
-		
-		
+
+		//preparing data for the view	
 		$listInbox = Message::getReceivedMessages(Auth::user()->id);
 		$listOutbox = Message::getSentMessages(Auth::user()->id);
 
 		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
+	//returns the view to create a message
     public function newMessage(){
 		return view('messages.createMessage');
 	}
 
+	//returns the view with a list of received messages
     public function showReceivedMessages(){
 		$list = Message::getReceivedMessages(Auth::user()->id);
-		
-		
 		return view('messages.receivedMessages', ['messages' => $list]);
 	}
 
+	//returns the view with a list of sent messages
 	public function showSentMessages(){
 		$list = Message::getSentMessages(Auth::user()->id);
 		
