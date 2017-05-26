@@ -9,18 +9,11 @@ $sessions que es un array con todas las sesiones que estan relacionadas con el c
 $course_id es la id del curso el cual queremos añadir nuevas sesiones, esta id del curso
 sirve para llamar a /sessions/new/{$course_id} 
 -->
-
-<div class="section-content latest-courses-content fadeInDown-animation">
-                    <div class="container">
-                        <div class="row">
-
-
    <section class="full-section latest-courses-section no-slider">
                 <div class="container">
                     <div class="row" style="width:80%; margin:0 auto;">
                         <div class="col-md-12 basic-slider-box">
                             <div class="questions">
-                                <h6 class="head-title">Videos</h6>
                                 <div class="basic-slider flexslider">
                                     <ul class="slides">
                                         <li class="questions-slide-item">
@@ -50,16 +43,13 @@ sirve para llamar a /sessions/new/{$course_id}
                                                 }
                                                 
                                             ?>
-                                                            <div class="text-center">
-    {{$sessions->links()}}
-</div>
+                                        <div class="text-center">
+                                            {{$sessions->links()}}
+                                        </div>
 
 
-
-
-<ul>
             <form action="/sessions/create/{{$course}}" >
-            <div class="login-page" style="width:80%; margin:0 auto;">
+            <div class="loginForm login-page" style="max-width:60%; background-color:transparent;">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="login-form">
@@ -100,10 +90,6 @@ sirve para llamar a /sessions/new/{$course_id}
                             </div><!-- end col-md-12 -->
                         </div><!-- end row -->
                     </div><!-- End Login Page -->
-
-
-
-</ul>
 
                 
                         </div><!-- End row -->

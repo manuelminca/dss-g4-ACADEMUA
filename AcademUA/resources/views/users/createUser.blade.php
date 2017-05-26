@@ -12,45 +12,16 @@
             <div class="clearfix"></div>
             <section class="full-section latest-courses-section no-slider">
 
+            <h1>New User</h1>
+            {{-- Error messages --}}
+            @if (count($errors) > 0)
+            <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+            @endif
 
-
-
-<h1>New User</h1>
-{{-- Error messages --}}
-@if (count($errors) > 0)
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-@endif
-
-
-<!--
-<form action="/users/create/">
-
-{{ csrf_field() }}
-{{ method_field('PUT') }}
-
-  Name:<br>
-  <input value="{{ old('name') }}" type="text" name="name"><br>
-    Email:<br>
-  <input value="{{ old('email') }}" type="text" name="email" <br><br>
-      Password:<br>
-  <input type="password" name="password" <br><br>
-      Repeat Password:<br>
-  <input type="password" name="password_confirmation" <br><br>
-      Username:<br>
-  <input value="{{ old('username') }}" type="text" name="username" <br><br>
-
-        Teacher? (y,n):<br>
-  <input value="{{ old('professor') }}" type="text" name="professor" <br><br>
-
-
-
-  <input type="submit" value="Submit">
-</form>
--->
 <form action="/users/create/" method="post" enctype="multipart/form-data" >
             {{ csrf_field() }} >
             <div class="login-page" style="width:80%; margin:0 auto;">

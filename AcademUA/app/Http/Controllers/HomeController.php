@@ -8,31 +8,11 @@ use App\User;
 
 class HomeController extends BaseController
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-     /*
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
-*/
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $list = Course::paginate(4);
-
-
-        $user = new User();
-		
+        $user = new User();		
 		$listInstructors = $user->showInstructors()->paginate(4);
-
         $coursesFooter = Course::paginate(4);
 
         return view('home', ['courses' => $list], ['users' => $listInstructors]);
@@ -42,7 +22,6 @@ class HomeController extends BaseController
     public function inicio()
     {
         $list = Course::paginate(8);
-		
 		return view('courses.courses', ['courses' => $list]);
     }
     

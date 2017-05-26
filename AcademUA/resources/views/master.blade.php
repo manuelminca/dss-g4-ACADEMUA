@@ -58,19 +58,19 @@
                             @endif
                             @endif
 
-                            <li class="parent-item haschild @yield('instructorsCurrent')">
+                            <li class="parent-item @yield('instructorsCurrent')">
                                 <a href="/users/instructors" class="ln-tr">Instuctors</a>
                             </li>
 
                              @if(Auth::check())
-                            <li class="parent-item haschild">
+                            <li class="parent-item ">
                                 <a href="/messages" class="ln-tr">Messages</a>
                             </li>
                              @endif
-                            <li class="parent-item haschild @yield('aboutCurrent')">
+                            <li class="parent-item  @yield('aboutCurrent')">
                                 <a href="/about" class="ln-tr">About</a>
                             </li>
-                            <li class="parent-item haschild @yield('contactCurrent')">
+                            <li class="parent-item @yield('contactCurrent')">
                                 <a href="/contact" class="ln-tr">Contact</a>
                             </li>
                             
@@ -81,10 +81,8 @@
                             <li class="parent-item login"><a href="{{ route('login') }}" class="ln-tr"><span class="grad-btn">Login</span></a></li>
                            
                         @else
-                            <li class="parent-item hashchild">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Hello, {{ Auth::user()->name }} </span>
-                                </a>
+                            <li class="parent-item haschild">
+                                <a href="#" class="ln-tr">Hello, {{ Auth::user()->name }} </a>
                                 <ul class="submenu">
                                     <li class="sub-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">Logout</a></li>
@@ -114,7 +112,8 @@
                     </nav><!-- End NAV Container -->
                     <div class="mobile-navigation fr">
                         <a href="#" class="mobile-btn"><span></span></a>
-                        <div class="mobile-container"></div>
+                        <div class="mobile-container">
+                        </div>
                     </div><!-- end mobile navigation -->
                 </div>
             </header><!-- End Main Header Container -->

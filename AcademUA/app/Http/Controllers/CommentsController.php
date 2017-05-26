@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends BaseController
 {
-	
+	//function to create a comment
 	public function createComment (Request $request, $course_id) {
 		$comment = new Comment();
 		$this->validate($request,[
@@ -27,15 +27,12 @@ class CommentsController extends BaseController
 
 		
 		$comment->createComment($description, $rating, $course_id, $id_user);
-		
-		/*$comment->attachCourse($id_course);
-        $comment->attachUser($id_user);*/
-		
 
 		return redirect()->action(
    		 'CoursesController@showSingleCourse', ['id' => $course_id]);
 	}
 
+		//only the user who has created the comment can delete it, or the admin
 		public function deleteComment ($comment_id, $course_id) {
 
 		$comment = Comment::find($comment_id);
