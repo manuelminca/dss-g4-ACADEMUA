@@ -35,21 +35,21 @@ class SessionsController extends Controller
 		$session->createSession($title, $content, $video, $course_id);
 
 
-
-		$list = Session::where('course_id',$course_id)->paginate(4);	
-		return view('sessions.sessions', ['sessions' => $list])->with('course',$course_id);
+		return redirect()->action(
+   		 'SessionsController@sessions', ['id' => $course_id]);
 
 	}
 
-		public function deleteSession ($session_id, $course_id) {
+		public function deleteSession ($session_id) {
 
 		$session = Session::find($session_id);
-		if(Auth::user()->id == $session->course->teacher_id || Auth::user()->checkAdmin()){
+		$course = Course::find($session->course_id);
+		if(Auth::user()->checkCurrentTeacher($course) || Auth::user()->checkAdmin()){
 			$session->deleteSession();
 		}
 
-		$list = Session::where('course_id',$course_id)->paginate(8);	
-		return view('sessions.sessions', ['sessions' => $list])->with('course',$course_id);
+		$list = Session::where('course_id',$session->course_id)->paginate(8);	
+		return view('sessions.sessions', ['sessions' => $list])->with('course',$session->course_id);
 		
 	}
 

@@ -40,9 +40,10 @@ sirve para llamar a /sessions/new/{$course_id}
                                                                     echo "<div class='content'>";
                                                                         echo "<p>" . $session->content ." </p>";
                                                                     echo "</div>";
+                                                                    echo "<a href='/sessions/delete/" .$session->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+
                                                                 echo "</div><!-- End Entry -->";
                                                             echo "</div>";
-
                                                         echo "</div>"; 
                                                     echo "</div>";
                                                     $number = $number+1;
