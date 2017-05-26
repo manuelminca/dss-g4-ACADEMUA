@@ -19,16 +19,16 @@
 
 
 <div class="containercontact">
-  <form action="/action_page.php">
+  
   
     <label for="mail">Email</label>
-    <input type="text" id="email" name="email" placeholder="Your email..">
+    <input type="text2" id="email" name="email" placeholder="Your email..">
 
     <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <input type="text2" id="fname" name="firstname" placeholder="Your name..">
 
     <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <input type="text2" id="lname" name="lastname" placeholder="Your last name..">
 
     
     
@@ -36,8 +36,10 @@
     <label for="subject">Subject</label>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
     
-     <input type="submit" value="Submit">
-  </form>
+     <div class='buttons'>
+	<a href='/#' class='btn grad-btn orange-btn read-btn'>Submit</a>
+	</div>
+  
 </div>
 
 

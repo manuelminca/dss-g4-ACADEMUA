@@ -40,6 +40,8 @@
 <form action="/users/modified/" method="post" enctype="multipart/form-data" >
             {{ csrf_field() }}
             {{ method_field('POST') }}
+
+
             <div class="login-page" style="width:80%; margin:0 auto;">
                         <div class="row">
                             <div class="col-md-12">
