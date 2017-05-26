@@ -51,19 +51,29 @@ class UsersController extends BaseController
 	
 	public function edit(Request $request){
 
-		if($request->input('password') != null){
+		if($request->input('password') != null ){
 			$this->validate($request,[
 			'password' => 'required | min:2',
-			'password_confirmation' => 'required | same:password'
+			'password_confirmation' => 'required | same:password',
+			'image' => 'mimes:jpeg,jpg,png | max:2000'
 		]);
 		}
+
+		if($request->input('image') != null ){
+			$this->validate($request,[
+			'image' => 'mimes:jpeg,jpg,png | max:2000'
+		]);
+		}
+
+		
 		
 			
 		$user = User::findOrFail(Auth::user()->id);
-
-		$iduser = $user->id;
-		$destination = "images/users/";
-		$request->file('image')->move($destination, $iduser);
+		if($request->input('img')!=null){
+			$iduser = $user->id;
+			$destination = "images/users/";
+			$request->file('image')->move($destination, $iduser);
+		}
 
 		$name = $request->input('name');
 		$email = $request->input('email');
