@@ -110,10 +110,10 @@
                               <div class="input-append">
                                 <div class="row">
                                     <div class="col-md-8" style="margin: 0 auto; padding: 0 0 0;">
-                                        <input type="text" class="sr-input" placeholder="Search Mail">
-                                    </div>
+                                        <input id="search" name="search" type="text" class="sr-input" placeholder="Search Mail">
+                                    </div> 
                                     <div class="col-md-4" style="margin: 0 auto; padding: 0 0 0;">
-                                        <input type="submit" value="Search" class="btn sr-btn">
+                                        <input type="submit" id="search" value="Search" class="btn sr-btn">
                                     </div>
                                 </div>
 
