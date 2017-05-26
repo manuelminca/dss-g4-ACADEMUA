@@ -178,7 +178,7 @@
                                         echo "<h4 class='modal-title'>Modal Header</h4>";
                                     echo "</div>";
                                     echo "<div class='modal-body'>";
-                                        echo "<p>Some text in the modal.</p>";
+                                        echo "<p>" . $message->message . "</p>";
                                     echo "</div>";
                                     echo "</div>";
                                 echo "</div>";
