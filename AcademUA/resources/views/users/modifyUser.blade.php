@@ -23,19 +23,18 @@
                     </div>
                 </div><!-- End container -->
             </div><!-- End Inner Page Head -->
-            <div class="clearfix"></div>
+            <div class="clearfix">
+                 {{-- Error messages --}}
+                    @if (count($errors) > 0)
+                    <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                    @endif</div>
+                    <!-- Maldita hora-->
             <section class="cursos full-section latest-courses-section no-slider">
 
-
-{{-- Error messages --}}
-
-@if (count($errors) > 0)
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-@endif
 
 
 <form action="/users/modified/" method="post" enctype="multipart/form-data" >

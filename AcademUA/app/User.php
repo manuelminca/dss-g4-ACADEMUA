@@ -13,31 +13,26 @@ class User extends Authenticatable
 	//Activate timestamps
 	public $timestamps = true;
 	
-	//T	his variable will store the birthdate of the user.
-			private $birthdate = "";
+	//This variable will store the birthdate of the user.
+	private $birthdate = "";
 
-
-	
 	/**
 	* The attributes that are mass assignable.
-			     *
-			     * @var array
-			     */
-			    protected $fillable = [
-			        'id','name', 'email', 'password', 'username', 'professor','admin', 'description',
-			    ];
-	
-	
-	
-	
+	*
+	* @var array
+	*/
+	protected $fillable = [
+		'id','name', 'email', 'password', 'username', 'professor','admin', 'description',
+	];
+
 	/**
 	* The attributes that should be hidden for arrays.
-			     *
-			     * @var array
-			     */
-			    protected $hidden = [
-			        'password', 'remember_token',
-			    ];
+	*
+	* @var array
+	*/
+	protected $hidden = [
+		'password', 'remember_token',
+	];
 	
 	/*#############################################
 					Relationships

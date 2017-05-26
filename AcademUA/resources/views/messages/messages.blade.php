@@ -17,6 +17,8 @@
         <button type="button" style="float:right;" class="close" data-dismiss="modal">&times;</button>
 
       </div>
+
+        
       <div class="modal-body">
          <form action="/messages/create/" >
             <div class="login-page" style="width:80%; padding: 0;margin:0 auto; background-color:transparent;">
@@ -65,6 +67,14 @@
 
   </div>
 </div>
+    {{-- Error messages --}}
+    @if (count($errors) > 0)
+    <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+    </ul>
+    @endif
  <div class="mail-box">
                   <aside class="sm-side">
                       <div class="user-head">

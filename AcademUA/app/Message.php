@@ -10,14 +10,14 @@ class Message extends Model
     //Activate timestamps
 	public $timestamps = true;
 	
-			/**
+	/**
 	* The attributes that are mass assignable.
-			     *
-			     * @var array
-			     */
-			    protected $fillable = [
-			        'id', 'subject', 'sender_id', 'receiver_id', 'message',
-			    ];
+	*
+	* @var array
+	*/
+	protected $fillable = [
+		'id', 'subject', 'sender_id', 'receiver_id', 'message',
+	];
 
 	/*#############################################
 					Relationships
@@ -87,18 +87,18 @@ class Message extends Model
 	//Return received messages of the Authed user that has the request field in message or subject
 	public static function searchInput ($request, $id) {
 		$message = Message::where('receiver_id','=',$id)
-						 ->where(function($query) use ($request) {$query->where('subject', 'like', '%'. $request . '%')
-						 ->orWhere('message', 'like', '%'. $request . '%');
-						 })->get();
+		->where(function($query) use ($request) {$query->where('subject', 'like', '%'. $request . '%')
+		->orWhere('message', 'like', '%'. $request . '%');
+		})->get();
 		return $message;
 	}
 
 	//Return sent messages of the Authed user that has the request field in message or subject
 	public static function searchOutput ($request, $id) {
 		$message = Message::where('sender_id','=',$id)
-						 ->where(function($query) use ($request) {$query->where('subject', 'like', '%'. $request . '%')
-						 ->orWhere('message', 'like', '%'. $request . '%');
-						 })->get();
+		->where(function($query) use ($request) {$query->where('subject', 'like', '%'. $request . '%')
+		->orWhere('message', 'like', '%'. $request . '%');
+		})->get();
 		return $message;
 	}
 }
