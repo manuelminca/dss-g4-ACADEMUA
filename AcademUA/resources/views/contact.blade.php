@@ -19,7 +19,7 @@
 
 
 <div class="containercontact">
-  <form action="/action_page.php">
+  
   
     <label for="mail">Email</label>
     <input type="text" id="email" name="email" placeholder="Your email..">
@@ -36,8 +36,10 @@
     <label for="subject">Subject</label>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
     
-     <input type="submit" value="Submit">
-  </form>
+     <div class='buttons'>
+	<a href='/#' class='btn grad-btn orange-btn read-btn'>Submit</a>
+	</div>
+  
 </div>
 
 
