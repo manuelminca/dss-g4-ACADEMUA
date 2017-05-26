@@ -26,16 +26,16 @@
                                     <ul class="slides">
                                         <li>
                                             <div class="tweet">
-                                                <a href="#" class="ln-tr">@AcademUA</a> ¡Nuevo curso de Java añadido!
-                                                <div class="date">25 de Diciembre de 2017</div>
+                                                <a href="#" class="ln-tr">@AcademUA</a> New Java course is available!
+                                                <div class="date">24th December 2017</div>
                                             </div><!-- End Single Tweet -->
                                             <div class="tweet">
-                                                <a href="#" class="ln-tr">@AcademUA</a> ¿Todavía no tienes cuenta en AcademUA?<a href="/register">regístrate</a>!
-                                                <div class="date">24 de Diciembre de 2017</div>
+                                                <a href="#" class="ln-tr">@AcademUA</a> ¿Don't you have an account in AcademUA yet?<a href="/register">Go Register</a>!
+                                                <div class="date">24th December 2017</div>
                                             </div><!-- End Single Tweet -->
                                             <div class="tweet">
-                                                <a href="#" class="ln-tr">@AcademUA</a> Tenemos un usuario nuevo que ha subido un curso, visita la sección "related instructors" para más información.
-                                                <div class="date">22 de Diciembre de 2017</div>
+                                                <a href="#" class="ln-tr">@AcademUA</a> A new instructor has just created a new Course, go and check it out in "Related instructors".
+                                                <div class="date">22th December 2017</div>
                                             </div><!-- End Single Tweet -->
                                         </li><!-- End 1st Tweet Slide Item -->
                                     </ul><!-- End ul Items -->
