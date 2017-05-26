@@ -53,7 +53,7 @@ class CoursesTableSeeder extends Seeder
         DB::table('courses')->insert([
             'name' => 'Play Tennis',
             'description' => 'Nadal Approves this',
-            'content' => 'This course is ment to be the ultimate course to play the best tennis',
+            'content' => 'This course is meant to be the ultimate course to play the best tennis',
             'price' => 20,
             'teacher_id' => 1,
             'created_at' => '2017-04-01'
@@ -71,7 +71,7 @@ class CoursesTableSeeder extends Seeder
         DB::table('courses')->insert([
             'name' => 'Ride a Car',
             'description' => 'How to ride a car',
-            'content' => 'you will need a ferrari to be the best lad',
+            'content' => 'You will need a ferrari to be the best lad',
             'price' => 40,
             'teacher_id' => 2,
             'created_at' => '2017-04-01'
@@ -93,8 +93,8 @@ class CoursesTableSeeder extends Seeder
             'created_at' => '2017-04-01'
         ]);
          DB::table('courses')->insert([
-            'name' => 'Best Coffe',
-            'description' => 'Make the best coffe in the world!',
+            'name' => 'Best Coffee',
+            'description' => 'Make the best coffee in the world!',
             'content' => 'Follow the steps to make a better espresso than an Italian ',
             'price' => 0,
             'teacher_id' => 2,

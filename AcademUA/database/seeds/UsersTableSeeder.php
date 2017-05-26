@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'prof',
             'username' => 'prof',
             'email' => 'prof@gmail.com',
-            'description' => 'If been teaching for 10 years',
+            'description' => 'I have been teaching for 10 years',
             'password' => bcrypt('dasdas'),
             'professor' => true,
             'admin' => false
@@ -73,7 +73,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Eli',
             'username' => 'eli',
             'email' => 'ali@gmail.com',
-            'description' => 'Im the coordinator of PPSS',
+            'description' => 'I am the coordinator of PPSS',
             'password' => bcrypt('dasdas'),
             'professor' => true,
             'admin' => false
