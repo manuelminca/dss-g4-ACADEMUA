@@ -114,15 +114,17 @@
                   </aside>
                   <aside class="lg-side">
                       <div class="inbox-head ">
-        
+
                           <form action="/messages/search" class="pull-right position">
+                            {{ csrf_field() }}
                               <div class="input-append">
                                 <div class="row">
                                     <div class="col-md-8" style="margin: 0 auto; padding: 0 0 0;">
-                                        <input type="text" class="sr-input" placeholder="Search Mail">
-                                    </div>
-                                    <div class="col-md-4" style="margin: 0 auto; padding: 6px 0 0;">
-                                        <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+
+                                        <input id="search" name="search" type="text" class="sr-input" placeholder="Search Mail">
+                                    </div> 
+                                    <div class="col-md-4" style="margin: 0 auto; padding: 0 0 0;">
+                                        <input type="submit" id="search" value="Search" class="btn sr-btn">
                                     </div>
                                 </div>
 

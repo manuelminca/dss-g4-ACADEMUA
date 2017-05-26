@@ -93,6 +93,10 @@ select {
 	max-width: 48px;
 }
 
+.boton:before {
+ font-family: FontAwesome;
+    content: "\f0c4";
+}
 
 .cursos {
 	margin-top: -50px;
