@@ -14,7 +14,7 @@ class UsersController extends BaseController
 	
 	
 	/*#############################################
-	GETTERS AND SETTERS
+				GETTERS AND SETTERS
 	###############################################*/
 	
 	public function getName($id){
@@ -33,11 +33,11 @@ class UsersController extends BaseController
 	}
 	
 	
+/*#############################################
+				  FUNCTIONS
+###############################################*/
 	
-	//###########################################################
-	
-	
-	
+
 	public function deleteUser (){
 		$user = User::find(Auth::user()->id);
 		$user->deleteUser();
@@ -80,6 +80,7 @@ class UsersController extends BaseController
 		return redirect('/home');
 	}
 	
+	//Creates a user into the DB
 	public function createUser(Request $request){
 		
 		$this->validate($request,[
@@ -119,7 +120,7 @@ class UsersController extends BaseController
 		return view('home');
 	}
 	
-	
+	//returns a view that showes all the instructors with pagination 
 	public function showInstructors(){
 		$user = new User();
 		
