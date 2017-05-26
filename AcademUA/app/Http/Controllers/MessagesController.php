@@ -74,4 +74,12 @@ class MessagesController extends BaseController
 		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
+	public function showMessagesSearched(Request $request){
+		$listInbox = Message::searchInput($request->input('search'), Auth::user()->id);
+		$listOutbox = Message::searchOutput($request->input('search'), Auth::user()->id);
+
+
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
+	}
+
 }

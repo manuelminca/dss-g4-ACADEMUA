@@ -83,6 +83,7 @@ Route::get('/messages/new/','MessagesController@newMessage')->middleware('auth')
 Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 Route::get('/messages/received', 'MessagesController@showReceivedMessages')->middleware('auth');
 Route::get('/messages/sent', 'MessagesController@showSentMessages')->middleware('auth');
+Route::get('/messages/search', 'MessagesController@showMessagesSearched')->middleware('auth');
 
 
 Auth::routes();
