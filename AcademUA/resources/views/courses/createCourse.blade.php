@@ -4,18 +4,16 @@
 @include('master')
 
 <div class="inner-head">
-                <div class="container">
-                    <h1 class="entry-title">ADD COURSE</h1>
-                    <p class="description">
-                        Please enter all the data required to create a new course.
-                    </p>
-                </div><!-- End container -->
-            </div><!-- End Inner Page Head -->
-            <div class="clearfix"></div>
-            <section class="full-section latest-courses-section no-slider">
-
-<ul>
-
+    <div class="container">
+        <h1 class="entry-title">ADD COURSE</h1>
+        <p class="description">
+            Please enter all the data required to create a new course.
+        </p>
+    </div><!-- End container -->
+</div><!-- End Inner Page Head -->
+<div class="clearfix"></div>
+     
+  
 {{-- Error messages --}}
 @if (count($errors) > 0)
 <ul>
@@ -24,57 +22,10 @@
 @endforeach
 </ul>
 @endif
-
-<!--
-<style>
-input{width : 100%;}
-</style>
-<!--
-<form action="/courses/create/" >
-
-{{ csrf_field() }}
-{{ method_field('PUT') }}
-
-  Name:<br>
-
-  <div class="input-group margin-bottom-sm">
-  <span class="input-group-addon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
-  <input class="form-control" value="{{ old('name') }}" type="text" name="name">
-    </div>
-
-    Description:<br>
-  <input value="{{ old('description') }}" type="text" name="description" <br><br>
-      Price<br>
-  <input value="{{ old('price') }}" type="number" name="price" <br><br>
-      Content:<br>
-      <textarea name="content" cols="50" rows="10"></textarea><br><br>
-
-      Links<br>
-  <input value="{{ old('links') }}" type="text" name="links" <br><br>
-
-      Id profesor:<br>
-  <input type="number" name="id" <br><br>
-
-
-<select name="category">
-
-<?php
-foreach ($categories as $cat) {
-    echo "<option value='$cat->name'>".$cat->name."</option>";
-}
-
-?>
-</select>
-
-
-
-  <input type="submit" value="Submit">
- 
-</form>
- -->
-            <form action="/courses/create/" method="post" enctype="multipart/form-data" >
+    <section class="full-section latest-courses-section no-slider" style="margin: 0 auto; padding: 0 0 0 ;">
+            <form action="/courses/create/" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <div class="login-page" style="width:80%; margin:0 auto;">
+            <div class="login-page" style="width:80%; margin:0 auto;background-color:transparent;">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="login-form">
@@ -95,11 +46,7 @@ foreach ($categories as $cat) {
                                                 </div>
                                             </div>
                                            
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input  value="{{ old('links') }}" type="text" name="links" placeholder="Links">
-                                                </div>
-                                            </div>
+                                        
                                             <div class="col-md-12 col-sm-6">
                                                 <div class="input">
                                                     <input  value="{{ old('description') }}" type="text" name="description" placeholder="Description">
@@ -111,7 +58,7 @@ foreach ($categories as $cat) {
                                                 </div>
                                             </div>
                                             <div class="col-md-12 col-sm-6">
-                                                <div class="dropdown" >
+                                                <div class="dropdown" style="border-style: none;">
                                                     <select name="category">
                                                             <?php
                                                             foreach ($categories as $cat) {
@@ -140,17 +87,7 @@ foreach ($categories as $cat) {
                             </div><!-- end col-md-12 -->
                         </div><!-- end row -->
                     </div><!-- End Create course Page -->
-
-
-
-</ul>
-
-
-
-                                            
-                                                
-        
-                            
+                    </ul>                          
                         </div><!-- End row -->
                     </div><!-- End Container -->
                 </div><!-- End Latest-Courses Section Content -->

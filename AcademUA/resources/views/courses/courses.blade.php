@@ -145,9 +145,9 @@ foreach ($courses as $course) {
                 echo "</div>";
                
                 if(file_exists(public_path().'/images/courses/' . $course->id)){
-		                echo "<img src='/images/courses/" . $course->id . "' style='min-height:170px;' class='img-responsive'>";
+		                echo "<img src='/images/courses/" . $course->id . "' class='img-responsive img-height'>";
                 }else{
-		                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+		                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive img-height'>";
 	            }
                     
                
@@ -160,15 +160,15 @@ foreach ($courses as $course) {
                 echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
                 
                 if(Auth::check()){
-                if($course->checkTeacher()){
-                    echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
-                }
+                    if($course->checkTeacher()){
+                        echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                    }
                 }
                 echo "</div>";
             echo "</div>";
         echo "</div>";
 	echo "</div>";
-    if($number == 4){
+    if($number == 4 || $number == 12){
         echo "<div class='clearfix'></div>";
     }
 }
