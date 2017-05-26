@@ -9,24 +9,30 @@ class Category extends Model
 
 	/**
 	* The attributes that are mass assignable.
-			     *
-			     * @var array
-			     */
-			    protected $fillable = [
-			        'name',
-			    ];
+	*
+	* @var array
+	*/
+	protected $fillable = [
+		'name',
+	];
+
 
 	/*#############################################
 					Relationships
 	###############################################*/
+
 	
 	//Relation between courses and categories
 	public function courses() {
 		return $this->belongsToMany('App\Course');
 	}
-		/*#############################################
-					GETTERS AND SETTERS
-		###############################################*/
+
+
+	/*#############################################
+				GETTERS AND SETTERS
+	###############################################*/
+
+
 	public function getAllCategories(){
 		$list = Category::all();
 		return $list;
@@ -38,10 +44,12 @@ class Category extends Model
 		return $categoryID;
 	}
 
-		/*#############################################
-					Other functions
-		###############################################*/
+
+	/*#############################################
+				Other functions
+	###############################################*/
 	
+
 	//Delete a category given its $id
 	public function deleteCategory ($id) {
 		$category = Category::find($id);
