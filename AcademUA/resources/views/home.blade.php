@@ -56,7 +56,7 @@
                             <?php
 
 //Mostramos los instructores
-                            foreach ($users as $user) {
+    foreach ($users as $user) {
 	echo "<div class='col-md-3 col-xs-6'>";
 	echo "<div class='instructor'>";
 	if(file_exists(public_path().'/images/users/' . $user->id)){
