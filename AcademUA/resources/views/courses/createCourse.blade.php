@@ -46,11 +46,7 @@
                                                 </div>
                                             </div>
                                            
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input  value="{{ old('links') }}" type="text" name="links" placeholder="Links">
-                                                </div>
-                                            </div>
+                                        
                                             <div class="col-md-12 col-sm-6">
                                                 <div class="input">
                                                     <input  value="{{ old('description') }}" type="text" name="description" placeholder="Description">
