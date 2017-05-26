@@ -33,9 +33,9 @@ foreach ($users as $user) {
 	echo "</div>";
 
     if(file_exists(public_path().'/images/users/' . $user->id)){
-		echo "<img src='/images/users/" . $user->id . "' class='img-responsive'>";
+		echo "<img src='/images/users/" . $user->id . "' class='img-responsive img-height'>";
     }else{
-		echo "<img src='/img/teacher1.jpg' class='img-responsive'>";
+		echo "<img src='/img/teacher1.jpg' class='img-responsive img-height'>";
 	}
 	
 	echo "</div>";
