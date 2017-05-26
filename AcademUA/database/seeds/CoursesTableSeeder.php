@@ -18,7 +18,7 @@ class CoursesTableSeeder extends Seeder
             'content' => 'How to build creative, fully-functional Java 8 programs with confidence (whilst having fun, too). How to easily write advanced programs for all computing platforms at once. How to program the right way, cutting out the useless fluff and filler.',
             'price' => 50,
             'teacher_id' => 1,
-            'created_at' => '2017-04-01'
+            'created_at' => mktime(6, 2, 3, 1, 4, 2017)
         ]);
 
         // 'content' => 'How to build creative, fully-functional Java 8 programs with confidence (whilst having fun, too). How to easily write advanced programs for all computing platforms at once. How to program the right way, cutting out the useless fluff and filler.',
@@ -29,7 +29,7 @@ class CoursesTableSeeder extends Seeder
             'content' => 'It explains all the things that the user needs to know about football',
             'price' => 100,
             'teacher_id' => 1,
-            'created_at' => '2017-04-01'
+            'created_at' => mktime(12, 5, 33, 4, 2, 2017)
         ]);
 
          DB::table('courses')->insert([
@@ -38,7 +38,7 @@ class CoursesTableSeeder extends Seeder
             'content' => 'Make a new Academua 2.0',
             'price' => 10000,
             'teacher_id' => 1,
-            'created_at' => '2017-04-01'
+            'created_at' => mktime(16, 12, 53, 1, 4, 2017)
         ]);
 
         DB::table('courses')->insert([
@@ -47,7 +47,7 @@ class CoursesTableSeeder extends Seeder
             'content' => 'All the steps to be the next president',
             'price' => 15,
             'teacher_id' => 2,
-            'created_at' => '2017-04-01'
+            'created_at' => mktime(23, 25, 3, 3, 22, 2017)
         ]);
 
         DB::table('courses')->insert([

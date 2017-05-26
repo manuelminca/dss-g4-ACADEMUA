@@ -24,13 +24,6 @@ foreach ($users as $user) {
 	echo "<div class='col-md-3 col-xs-6'>";
 	echo "<div class='course'>";
 	echo "<div class='course-image'>";
-	echo "<div class='details-overlay'>";
-	echo "<span class='place'>";
-	echo "<i class='fa'></i>";
-	echo "<span class='text'>Id : " . $user->id ."</span>";
-	echo "</span>";
-
-	echo "</div>";
 
     if(file_exists(public_path().'/images/users/' . $user->id)){
 		echo "<img src='/images/users/" . $user->id . "' class='img-responsive img-height'>";
@@ -43,7 +36,7 @@ foreach ($users as $user) {
 	echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $user->name . "</a></h3>";
 	echo "<p class='course-description'>" . $user->description . "</p>";
 	echo "<div class='buttons'>";
-	echo "<a href='/courses/manage/" .$user->id. "' class='btn grad-btn orange-btn read-btn'>View Related Courses</a>";
+	echo "<a href='/courses/manage/" .$user->id. "' class='btn grad-btn orange-btn read-btn' style='margin: 0 auto;'>View Related Courses</a>";
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
