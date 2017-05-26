@@ -11,8 +11,8 @@ class Comment extends Model
 	public $timestamps = true;
 
 	protected $fillable = [
-			        'id', 'description', 'rating', 'course_id', 'user_id',
-			    ];
+		'id', 'description', 'rating', 'course_id', 'user_id',
+	];
 
 	/*#############################################
 					Relationships
@@ -36,6 +36,7 @@ class Comment extends Model
 		$this->delete();
 	}
 
+	//Create a comment given the description, ratin, id course and id user
 	public function createComment ($description, $rating, $id_course, $id_user) {
 		$this->description = $description;
 		$this->rating = $rating;
@@ -43,9 +44,4 @@ class Comment extends Model
 		$this->user_id = $id_user;
 		$this->save();
 	}
-
-
-
-
-
 }
