@@ -90,7 +90,10 @@ class User extends Authenticatable
 		if($password != null){
 			$this->password = $password;
 		}
-		$this->description = $description;
+		if($description != null){
+			$this->description = $description;
+		}
+		
 	
 		$this->save();
 		

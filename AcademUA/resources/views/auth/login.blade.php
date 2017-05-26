@@ -15,12 +15,7 @@
             </div><!-- End Inner Page Head -->
 
             <div class="clearfix"></div>
-            @if(Request::get('error'))
-    <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error!</strong> {{ Request::get('message', '') }}
-    </div>
-@endif
+           
             <section class="full-section latest-courses-section no-slider">
 
 <div class="container">
