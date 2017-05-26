@@ -69,7 +69,15 @@
                   <aside class="sm-side">
                       <div class="user-head">
                           <a class="inbox-avatar">
-                              <img  width="64" hieght="60" src="/images/users/ <?php echo Auth::user()->id ?> ">
+
+                          <?php
+                            
+                              if(file_exists(public_path().'/images/users/' . Auth::user()->id)){
+		                            echo "<img  width='64' height='60' src='/images/users/" .Auth::user()->id. "' >";
+                             }else{
+		                            echo "<img width='64' height='60' src='/img/teacher1.jpg' >";
+	                            }
+                            ?>
                           </a>
                           <div class="user-name">
                               <h2><?php echo Auth::user()->name ?> </h2>
@@ -97,7 +105,7 @@
                   <aside class="lg-side">
                       <div class="inbox-head ">
         
-                          <form action="#" class="pull-right position">
+                          <form action="/messages/search" class="pull-right position">
                               <div class="input-append">
                                 <div class="row">
                                     <div class="col-md-8" style="margin: 0 auto; padding: 0 0 0;">
@@ -107,11 +115,11 @@
                                         <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
+
                               </div>
                           </form>
                       </div>
 
-                      
                       <div class="inbox-body tabcontent" id="inbox">
                           <table class="table table-inbox table-hover ">
                             <tbody >
@@ -125,7 +133,7 @@
                                   echo "<td class='view-message' >"  . $message->subject . "</td>";
                                   echo "<td class='view-message text-right'  >". $message->created_at . "</td>";
                                   echo "<td class='inbox-small-cells' >";
-                                      echo "<a href='/messages/delete/" .$message->id. "'>Delete</a>";
+                                      echo "<a href='/messages/delete/" .$message->id . "'>Delete</a>";
                                   echo "</td>";
                                   echo "<td class='inbox-small-cells' >";
                                         echo "<a href='#modalMessage" . $message->id . "' data-toggle='modal'>View</a>";

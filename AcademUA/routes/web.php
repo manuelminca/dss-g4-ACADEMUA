@@ -83,6 +83,7 @@ Route::get('/messages/new/','MessagesController@newMessage')->middleware('auth')
 Route::get('/messages', 'MessagesController@showMessages')->middleware('auth');
 Route::get('/messages/received', 'MessagesController@showReceivedMessages')->middleware('auth');
 Route::get('/messages/sent', 'MessagesController@showSentMessages')->middleware('auth');
+Route::get('/messages/search', 'MessagesController@showMessagesSearched')->middleware('auth');
 
 
 Auth::routes();
@@ -97,5 +98,5 @@ Route::get('/home', 'HomeController@index');
 Route::get('/sessions/create/{id}', 'SessionsController@createSession')->middleware('auth')->middleware('teacher');
 
 Route::get('/sessions/new/{course_id}', 'SessionsController@sessions')->middleware('auth')->middleware('teacher');
-Route::get('/messages/delete/{id}', 'MessagesController@DeleteMessage')->middleware('auth');
+Route::get('/sessions/delete/{id}', 'SessionsController@DeleteSession')->middleware('auth');
 Route::get('/sessions', 'MessagesController@showMessages')->middleware('auth');

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
@@ -58,12 +59,28 @@ class Message extends Model
 	}
 
 	public function getUserSend () {
-		$user = $this->user_sender()->get()->getUsername();
+		$user = $this->user_sender->getUsername();
 		return  $user;
 	}
 
 	public function getUserReceive () {
 		$name = $this->user_receiver->getUsername();
 		return  $name;
+	}
+
+	public static function searchInput ($request, $id) {
+		$user = Message::where('receiver_id','=',$id)
+						 ->where(function($query) use ($request) {$query->where('subject', 'like', '%'. $request . '%')
+						 ->orWhere('message', 'like', '%'. $request . '%');
+						 })->get();
+		return $user;
+	}
+
+	public static function searchOutput ($request, $id) {
+		$user = Message::where('sender_id','=',$id)
+						 ->where(function($query) use ($request) {$query->where('subject', 'like', '%'. $request . '%')
+						 ->orWhere('message', 'like', '%'. $request . '%');
+						 })->get();
+		return $user;
 	}
 }
