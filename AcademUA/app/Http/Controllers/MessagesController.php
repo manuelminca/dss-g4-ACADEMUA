@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class MessagesController extends BaseController
 {
-    public function deleteMessage($id){ //We have to redirect to Manage Courses but we need the session of the teacher(in progress)
+    public function deleteMessage($id){ 
 		$message = Message::findOrFail($id);
 
-		if(Auth::user()->id == $message->sender_id){
+		if(Auth::user()->id == $message->sender_id || Auth::user()->id == $message->receiver_id ){
 			$message->deleteMessage();
 		}
 		
@@ -30,9 +30,10 @@ class MessagesController extends BaseController
     public function createMessage(Request $request){
 		$message = new Message();
 		$this->validate($request,[
-				'receiver' => 'required',
+
 				'subject' => 'required',
-				'message' => 'required'
+				'message' => 'required',
+				'receiver' => 'required | exists:users,username'
 		]);
 		
 		$sender_id = Auth::user()->id;
@@ -70,6 +71,14 @@ class MessagesController extends BaseController
 	public function showMessages(){
 		$listInbox = Message::getReceivedMessages(Auth::user()->id);
 		$listOutbox = Message::getSentMessages(Auth::user()->id);
+
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
+	}
+
+	public function showMessagesSearched(Request $request){
+		$listInbox = Message::searchInput($request->input('search'), Auth::user()->id);
+		$listOutbox = Message::searchOutput($request->input('search'), Auth::user()->id);
+
 
 		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}

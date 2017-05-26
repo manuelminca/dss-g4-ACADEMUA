@@ -12,7 +12,7 @@ class Session extends Model
 	
 	
 	public function course() {
-		return $this->belongsTo('App\Course');
+		return $this->belongsTo('App\Course', 'teacher_id');
 	}
 	
 
@@ -28,7 +28,7 @@ class Session extends Model
 
 
     public function getSessions($course_id){
-		$sessions = Session::where('course_id', $course_id)->get();
+		$sessions = Session::where('course_id', $course_id)->paginate(1);
 
 		return $sessions;
 	}
