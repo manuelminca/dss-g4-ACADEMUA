@@ -70,7 +70,15 @@
                   <aside class="sm-side">
                       <div class="user-head">
                           <a class="inbox-avatar">
-                              <img  width="64" hieght="60" src="/images/users/ <?php echo Auth::user()->id ?> ">
+
+                          <?php
+                            
+                              if(file_exists(public_path().'/images/users/' . Auth::user()->id)){
+		                            echo "<img  width='64' height='60' src='/images/users/" .Auth::user()->id. "' >";
+                             }else{
+		                            echo "<img width='64' height='60' src='/img/teacher1.jpg' >";
+	                            }
+                            ?>
                           </a>
                           <div class="user-name">
                               <h2><?php echo Auth::user()->name ?> </h2>

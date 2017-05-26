@@ -69,19 +69,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">username</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
-
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                          <div class="form-group{{ $errors->has('professor') ? ' has-error' : '' }}">
                             <label for="professor" class="col-md-4 control-label">Are you a teacher?</label>
@@ -113,13 +100,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="image" class="col-md-4 control-label">Add your image</label>
-                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input  type="file" name="image" id = "image">
-                                                </div>
-                                            </div>
+                      
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4"  style="padding-top:20px;">
                                 <button type="submit" class="btn btn-primary" value = "submit" >
