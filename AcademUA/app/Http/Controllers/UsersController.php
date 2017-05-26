@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Course;
 use Illuminate\Support\Facades\Auth;
+use File;
 
 
 class UsersController extends BaseController
@@ -14,7 +15,7 @@ class UsersController extends BaseController
 	
 	
 	/*#############################################
-				GETTERS AND SETTERS
+	GETTERS AND SETTERS
 	###############################################*/
 	
 	public function getName($id){
@@ -33,11 +34,11 @@ class UsersController extends BaseController
 	}
 	
 	
-/*#############################################
-				  FUNCTIONS
-###############################################*/
 	
-
+	//###########################################################
+	
+	
+	
 	public function deleteUser (){
 		$user = User::find(Auth::user()->id);
 		$user->deleteUser();
@@ -51,19 +52,33 @@ class UsersController extends BaseController
 	
 	public function edit(Request $request){
 
-		if($request->input('password') != null){
+		if($request->input('password') != null ){
 			$this->validate($request,[
 			'password' => 'required | min:2',
 			'password_confirmation' => 'required | same:password'
+			
 		]);
 		}
+
+		if($request->file('image') != null ){
+			$this->validate($request,[
+			'image' => 'required | mimes:jpeg,jpg,png | max:2000'
+		]);
+		}
+
+		
 		
 			
 		$user = User::findOrFail(Auth::user()->id);
-
-		$iduser = $user->id;
-		$destination = "images/users/";
-		$request->file('image')->move($destination, $iduser);
+		
+		if($request->file('image')!=null){
+			if(file_exists(public_path().'/images/users/' . $user->id)){
+				File::Delete(public_path().'/images/users/' . $user->id);
+			}
+			$iduser = $user->id;
+			$destination = "images/users/";
+			$request->file('image')->move($destination, $iduser);
+		}
 
 		$name = $request->input('name');
 		$email = $request->input('email');
@@ -80,7 +95,6 @@ class UsersController extends BaseController
 		return redirect('/home');
 	}
 	
-	//Creates a user into the DB
 	public function createUser(Request $request){
 		
 		$this->validate($request,[
@@ -120,7 +134,7 @@ class UsersController extends BaseController
 		return view('home');
 	}
 	
-	//returns a view that showes all the instructors with pagination 
+	
 	public function showInstructors(){
 		$user = new User();
 		
