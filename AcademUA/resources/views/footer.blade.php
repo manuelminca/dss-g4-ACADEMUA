@@ -1,6 +1,6 @@
 <!-- /resources/views/footer.blade.php -->
 
-            <div class="clearfix"></div>
+           <div class="clearfix"></div>
 
             <footer id="footer">
                 <div class="container">
@@ -13,39 +13,62 @@
                                 </p>
                                 <div class="footer-links">
                                     <ul>
-                                        <li><a href="#" class="ln-tr">About Us</a></li>
-                                        <li><a href="#" class="ln-tr">Meet Our Team</a></li>
-                                        <li><a href="#" class="ln-tr">Contact Us</a></li>
+                                        <li><a href="/about" class="ln-tr">About Us</a></li>
+                                        <li><a href="/contact" class="ln-tr">Contact Us</a></li>
                                     </ul>
                                 </div><!-- End Footer Links -->
                             </div><!-- End About Widget -->
                         </div><!-- End col-md3 -->
-                        
+                        <div class="col-md-3">
+                            <div class="widget twitter-widget">
+                                <h6 class="widget-title">Latest Tweets</h6>
+                                <div id="tweets-slider" class="flexslider">
+                                    <ul class="slides">
+                                        <li>
+                                            <div class="tweet">
+                                                <a href="#" class="ln-tr">@AcademUA</a> New Java course is available!
+                                                <div class="date">24th December 2017</div>
+                                            </div><!-- End Single Tweet -->
+                                            <div class="tweet">
+                                                <a href="#" class="ln-tr">@AcademUA</a> ¿Don't you have an account in AcademUA yet?<a href="/register">Go Register</a>!
+                                                <div class="date">24th December 2017</div>
+                                            </div><!-- End Single Tweet -->
+                                            <div class="tweet">
+                                                <a href="#" class="ln-tr">@AcademUA</a> A new instructor has just created a new Course, go and check it out in "Related instructors".
+                                                <div class="date">22th December 2017</div>
+                                            </div><!-- End Single Tweet -->
+                                        </li><!-- End 1st Tweet Slide Item -->
+                                    </ul><!-- End ul Items -->
+                                </div><!-- End Tweets Slider -->
+                            </div><!-- End Twitter Widget -->
+                        </div><!-- End col-md3 -->
                         <div class="col-md-4">
                             <div class="widget courses-widget">
                                 <h6 class="widget-title">Latest Courses</h6>
                                 <div id="footer-courses-slider" class="flexslider">
                                     <ul class="slides">
-                                        <li class="clearfix">
-                                            <div class="course-icon fl">
-                                                <span class="icon grad-btn"><i class="fa fa-bookmark"></i></span>
-                                            </div><!-- End Course Icon -->
-                                            <div class="course-info">
-                                                <h4 class="footer-course-title"><a href="#" class="ln-tr">How to Design website?</a></h4>
-                                                <p class="footer-course-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem</p>
-                                                <span class="course-date">Dec 8, 2015</span>
-                                            </div><!-- End Course Info -->
-                                            <div class="course-icon fl">
-                                                <span class="icon"><i class="fa fa-bookmark"></i></span>
-                                            </div><!-- End Course Icon -->
-                                            <div class="course-info">
-                                                <h4 class="footer-course-title"><a href="#" class="ln-tr">How to Design website?</a></h4>
-                                                <p class="footer-course-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem</p>
-                                                <span class="course-date">Dec 8, 2015</span>
-                                            </div><!-- End Course Info -->
-                                        </li><!-- End 1st Slide Item -->
-                                        
-                                    </ul><!-- End ul Items -->
+                                        <?php
+                                        //Mostramos los cursos
+                                        foreach ($coursesFooter as $course) {
+                                            echo "<li class='clearfix' style='padding-top:20px; padding-bottom:20px;'>";
+                                                echo "<div class='course-icon fl'>";
+                                                    if(file_exists(public_path().'/images/courses/' . $course->id)){
+                                                            echo "<img src='/images/courses/" . $course->id . "' class='img-footer' >";
+                                                    }else{
+                                                            echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive img-height'>";
+                                                    }
+                                                   
+                                                echo "</div><!-- End Course Icon -->";
+                                                echo "<div class='course-info'>";
+                                                    echo "<h4 class='footer-course-title'><a href='/courses/course/" .$course->id. "' class='ln-tr'>" . $course->name . "</a></h4>";
+                                                    echo "<p class='footer-course-description'>" . $course->description . "</p>";
+                                                    echo "<span class='course-date'>" . $course->created_at . "</span>";
+                                                echo "</div><!-- End Course Info -->";
+                                            echo "</li><!-- End 1st Slide Item -->";
+                                            echo "<hr>";
+                                        }
+                                        ?>            
+                                    </ul><!--- End ul Items -->
                                 </div><!-- End Footer Scourses Slider -->
                             </div><!-- End Courses Widget -->
                         </div><!-- End col-md4 -->
@@ -54,169 +77,80 @@
                                 <h6 class="widget-title">Quick Links</h6>
                                 <div class="footer-links">
                                     <ul>
-                                        <li><a href="#" class="ln-tr">Help</a></li>
-                                        <li><a href="#" class="ln-tr">Sitemap</a></li>
-                                        <li><a href="#" class="ln-tr">Mobile</a></li>
-                                        <li><a href="#" class="ln-tr">Privacy Policy</a></li>
-                                        <li><a href="#" class="ln-tr">Support</a></li>
-                                        <li><a href="#" class="ln-tr">Careers</a></li>
-                                        <li><a href="#" class="ln-tr">Instructors</a></li>
+                                        <li><a href="/courses" class="ln-tr">Courses</a></li>
+                                        <li><a href="/users/instructors" class="ln-tr">Instructors</a></li>
+                                        <li><a href="/about" class="ln-tr">About</a></li>
+                                        <li><a href="/messages/new" class="ln-tr">Write a Message</a></li>
+
                                     </ul>
                                 </div><!-- End Footer Links -->
                             </div><!-- End Links Widget -->
                         </div><!-- End col-md2 -->
                     </div>
                 </div>
-               
+                <div id="bottom">
+                    <div class="container">
+                        <div class="fl copyright">
+                            <p>All Rights Reserved &copy; AcademUA | By Group 4 </p>
+                        </div><!-- End Copyright -->
+                        <div class="fr footer-social-icons">
+                            <ul class="clearfix">
+                                <li><a href="https://www.facebook.com/profile.php?id=100017271163676" class="fb-icon ln-tr"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/academua" class="tw-icon ln-tr"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                        </div><!-- End Social Media Icons -->
+                    </div><!-- End container -->
+                </div><!-- End Bottom Footer -->
             </footer><!-- End Footer -->
         </div><!-- End Entire Wrap -->
 
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog container">
-                <div class="popup-content">
-                    <div class="login-page">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="login-form">
-                                    <div class="login-title">
-                                        <span class="icon"><i class="fa fa-group"></i></span>
-                                        <span class="text">Login Area</span>
-                                        <a href="#" class="close-modal fr" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                                        </a>
-                                    </div><!-- End Title -->
-                                    <form method="post" action="/" id="login-form">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input type="text" id="login_username" class="username-input" placeholder="User Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input type="password" id="login_password" class="password-input" placeholder="Password">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="input clearfix">
-                                                    <input type="submit" id="login_submit" class="submit-input grad-btn ln-tr" value="Login">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 clearfix">
-                                                <div class="custom-checkbox fl">
-                                                    <input type="checkbox" id="login_remember" class="checkbox-input" checked>
-                                                    <label for="login_remember">Remember Password</label>
-                                                </div>
-                                            </div><!-- end remember -->
-                                            <div class="col-md-6 col-sm-6 clearfix">
-                                                <div class="forgot fr">
-                                                    <a href="#" class="new-user">Create New Account</a> / <a href="#" class="reset">Forget Password ?</a>
-                                                </div>
-                                            </div><!-- end forgot password -->
-                                        </div><!-- end row -->
-                                    </form><!-- End form -->
-                                </div><!-- end login form -->
-                                <div class="login-options">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <a href="#" class="login-op-btn grad-btn ln-tr fb">Login with Facebook Account</a>
-                                        </div><!-- end FB login -->
-                                        <div class="col-md-6 col-sm-6">
-                                            <a href="#" class="login-op-btn grad-btn ln-tr gp">Login with Google Account</a>
-                                        </div><!-- end GP login -->
-                                        <div class="col-md-6 col-sm-6">
-                                            <a href="#" class="login-op-btn grad-btn ln-tr tw">Login with Twitter Account</a>
-                                        </div><!-- end TW login -->
-                                        <div class="col-md-6 col-sm-6">
-                                            <a href="#" class="login-op-btn grad-btn ln-tr ya">Login with Yahoo Account</a>
-                                        </div><!-- end YA login -->
-                                    </div>
-                                </div><!-- end login optionss -->
-                            </div><!-- end col-md-12 -->
-                        </div><!-- end row -->
-                    </div><!-- End Login Page -->
-                </div><!-- End Modal Content -->
-            </div><!-- End Dialog -->
-        </div><!-- End Login Modal -->
 
-        <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog container">
-                <div class="popup-content">
-                    <div class="login-page">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="login-form register">
-                                    <div class="login-title">
-                                        <span class="icon"><i class="fa fa-group"></i></span>
-                                        <span class="text">Register</span>
-                                        <a href="#" class="close-modal fr" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                                        </a>
-                                    </div><!-- End Title -->
-                                    <form method="post" action="/" id="register-form">
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input type="text" id="reg_username" class="username-input" placeholder="User Name">
-                                                </div>
-                                            </div><!-- end username -->
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input type="email" id="reg_email" class="email-input" placeholder="Email">
-                                                </div>
-                                            </div><!-- end email -->
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input type="password" id="reg_password" class="password-input" placeholder="Password">
-                                                </div>
-                                            </div><!-- end password -->
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input type="password" id="reg_confirm-password" class="confirm-password-input" placeholder="Confirm Password">
-                                                </div>
-                                            </div><!-- end confirm password -->
-                                            <div class="col-md-12">
-                                                <div class="input clearfix">
-                                                    <input type="submit" id="reg_submit" class="submit-input grad-btn ln-tr" value="Login">
-                                                </div>
-                                            </div><!-- end submit -->
-                                        </div><!-- end row -->
-                                    </form><!-- End form -->
-                                </div><!-- end login form -->
-                                <div class="login-options">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <a href="#" class="login-op-btn grad-btn ln-tr fb">Login with Facebook Account</a>
-                                        </div><!-- end FB login -->
-                                        <div class="col-md-6 col-sm-6">
-                                            <a href="#" class="login-op-btn grad-btn ln-tr gp">Login with Google Account</a>
-                                        </div><!-- end GP login -->
-                                        <div class="col-md-6 col-sm-6">
-                                            <a href="#" class="login-op-btn grad-btn ln-tr tw">Login with Twitter Account</a>
-                                        </div><!-- end TW login -->
-                                        <div class="col-md-6 col-sm-6">
-                                            <a href="#" class="login-op-btn grad-btn ln-tr ya">Login with Yahoo Account</a>
-                                        </div><!-- end YA login -->
-                                    </div>
-                                </div><!-- end login optionss -->
-                            </div><!-- end col-md-8/offset -->
-                        </div><!-- end row -->
-                    </div><!-- End Register Page -->
-                </div><!-- End Modal Content -->
-            </div><!-- End Dialog -->
-        </div><!-- End Register Modal -->
         <!-- jQuery -->
-        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="/js/jquery-1.11.2.min.js"></script>
         <!-- Plugins -->
-        <script src="assets/js/bsmodal.min.js"></script>
-        <script src="assets/js/jquery.countdown.min.js"></script>
-        <script src="assets/js/jquery.easydropdown.min.js"></script>
-        <script src="assets/js/jquery.flexslider-min.js"></script>
-        <script src="assets/js/jquery.isotope.min.js"></script>
-        <script src="assets/js/jquery.themepunch.tools.min.js"></script>
-        <script src="assets/js/jquery.themepunch.revolution.min.js"></script>
-        <script src="assets/js/jquery.viewportchecker.min.js"></script>
-        <script src="assets/js/jquery.waypoints.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
+        <script src="/js/bsmodal.min.js"></script>
+        <script src="/js/jquery.countdown.min.js"></script>
+        <script src="/js/jquery.easydropdown.min.js"></script>
+        <script src="/js/jquery.flexslider-min.js"></script>
+        <script src="/js/jquery.isotope.min.js"></script>
+        <script src="/js/jquery.themepunch.tools.min.js"></script>
+        <script src="/js/jquery.themepunch.revolution.min.js"></script>
+        <script src="/js/jquery.viewportchecker.min.js"></script>
+        <script src="/js/jquery.waypoints.min.js"></script>
+        <script src="/js/scripts.js"></script>
+        <script>
+        // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script> 
+        <script>
+        $('.main-navigation').find('ul:first').clone().appendTo('.mobile-container');
+
+    $('.mobile-navigation').find('.mobile-btn').on("click", function(event) {
+        $('body').addClass('mobile_nav-open');
+        $('.mobile-navigation').find('.mobile-container').slideToggle();
+        $(this).toggleClass('show-menu');
+        event.preventDefault();
+    });
+
+    $('.mobile-navigation').find('.haschild').each(function() {
+        var mobile_submenu = $(this).find('ul:first');
+        $(this).hover(function() { 
+            mobile_submenu.stop().css({overflow:'hidden', height:'auto', display:'none', paddingTop:0}).slideDown(500, function() {
+                $(this).css({overflow:'visible', height:'auto'});
+            }); 
+        },function() {
+            mobile_submenu.stop().slideUp(500, function() {   
+                $(this).css({overflow:'hidden', display:'none'});
+            });
+        }); 
+    });
+
+    $('.mobile-navigation').find('.haschild').children('a').one('click',function() {
+        return false;
+    }).on("click", function() {
+        return true;
+    });
+        </script>
+        
     </body>
 </html>

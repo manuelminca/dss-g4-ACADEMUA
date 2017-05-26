@@ -9,46 +9,80 @@ use App\User;
 use App\Category;
 use App\Comment;
 use App\Message;
-class MessagesController extends Controller
-{
-    public function deleteMessage($id){ //We have to redirect to Manage Courses but we need the session of the teacher(in progress)
-		$message = Message::findOrFail($id);
-		$message->deleteMessage();
 
-		$list = Message::paginate(6);
-		return view('messages.messages', ['messages' => $list]); //We have to change that in the future
+use Illuminate\Support\Facades\Auth;
+
+class MessagesController extends BaseController
+{
+	//to delete a message given the id
+    public function deleteMessage($id){ 
+		$message = Message::findOrFail($id);
+
+		if(Auth::user()->id == $message->sender_id || Auth::user()->id == $message->receiver_id ){
+			$message->deleteMessage();
+		}
+		
+		$listInbox = Message::getReceivedMessages(Auth::user()->id);
+		$listOutbox = Message::getSentMessages(Auth::user()->id);
+
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
+	//creates a new message into the DB
     public function createMessage(Request $request){
 		$message = new Message();
 		$this->validate($request,[
-				'sender_id' => 'required',
-				'receiver_id' => 'required',
+
 				'subject' => 'required',
-				'message' => 'required'
+				'message' => 'required',
+				'receiver' => 'required | exists:users,username'
 		]);
 		
-		$sender_id= $request->input('sender_id');
-		$receiver_id= $request->input('receiver_id');
+		$sender_id = Auth::user()->id;
+		$receiver_id = User::getIdFromName($request->input('receiver'));
 		$subject= $request->input('subject');
 		$messageReceived= $request->input('message');
-
 		
 		$message->createMessage($subject,$sender_id,$receiver_id,$messageReceived);
-		
-		
 
-		return view('home');
+		//preparing data for the view	
+		$listInbox = Message::getReceivedMessages(Auth::user()->id);
+		$listOutbox = Message::getSentMessages(Auth::user()->id);
+
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
+	//returns the view to create a message
     public function newMessage(){
 		return view('messages.createMessage');
 	}
 
-    public function showMessages(){
-		$list = Message::paginate(6);
+	//returns the view with a list of received messages
+    public function showReceivedMessages(){
+		$list = Message::getReceivedMessages(Auth::user()->id);
+		return view('messages.receivedMessages', ['messages' => $list]);
+	}
+
+	//returns the view with a list of sent messages
+	public function showSentMessages(){
+		$list = Message::getSentMessages(Auth::user()->id);
 		
-		return view('messages.messages', ['messages' => $list]);
+		return view('messages.sentMessages', ['messages' => $list]);
+	}
+
+	public function showMessages(){
+		$listInbox = Message::getReceivedMessages(Auth::user()->id);
+		$listOutbox = Message::getSentMessages(Auth::user()->id);
+
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
+	}
+
+	public function showMessagesSearched(Request $request){
+		$listInbox = Message::searchInput($request->input('search'), Auth::user()->id);
+		$listOutbox = Message::searchOutput($request->input('search'), Auth::user()->id);
+
+
+		return view('messages.messages', ['messagesInbox' => $listInbox], ['messagesOutbox' => $listOutbox]);
 	}
 
 }

@@ -4,73 +4,105 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Course;
+use Illuminate\Support\Facades\Auth;
+use File;
 
 
-class UsersController extends Controller
+class UsersController extends BaseController
 {
-
-
+	
+	
+	
 	/*#############################################
-				GETTERS AND SETTERS
+	GETTERS AND SETTERS
 	###############################################*/
-
+	
 	public function getName($id){
 		$user = new User();
 		$name = $user->getName();
 		return $name;
 	}
-
-public function getUsername($id){
-		$user = new User();
-		$username = $user->getUsername();
+	
+	public function getUsername($id){
+		$username = Auth::user()->username;
 		return $username;
 	}
-	public function getEmail($id){
-		$user = new User();
-		$email = $user->getEmail();
+	public function getEmail(){
+		$email = Auth::user()->email;
 		return $email;
 	}
-
-
-
-//###########################################################
-
-
-
-	public function deleteUser ($id){
-		$user = User::find($id);
+	
+	
+	
+	//###########################################################
+	
+	
+	
+	public function deleteUser (){
+		$user = User::find(Auth::user()->id);
 		$user->deleteUser();
-		return view('home');
+		return redirect('/home');
 	}
 	
-	public function edit(Request $request, $id){
+	public function ModifyUser (){
+		$user = User::find(Auth::user()->id);
+		return view('/users/modifyUser')->with('user', $user);
+	}
+	
+	public function edit(Request $request){
+
+		if($request->input('password') != null ){
+			$this->validate($request,[
+			'password' => 'required | min:2',
+			'password_confirmation' => 'required | same:password'
+			
+		]);
+		}
+
+		if($request->file('image') != null ){
+			$this->validate($request,[
+			'image' => 'required | mimes:jpeg,jpg,png | max:2000'
+		]);
+		}
+
 		
-		$this->validate($request,[
-						            'email' => 'required | email | unique:users,email',
-						            'name' => 'required',
-						            'password' => 'required | min:2',
-						            'password_confirmation' => 'required | same:password'
-						        ]);
 		
+			
+		$user = User::findOrFail(Auth::user()->id);
 		
-		$user = User::findOrFail($id);
+		if($request->file('image')!=null){
+			if(file_exists(public_path().'/images/users/' . $user->id)){
+				File::Delete(public_path().'/images/users/' . $user->id);
+			}
+			$iduser = $user->id;
+			$destination = "images/users/";
+			$request->file('image')->move($destination, $iduser);
+		}
 
 		$name = $request->input('name');
 		$email = $request->input('email');
 		$password = $request->input('password');
 
-		$user->edit($name, $email, $password);
-    	return view('home');
+		if($user->professor == 1){
+			$description = $request->input('description');
+		}else{
+			$description = "Im a student";
+		}
+		
+		$user->edit($name, $email, $password, $description);
+
+		return redirect('/home');
 	}
 	
 	public function createUser(Request $request){
 		
 		$this->validate($request,[
-				'email' => 'required | email |  unique:users,email',
-				'name' => 'required',
-				'username' => 'required | unique:users,username',
-				'password' => 'required | min:2',
-				'password_confirmation' => 'required | same:password'
+			'email' => 'required | email |  unique:users,email',
+			'name' => 'required',
+			'username' => 'required | unique:users,username',
+			'password' => 'required | min:2',
+			'password_confirmation' => 'required | same:password'
 		]);
 		
 		$email= $request->input('email');
@@ -79,14 +111,25 @@ public function getUsername($id){
 		$password= $request->input('password');
 		$professor= $request->input('professor');
 
+		if($professor == 1){
+			$description = $request->input('description');
+		}else{
+			$description = "Im a student";
+		}
+		
 		if($professor == "y"){
 			$professor = true;
-		}else{
+		}
+		else{
 			$professor = false;
 		}
 		
 		$user = new User();
 		$user->createUser($email,$name,$username,$password, $professor);
+
+		$iduser = $user->id;
+		$destination = "images/users/";
+		$request->file('image')->move($destination, $iduser);
 		
 		return view('home');
 	}
@@ -94,8 +137,8 @@ public function getUsername($id){
 	
 	public function showInstructors(){
 		$user = new User();
-
-		$list = $user->showInstructors()->paginate(6);
+		
+		$list = $user->showInstructors()->paginate(8);
 		
 		return view('/users/instructors', ['users' => $list])->with('users', $list);
 	}

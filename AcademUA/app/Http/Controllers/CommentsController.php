@@ -7,22 +7,15 @@ use App\Course;
 use App\User;
 use App\Category;
 use App\Comment;
+use App\Session;
+use Illuminate\Support\Facades\Auth;
 
-class CommentsController extends Controller
+class CommentsController extends BaseController
 {
-	
-	/*public function deleteComment ($id) {
-		$comment = Comment::findOrFail($id);
-		$comment->deleteComment();
-
-		$list = Comment::paginate(6);
-		return view('courses.courses', ['courses' => $list]);
-	}*/
-
+	//function to create a comment
 	public function createComment (Request $request, $course_id) {
 		$comment = new Comment();
 		$this->validate($request,[
-				'id_user' => 'required',
 				'description' => 'required',
 				'rating' => 'required | min:0 | max:5 | numeric'
 		]);
@@ -30,27 +23,28 @@ class CommentsController extends Controller
 		
 		$description= $request->input('description');
 		$rating= $request->input('rating');
-        $id_user= $request->input('id_user');
+        $id_user= Auth::user()->id;
 
 		
 		$comment->createComment($description, $rating, $course_id, $id_user);
-		
-		/*$comment->attachCourse($id_course);
-        $comment->attachUser($id_user);*/
-		
-        $coursesCon = new CoursesController();
-        return $coursesCon->showSingleCourse($course_id)->with('id_user', $id_user);
-		//return view('courses.course.'.$id_course);
+
+		return redirect()->action(
+   		 'CoursesController@showSingleCourse', ['id' => $course_id]);
 	}
 
+		//only the user who has created the comment can delete it, or the admin
 		public function deleteComment ($comment_id, $course_id) {
 
 		$comment = Comment::find($comment_id);
-		$comment->deleteComment();
-
+		if(Auth::user()->id == $comment->user_id || Auth::user()->checkAdmin()){
+			$comment->deleteComment();
+		}
 		$course = Course::find($course_id);
 		$comments = $course->getComments($course_id); //returns an array with all the comments
-	return view('courses.course', ['comments' => $comments])->with('course', $course);
+		$session = new Session();
+		$sessions = $session->getSessions($course_id);
+		//returns an array with all the comments
+		return view('courses.course', ['comments' => $comments])->with('course', $course)->with('sessions', $sessions);
 		
 	}
 

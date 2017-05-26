@@ -13,36 +13,81 @@ class UsersTableSeeder extends Seeder
     {
         
         DB::table('users')->insert([
-            'name' => 'profesor1',
-            'username' => 'profesor1',
-            'email' => 'profesor1@gmail.com',
-            'password' => 'dasdas',
-            'professor' => true
+            'name' => 'prof',
+            'username' => 'prof',
+            'email' => 'prof@gmail.com',
+            'description' => 'I have been teaching for 10 years',
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
         ]);
 
          DB::table('users')->insert([
-            'name' => 'manuel',
-            'username' => 'manuelminca',
-            'email' => 'manuelminca@gmail.com',
-            'password' => 'dasdas',
-            'professor' => false
+            'name' => 'alum',
+            'username' => 'alum',
+            'email' => 'alum@gmail.com',
+            'password' => bcrypt('dasdas'),
+            'description' => 'Im a student',
+            'professor' => false,
+            'admin' => false
         ]);
 
          DB::table('users')->insert([
             'name' => 'yerai',
             'username' => 'asehhu',
             'email' => 'asehhu@gmail.com',
-            'password' => 'dasdas',
-            'professor' => false
+            'description' => 'Im a student',
+            'password' => bcrypt('dasdas'),
+            'professor' => false,
+            'admin' => false
         ]);
 
          DB::table('users')->insert([
             'name' => 'quico',
             'username' => 'quico14',
             'email' => 'quico14@gmail.com',
-            'password' => 'dasdas',
-            'professor' => true
+            'description' => 'The sky is the limit',
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'username' => 'Admin',
+            'email' => 'admin@academua.com',
+            'description' => 'Im a student',
+            'password' => bcrypt('dasdas'),
+            'professor' => false,
+            'admin' => true
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Carlos',
+            'username' => 'carlos',
+            'email' => 'carlos@gmail.com',
+            'description' => 'DSS professor',
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Eli',
+            'username' => 'eli',
+            'email' => 'ali@gmail.com',
+            'description' => 'I am the coordinator of PPSS',
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Guardiola',
+            'username' => 'guardiola',
+            'email' => 'guardiola@gmail.com',
+            'description' => 'Manchester City <3',
+            'password' => bcrypt('dasdas'),
+            'professor' => true,
+            'admin' => false
         ]);
         
     }
 }
+

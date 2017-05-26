@@ -5,9 +5,15 @@
 
             <div class="inner-head">
                 <div class="container">
-                    <h1 class="entry-title">Self Development Courses</h1>
+                    <h1 class="entry-title">Academua's Courses</h1>
                     <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
+                        @if(Auth::check() == false) 
+                        To view the courses it is necessary to be logged in.  
+                        <br> 
+                        @endif 
+ 
+                         
+                        You can filter the courses depending on your preferences. 
                     </p>
                     <div class="breadcrumb">
                         <ul class="clearfix">
@@ -18,48 +24,81 @@
                 </div><!-- End container -->
             </div><!-- End Inner Page Head -->
             <div class="clearfix"></div>
-            <section class="full-section latest-courses-section no-slider">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="add-courses top-margin">
-                                <img src="assets/img/icons/addcourse-icon.png" alt="" class="fl add-courses-icon">
-                                <a href="#" class="add-courses-title ln-tr">You Are an Instructor ? Add Your Courses Now !</a>
-                                <p class="add-courses-description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
-                                </p>
-                            </div><!-- End Add Courses -->
-                        </div>
-                    </div><!-- End row -->
-                </div>
-                <div class="section-content latest-courses-content fadeInDown-animation">
+            <section class="cursos full-section latest-courses-section no-slider">
+         
+                
+
+<!-- https://tympanus.net/codrops/2012/10/04/custom-drop-down-list-styling/ -->
+<form action="/courses/filter/">
+        {{ csrf_field() }}
+<div class="loginForm login-page" style="max-width:60%; background-color:transparent;">
+    <div class="dropdowns">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="login-form">
+                    <div class="login-title">
+                        <span class="text">Apply filters</span>
+                        
+                    </div><!-- End Title -->
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <p class="dropdown-text">Order by: </p>
+                            
+                                <select name="order">
+                                        <option value="precio" selected="selected">Price</option>
+                                        <option value="nombre">Name</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <p class="dropdown-text">Asc/Desc: </p>
+                            
+                                <select name="how">
+                                    <option value="asc" selected="selected">Ascending</option>
+                                    <option value="desc">Descending</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <p class="dropdown-text">Search by: </p>
+        
+                                <select name="filter">
+                                    <option value="precio_menor" selected="selected">Maximum price</option>
+                                    <option value="nombre">Name</option>
+                                </select>
+                            </div>
+                        
+                            <div class="col-md-6 col-sm-6">
+                                <div class="input form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
+                                    <input id="valor" type="text" class="form-control" name="valor" placeholder="Enter value" required>
+                                    @if ($errors->has('valor'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('valor') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="input clearfix">
+                                    <input type="submit" value="Submit">
+                                </div>
+                            </div>
+                            
+                        </div><!-- end row -->
+                </div><!-- end login form -->
+            </form>
+        </div><!-- end col-md-12 --> 
+    </div>   <!-- end row -->
+    </div><!-- dropdowns -->
+</div><!-- end login page -->
+
+<div class="section-content latest-courses-content fadeInDown-animation">
                     <div class="container">
                         <div class="row">
-
-
-<form action="/courses/filter/">
-{{ csrf_field() }}
- Search by: <select name="filter">
-                    <option value="precio_menor" selected="selected">Maximum price</option>
-                    <option value="nombre">Name</option>
-              </select>
- Order by: <select name="order">
-                    <option value="precio" selected="selected">Price</option>
-                    <option value="nombre">Name</option>
-              </select>
-Asc/Desc:    <select name="how">
-                    <option value="asc" selected="selected">Ascending</option>
-                    <option value="desc">Descending</option>
-              </select>
-  <input value="{{ old('valor') }}" type="text" name="valor"><br>
-
-  <input type="submit" value="Submit">
-</form>
-
-
  <?php
  $number = 0;
- 
+ use Illuminate\Support\Facades\Auth;
 //Mostramos los cursos
 foreach ($courses as $course) {
     $number = $number+1;
@@ -67,28 +106,69 @@ foreach ($courses as $course) {
         echo "<div class='course'>";
             echo "<div class='course-image'>";
                 echo "<div class='details-overlay'>";
-                echo "<span class='place'>";
-                echo "<i class='fa fa-briefcase'></i>";
-                echo "<span class='text'>Id : " . $course->id ."</span>";
-                echo "</span>";
-                echo "<span class='time'>";
-                echo "<i class='fa fa-money'></i>";
-                echo "<span class='text'>" . $course->price . "€</span>";
-                echo "</span>";
+                 echo "<span class='time'>"; 
+
+
+                        echo "<span class='text'>";
+                            $rating = $course->getAverage();
+                            $string = "N/A";
+                            if(strcmp($rating, $string) == 0){
+                                echo "0 COMMENTS";
+                                $rating = 0;
+                            } else {
+                                echo round($course->getAverage(), 1);
+                                echo "    ";
+                            }
+                            //$course->getAverage();
+                            //$course->getNumberStudents();
+                            if($rating == 0){
+
+                            } else {
+                                for($i = 0; $i<floor($rating); $i++) {
+                                    echo "&#9733;";
+                                }
+                            }
+                            
+                        echo "</span>";
+                    echo "</span>";
+                    echo "<span class='place'>"; 
+                        echo "<div class='col-xs-6' style='text-align: left'>";
+                            echo "<span class='text'>" . $course->price ." </span>";
+                            echo "<i class='fa fa-eur'></i>";
+                        echo "</div>";
+                        echo "<div class='col-xs-6' style='text-align: right'>";
+                            echo "<span class='text'>" . $course->getNumStudents() ." </span>";
+                            echo "<i class='fa fa-users'></i>";
+                        echo "</div>";
+                    echo "</span>";
+                    
                 echo "</div>";
-                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive'>";
+               
+                if(file_exists(public_path().'/images/courses/' . $course->id)){
+		                echo "<img src='/images/courses/" . $course->id . "' class='img-responsive img-height'>";
+                }else{
+		                echo "<img src='/img/course-slider-img-1-270x178.jpg' class='img-responsive img-height'>";
+	            }
+                    
+               
+               
                 echo "</div>";
                 echo "<div class='course-info'>";
-                echo "<h3 class='course-title'><a href='#' class='n-tr'>" . $course->name . "</a></h3>";
+                echo "<h3 class='course-title'><a href='/courses/course/" .$course->id. "' class='n-tr'>" . $course->name . "</a></h3>";
                 echo "<p class='course-description'>" . $course->description . "</p>";
                 echo "<div class='buttons'>";
                 echo "<a href='/courses/course/" .$course->id. "' class='btn grad-btn orange-btn read-btn'>View</a>";
-                echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                
+                if(Auth::check()){
+                    if($course->checkTeacher()){
+                        echo "<a href='/courses/delete/" .$course->id. "' class='btn grad-btn subscribe-btn'>Delete</a>";
+                    }
+                }
                 echo "</div>";
             echo "</div>";
         echo "</div>";
 	echo "</div>";
-    if($number == 4){
+    if($number == 4 || $number == 12){
         echo "<div class='clearfix'></div>";
     }
 }
@@ -99,7 +179,13 @@ foreach ($courses as $course) {
 <div class="clearfix"></div>
 
 <div class="text-center">
-    {{$courses->links()}}
+    @if ($filtering)
+        {{$courses->appends('filter', $filter)->appends('order', $order)->appends('how', $how)->appends('valor', $valor)->links()}}
+    @endif
+    @if (!$filtering)
+        {{$courses->links()}}
+    @endif
+
 </div>
                             
                         </div><!-- End row -->

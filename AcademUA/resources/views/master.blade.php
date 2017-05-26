@@ -17,7 +17,7 @@
         <!-- Responsiveness -->
         <link rel="stylesheet" href="/css/responsive.css">
 
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <!-- FAV & Touch Icons -->
         <link rel="shortcut icon" href="assets/img/icons/favicon.ico">
         <link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
@@ -47,37 +47,73 @@
                             <li class="parent-item courses-menu @yield('courseCurrent')">
                                 <a href="/courses" class="ln-tr">Courses</a>
                             </li>
+
+                            @if(Auth::check())
+                            @if (Auth::user()->checkTeacher())
+
                             <li class="parent-item courses-menu @yield('newCourseCurrent')">
                                 <a href="/courses/new" class="ln-tr">Add course</a>
                             </li>
-                            <li class="parent-item haschild @yield('instructorsCurrent')">
+
+                            @endif
+                            @endif
+
+                            <li class="parent-item @yield('instructorsCurrent')">
                                 <a href="/users/instructors" class="ln-tr">Instuctors</a>
                             </li>
-                            <li class="parent-item haschild">
-                                <a href="/messages/new" class="ln-tr">New Message</a>
+
+                             @if(Auth::check())
+                            <li class="parent-item ">
+                                <a href="/messages" class="ln-tr">Messages</a>
                             </li>
-                            <li class="parent-item haschild">
-                                <a href="#" class="ln-tr">About</a>
+                             @endif
+                            <li class="parent-item  @yield('aboutCurrent')">
+                                <a href="/about" class="ln-tr">About</a>
                             </li>
+                            <li class="parent-item @yield('contactCurrent')">
+                                <a href="/contact" class="ln-tr">Contact</a>
+                            </li>
+                            
+
+
+                        @if (Auth::guest())
+                            <li class="parent-item login"><a href="{{ route('register') }}" class="ln-tr"><span class="grad-btn">Register</span></a></li>
+                            <li class="parent-item login"><a href="{{ route('login') }}" class="ln-tr"><span class="grad-btn">Login</span></a></li>
+                           
+                        @else
                             <li class="parent-item haschild">
-                                <a href="#" class="ln-tr">Contact</a>
+                                <a href="#" class="ln-tr">Hello, {{ Auth::user()->name }} </a>
                                 <ul class="submenu">
-                                    <li class="sub-item"><a href="33-contact-1.html" class="ln-tr">Contact 1</a></li>
-                                    <li class="sub-item"><a href="34-contact-2.html" class="ln-tr">Contact 2</a></li>
-                                    <li class="sub-item"><a href="35-contact-3.html" class="ln-tr">Contact 3</a></li>
+                                    <li class="sub-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">Logout</a></li>
+                                    <li class="sub-item"><a href="/users/modify" class="ln-tr">Modify user</a></li>
+                                    <li class="sub-item"><a href="/users/delete" class="ln-tr">Delete user</a></li>
                                 </ul>
                             </li>
+
                             <li class="parent-item login">
-                                <a href="#" class="ln-tr" data-toggle="modal" data-target="#login-modal"><span class="grad-btn">Login</span></a>
+                                
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
-                            <li class="parent-item login">
-                                <a href="/users/new" class="ln-tr" data-toggle="modal" data-target="#login-modal"><span class="grad-btn">Register</span></a>
-                            </li>
+                        
+                            
+                        @endif
+                    
+
+
+
+
+
+
                         </ul>
                     </nav><!-- End NAV Container -->
                     <div class="mobile-navigation fr">
                         <a href="#" class="mobile-btn"><span></span></a>
-                        <div class="mobile-container"></div>
+                        <div class="mobile-container">
+                        </div>
                     </div><!-- end mobile navigation -->
                 </div>
             </header><!-- End Main Header Container -->

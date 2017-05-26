@@ -5,7 +5,7 @@
 
 <div class="inner-head">
                 <div class="container">
-                    <h1 class="entry-title">ADD COURSE</h1>
+                    <h1 class="entry-title">MODIFY COURSE</h1>
                     <p class="description">
                         Please enter all the data required to create a new course.
                     </p>
@@ -13,19 +13,11 @@
             </div><!-- End Inner Page Head -->
             <div class="clearfix"></div>
             <section class="full-section latest-courses-section no-slider">
+
+<!--<ul>
+
+
 <!--
-<ul>
-<h1>Modify Course</h1>
-{{-- Error messages --}}
-@if (count($errors) > 0)
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-@endif
-
-
 <form action="/courses/modified/{{$courses->id}}">
   Name of the course:<br>
   <input value="{{ old('name') }}" type="text" name="name"><br>
@@ -41,6 +33,14 @@
 </form>
 </ul>
 -->         
+{{-- Error messages --}}
+@if (count($errors) > 0)
+<ul>
+@foreach ($errors->all() as $error)
+<li>{{ $error }}</li>
+@endforeach
+</ul>
+@endif
 
 <form action="/courses/modified/{{$courses->id}}" >
             <div class="login-page" style="width:80%; margin:0 auto;">
@@ -55,17 +55,20 @@
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
+                                                    {{-- Error messages --}}
+                                                    @if ($errors->has('name') > 0)
+                                                    <ul>
+                                                    @foreach ($errors->get('name') as $error)
+                                                    <li>{{ $error }}</li>
+                                                    @endforeach
+                                                    </ul>
+                                                    @endif
                                                     <input type="text" value="{{ old('name') }}" name="name" placeholder="Name">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <div class="input">
                                                     <input  value="{{ old('price') }}" type="number" name="price" placeholder="Price">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="input">
-                                                    <input  value="{{ old('links') }}" type="text" name="links" placeholder="Links">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">

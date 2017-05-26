@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 
-class CategoriesController extends Controller
+class CategoriesController extends BaseController
 {
-	public function deleteCategory ($id) {
+	public function deleteCategory ($id) { //to get here the admin has to type the link to delete a category
 		$category = new Category();
 		$category->deleteCategory($id);
 		
@@ -15,7 +15,7 @@ class CategoriesController extends Controller
 	}
 	
 	
-	public function createCategory(Request $request){
+	public function createCategory(Request $request){ //same here
 		$category = new Category();
 		$this->validate($request,[
 				'name' => 'required | unique:categories,name',
@@ -26,9 +26,13 @@ class CategoriesController extends Controller
 		
 		return view('home');
 	}
-	public function getAllcategories(){
+	public function getAllcategories(){ //this function is used to show all the categories to create a course
 		$cat = new Category();
 		return $cat->getAllCategories();
+	}
+
+	public function newCategory(){ //returns the view to create a new cat.
+		return view('categories.createCategory');
 	}
 	
 }
